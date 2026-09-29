@@ -19,9 +19,14 @@ import {
   treatments,
 } from "@/content/site";
 import { getTestimonials } from "@/content/testimonials";
+import { FUNNEL_EVENTS, track } from "@/lib/analytics";
+import { QUIZ_PATH } from "@/lib/quiz/constants";
 import { getImageMotion, getRailDistance } from "@/lib/scroll-motion";
+import { withUtm } from "@/lib/utm";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const heroQuizHref = withUtm(QUIZ_PATH, { utm_source: "site", utm_medium: "hero", utm_campaign: "home" });
 
 const hero = scrollActs[0];
 const trust = scrollActs[1];
@@ -258,7 +263,14 @@ export function ScrollWorld() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
-                <Link href={site.secondaryCta.href}>{site.secondaryCta.label}</Link>
+                <Link
+                  href={heroQuizHref}
+                  onClick={() =>
+                    track(FUNNEL_EVENTS.quiz_cta_clicked, { source: "site", medium: "hero", campaign: "home" })
+                  }
+                >
+                  Am I a candidate? Take the 2-minute quiz
+                </Link>
               </Button>
             </div>
           </div>
