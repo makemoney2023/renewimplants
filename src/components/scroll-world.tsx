@@ -333,6 +333,7 @@ export function ScrollWorld() {
                 fill
                 sizes="(max-width: 700px) 84vw, 42vw"
               />
+              <LoopVideo className="treatment-video" sources={treatment.animation} />
               <div className="card-scrim" />
               <span className="card-index">0{index + 1}</span>
               <div className="card-copy">

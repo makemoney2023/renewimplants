@@ -27,6 +27,15 @@ const jobs = [
       "implant-assemble-web-9x16.webm",
     ],
   },
+  {
+    from: "assets/treatment-animation",
+    to: "public/media/treatments",
+    files: ["allon4", "fullarch", "snapon", "sedation"].flatMap((name) =>
+      ["16x9", "9x16"].flatMap((aspect) =>
+        ["mp4", "webm"].map((ext) => `treatment-${name}-web-${aspect}.${ext}`),
+      ),
+    ),
+  },
 ];
 
 function copyJob(job) {

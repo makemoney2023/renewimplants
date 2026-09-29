@@ -62,6 +62,14 @@ Exploded-view dental implant (crown, retaining screw, abutment, fixture) animate
 - `assets/implant-animation/dental-implant-angled-16x9.png` — first-frame still / poster for desktop
 - `assets/implant-animation/dental-implant-angled-9x16.png` — first-frame still / poster for mobile
 
+## treatment-animation/ (24) — generated, not scraped
+
+Homepage rail treatment cards, animated from the `other/service-*.jpg` photos with Gemini Omni Flash (image-to-video, 8s loops, $0.80 each, $6.40 total).
+
+- `assets/treatment-animation/treatment-{allon4,fullarch,snapon,sedation}-{16x9,9x16}.mp4` — 8 masters · 1280x720 / 720x1280 · with ambient audio
+- `assets/treatment-animation/treatment-{allon4,fullarch,snapon,sedation}-web-{16x9,9x16}.{mp4,webm}` — 16 silent `faststart` H.264 (~1.0–1.4 MB) + VP9 (~0.5–0.9 MB) web renders, synced to `public/media/treatments`
+- Notes: portrait All-on-4 pulls the background dentist into focus; portrait full-arch has more camera drift than the landscape cut.
+
 ## Referenced but NOT downloadable (soft HTML / missing on CDN)
 
 - `/img/allon4-diagram.jpg` — referenced in HTML; returns bot interstitial / missing file (~11–12KB text/html)

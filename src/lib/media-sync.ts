@@ -38,8 +38,22 @@ export function getMediaSyncJobs(): MediaSyncJob[] {
       to: "public/media/animation",
       files: implantAnimationFiles,
     },
+    {
+      from: "assets/treatment-animation",
+      to: "public/media/treatments",
+      files: treatmentAnimationFiles,
+    },
   ];
 }
+
+// Treatment-card loops: posters are the existing service photos, so only the
+// silent web renders ship (the 8s Omni masters with audio stay in assets/).
+export const treatmentAnimationFiles = ["allon4", "fullarch", "snapon", "sedation"].flatMap(
+  (name) =>
+    ["16x9", "9x16"].flatMap((aspect) =>
+      ["mp4", "webm"].map((ext) => `treatment-${name}-web-${aspect}.${ext}`),
+    ),
+);
 
 // Only the silent, faststart web renders and their posters ship; the audio
 // and slow-motion masters stay in assets/.

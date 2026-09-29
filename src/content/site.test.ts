@@ -74,4 +74,16 @@ describe("Renew scroll-world content", () => {
       expect(treatment.href).toMatch(/^\/services\//);
     }
   });
+
+  it("animates every treatment card with silent landscape and portrait loops over its photo", () => {
+    for (const treatment of treatments) {
+      const { animation } = treatment;
+      expect(animation.poster, treatment.title).toBe(treatment.image);
+      expect(animation.webm, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-16x9\.webm$/);
+      expect(animation.video, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-16x9\.mp4$/);
+      expect(animation.mobileWebm, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-9x16\.webm$/);
+      expect(animation.mobileVideo, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-9x16\.mp4$/);
+    }
+    expect(new Set(treatments.map((treatment) => treatment.animation.video)).size).toBe(treatments.length);
+  });
 });

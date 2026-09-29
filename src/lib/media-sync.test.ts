@@ -10,7 +10,21 @@ describe("media sync", () => {
       "public/media/services",
       "public/media/video",
       "public/media/animation",
+      "public/media/treatments",
     ]);
+  });
+
+  it("ships only the silent web renders of the treatment-card loops", () => {
+    const loops = getMediaSyncJobs().find((job) => job.to === "public/media/treatments");
+    expect(loops?.from).toBe("assets/treatment-animation");
+    const files = loops?.files ?? [];
+    expect(files).toHaveLength(16);
+    for (const name of ["allon4", "fullarch", "snapon", "sedation"]) {
+      for (const ext of ["mp4", "webm"]) {
+        expect(files).toContain(`treatment-${name}-web-16x9.${ext}`);
+        expect(files).toContain(`treatment-${name}-web-9x16.${ext}`);
+      }
+    }
   });
 
   it("ships only the silent web renders and posters of the implant animation", () => {

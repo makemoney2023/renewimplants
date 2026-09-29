@@ -70,7 +70,7 @@ Six acts, no motion device repeated back to back, one peak. Defined in
 |---|---|---|
 | Arrival | parallax | Silent hero loop (trimmed from the sister clinic's clip) under "Stop living around your teeth. Start living again." |
 | Trust | kinetic | Team photo + "Twenty years of renewing Ottawa smiles" + CDCP/financing note |
-| Choice | rail (pinned horizontal) | Implant-anatomy card (the assembling-implant loop) then four treatment cards: All-on-4, full arch, snap-on, sedation |
+| Choice | rail (pinned horizontal) | Implant-anatomy card (the assembling-implant loop) then four treatment cards — All-on-4, full arch, snap-on, sedation — each playing its own silent loop over its service photo |
 | Connection | split | Tom Szarski portrait clip-path reveal + a verified review |
 | Proof (peak) | panorama | Sticky copy with the three-step process; four parallax photo tiles |
 | Commitment | iris | Circle reveal into the free-consultation CTA + phone |
@@ -182,6 +182,7 @@ which copies:
 | `assets/other` | `public/media/services` |
 | `assets/video/optimized/*.mp4` | `public/media/video` |
 | `assets/implant-animation` (six files only, see below) | `public/media/animation` |
+| `assets/treatment-animation` (web renders only) | `public/media/treatments` |
 
 `public/media/` is gitignored and rebuilt on every install/build (Vercel-safe).
 
@@ -192,6 +193,10 @@ web deliverables ship: `implant-assemble-web-{16x9,9x16}.{mp4,webm}` (8 s, silen
 in `src/lib/media-sync.ts`, mirrored in `scripts/media-sync.mjs`. The loop is
 rendered on a light studio ground, so it is always framed (rail card, chapter
 photo panel) rather than placed full-bleed under white type.
+
+The treatment-card loops follow the same rule: `assets/treatment-animation` keeps the
+8 s Omni masters (with audio), and only `treatment-{allon4,fullarch,snapon,sedation}-web-{16x9,9x16}.{mp4,webm}`
+ship (allow-list `treatmentAnimationFiles`). Posters are the existing service photos.
 
 The hero loops are committed in `assets/video/optimized/` and derived by
 `npm run media:hero` from `assets/video/orleans-homepage-hero.mp4`, using only

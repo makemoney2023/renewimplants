@@ -138,30 +138,48 @@ export const scrollActs: ScrollAct[] = [
   },
 ];
 
+// Gemini Omni loops animated from each card's service photo (the photo stays
+// the poster and the reduced-motion fallback). See ASSETS-MANIFEST.md
+// "treatment-animation".
+function treatmentLoop(name: string, poster: string) {
+  const base = `/media/treatments/treatment-${name}-web`;
+  return {
+    poster,
+    webm: `${base}-16x9.webm`,
+    video: `${base}-16x9.mp4`,
+    mobileWebm: `${base}-9x16.webm`,
+    mobileVideo: `${base}-9x16.mp4`,
+  };
+}
+
 export const treatments = [
   {
     title: "All-on-4 implants",
     body: "Four implants anchor a full set of fixed teeth. No adhesive, no slipping, often no bone grafting.",
     href: "/services/all-on-4-dental-implants",
     image: media.allOn4,
+    animation: treatmentLoop("allon4", media.allOn4),
   },
   {
     title: "Full arch implants",
     body: "Replace every tooth — upper, lower, or both — with permanent teeth you never take out.",
     href: "/services/full-arch-dental-implants",
     image: media.fullArch,
+    animation: treatmentLoop("fullarch", media.fullArch),
   },
   {
     title: "Snap-on dentures",
     body: "Your denture, but stable. Two or four implants lock it in place while you eat, talk, and smile.",
     href: "/services/denture-alternative",
     image: media.snapOn,
+    animation: treatmentLoop("snapon", media.snapOn),
   },
   {
     title: "Sedation dentistry",
     body: "Sleep through the whole thing. Oral, IV, and general anaesthesia options in a monitored setting.",
     href: "/services/sedation-dentistry",
     image: media.sedation,
+    animation: treatmentLoop("sedation", media.sedation),
   },
 ];
 

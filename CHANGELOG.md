@@ -3,6 +3,27 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-09-29 — Animated treatment cards in the homepage rail
+
+**What changed:** the four treatment cards in the "Choice" rail (All-on-4, full arch,
+snap-on, sedation) now play silent 8 s Gemini Omni loops animated from their service
+photos, with landscape/portrait + WebM/MP4 sources like the implant-anatomy card.
+The photo stays as the poster and the reduced-motion fallback (`.scene-video` hidden).
+
+**Why:** feature — every card in the horizontal rail now moves, not just the first.
+
+**Code touchpoints:**
+- `src/content/site.ts` (`treatmentLoop()`, `animation` on each treatment), `src/components/scroll-world.tsx` (`LoopVideo` per card), `src/app/globals.css` (`.treatment-video`)
+- `src/lib/media-sync.ts` (`treatmentAnimationFiles`) mirrored in `scripts/media-sync.mjs`
+- `assets/treatment-animation/` (8 Omni masters + 16 web renders), `ASSETS-MANIFEST.md`
+
+**Data-flow impact:** new sync job `assets/treatment-animation → public/media/treatments`.
+
+**API / schema impact:** none.
+
+**Verification:** `npm test` 181/181, `npm run typecheck` clean, eslint clean on changed
+files; dev server serves all 16 sources; playback confirmed in browser.
+
 ## 2026-09-29 — SEO/AEO/GEO blog + implant candidate quiz funnel
 
 **What changed:** the blog moves out of `routes.ts` into an MDX pipeline with
