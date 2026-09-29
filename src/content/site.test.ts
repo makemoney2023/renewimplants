@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { implantAnimation, navLinks, scrollActs, site, treatments } from "./site";
 
@@ -83,6 +85,18 @@ describe("Renew scroll-world content", () => {
       expect(animation.video, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-16x9\.mp4$/);
       expect(animation.mobileWebm, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-9x16\.webm$/);
       expect(animation.mobileVideo, treatment.title).toMatch(/^\/media\/treatments\/treatment-[a-z0-9]+-web-9x16\.mp4$/);
+      for (const publicUrl of [
+        animation.webm,
+        animation.video,
+        animation.mobileWebm,
+        animation.mobileVideo,
+      ]) {
+        const file = publicUrl.replace("/media/treatments/", "");
+        expect(
+          existsSync(join(process.cwd(), "assets/treatment-animation", file)),
+          `${treatment.title}: ${file}`,
+        ).toBe(true);
+      }
     }
     expect(new Set(treatments.map((treatment) => treatment.animation.video)).size).toBe(treatments.length);
   });

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ImplantCandidateQuizPage() {
   return (
-    <main className="content-page quiz-page">
+    <main id="main-content" tabIndex={-1} className="content-page quiz-page">
       <section className="content-hero quiz-hero">
         <div className="content-hero-copy">
           <p className="section-label">Free 2-minute quiz</p>

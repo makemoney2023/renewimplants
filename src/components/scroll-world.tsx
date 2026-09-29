@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { LoopVideo } from "@/components/loop-video";
+import { LoopVideo, ResponsivePoster } from "@/components/loop-video";
 import { SiteFooter } from "@/components/site-footer";
 import {
   implantAnimation,
@@ -92,7 +92,6 @@ export function ScrollWorld() {
         gsap.utils.toArray<HTMLElement>(".reveal-copy").forEach((element) => {
           gsap.from(element.children, {
             y: 48,
-            opacity: 0,
             stagger: 0.09,
             duration: 0.9,
             ease: "power3.out",
@@ -103,28 +102,6 @@ export function ScrollWorld() {
             },
           });
         });
-
-        const rail = document.querySelector<HTMLElement>(".treatment-rail");
-        const railSection =
-          document.querySelector<HTMLElement>(".treatments-section");
-        if (rail && railSection) {
-          const distance = () =>
-            getRailDistance(rail.scrollWidth, window.innerWidth);
-
-          gsap.to(rail, {
-            x: () => -distance(),
-            ease: "none",
-            scrollTrigger: {
-              trigger: railSection,
-              start: "top top",
-              end: () => `+=${Math.max(distance(), window.innerHeight * 1.5)}`,
-              pin: true,
-              scrub: 0.65,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-            },
-          });
-        }
 
         gsap.fromTo(
           ".doctor-photo",
@@ -182,6 +159,34 @@ export function ScrollWorld() {
         );
       });
 
+      reduce.add(
+        "(prefers-reduced-motion: no-preference) and (min-width: 801px) and (hover: hover) and (pointer: fine)",
+        () => {
+          const rail = document.querySelector<HTMLElement>(".treatment-rail");
+          const railSection =
+            document.querySelector<HTMLElement>(".treatments-section");
+          if (!rail || !railSection) return;
+
+          const distance = () =>
+            getRailDistance(rail.scrollWidth, window.innerWidth);
+
+          gsap.to(rail, {
+            x: () => -distance(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: railSection,
+              start: "top top",
+              end: () =>
+                `+=${Math.max(distance(), window.innerHeight * 1.5)}`,
+              pin: true,
+              scrub: 0.65,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
+        },
+      );
+
       reduce.add("(prefers-reduced-motion: reduce)", () => {
         gsap.set(
           ".hero-word, .reveal-copy > *, .doctor-photo, .panorama-tile, .close-photo",
@@ -196,7 +201,7 @@ export function ScrollWorld() {
   );
 
   return (
-    <main ref={root} className="scroll-world">
+    <main id="main-content" tabIndex={-1} ref={root} className="scroll-world">
       <svg
         className="arch-line"
         viewBox="0 0 100 100"
@@ -222,25 +227,14 @@ export function ScrollWorld() {
               sizes="100vw"
             />
             {hero.video ? (
-              <video
-                className="hero-photo hero-video scene-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                poster={hero.image}
-                aria-hidden="true"
-              >
-                {hero.mobileVideo ? (
-                  <source
-                    src={hero.mobileVideo}
-                    type="video/mp4"
-                    media="(max-width: 800px)"
-                  />
-                ) : null}
-                <source src={hero.video} type="video/mp4" />
-              </video>
+              <LoopVideo
+                className="hero-photo hero-video"
+                sources={{
+                  video: hero.video,
+                  mobileVideo: hero.mobileVideo,
+                  poster: hero.image,
+                }}
+              />
             ) : null}
           </div>
           <div className="hero-scrim" />
@@ -269,7 +263,7 @@ export function ScrollWorld() {
                     track(FUNNEL_EVENTS.quiz_cta_clicked, { source: "site", medium: "hero", campaign: "home" })
                   }
                 >
-                  Am I a candidate? Take the 2-minute quiz
+                  Take the 2-minute implant quiz
                 </Link>
               </Button>
             </div>
@@ -305,10 +299,10 @@ export function ScrollWorld() {
         </div>
         <div className="treatment-rail">
           <article className="treatment-card anatomy-card">
-            <Image
-              src={implantAnimation.poster}
+            <ResponsivePoster
+              poster={implantAnimation.poster}
+              mobilePoster={implantAnimation.mobilePoster}
               alt={implantAnimation.alt}
-              fill
               sizes="(max-width: 700px) 84vw, 42vw"
             />
             <LoopVideo className="anatomy-video" sources={implantAnimation} />

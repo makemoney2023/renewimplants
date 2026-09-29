@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const body = await renderPostBody(post);
 
   return (
-    <main className="content-page blog-post">
+    <main id="main-content" tabIndex={-1} className="content-page blog-post">
       <article>
         <header className="content-hero">
           <div className="content-hero-copy">
@@ -81,10 +81,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               heading="Frequently asked questions"
             />
           </div>
-          <aside className="post-aside">
+          <div className="post-aside">
             <PostToc headings={post.headings} />
             <QuizCta source="blog" medium="sticky" campaign={post.slug} label={post.quizCtaLabel} />
-          </aside>
+          </div>
         </div>
       </article>
 

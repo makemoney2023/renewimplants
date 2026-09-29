@@ -50,6 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en-CA">
       <body className={`${display.variable} ${text.variable}`}>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         <SiteHeader />
         {children}
         <JsonLd data={buildSiteGraph()} />

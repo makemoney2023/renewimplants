@@ -20,6 +20,13 @@ describe("ExtractionTable", () => {
     expect(screen.getAllByRole("columnheader").map((cell) => cell.textContent)).toEqual(["A", "B"]);
     expect(screen.getByRole("rowheader", { name: "1" })).toBeInTheDocument();
   });
+
+  it("gives an empty comparison header an accessible name", () => {
+    render(<ExtractionTable caption="Compare" columns={["", "Option"]} rows={[["Cost", "$"]]} />);
+    expect(
+      screen.getByRole("columnheader", { name: "Comparison category" }),
+    ).toBeInTheDocument();
+  });
 });
 
 describe("KeyStat", () => {
@@ -41,6 +48,7 @@ describe("QuizCta", () => {
       "href",
       `${QUIZ_PATH}?utm_source=blog&utm_medium=content&utm_campaign=my-post`,
     );
+    expect(screen.queryByRole("complementary")).not.toBeInTheDocument();
     fireEvent.click(link);
     expect(gtag).toHaveBeenCalledWith("event", "quiz_cta_clicked", expect.objectContaining({ source: "blog", medium: "content", campaign: "my-post" }));
   });

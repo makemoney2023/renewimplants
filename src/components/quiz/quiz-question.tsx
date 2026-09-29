@@ -13,12 +13,11 @@ type QuizQuestionProps = {
 
 export function QuizQuestion({ question, picked, onToggle }: QuizQuestionProps) {
   const inputId = (optionId: string) => `quiz-${question.id}-${optionId}`;
+  const headingId = `quiz-question-${question.id}`;
 
   return (
-    <fieldset className="quiz-question">
-      <legend>
-        <h2>{question.prompt}</h2>
-      </legend>
+    <fieldset className="quiz-question" aria-labelledby={headingId}>
+      <h2 id={headingId}>{question.prompt}</h2>
       {question.helper ? <p className="quiz-helper">{question.helper}</p> : null}
 
       {question.type === "single" ? (

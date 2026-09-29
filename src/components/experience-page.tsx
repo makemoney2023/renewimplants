@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { FaqList } from "@/components/faq-list";
-import { LoopVideo } from "@/components/loop-video";
+import { LoopVideo, ResponsivePoster } from "@/components/loop-video";
 import { QuizCta } from "@/components/quiz/quiz-cta";
 import { RouteActions } from "@/components/route-actions";
 import { TestimonialList } from "@/components/testimonial-list";
@@ -56,7 +56,6 @@ export function ExperiencePage({ page }: { page: RouteContent }) {
         gsap.utils.toArray<HTMLElement>(".reveal-copy").forEach((element) => {
           gsap.from(element.children, {
             y: 36,
-            opacity: 0,
             stagger: 0.08,
             duration: 0.8,
             ease: "power3.out",
@@ -165,7 +164,7 @@ export function ExperiencePage({ page }: { page: RouteContent }) {
     (page.faqs?.length ?? 0) > 0;
 
   return (
-    <main className="chapter-page" ref={root}>
+    <main id="main-content" tabIndex={-1} className="chapter-page" ref={root}>
       {acts.map((act, index) => (
         <ChapterAct
           key={`${act.heading}-${act.device}`}
@@ -258,6 +257,7 @@ function ChapterAct({
                 src={photo.src}
                 alt={photos?.length ? photo.alt : ""}
                 fill
+                priority={first && index === 0}
                 sizes="(max-width: 700px) 84vw, 42vw"
               />
               <div className="card-scrim" />
@@ -294,6 +294,7 @@ function ChapterAct({
                 src={photo.src}
                 alt={photo.alt}
                 fill
+                priority={first && index === 0}
                 sizes="(max-width: 700px) 82vw, 35vw"
               />
             </figure>
@@ -307,7 +308,7 @@ function ChapterAct({
     return (
       <section className="close-section chapter-act" aria-labelledby={id}>
         <div className="close-photo chapter-close-photo">
-          <Image src={act.image} alt="" fill sizes="100vw" />
+          <Image src={act.image} alt="" fill priority={first} sizes="100vw" />
           <div className="close-scrim" />
         </div>
         <div className="close-copy reveal-copy">
@@ -323,10 +324,11 @@ function ChapterAct({
     return (
       <section className="doctors-section chapter-act" aria-labelledby={id}>
         <div className={`doctor-photo chapter-split-photo${act.video ? " has-loop" : ""}`}>
-          <Image
-            src={act.poster ?? act.image}
+          <ResponsivePoster
+            poster={act.poster ?? act.image}
+            mobilePoster={act.mobilePoster}
             alt=""
-            fill
+            priority={first}
             sizes="(max-width: 800px) 100vw, 50vw"
           />
           {act.video ? (
@@ -350,11 +352,11 @@ function ChapterAct({
       aria-labelledby={id}
     >
       <div className={`trust-photo${act.video ? " has-loop" : ""}`}>
-        <Image
+        <ResponsivePoster
           className="chapter-photo"
-          src={act.poster ?? act.image}
+          poster={act.poster ?? act.image}
+          mobilePoster={act.mobilePoster}
           alt=""
-          fill
           priority={first}
           sizes="(max-width: 800px) 100vw, 52vw"
         />

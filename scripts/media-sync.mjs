@@ -6,37 +6,9 @@ import {
   rmSync,
 } from "node:fs";
 import { dirname, extname, join } from "node:path";
+import { getMediaSyncJobs } from "../src/lib/media-sync.ts";
 
-// Mirrors src/lib/media-sync.ts (kept in plain JS so the pre* hooks run
-// without a TypeScript loader). The Vitest spec guards the TS copy.
-const jobs = [
-  { from: "assets/heroes", to: "public/media/heroes" },
-  { from: "assets/interiors", to: "public/media/interiors" },
-  { from: "assets/staff", to: "public/media/staff" },
-  { from: "assets/other", to: "public/media/services" },
-  { from: "assets/video/optimized", to: "public/media/video", extension: ".mp4" },
-  {
-    from: "assets/implant-animation",
-    to: "public/media/animation",
-    files: [
-      "dental-implant-angled-16x9.png",
-      "dental-implant-angled-9x16.png",
-      "implant-assemble-web-16x9.mp4",
-      "implant-assemble-web-16x9.webm",
-      "implant-assemble-web-9x16.mp4",
-      "implant-assemble-web-9x16.webm",
-    ],
-  },
-  {
-    from: "assets/treatment-animation",
-    to: "public/media/treatments",
-    files: ["allon4", "fullarch", "snapon", "sedation"].flatMap((name) =>
-      ["16x9", "9x16"].flatMap((aspect) =>
-        ["mp4", "webm"].map((ext) => `treatment-${name}-web-${aspect}.${ext}`),
-      ),
-    ),
-  },
-];
+const jobs = getMediaSyncJobs();
 
 function copyJob(job) {
   if (extname(job.to)) {
@@ -57,7 +29,9 @@ function copyJob(job) {
     if (name.startsWith(".")) continue;
     if (job.extension && extname(name) !== job.extension) continue;
     const source = join(job.from, name);
-    if (!existsSync(source)) continue;
+    if (!existsSync(source)) {
+      throw new Error(`media-sync: required source is missing: ${source}`);
+    }
     cpSync(source, join(job.to, name));
   }
 }

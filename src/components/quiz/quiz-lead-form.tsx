@@ -89,17 +89,17 @@ export function QuizLeadForm({ answers, startedAt, onSubmitted }: QuizLeadFormPr
     <form className="quiz-lead-form" onSubmit={handleSubmit} noValidate>
       <div className="quiz-field">
         <Label htmlFor="firstName">First name</Label>
-        <Input id="firstName" name="firstName" autoComplete="given-name" required aria-invalid={!!fields.firstName} aria-describedby={describedBy("firstName")} />
+        <Input className="min-h-11" id="firstName" name="firstName" autoComplete="given-name" required aria-invalid={!!fields.firstName} aria-describedby={describedBy("firstName")} />
         {fieldError("firstName")}
       </div>
       <div className="quiz-field">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" autoComplete="email" required aria-invalid={!!fields.email} aria-describedby={describedBy("email")} />
+        <Input className="min-h-11" id="email" name="email" type="email" autoComplete="email" required aria-invalid={!!fields.email} aria-describedby={describedBy("email")} />
         {fieldError("email")}
       </div>
       <div className="quiz-field">
         <Label htmlFor="phone">Phone</Label>
-        <Input id="phone" name="phone" type="tel" autoComplete="tel" required aria-invalid={!!fields.phone} aria-describedby={describedBy("phone")} />
+        <Input className="min-h-11" id="phone" name="phone" type="tel" autoComplete="tel" required aria-invalid={!!fields.phone} aria-describedby={describedBy("phone")} />
         {fieldError("phone")}
       </div>
 
@@ -121,7 +121,7 @@ export function QuizLeadForm({ answers, startedAt, onSubmitted }: QuizLeadFormPr
 
       <div className="quiz-field">
         <Label htmlFor="bestTime">Best time to reach you (optional)</Label>
-        <Input id="bestTime" name="bestTime" placeholder="e.g. weekday mornings" />
+        <Input className="min-h-11" id="bestTime" name="bestTime" placeholder="e.g. weekday mornings" />
       </div>
 
       <div className="quiz-honeypot" aria-hidden="true">

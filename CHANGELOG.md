@@ -3,6 +3,59 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-09-29 — Responsive and cross-device quality pass
+
+**What changed:** the hero now exposes the consultation and two-minute candidate
+quiz as responsive CTAs; the header, experience pages, blog layouts, tables, and
+cards reflow without horizontal clipping from 320 px through desktop. Treatment
+loops select portrait sources/posters on mobile, defer loading, play only while
+visible, and pause or remain posters for reduced-motion users. Touch layouts use
+a native scroll-snap treatment rail instead of GSAP pinning.
+
+Accessibility polish adds a keyboard skip link, safe-area-aware fixed-header
+spacing, 44 px controls, valid quiz fieldset naming, stronger aqua contrast,
+visible focus states, accessible comparison-table headers, and clean landmarks.
+
+**Why:** bug fix — remove broken media requests, clipped CTAs/content, cramped
+navigation, motion overload, and keyboard/screen-reader barriers across mobile,
+tablet, and desktop.
+
+**Code touchpoints:**
+- `src/app/globals.css`, `src/app/layout.tsx`, all page-level `<main>` renderers
+- `src/components/{scroll-world,experience-page,loop-video}.tsx`
+- `src/components/quiz/{quiz-question,quiz-lead-form,quiz-cta}.tsx`
+- `src/components/blog/mdx-components.tsx`, blog index/post pages
+- `src/lib/media-sync.ts`, `scripts/media-sync.mjs`, responsive/media regression specs
+- `README.md`, `ASSETS-MANIFEST.md`
+
+**Data-flow impact:** media sync now uses the typed allow-list directly and fails
+predev/prebuild when a required source is missing. Video playback is gated by
+viewport visibility and the user's motion preference.
+
+**API / schema impact:** none.
+
+**Verification:** `npm test` — 27 files / 185 tests; `npm run lint`,
+`npm run typecheck`, and `npm run build` pass (44 generated pages). Browser QA:
+31 sitemap pages × 5 widths (320, 390, 768, 1024, 1440) produced zero status,
+media, console, landmark, heading, or overflow issues; eight representative axe
+audits at mobile/desktop produced zero violations; mobile navigation, skip link,
+FAQ, comparison table, service CTA, all nine quiz steps, invalid lead handling,
+and reduced-motion fallbacks were exercised.
+
+## 2026-09-29 — Why Choose Us panorama photos were crushed
+
+**What changed:** the "Your implants are made right here" photo stage on `/why-choose-us` keeps its 280svh height. `.chapter-act` no longer overrides it down to 88svh, which had collapsed the absolutely positioned tiles into ~30px strips.
+
+**Why:** bug fix.
+
+**Code touchpoints:** `src/app/globals.css` (`.chapter-act:not(.panorama-section)`).
+
+**Data-flow impact:** none.
+
+**API / schema impact:** none.
+
+**Verification:** measured tile boxes on `localhost:3111/why-choose-us` (section 2682px, tiles 472–629px tall) and confirmed the photos render in the browser.
+
 ## 2026-09-29 — Animated treatment cards in the homepage rail
 
 **What changed:** the four treatment cards in the "Choice" rail (All-on-4, full arch,

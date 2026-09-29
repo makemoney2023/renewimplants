@@ -15,9 +15,16 @@ export function ExtractionTable({ caption, columns, rows }: ExtractionTableProps
         <caption>{caption}</caption>
         <thead>
           <tr>
-            {columns.map((column) => (
-              <th key={column} scope="col">
-                {column}
+            {columns.map((column, index) => (
+              <th
+                key={`${column}-${index}`}
+                scope="col"
+              >
+                {column.trim() ? (
+                  column
+                ) : (
+                  <span className="sr-only">Comparison category</span>
+                )}
               </th>
             ))}
           </tr>

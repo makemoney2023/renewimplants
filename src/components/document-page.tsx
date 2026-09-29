@@ -10,7 +10,7 @@ import { site } from "@/content/site";
 
 export function DocumentPage({ page }: { page: RouteContent }) {
   return (
-    <main className="content-page">
+    <main id="main-content" tabIndex={-1} className="content-page">
       <section className="content-hero">
         <div className="content-hero-copy">
           <p className="section-label">{page.eyebrow}</p>

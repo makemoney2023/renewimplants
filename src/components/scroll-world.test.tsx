@@ -25,6 +25,7 @@ describe("ScrollWorld hero", () => {
       site.primaryCta.href,
       `${QUIZ_PATH}?utm_source=site&utm_medium=hero&utm_campaign=home`,
     ]);
+    expect(links[1]).toHaveTextContent("Take the 2-minute implant quiz");
 
     fireEvent.click(links[1]);
     expect(gtag).toHaveBeenCalledWith(

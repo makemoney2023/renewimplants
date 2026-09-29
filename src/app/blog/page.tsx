@@ -22,7 +22,7 @@ export default function BlogIndexPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="content-page blog-index">
+    <main id="main-content" tabIndex={-1} className="content-page blog-index">
       <section className="content-hero blog-index-hero">
         <div className="content-hero-copy">
           <p className="section-label">Blog</p>
@@ -33,9 +33,9 @@ export default function BlogIndexPage() {
 
       <section className="content-body">
         <PostCardList posts={posts} />
-        <aside className="post-aside">
+        <div className="post-aside">
           <QuizCta source="blog" medium="sticky" campaign="blog-index" />
-        </aside>
+        </div>
       </section>
 
       <footer className="content-footer">

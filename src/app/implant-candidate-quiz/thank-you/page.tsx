@@ -17,7 +17,7 @@ export default async function QuizThankYouPage({ searchParams }: PageProps) {
   const copy = path ? resultContent[path] : null;
 
   return (
-    <main className="content-page quiz-thank-you">
+    <main id="main-content" tabIndex={-1} className="content-page quiz-thank-you">
       <section className="content-body">
         <div className="content-sections">
           <article>

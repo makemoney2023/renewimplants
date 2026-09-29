@@ -50,6 +50,8 @@ describe("QuizFlow", () => {
     render(<QuizFlow />);
     expect(screen.getByText(`Question 1 of ${quizQuestions.length}`)).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(quizQuestions[0].prompt);
+    const questionGroup = screen.getByRole("group", { name: quizQuestions[0].prompt });
+    expect(questionGroup.querySelector("legend h2")).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /next/i })).toBeDisabled();
   });
 
@@ -107,6 +109,15 @@ describe("QuizFlow", () => {
     });
     expect(typeof body.startedAt).toBe("number");
     expect(localStorage.getItem(QUIZ_PROGRESS_KEY)).toBeNull();
+  });
+
+  it("uses touch-sized contact inputs in the result form", () => {
+    render(<QuizFlow />);
+    answerAll();
+
+    for (const name of ["First name", "Email", "Phone"]) {
+      expect(screen.getByRole("textbox", { name })).toHaveClass("min-h-11");
+    }
   });
 
   it("shows the server's message when the lead is rejected", async () => {

@@ -1,5 +1,11 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { getHeroVideoJobs, getMediaSyncJobs } from "./media-sync";
+import {
+  getHeroVideoJobs,
+  getMediaSyncJobs,
+  treatmentAnimationFiles,
+} from "./media-sync";
 
 describe("media sync", () => {
   it("copies heroes, interiors, staff, services, optimized clips, and the animation with Node instead of rsync", () => {
@@ -10,20 +16,19 @@ describe("media sync", () => {
       "public/media/services",
       "public/media/video",
       "public/media/animation",
-      "public/media/treatments",
+      ...(treatmentAnimationFiles.length > 0 ? ["public/media/treatments"] : []),
     ]);
   });
 
-  it("ships only the silent web renders of the treatment-card loops", () => {
+  it("ships only treatment-card loops that exist as complete optimized source sets", () => {
     const loops = getMediaSyncJobs().find((job) => job.to === "public/media/treatments");
-    expect(loops?.from).toBe("assets/treatment-animation");
-    const files = loops?.files ?? [];
-    expect(files).toHaveLength(16);
-    for (const name of ["allon4", "fullarch", "snapon", "sedation"]) {
-      for (const ext of ["mp4", "webm"]) {
-        expect(files).toContain(`treatment-${name}-web-16x9.${ext}`);
-        expect(files).toContain(`treatment-${name}-web-9x16.${ext}`);
-      }
+    expect(loops?.files ?? []).toEqual(treatmentAnimationFiles);
+
+    for (const file of treatmentAnimationFiles) {
+      expect(
+        existsSync(join(process.cwd(), "assets/treatment-animation", file)),
+        file,
+      ).toBe(true);
     }
   });
 

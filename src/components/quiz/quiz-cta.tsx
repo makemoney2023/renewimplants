@@ -26,7 +26,7 @@ export function QuizCta({
   const href = withUtm(QUIZ_PATH, { utm_source: source, utm_medium: medium, utm_campaign: campaign });
 
   return (
-    <aside className={intro ? "quiz-cta" : "quiz-cta quiz-cta-compact"}>
+    <div className={intro ? "quiz-cta" : "quiz-cta quiz-cta-compact"}>
       {intro ? <p>{intro}</p> : null}
       <Button asChild size="lg">
         <Link href={href} onClick={() => track(FUNNEL_EVENTS.quiz_cta_clicked, { source, medium, campaign })}>
@@ -34,6 +34,6 @@ export function QuizCta({
           <ArrowUpRight aria-hidden="true" />
         </Link>
       </Button>
-    </aside>
+    </div>
   );
 }

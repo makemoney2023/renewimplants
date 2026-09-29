@@ -50,7 +50,7 @@ Node 24+ (the IndexNow script uses native type stripping) and npm. Copy
 | `src/content/testimonials.ts` | Ten verified Google reviews (name + "Ottawa, ON") |
 | `src/components/scroll-world.tsx` | Homepage acts and all GSAP wiring; leads the treatment rail with the implant-anatomy card |
 | `src/components/experience-page.tsx` | Chapter pages: one `ChapterAct` per motion device, then body, quotes, FAQs, actions; acts with `video` get a `LoopVideo` overlay |
-| `src/components/loop-video.tsx` | Silent autoplay loop: WebM-first sources, portrait pair under 800px, poster fallback, hidden under reduced motion |
+| `src/components/loop-video.tsx` | Visibility-aware silent loop: WebM-first sources, portrait pair under 800px, responsive poster fallback, `preload="none"`, hidden under reduced motion |
 | `src/components/document-page.tsx` | Reading pages: content hero, hours, sections, quotes, FAQs, sitemap index |
 | `src/components/{site-header,site-footer,brand-mark,route-actions,faq-list,testimonial-list}.tsx` | Shell and shared blocks |
 | `src/components/ui/button.tsx` | shadcn-style `Button` (cva + Radix Slot) mapped onto the `.button*` classes |
@@ -70,7 +70,7 @@ Six acts, no motion device repeated back to back, one peak. Defined in
 |---|---|---|
 | Arrival | parallax | Silent hero loop (trimmed from the sister clinic's clip) under "Stop living around your teeth. Start living again." |
 | Trust | kinetic | Team photo + "Twenty years of renewing Ottawa smiles" + CDCP/financing note |
-| Choice | rail (pinned horizontal) | Implant-anatomy card (the assembling-implant loop) then four treatment cards — All-on-4, full arch, snap-on, sedation — each playing its own silent loop over its service photo |
+| Choice | rail (desktop pinned; touch scroll-snap) | Implant-anatomy card (the assembling-implant loop) then four treatment cards — All-on-4, full arch, snap-on, sedation — each playing its own silent loop over its service photo |
 | Connection | split | Tom Szarski portrait clip-path reveal + a verified review |
 | Proof (peak) | panorama | Sticky copy with the three-step process; four parallax photo tiles |
 | Commitment | iris | Circle reveal into the free-consultation CTA + phone |
@@ -78,6 +78,13 @@ Six acts, no motion device repeated back to back, one peak. Defined in
 A single SVG "arch line" is stroke-drawn by scroll progress across the whole page.
 `prefers-reduced-motion` gets settled compositions, a native overflow rail, and
 no video.
+
+Responsive behavior is tested down to 320 CSS px. The full desktop navigation
+switches to the 44 px mobile menu at 900 px (and on coarse pointers), two-column
+content reflows at 800 px, and the hero actions stack at 480 px. Fixed-header
+height and page offsets include `safe-area-inset-top`; every page exposes the
+same keyboard skip target. Cards, tables, CTAs, and long article text are allowed
+to shrink or wrap instead of widening the document.
 
 ## Inner pages
 
@@ -154,7 +161,7 @@ aqua wave, white ground) and set as tokens in `src/app/globals.css`:
 | `--accent` | `#8dc41d` | Lime: primary button fill, labels on dark, quote rule |
 | `--accent-deep` / `--accent-light` | `#5f8a0e` / `#d8f0a6` | Lime for text on white / soft tints |
 | `--aqua` | `#009ce3` | Arch line, primary button hover |
-| `--aqua-deep` | `#0077b6` | Aqua that passes AA as small text on white (labels, wordmark caps, links, phone) |
+| `--aqua-deep` | `#006ca6` | AA aqua for small text on white and pale-blue surfaces (labels, wordmark caps, links, phone) |
 | `--aqua-light` / `--aqua-pale` | `#85d4f2` / `#bfebf6` | Hero accent word, ghost-button underline |
 
 Rule of thumb: lime on black, aqua on white, never lime on white for small text.
@@ -190,13 +197,18 @@ The implant animation folder holds every render from the generation run; only th
 web deliverables ship: `implant-assemble-web-{16x9,9x16}.{mp4,webm}` (8 s, silent,
 `+faststart`, 1280x720 / 720x1280) plus the posters
 `dental-implant-angled-{16x9,9x16}.png`. The allow-list is `implantAnimationFiles`
-in `src/lib/media-sync.ts`, mirrored in `scripts/media-sync.mjs`. The loop is
-rendered on a light studio ground, so it is always framed (rail card, chapter
-photo panel) rather than placed full-bleed under white type.
+in `src/lib/media-sync.ts`, which is imported by `scripts/media-sync.mjs`; missing
+allow-listed files fail `predev` / `prebuild` instead of producing broken public
+URLs. The loop is rendered on a light studio ground, so it is always framed (rail
+card, chapter photo panel) rather than placed full-bleed under white type.
 
 The treatment-card loops follow the same rule: `assets/treatment-animation` keeps the
 8 s Omni masters (with audio), and only `treatment-{allon4,fullarch,snapon,sedation}-web-{16x9,9x16}.{mp4,webm}`
 ship (allow-list `treatmentAnimationFiles`). Posters are the existing service photos.
+All 16 landscape/portrait WebM/MP4 treatment sources are present. Browsers receive
+portrait posters and sources on small screens; videos use `preload="none"` and play
+only while intersecting the viewport, then pause offscreen. Reduced-motion users
+keep the poster and never start a loop.
 
 The hero loops are committed in `assets/video/optimized/` and derived by
 `npm run media:hero` from `assets/video/orleans-homepage-hero.mp4`, using only
@@ -217,6 +229,7 @@ Vitest specs live beside their modules and act as the content contract:
 - `src/lib/quiz/*.test.ts`, `src/app/api/quiz-leads/route.test.ts`, `src/components/quiz/quiz-flow.test.tsx` — questions, result paths, scoring, lead validation, row mapping, API responses, and the full quiz flow in jsdom.
 - `src/lib/site-pages.test.ts`, `src/app/{robots,sitemap}.test.ts`, `src/lib/{indexnow,analytics,utm,site-verification}.test.ts` — crawl surface, llms.txt links, and tracking helpers.
 - `src/lib/scroll-motion.test.ts` — rail distance and image motion maths.
+- `src/components/{scroll-world,loop-video}.test.tsx` — hero consultation/quiz CTAs, UTM tracking, responsive poster selection, deferred loading, and visibility-aware playback.
 
 ## Salvage pack
 
