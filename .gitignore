@@ -1,0 +1,11 @@
+.next/
+node_modules/
+.env*
+!.env.example
+.venv/
+public/media/
+assets/video/orleans-odc-interview.mp4
+skills/community.zip
+*.log
+*.tsbuildinfo
+.DS_Store

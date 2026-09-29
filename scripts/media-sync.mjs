@@ -1,0 +1,46 @@
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  rmSync,
+} from "node:fs";
+import { dirname, extname, join } from "node:path";
+
+// Mirrors src/lib/media-sync.ts (kept in plain JS so the pre* hooks run
+// without a TypeScript loader). The Vitest spec guards the TS copy.
+const jobs = [
+  { from: "assets/heroes", to: "public/media/heroes" },
+  { from: "assets/interiors", to: "public/media/interiors" },
+  { from: "assets/staff", to: "public/media/staff" },
+  { from: "assets/other", to: "public/media/services" },
+  { from: "assets/video/optimized", to: "public/media/video", extension: ".mp4" },
+];
+
+function copyJob(job) {
+  if (extname(job.to)) {
+    mkdirSync(dirname(job.to), { recursive: true });
+    if (existsSync(job.from)) cpSync(job.from, job.to);
+    return;
+  }
+
+  rmSync(job.to, { recursive: true, force: true });
+  mkdirSync(job.to, { recursive: true });
+  if (!existsSync(job.from)) {
+    console.warn(`media-sync: missing source ${job.from}`);
+    return;
+  }
+
+  const names = job.files ?? readdirSync(job.from);
+  for (const name of names) {
+    if (name.startsWith(".")) continue;
+    if (job.extension && extname(name) !== job.extension) continue;
+    const source = join(job.from, name);
+    if (!existsSync(source)) continue;
+    cpSync(source, join(job.to, name));
+  }
+}
+
+for (const job of jobs) {
+  copyJob(job);
+}
