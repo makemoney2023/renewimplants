@@ -4,6 +4,56 @@
 **Also:** https://renewimplants.ca/ (same content)
 **Sister:** https://orleansdentureclinic.com/ (hero video source)
 
+## Rebuild routes (current)
+
+The Next.js rebuild (`src/app`) publishes the homepage, 23 content routes defined in
+`src/content/routes.ts` (locked by `src/content/routes.test.ts`, served by the
+`[...slug]` catch-all), plus dedicated App Router pages for the blog and the lead quiz.
+`/sitemap.xml` lists all of them via `getIndexablePaths()` in `src/lib/site-pages.ts`.
+
+| Route | Grammar | Notes |
+|---|---|---|
+| `/` | scroll world | six acts, `src/content/site.ts` |
+| `/services/all-on-4-dental-implants` | experience | kinetic → split → iris |
+| `/services/full-arch-dental-implants` | experience | |
+| `/services/same-day-dental-implants` | experience | |
+| `/services/denture-alternative` | experience | |
+| `/services/upper-jaw-implants` | experience | |
+| `/services/lower-jaw-implants` | experience | |
+| `/services/sedation-dentistry` | experience | |
+| `/services/failed-dental-work` | experience | |
+| `/meet-your-dentist` | experience | Tom Szarski split portrait |
+| `/why-choose-us` | experience | kinetic → panorama (photos) → iris |
+| `/what-to-expect` | experience | parallax → kinetic → split; three-step process |
+| `/patient-stories` | experience | all ten verified reviews |
+| `/before-after` | experience | four described cases (photos unrecoverable) |
+| `/dental-anxiety` | experience | sedation options |
+| `/contact-us` | document | hours, map link, tel/mailto actions, FAQ |
+| `/pricing` | document | CDCP, direct billing, financing |
+| `/faq` | document | 18 questions, FAQPage JSON-LD |
+| `/service-areas` | document | Orléans + Ottawa-region coverage |
+| `/blog` | `src/app/blog` | Blog + ItemList JSON-LD; posts from `content/blog/*.mdx` |
+| `/blog/why-people-are-choosing-all-on-4` | `src/app/blog/[slug]` | MedicalWebPage + BlogPosting + FAQPage |
+| `/blog/dentures-vs-dental-implants` | `src/app/blog/[slug]` | |
+| `/blog/same-day-dental-implants-new-teeth-one-day` | `src/app/blog/[slug]` | |
+| `/blog/all-on-4-dental-implants-after-years-of-missing-teeth` | `src/app/blog/[slug]` | |
+| `/blog/full-arch-vs-individual-dental-implants` | `src/app/blog/[slug]` | |
+| `/blog/rss.xml` | route handler | RSS 2.0 |
+| `/implant-candidate-quiz` | `src/app/implant-candidate-quiz` | lead quiz + FAQ + WebPage JSON-LD |
+| `/implant-candidate-quiz/thank-you` | same | noindex; result from `?path=&m=` |
+| `/easy-implant-en` | document | |
+| `/for-dentists` | document | referral page |
+| `/privacy-policy` | document | |
+| `/terms` | document | |
+| `/sitemap` | document | renders the nav tree |
+
+Redirects (`next.config.ts` ← `getRouteAliases()`): `/home → /`,
+`/services → /services/all-on-4-dental-implants`, `/about → /meet-your-dentist`,
+`/easy-implant → /easy-implant-en`.
+
+Header nav (`src/content/nav.ts`): Services (8) · About (5) · Patients (6, incl. the quiz) ·
+Blog (5) · Contact (2), plus phone and "Free consultation" CTA.
+
 ## Tech stack
 - Custom static/marketing front-end (comment in HTML: `Powered by https://salientai.ca`)
 - Assets: `/assets/styles.css`, `/assets/scripts.js`, `/img/*`

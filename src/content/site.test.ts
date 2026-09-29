@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getSiteHeaderLinks, scrollActs, site, treatments } from "./site";
+import { implantAnimation, navLinks, scrollActs, site, treatments } from "./site";
 
 describe("Renew scroll-world content", () => {
   it("builds a six-act journey with a single dominant peak", () => {
@@ -32,15 +32,15 @@ describe("Renew scroll-world content", () => {
     expect(site.address).toBe("2530 St Joseph Blvd #6, Orléans, ON K1C 1G1");
   });
 
-  it("keeps the primary navigation plus consultation CTA on every page", () => {
-    expect(getSiteHeaderLinks().map((link) => link.label)).toEqual([
+  it("keeps five navigation parents plus the consultation CTA on every page", () => {
+    expect(navLinks.map((link) => link.label)).toEqual([
       "Services",
       "About",
       "Patients",
       "Blog",
       "Contact",
-      "Free consultation",
     ]);
+    expect(site.primaryCta.label).toBe("Book your free consultation");
   });
 
   it("assigns the sister-site hero clip only to the arrival scene with a poster", () => {
@@ -53,6 +53,18 @@ describe("Renew scroll-world content", () => {
     }
 
     expect(scrollActs[0].mobileVideo).toBe("/media/video/renew-hero-9x16.mp4");
+  });
+
+  it("publishes the generated implant animation as silent web clips with posters", () => {
+    expect(implantAnimation).toEqual({
+      poster: "/media/animation/dental-implant-angled-16x9.png",
+      mobilePoster: "/media/animation/dental-implant-angled-9x16.png",
+      webm: "/media/animation/implant-assemble-web-16x9.webm",
+      video: "/media/animation/implant-assemble-web-16x9.mp4",
+      mobileWebm: "/media/animation/implant-assemble-web-9x16.webm",
+      mobileVideo: "/media/animation/implant-assemble-web-9x16.mp4",
+      alt: expect.stringMatching(/implant/i),
+    });
   });
 
   it("offers four treatment cards backed by recovered service photos", () => {

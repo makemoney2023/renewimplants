@@ -15,6 +15,18 @@ const jobs = [
   { from: "assets/staff", to: "public/media/staff" },
   { from: "assets/other", to: "public/media/services" },
   { from: "assets/video/optimized", to: "public/media/video", extension: ".mp4" },
+  {
+    from: "assets/implant-animation",
+    to: "public/media/animation",
+    files: [
+      "dental-implant-angled-16x9.png",
+      "dental-implant-angled-9x16.png",
+      "implant-assemble-web-16x9.mp4",
+      "implant-assemble-web-16x9.webm",
+      "implant-assemble-web-9x16.mp4",
+      "implant-assemble-web-9x16.webm",
+    ],
+  },
 ];
 
 function copyJob(job) {

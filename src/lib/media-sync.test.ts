@@ -2,13 +2,27 @@ import { describe, expect, it } from "vitest";
 import { getHeroVideoJobs, getMediaSyncJobs } from "./media-sync";
 
 describe("media sync", () => {
-  it("copies heroes, interiors, staff, services, and optimized clips with Node instead of rsync", () => {
+  it("copies heroes, interiors, staff, services, optimized clips, and the animation with Node instead of rsync", () => {
     expect(getMediaSyncJobs().map((job) => job.to)).toEqual([
       "public/media/heroes",
       "public/media/interiors",
       "public/media/staff",
       "public/media/services",
       "public/media/video",
+      "public/media/animation",
+    ]);
+  });
+
+  it("ships only the silent web renders and posters of the implant animation", () => {
+    const animation = getMediaSyncJobs().find((job) => job.to === "public/media/animation");
+    expect(animation?.from).toBe("assets/implant-animation");
+    expect(animation?.files).toEqual([
+      "dental-implant-angled-16x9.png",
+      "dental-implant-angled-9x16.png",
+      "implant-assemble-web-16x9.mp4",
+      "implant-assemble-web-16x9.webm",
+      "implant-assemble-web-9x16.mp4",
+      "implant-assemble-web-9x16.webm",
     ]);
   });
 

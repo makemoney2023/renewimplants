@@ -1,4 +1,4 @@
-import { media, site, type ScrollDevice } from "./site";
+import { implantAnimation, media, site, type ScrollDevice } from "./site";
 import { getTestimonials, type Testimonial } from "./testimonials";
 
 export type PageGrammar = "experience" | "document";
@@ -18,6 +18,13 @@ export type RouteAct = {
   heading: string;
   body: string;
   image: string;
+  /** Optional silent loop layered over `image`; `poster` is its still frame. */
+  video?: string;
+  mobileVideo?: string;
+  webm?: string;
+  mobileWebm?: string;
+  poster?: string;
+  mobilePoster?: string;
 };
 
 export type RoutePhoto = {
@@ -51,6 +58,17 @@ export type RouteContent = {
   mapHref?: string;
   sections: RouteSection[];
   links: RouteLink[];
+};
+
+// Silent implant-assembly loop layered over the opening act of the pages that
+// explain implant placement.
+const implantLoop = {
+  video: implantAnimation.video,
+  mobileVideo: implantAnimation.mobileVideo,
+  webm: implantAnimation.webm,
+  mobileWebm: implantAnimation.mobileWebm,
+  poster: implantAnimation.poster,
+  mobilePoster: implantAnimation.mobilePoster,
 };
 
 const consult = { label: site.primaryCta.label, href: site.primaryCta.href };
@@ -779,6 +797,7 @@ const routes: RouteContent[] = [
     device: "kinetic",
     acts: [
       {
+        ...implantLoop,
         device: "kinetic",
         heading: "A full arch of teeth — anchored by just four implants",
         body: "A full set of upper or lower teeth, permanently fixed to four implants placed directly into your jawbone. Unlike removable dentures, these teeth stay in. You brush them like natural teeth and eat whatever you want. The four implants are placed at precise angles to maximize your existing bone, so most patients don't need bone grafting at all.",
@@ -850,6 +869,7 @@ const routes: RouteContent[] = [
     device: "kinetic",
     acts: [
       {
+        ...implantLoop,
         device: "kinetic",
         heading: "When it's time to replace everything — this is how it's done",
         body: "Instead of relying on removable dentures that slip, click, and limit what you can eat, full arch implants give you a permanent set of fixed teeth anchored directly to your jawbone. You brush them like normal teeth. You eat what you want. You never take them out.",
@@ -913,6 +933,7 @@ const routes: RouteContent[] = [
     device: "split",
     acts: [
       {
+        ...implantLoop,
         device: "split",
         heading: "Because you've already waited long enough",
         body: "You arrive in the morning with teeth that don't work. By the afternoon, you leave with a full set of fixed, natural-looking teeth — placed by Dr. Alex and designed in our onsite lab by Tom and his team. This isn't a shortcut. It's modern implant dentistry done right.",
@@ -1043,6 +1064,7 @@ const routes: RouteContent[] = [
     device: "kinetic",
     acts: [
       {
+        ...implantLoop,
         device: "kinetic",
         heading: "Upper dentures are the ones people hate most",
         body: "The plate that covers your palate blocks your sense of taste. The adhesive never holds the way it should. And the longer you wait, the more bone you lose. Upper jaw implants break that cycle by replacing the palate plate with fixed teeth anchored directly to your jawbone.",
@@ -1096,6 +1118,7 @@ const routes: RouteContent[] = [
     device: "split",
     acts: [
       {
+        ...implantLoop,
         device: "split",
         heading: "If your lower denture moves, you're not alone",
         body: "There's less surface area for a lower denture to grip, no suction like the upper palate, and your tongue constantly pushes against it. The result is a denture that rocks, lifts, and slides — no matter how much adhesive you use.",
@@ -1264,206 +1287,6 @@ const routes: RouteContent[] = [
       },
     ],
     links: [consult, { label: "Why patients choose Renew", href: "/why-choose-us" }],
-  },
-  {
-    slug: "blog",
-    grammar: "document",
-    eyebrow: "Blog",
-    title: "Tips, stories, and straight talk about dental implants",
-    intro:
-      "Expert advice from Tom Szarski and the Renew team — written in plain English, for real people.",
-    image: media.team,
-    sections: [
-      {
-        heading: "Why more people are choosing All-on-4 dental implants",
-        body: "More Canadians over 50 are choosing All-on-4 — not because of cost, but because of confidence, freedom, and quality of life.",
-      },
-      {
-        heading: "Are dentures holding you back?",
-        body: "A plain-English comparison of dentures and dental implants — comfort, stability, jawbone support, and everyday benefits.",
-      },
-      {
-        heading: "Can you really walk out with new teeth in one day?",
-        body: "How same-day dental implants work, who may qualify, what to expect during recovery, and whether one-day teeth are right for you.",
-      },
-      {
-        heading: "All-on-4 after years of missing teeth",
-        body: "Missing teeth for years does not always mean you cannot get All-on-4 dental implants.",
-      },
-      {
-        heading: "Full arch vs. individual dental implants",
-        body: "Individual implants replace single teeth; full arch implants replace an entire row using fewer implant posts.",
-      },
-    ],
-    links: [
-      { label: "Why people are choosing All-on-4", href: "/blog/why-people-are-choosing-all-on-4" },
-      { label: "Dentures vs. dental implants", href: "/blog/dentures-vs-dental-implants" },
-      { label: "New teeth in one day", href: "/blog/same-day-dental-implants-new-teeth-one-day" },
-      {
-        label: "All-on-4 after years of tooth loss",
-        href: "/blog/all-on-4-dental-implants-after-years-of-missing-teeth",
-      },
-      { label: "Full arch vs. individual implants", href: "/blog/full-arch-vs-individual-dental-implants" },
-    ],
-  },
-  {
-    slug: "blog/why-people-are-choosing-all-on-4",
-    grammar: "document",
-    eyebrow: "From the blog",
-    title: "Why more people are choosing All-on-4 dental implants — and it's not about the price",
-    intro:
-      "Across Canada and the United States, a growing number of adults are choosing All-on-4 dental implants over traditional dentures, bridges, and patchwork fixes. The real reason people are making this choice isn't financial. It's personal.",
-    image: media.allOn4,
-    sections: [
-      {
-        heading: "Who's getting All-on-4? The average patient might surprise you",
-        body: "The typical All-on-4 patient is over 50 — and that tracks with what we see every day at Renew. But more patients in the 35–50 range are opting for All-on-4 earlier, tired of the revolving door of temporary fixes. What they all share isn't a tax bracket. It's a tipping point.",
-      },
-      {
-        heading: "It's not about cost — it's about being done",
-        body: "When we sit down with patients during their free consultation, the conversation almost never starts with money. It starts with exhaustion. Ken M. put it simply after his procedure: the experience was life-changing — he could eat anything he wanted, no more pain, and no longer had to worry about the look in people's eyes.",
-      },
-      {
-        heading: "The real value: confidence, freedom, and function",
-        body: "Patients want to eat normally again — All-on-4 restores up to 90% of natural bite force. They want to stop hiding. They want one solution, not an endless cycle. And they want it to last: the titanium implants can last a lifetime, and the fixed bridge typically lasts 10–15 years, compared with dentures that need replacing every 5–8 years.",
-      },
-      {
-        heading: "Why All-on-4 specifically?",
-        body: "Fewer implants, same result — four strategically placed implants, two straight and two angled, support an entire arch. Often no bone grafting required. Same-day results in many cases. And a proven track record: developed in the 1990s by Dr. Paulo Maló with Nobel Biocare, All-on-4 has decades of clinical evidence and success rates above 95% at the 10-year mark.",
-      },
-    ],
-    links: [
-      { label: "Learn about All-on-4", href: "/services/all-on-4-dental-implants" },
-      consult,
-    ],
-  },
-  {
-    slug: "blog/dentures-vs-dental-implants",
-    grammar: "document",
-    eyebrow: "From the blog",
-    title: "Are dentures holding you back? Why more people are choosing dental implants",
-    intro:
-      "Compare dentures and dental implants to understand the differences in comfort, stability, jawbone support, and everyday benefits when replacing missing teeth.",
-    image: media.snapOn,
-    sections: [
-      {
-        heading: "Why do some people look for options beyond dentures?",
-        body: "Dentures can help replace missing teeth, but they may not feel comfortable for everyone. Some people have trouble chewing certain foods because their dentures can move inside the mouth. Others worry about their dentures shifting while speaking or laughing.",
-      },
-      {
-        heading: "What makes dental implants different from dentures?",
-        body: "Dental implants are placed into the jawbone to keep replacement teeth firmly in place. Dentures sit on the gums and can be removed for cleaning; implants are fixed in place. Implants also act like natural tooth roots and help preserve jawbone health.",
-      },
-      {
-        heading: "Are dental implants comfortable?",
-        body: "Since implants are securely placed, they are less likely to move while eating or talking. Once the mouth heals, most patients feel that implants look and feel like natural teeth and fit easily into their daily lives.",
-      },
-      {
-        heading: "Are dentures the only choice for missing teeth?",
-        body: "No. There are several tooth replacement options available, and the right choice depends on your dental needs, lifestyle, and personal preferences. A dental professional will check oral health, bone support, and personal needs before recommending implants.",
-      },
-      {
-        heading: "Caring for your implants",
-        body: "Good oral hygiene and regular dental visits are important after implant treatment. Dental implants can remain in place for a long time when properly cared for. Some mild discomfort or swelling may occur after treatment, but it usually improves as the mouth heals.",
-      },
-    ],
-    links: [
-      { label: "Explore denture alternatives", href: "/services/denture-alternative" },
-      consult,
-    ],
-  },
-  {
-    slug: "blog/same-day-dental-implants-new-teeth-one-day",
-    grammar: "document",
-    eyebrow: "From the blog",
-    title: "Can you really walk out with new teeth in one day?",
-    intro:
-      "Learn how same-day dental implants work, who may qualify, what to expect during recovery, and whether one-day teeth are right for you.",
-    image: media.clinic,
-    sections: [
-      {
-        heading: "How do same-day implants work?",
-        body: "Getting dental implants usually takes a few months: the implant is placed, the jawbone grows around it, and the final teeth are attached after healing. With same-day implants, the dentist places the implants and gives you a temporary set of teeth on the same day, so you leave the clinic with a complete smile while your mouth heals.",
-      },
-      {
-        heading: "Who may qualify?",
-        body: "Not everyone is a good fit. A dentist will first check your jawbone, gums, and the overall health of your mouth. People with healthy gums and enough jawbone support have a better chance of getting this treatment.",
-      },
-      {
-        heading: "Why do people like same-day treatment?",
-        body: "Leaving with teeth right away saves time and reduces stress. It also helps a person feel more confident in social settings during the healing period.",
-      },
-      {
-        heading: "What to expect after the visit",
-        body: "Your mouth may feel sore for a few days, with some swelling or mild pain. Eating soft foods can make you feel more comfortable while your mouth starts to heal.",
-      },
-      {
-        heading: "When are one-day teeth not the right option?",
-        body: "If your jawbone is not strong enough, you have gum disease, or your mouth needs more treatment before implants, your dentist may recommend a longer treatment plan.",
-      },
-    ],
-    links: [
-      { label: "Learn about same day implants", href: "/services/same-day-dental-implants" },
-      consult,
-    ],
-  },
-  {
-    slug: "blog/all-on-4-dental-implants-after-years-of-missing-teeth",
-    grammar: "document",
-    eyebrow: "From the blog",
-    title: "Can you get All-on-4 dental implants if you've been missing teeth for years?",
-    intro:
-      "Missing teeth for years does not always mean you cannot get All-on-4 dental implants.",
-    image: media.allOn4,
-    sections: [
-      {
-        heading: "What happens to your jawbone over time?",
-        body: "When a tooth is gone, the bone under it slowly shrinks because it no longer gets pressure from chewing. Over several years, that bone loss can add up.",
-      },
-      {
-        heading: "Why long-term tooth loss doesn't stop treatment",
-        body: "Even people who lost their teeth 10 or 20 years ago can often get a new set. The All-on-4 method uses four implants placed at special angles to reach stronger areas of the jaw.",
-      },
-      {
-        heading: "How the All-on-4 method works",
-        body: "The All-on-4 treatment restores a full arch of teeth using just four strategically placed dental implants. In many cases, temporary teeth can be attached the same day.",
-      },
-      {
-        heading: "Who may be a good candidate?",
-        body: "People who have lost most or all teeth in one or both arches, whose dentures move or affect daily activities, or who want permanent teeth that stay in place instead of removable dentures.",
-      },
-    ],
-    links: [
-      { label: "Learn about All-on-4", href: "/services/all-on-4-dental-implants" },
-      consult,
-    ],
-  },
-  {
-    slug: "blog/full-arch-vs-individual-dental-implants",
-    grammar: "document",
-    eyebrow: "From the blog",
-    title: "What's the difference between full arch and individual dental implants?",
-    intro:
-      "Individual implants replace single teeth; full arch implants replace an entire row using fewer implant posts.",
-    image: media.fullArch,
-    sections: [
-      {
-        heading: "What are individual dental implants?",
-        body: "Individual dental implants replace one missing tooth at a time. A titanium post is placed in the jawbone; after healing, a custom crown is attached.",
-      },
-      {
-        heading: "What are full arch dental implants?",
-        body: "Full arch dental implants replace most or all teeth in an upper or lower arch. Several implants support a full set of replacement teeth.",
-      },
-      {
-        heading: "How do they differ?",
-        body: "Individual implants replace single teeth one by one. Full arch implants replace an entire row using fewer implant posts — which is why options like All-on-4 can restore a whole arch on four implants.",
-      },
-    ],
-    links: [
-      { label: "Learn about full arch implants", href: "/services/full-arch-dental-implants" },
-      consult,
-    ],
   },
   {
     slug: "easy-implant-en",

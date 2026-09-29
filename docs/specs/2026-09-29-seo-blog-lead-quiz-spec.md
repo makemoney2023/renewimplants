@@ -1,7 +1,7 @@
 # Spec — SEO/AEO/GEO blog + implant lead-gen quiz
 
 **Date:** 2026-09-29
-**Status:** Draft — awaiting clinic answers in §10 before build
+**Status:** Built as a shell (2026-09-29). The Supabase migration is still to be applied, and the clinic answers in §10 are still needed before launch. The blog uses `@mdx-js/mdx` rather than fumadocs-mdx (see the plan status).
 **Implementation plan:** [../plans/2026-09-29-seo-blog-lead-quiz-plan.md](../plans/2026-09-29-seo-blog-lead-quiz-plan.md)
 **Reference implementation:** `/Users/cbsuperpatch/Desktop/Projects/PIRX/pirx-frontend` (blog, schema, robots, predictor lead funnel)
 

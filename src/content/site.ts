@@ -60,6 +60,18 @@ export const media = {
   snapOn: "/media/services/service-snapon.jpg",
 } as const;
 
+// Generated exploded-view implant loop (crown → screw → abutment → fixture),
+// see ASSETS-MANIFEST.md "implant-animation". Only the silent web renders ship.
+export const implantAnimation = {
+  poster: "/media/animation/dental-implant-angled-16x9.png",
+  mobilePoster: "/media/animation/dental-implant-angled-9x16.png",
+  webm: "/media/animation/implant-assemble-web-16x9.webm",
+  video: "/media/animation/implant-assemble-web-16x9.mp4",
+  mobileWebm: "/media/animation/implant-assemble-web-9x16.webm",
+  mobileVideo: "/media/animation/implant-assemble-web-9x16.mp4",
+  alt: "A dental implant assembling: crown, retaining screw, abutment, and titanium fixture",
+} as const;
+
 export const scrollActs: ScrollAct[] = [
   {
     id: "arrival",
@@ -168,6 +180,7 @@ export const processSteps = [
   },
 ];
 
+// The five header parents. nav.ts attaches the dropdown children to these.
 export const navLinks = [
   { label: "Services", href: "/services/all-on-4-dental-implants" },
   { label: "About", href: "/meet-your-dentist" },
@@ -176,9 +189,4 @@ export const navLinks = [
   { label: "Contact", href: "/contact-us" },
 ] as const;
 
-export function getSiteHeaderLinks() {
-  return [
-    ...navLinks,
-    { label: "Free consultation", href: site.primaryCta.href },
-  ];
-}
+export type NavParentLabel = (typeof navLinks)[number]["label"];

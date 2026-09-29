@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  /* Recovered from renewimplants.ca raw/styles.css */
-  --canvas: #faf6f1;
+  /* Palette lifted from the Novadent retainer-cleaner packaging: matte black
+     box, lime "7-Day Formula" pill, aqua wave, white ground. */
+  --canvas: #ffffff;
   --surface: #ffffff;
-  --surface-alt: #f5f9fb;
-  --ink: #1e2d3d;
-  --ink-soft: #6b7b8d;
-  --navy: #2b4c6f;
-  --navy-deep: #1c3450;
-  --accent: #e8a88c;
-  --accent-deep: #d4845e;
-  --accent-light: #f0c3ae;
-  --accent-text: #e8956d;
-  --orange: #e87d3e;
-  --teal: #33736f;
-  --teal-deep: #275c59;
+  --surface-alt: #eaf7fd;
+  --ink: #1a1a1a;
+  --ink-soft: #5b6670;
+  --carbon: #1a1a1a;
+  --ink-deep: #111111;
+  --accent: #8dc41d;
+  --accent-deep: #5f8a0e;
+  --accent-light: #d8f0a6;
+  --aqua: #009ce3;
+  --aqua-deep: #0077b6;
+  --aqua-light: #85d4f2;
+  --aqua-pale: #bfebf6;
   --line: color-mix(in srgb, var(--ink) 14%, transparent);
   --page-rail: clamp(1.25rem, 5vw, 5rem);
   --radius: 1.75rem;
@@ -59,7 +60,7 @@ a {
   align-items: baseline;
   gap: 0.35rem;
   width: fit-content;
-  color: var(--navy-deep);
+  color: var(--ink-deep);
   line-height: 1;
 }
 
@@ -74,7 +75,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
 }
 
 .brand-footer .brand-word {
@@ -129,7 +130,7 @@ a {
   border: 1px solid var(--line);
   border-radius: 1.15rem;
   background: var(--surface);
-  box-shadow: 0 1.5rem 3rem color-mix(in srgb, var(--navy-deep) 14%, transparent);
+  box-shadow: 0 1.5rem 3rem color-mix(in srgb, var(--ink-deep) 14%, transparent);
 }
 
 .nav-item:hover .nav-panel,
@@ -148,7 +149,7 @@ a {
 }
 
 .site-header nav a:hover {
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
   background: var(--canvas);
 }
 
@@ -165,7 +166,7 @@ a {
   gap: 0.45rem;
   font-size: 0.86rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--aqua-deep);
 }
 
 .header-phone svg {
@@ -211,7 +212,7 @@ a {
   border: 1px solid var(--line);
   border-radius: 1.25rem;
   background: var(--surface);
-  box-shadow: 0 1.5rem 3rem rgba(28, 52, 80, 0.14);
+  box-shadow: 0 1.5rem 3rem rgba(17, 17, 17, 0.14);
 }
 
 .site-menu nav a {
@@ -233,7 +234,7 @@ a {
 }
 
 .menu-parent {
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
 }
 
 .button {
@@ -260,12 +261,13 @@ a {
 }
 
 .button-primary {
-  color: white;
-  background: var(--accent-deep);
+  color: var(--ink-deep);
+  background: var(--accent);
 }
 
 .button-primary:hover {
-  background: var(--navy-deep);
+  color: white;
+  background: var(--aqua);
 }
 
 .button-outline {
@@ -275,7 +277,7 @@ a {
 }
 
 .button-outline:hover {
-  color: var(--navy-deep);
+  color: var(--ink-deep);
   background: white;
 }
 
@@ -283,7 +285,7 @@ a {
   color: white;
   background: transparent;
   text-decoration: underline;
-  text-decoration-color: var(--accent-light);
+  text-decoration-color: var(--aqua-light);
   text-underline-offset: 0.35em;
 }
 
@@ -312,7 +314,7 @@ a {
 
 .arch-path {
   fill: none;
-  stroke: var(--accent);
+  stroke: var(--aqua);
   stroke-width: 0.18;
   stroke-linecap: round;
   stroke-dasharray: 1;
@@ -327,7 +329,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--aqua-deep);
 }
 
 h1,
@@ -342,7 +344,7 @@ h3 {
 
 .hero {
   height: 170svh;
-  background: var(--navy-deep);
+  background: var(--ink-deep);
 }
 
 .hero-sticky {
@@ -385,8 +387,8 @@ h3 {
   z-index: -2;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(28, 52, 80, 0.92) 0%, rgba(28, 52, 80, 0.55) 52%, rgba(28, 52, 80, 0.14) 78%),
-    linear-gradient(0deg, rgba(28, 52, 80, 0.72), transparent 55%);
+    linear-gradient(90deg, rgba(17, 17, 17, 0.92) 0%, rgba(17, 17, 17, 0.55) 52%, rgba(17, 17, 17, 0.14) 78%),
+    linear-gradient(0deg, rgba(17, 17, 17, 0.72), transparent 55%);
 }
 
 .hero-copy {
@@ -395,7 +397,7 @@ h3 {
 }
 
 .hero-copy .section-label {
-  color: var(--accent-light);
+  color: var(--accent);
 }
 
 .hero-copy h1 {
@@ -416,7 +418,7 @@ h3 {
 }
 
 .hero-word-accent {
-  color: var(--accent-light);
+  color: var(--aqua-light);
 }
 
 .hero-intro {
@@ -454,7 +456,7 @@ h3 {
   align-items: center;
   gap: clamp(2rem, 7vw, 8rem);
   padding: 9rem var(--page-rail);
-  background: var(--canvas);
+  background: var(--surface-alt);
 }
 
 .trust-photo {
@@ -462,10 +464,11 @@ h3 {
   min-height: min(70svh, 48rem);
   overflow: hidden;
   border-radius: var(--radius);
-  box-shadow: 0 2rem 5rem rgba(28, 52, 80, 0.15);
+  box-shadow: 0 2rem 5rem rgba(17, 17, 17, 0.15);
 }
 
-.trust-photo img {
+.trust-photo img,
+.trust-photo .act-video {
   object-fit: cover;
   transform: scale(1.03);
 }
@@ -504,7 +507,7 @@ h3 {
 }
 
 .trust-note strong {
-  color: var(--navy);
+  color: var(--carbon);
 }
 
 .trust-note span {
@@ -520,7 +523,7 @@ h3 {
   align-content: center;
   padding: 8rem 0 5rem;
   color: white;
-  background: var(--navy-deep);
+  background: var(--ink-deep);
 }
 
 .rail-heading {
@@ -529,7 +532,7 @@ h3 {
 }
 
 .rail-heading .section-label {
-  color: var(--accent-light);
+  color: var(--accent);
 }
 
 .rail-heading > p:not(.section-label) {
@@ -554,7 +557,7 @@ h3 {
   overflow: hidden;
   flex: 0 0 auto;
   border-radius: var(--radius);
-  background: var(--navy);
+  background: var(--carbon);
   isolation: isolate;
 }
 
@@ -572,7 +575,7 @@ h3 {
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(0deg, rgba(28, 52, 80, 0.94), rgba(28, 52, 80, 0.06) 72%);
+  background: linear-gradient(0deg, rgba(17, 17, 17, 0.94), rgba(17, 17, 17, 0.06) 72%);
 }
 
 .card-index {
@@ -597,6 +600,56 @@ h3 {
   margin: 0.9rem 0 1.25rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.55;
+}
+
+/* Implant-anatomy card: the generated loop sits on a light studio ground, so
+   this one card inverts to dark type over a white fade. */
+.anatomy-card {
+  background: #f2f2f2;
+  color: var(--ink);
+}
+
+.anatomy-card img {
+  object-position: center;
+}
+
+.anatomy-video {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.anatomy-card .card-scrim {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.55) 45%, rgba(255, 255, 255, 0) 72%);
+}
+
+.anatomy-card .card-index {
+  color: var(--aqua-deep);
+}
+
+.anatomy-card .card-copy p {
+  color: var(--ink-soft);
+}
+
+.anatomy-card .card-copy a {
+  color: var(--ink);
+}
+
+/* Silent loops layered over a chapter photo (poster stays underneath). */
+.act-video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.has-loop {
+  background: #f2f2f2;
 }
 
 .card-copy a,
@@ -637,7 +690,7 @@ h3 {
   max-width: 31rem;
   margin: 2.75rem 0;
   padding-left: 1.5rem;
-  color: var(--navy);
+  color: var(--ink);
   border-left: 3px solid var(--accent);
   font-family: var(--font-display), serif;
   font-size: clamp(1.3rem, 2vw, 1.9rem);
@@ -659,7 +712,7 @@ h3 {
   min-height: 280svh;
   padding: 12rem var(--page-rail);
   color: white;
-  background: var(--navy);
+  background: var(--carbon);
 }
 
 .panorama-copy {
@@ -670,7 +723,7 @@ h3 {
 }
 
 .panorama-copy .section-label {
-  color: var(--accent-light);
+  color: var(--accent);
 }
 
 .panorama-copy > p:not(.section-label) {
@@ -693,7 +746,7 @@ h3 {
   padding: 1rem 1.15rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.1rem;
-  background: rgba(28, 52, 80, 0.72);
+  background: rgba(17, 17, 17, 0.72);
   backdrop-filter: blur(8px);
 }
 
@@ -702,7 +755,7 @@ h3 {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--accent-light);
+  color: var(--accent);
 }
 
 .process-steps strong {
@@ -783,7 +836,7 @@ h3 {
   place-items: center;
   padding: 8rem var(--page-rail);
   color: white;
-  background: var(--navy-deep);
+  background: var(--ink-deep);
   isolation: isolate;
 }
 
@@ -801,7 +854,7 @@ h3 {
 .close-scrim {
   position: absolute;
   inset: 0;
-  background: rgba(28, 52, 80, 0.74);
+  background: rgba(17, 17, 17, 0.74);
 }
 
 .close-copy {
@@ -810,7 +863,7 @@ h3 {
 }
 
 .close-copy .section-label {
-  color: var(--accent-light);
+  color: var(--accent);
 }
 
 .close-copy :is(h1, h2) {
@@ -848,7 +901,7 @@ footer p {
 }
 
 .footer-nap a:hover {
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
 }
 
 .footer-nav {
@@ -871,12 +924,12 @@ footer p {
 
 .footer-nav a:hover,
 .sitemap-grid a:hover {
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
 }
 
 .footer-nav div > a:first-child,
 .sitemap-grid div > a:first-child {
-  color: var(--navy-deep);
+  color: var(--ink-deep);
   font-weight: 700;
 }
 
@@ -1016,13 +1069,13 @@ footer p {
 }
 
 .content-actions .button-outline {
-  color: var(--navy-deep);
+  color: var(--ink-deep);
   border-color: var(--line);
 }
 
 .content-actions .button-outline:hover {
   color: white;
-  background: var(--navy-deep);
+  background: var(--ink-deep);
 }
 
 /* FAQ accordion — native <details>, styled to the token set. */
@@ -1056,7 +1109,7 @@ footer p {
 .faq-list summary::after {
   content: "+";
   flex: 0 0 auto;
-  color: var(--accent-deep);
+  color: var(--aqua-deep);
   font-size: 1.35rem;
   line-height: 1;
 }
@@ -1093,7 +1146,7 @@ footer p {
   font-family: var(--font-display), serif;
   font-size: 1.2rem;
   line-height: 1.4;
-  color: var(--navy-deep);
+  color: var(--ink);
 }
 
 .testimonial-grid figcaption {
@@ -1145,8 +1198,8 @@ footer p {
 
   .hero-scrim {
     background:
-      linear-gradient(0deg, rgba(28, 52, 80, 0.92), rgba(28, 52, 80, 0.22) 75%),
-      linear-gradient(90deg, rgba(28, 52, 80, 0.45), transparent);
+      linear-gradient(0deg, rgba(17, 17, 17, 0.92), rgba(17, 17, 17, 0.22) 75%),
+      linear-gradient(90deg, rgba(17, 17, 17, 0.45), transparent);
   }
 
   .hero-copy {
@@ -1339,5 +1392,379 @@ footer p {
 
   .scene-video {
     display: none;
+  }
+}
+
+/* shadcn/ui tokens mapped onto the recovered brand palette. */
+@theme inline {
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --color-primary: var(--carbon);
+  --color-primary-foreground: #ffffff;
+  --color-muted-foreground: var(--ink-soft);
+  --color-input: color-mix(in srgb, var(--ink) 22%, transparent);
+  --color-ring: var(--accent-deep);
+  --color-destructive: #b42318;
+}
+
+/* Blog: article chrome, extraction tables, and the quiz call to action. */
+.blog-index-hero {
+  min-height: auto;
+  grid-template-columns: 1fr;
+}
+
+.post-byline {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.post-byline p {
+  margin: 0;
+}
+
+.post-byline a,
+.post-prose a,
+.post-toc a {
+  color: var(--ink-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.post-prose {
+  max-width: 46rem;
+}
+
+.post-prose h2 {
+  margin-top: 3.5rem;
+  scroll-margin-top: 7rem;
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+}
+
+.post-prose h3 {
+  margin-top: 2rem;
+  font-size: 1.35rem;
+}
+
+.post-prose ul,
+.post-prose ol {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.post-aside {
+  display: grid;
+  gap: 2rem;
+  align-self: start;
+  position: sticky;
+  top: 7rem;
+}
+
+.post-toc ol {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+}
+
+.quiz-cta {
+  display: grid;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  background: var(--surface-alt);
+}
+
+.quiz-cta p {
+  margin: 0;
+}
+
+.quiz-cta-compact {
+  margin: 0;
+}
+
+.extraction-table {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.extraction-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+.extraction-table caption {
+  margin-bottom: 0.75rem;
+  text-align: left;
+  font-weight: 700;
+}
+
+.extraction-table th,
+.extraction-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.extraction-table thead th {
+  color: var(--ink-deep);
+  background: var(--surface-alt);
+}
+
+.key-stat {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--aqua-deep);
+  background: var(--canvas);
+}
+
+.key-stat dl {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0;
+}
+
+.key-stat dd {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.key-stat dt {
+  margin-top: 0.5rem;
+  font-weight: 650;
+}
+
+.key-stat figcaption {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.post-related {
+  padding: clamp(4rem, 8vw, 7rem) var(--page-rail);
+}
+
+.post-cards ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-cards a {
+  display: grid;
+  gap: 0.6rem;
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--canvas);
+}
+
+.post-cards a:hover {
+  border-color: var(--ink-deep);
+}
+
+.post-cards span {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  .post-aside {
+    position: static;
+  }
+}
+
+/* Implant candidate quiz */
+.quiz-hero {
+  align-items: center;
+}
+
+.quiz-slot {
+  padding: clamp(2rem, 5vw, 5rem) var(--page-rail) clamp(2rem, 5vw, 5rem) 0;
+}
+
+.quiz-card {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: var(--surface);
+  box-shadow: 0 30px 60px -40px color-mix(in srgb, var(--ink-deep) 45%, transparent);
+}
+
+.quiz-card h2,
+.quiz-question h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.quiz-card > p:not(.section-label) {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.quiz-progress {
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.quiz-progress p {
+  margin: 0;
+}
+
+.quiz-question {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quiz-question legend {
+  padding: 0;
+}
+
+.quiz-helper {
+  margin: 0.5rem 0 0;
+  color: var(--ink-soft);
+}
+
+.quiz-options {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--canvas);
+  font-size: 1rem;
+  font-weight: 550;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.quiz-option:hover,
+.quiz-option:has([data-state="checked"]) {
+  border-color: var(--ink-deep);
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.quiz-lead-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.quiz-field {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quiz-field legend {
+  margin-bottom: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.quiz-inline-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.quiz-inline-option,
+.quiz-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-weight: 450;
+  line-height: 1.45;
+}
+
+.quiz-consent {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.quiz-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.quiz-error,
+.quiz-field-error {
+  margin: 0;
+  color: var(--color-destructive);
+  font-size: 0.9rem;
+}
+
+.quiz-error {
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--color-destructive) 8%, transparent);
+}
+
+.quiz-privacy {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.quiz-privacy a {
+  text-decoration: underline;
+}
+
+.quiz-thank-you h1 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.quiz-thank-you-actions {
+  margin-top: 2rem;
+}
+
+.content-actions .quiz-cta {
+  margin: 1rem 0 0;
+}
+
+@media (max-width: 800px) {
+  .quiz-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-slot {
+    padding: 0 var(--page-rail) 3rem;
   }
 }

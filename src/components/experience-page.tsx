@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { FaqList } from "@/components/faq-list";
+import { LoopVideo } from "@/components/loop-video";
+import { QuizCta } from "@/components/quiz/quiz-cta";
 import { RouteActions } from "@/components/route-actions";
 import { TestimonialList } from "@/components/testimonial-list";
 import type { RouteAct, RouteContent } from "@/content/routes";
@@ -190,7 +192,17 @@ export function ExperiencePage({ page }: { page: RouteContent }) {
             {page.faqs?.length ? <FaqList faqs={page.faqs} /> : null}
           </div>
         ) : null}
-        <RouteActions links={page.links} />
+        <RouteActions links={page.links}>
+          {page.slug.startsWith("services/") ? (
+            <QuizCta
+              source="site"
+              medium="service-page"
+              campaign={page.slug.replace("services/", "")}
+              label="Am I a candidate? Take the quiz"
+              intro="Two minutes, nine questions — see which option people in your situation explore."
+            />
+          ) : null}
+        </RouteActions>
       </section>
 
       <footer className="content-footer">
@@ -310,8 +322,16 @@ function ChapterAct({
   if (act.device === "split") {
     return (
       <section className="doctors-section chapter-act" aria-labelledby={id}>
-        <div className="doctor-photo chapter-split-photo">
-          <Image src={act.image} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" />
+        <div className={`doctor-photo chapter-split-photo${act.video ? " has-loop" : ""}`}>
+          <Image
+            src={act.poster ?? act.image}
+            alt=""
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
+          {act.video ? (
+            <LoopVideo className="act-video" sources={{ ...act, video: act.video }} />
+          ) : null}
         </div>
         <div className="doctor-copy reveal-copy">
           <p className="section-label">{eyebrow}</p>
@@ -329,15 +349,21 @@ function ChapterAct({
       className={`trust-section chapter-act${parallax ? " chapter-act-parallax" : ""}`}
       aria-labelledby={id}
     >
-      <div className="trust-photo">
+      <div className={`trust-photo${act.video ? " has-loop" : ""}`}>
         <Image
           className="chapter-photo"
-          src={act.image}
+          src={act.poster ?? act.image}
           alt=""
           fill
           priority={first}
           sizes="(max-width: 800px) 100vw, 52vw"
         />
+        {act.video ? (
+          <LoopVideo
+            className="act-video chapter-photo"
+            sources={{ ...act, video: act.video }}
+          />
+        ) : null}
       </div>
       <div className="trust-copy reveal-copy">
         <p className="section-label">{eyebrow}</p>

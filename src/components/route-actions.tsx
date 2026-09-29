@@ -1,14 +1,16 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { RouteLink } from "@/content/routes";
 
-export function RouteActions({ links }: { links: RouteLink[] }) {
+export function RouteActions({ links, children }: { links: RouteLink[]; children?: ReactNode }) {
   return (
     <aside className="content-actions" aria-label="Next steps">
       {links.map((link, index) => (
         <RouteButton key={`${link.href}-${link.label}`} link={link} primary={index === 0} />
       ))}
+      {children}
     </aside>
   );
 }

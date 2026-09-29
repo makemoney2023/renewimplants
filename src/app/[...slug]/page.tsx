@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DocumentPage } from "@/components/document-page";
 import { ExperiencePage } from "@/components/experience-page";
+import { JsonLd } from "@/components/json-ld";
 import { getRouteContent, getRouteSlugs } from "@/content/routes";
 import { site } from "@/content/site";
-import { getFaqSchema, getWebPageSchema } from "@/lib/site-schema";
+import { buildRouteGraph } from "@/lib/site-schema";
 
 type PageProps = {
   params: Promise<{ slug: string[] }>;
@@ -40,10 +41,6 @@ export default async function ContentPage({ params }: PageProps) {
   const page = getRouteContent(slug.join("/"));
   if (!page) notFound();
 
-  const schemas = [getWebPageSchema(page), getFaqSchema(page.faqs)].filter(
-    (entry) => entry !== null,
-  );
-
   return (
     <>
       {page.grammar === "experience" ? (
@@ -51,13 +48,7 @@ export default async function ContentPage({ params }: PageProps) {
       ) : (
         <DocumentPage page={page} />
       )}
-      {schemas.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
-        />
-      ))}
+      <JsonLd data={buildRouteGraph(page)} />
     </>
   );
 }

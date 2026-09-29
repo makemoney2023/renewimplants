@@ -1,26 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { getPrimaryNav, getRouteAliases } from "./nav";
+import { isInternalPage } from "@/lib/site-pages";
 import { getRouteContent } from "./routes";
-import { getSiteHeaderLinks, site } from "./site";
+import { navLinks } from "./site";
 
 describe("primary navigation", () => {
-  it("groups the original mega-menu into five parents and a consultation CTA", () => {
-    expect(getPrimaryNav().map((item) => item.label)).toEqual([
-      "Services",
-      "About",
-      "Patients",
-      "Blog",
-      "Contact",
-    ]);
-
-    expect(getSiteHeaderLinks()).toEqual([
+  it("groups the original mega-menu into five parents driven by the site nav links", () => {
+    expect(getPrimaryNav().map(({ label, href }) => ({ label, href }))).toEqual([
       { label: "Services", href: "/services/all-on-4-dental-implants" },
       { label: "About", href: "/meet-your-dentist" },
       { label: "Patients", href: "/what-to-expect" },
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact-us" },
-      { label: "Free consultation", href: site.primaryCta.href },
     ]);
+
+    // nav.ts must build its parents from site.ts so there is one source of truth.
+    expect(getPrimaryNav().map(({ label, href }) => ({ label, href }))).toEqual([...navLinks]);
+    for (const item of getPrimaryNav()) {
+      expect(item.children.length, item.label).toBeGreaterThan(0);
+    }
   });
 
   it("lists all eight original service pages under Services", () => {
@@ -39,10 +37,10 @@ describe("primary navigation", () => {
 
   it("resolves every dropdown child to a content page", () => {
     for (const item of getPrimaryNav()) {
-      expect(getRouteContent(item.href.slice(1)), item.href).toBeDefined();
+      expect(isInternalPage(item.href), item.href).toBe(true);
 
       for (const child of item.children) {
-        expect(getRouteContent(child.href.slice(1)), child.href).toBeDefined();
+        expect(isInternalPage(child.href), child.href).toBe(true);
       }
     }
   });

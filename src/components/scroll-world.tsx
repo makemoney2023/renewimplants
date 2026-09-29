@@ -8,10 +8,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { LoopVideo } from "@/components/loop-video";
 import { SiteFooter } from "@/components/site-footer";
-import { media, processSteps, scrollActs, site, treatments } from "@/content/site";
+import {
+  implantAnimation,
+  media,
+  processSteps,
+  scrollActs,
+  site,
+  treatments,
+} from "@/content/site";
 import { getTestimonials } from "@/content/testimonials";
-import { getRailDistance } from "@/lib/scroll-motion";
+import { getImageMotion, getRailDistance } from "@/lib/scroll-motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -42,8 +50,7 @@ export function ScrollWorld() {
           ".hero-photo",
           { scale: 1.04, yPercent: 0 },
           {
-            scale: 1.12,
-            yPercent: -6,
+            ...getImageMotion(false),
             ease: "none",
             scrollTrigger: {
               trigger: ".hero",
@@ -172,9 +179,10 @@ export function ScrollWorld() {
 
       reduce.add("(prefers-reduced-motion: reduce)", () => {
         gsap.set(
-          ".hero-photo, .hero-word, .reveal-copy > *, .doctor-photo, .panorama-tile, .close-photo",
+          ".hero-word, .reveal-copy > *, .doctor-photo, .panorama-tile, .close-photo",
           { clearProps: "all" },
         );
+        gsap.set(".hero-photo", getImageMotion(true));
       });
 
       return () => reduce.revert();
@@ -284,6 +292,27 @@ export function ScrollWorld() {
           <h2 id="treatments-title">{choice.title}</h2>
         </div>
         <div className="treatment-rail">
+          <article className="treatment-card anatomy-card">
+            <Image
+              src={implantAnimation.poster}
+              alt={implantAnimation.alt}
+              fill
+              sizes="(max-width: 700px) 84vw, 42vw"
+            />
+            <LoopVideo className="anatomy-video" sources={implantAnimation} />
+            <div className="card-scrim" />
+            <span className="card-index">What an implant is</span>
+            <div className="card-copy">
+              <h3>Crown. Abutment. Titanium root.</h3>
+              <p>
+                Three parts that lock together and fuse with your jaw — the same
+                engineering behind every treatment in this row.
+              </p>
+              <Link href="/faq">
+                How implants work <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
           {treatments.map((treatment, index) => (
             <article className="treatment-card" key={treatment.title}>
               <Image

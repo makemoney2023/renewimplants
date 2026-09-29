@@ -5,6 +5,21 @@
 **Sequence (agreed):** foundation + technical SEO → quiz + Supabase leads → blog port → content program → measurement
 **Follow-up (separate plan):** Resend email/SMS follow-up on `quiz_leads`
 
+## Status (2026-09-29)
+
+Phases 0–3 are built and wired; Phase 4 has the skills and `docs/search-visibility.md`. See the top `CHANGELOG.md` entry.
+
+Deviations from the tasks below:
+- **3.1:** the blog uses `@mdx-js/mdx` `evaluate` + gray-matter + zod (`src/lib/blog.ts`) instead of fumadocs-mdx. Same frontmatter contract; it needs no build plugin and every post compiles inside Vitest.
+- **3.3:** `reviewedBy` / `lastReviewed` are optional and paired. They are emitted only after a real clinical review, which the five migrated posts have not had yet.
+- **2.x:** the Supabase migration is written but **not applied**; the org hit its free-project limit. Apply it once a project exists.
+
+Still open:
+- Phase 4 content calendar.
+- Phase 5 entity work (Wikidata, GBP `sameAs`, GA4 AI-referral channel).
+- The homepage hero CTA, which depends on the scroll-world owner.
+- The clinic answers in spec §10.
+
 Every task follows the loop: write failing test → implement → wire end-to-end → `npm test && npm run lint && npm run typecheck` → update docs. Before writing Next.js code, read the matching guide in `node_modules/next/dist/docs/` (Next 16.3 has breaking changes; see `AGENTS.md`). Look up library docs (fumadocs, shadcn, Supabase) with Context7/Firecrawl first.
 
 PIRX paths below are relative to `/Users/cbsuperpatch/Desktop/Projects/PIRX/pirx-frontend/`.
