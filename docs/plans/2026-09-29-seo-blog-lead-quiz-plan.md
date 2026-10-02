@@ -15,7 +15,7 @@ Deviations from the tasks below:
 - **2.x:** the Supabase migration is written but **not applied**; the org hit its free-project limit. Apply it once a project exists.
 
 Still open:
-- Phase 4 content calendar.
+- Phase 4 content calendar JSON (`docs/content/blog-content-calendar.json`). The topic inventory and Wave 1 order are in [../content/content-strategy.md](../content/content-strategy.md) (2026-10-02).
 - Phase 5 entity work (Wikidata, GBP `sameAs`, GA4 AI-referral channel).
 - The homepage hero CTA, which depends on the scroll-world owner.
 - The clinic answers in spec §10.

@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-02 — Blog content strategy backlog
+
+**What changed:** the Gemini implant content strategy (hub-and-spoke guides plus 105 blog topics) is saved as a Renew working backlog, with Wave 1 titles, clusters, and the clinic’s locked claims applied before any new posts are drafted.
+
+**Why:** feature — give the blog program a single plan to expand from, without publishing prices, the wrong clinician title, or a second URL for a query the site already answers.
+
+**Code touchpoints:** `docs/content/content-strategy.md`, `docs/search-visibility.md`, `docs/plans/2026-09-29-seo-blog-lead-quiz-plan.md`, `README.md`
+
+**Data-flow impact:** none. No posts, routes, or schema changed.
+
+**API / schema impact:** none.
+
+**Verification:** doc-only. No tests run.
+
 ## 2026-09-29 — Responsive and cross-device quality pass
 
 **What changed:** the hero now exposes the consultation and two-minute candidate

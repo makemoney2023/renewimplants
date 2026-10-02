@@ -1,6 +1,6 @@
 # Search visibility — project binding
 
-Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-blog-writing](../.cursor/skills/renew-blog-writing/SKILL.md) skills. Every page and post inherits these facts; change them here first.
+Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-blog-writing](../.cursor/skills/renew-blog-writing/SKILL.md) skills. Every page and post inherits these facts; change them here first. The blog topic backlog and Wave 1 order live in [content/content-strategy.md](content/content-strategy.md).
 
 ## Canonical host and conversion
 

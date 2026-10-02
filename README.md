@@ -122,8 +122,9 @@ sticky quiz CTA; `src/lib/blog-schema.ts` emits MedicalWebPage + BlogPosting +
 BreadcrumbList + FAQPage. `reviewedBy` / `lastReviewed` are published only when a
 post names a real clinical reviewer — the five migrated posts do not yet.
 
-Write posts with the `renew-blog-writing` skill (`.cursor/skills/`); strategy and
-entity facts live in [docs/search-visibility.md](docs/search-visibility.md). After
+Write posts with the `renew-blog-writing` skill (`.cursor/skills/`); entity facts
+live in [docs/search-visibility.md](docs/search-visibility.md) and the topic backlog
+in [docs/content/content-strategy.md](docs/content/content-strategy.md). After
 adding a post, list it in `public/llms.txt` (a test fails until you do).
 
 ## Lead quiz
