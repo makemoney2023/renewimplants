@@ -76,6 +76,30 @@ describe("social preview catalog", () => {
     }
   });
 
+  it("puts week 4 on the preview", () => {
+    const thu = posts.find((item) => item.id === "w04-thu");
+    expect(thu?.format).toBe("static");
+    expect(thu?.images).toEqual(["/media/social/w04-thu.jpg"]);
+    expect(thu?.video).toBeNull();
+    expect(thu?.caption).toContain("Nick B.");
+    expect(thu?.instagramHref).toBe(
+      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-thu",
+    );
+    expect(thu?.facebookHref).toContain("utm_source=facebook");
+    expect(existsSync(join(process.cwd(), "assets/social/w04-thu.jpg"))).toBe(true);
+    expect(existsSync(join(process.cwd(), "assets/social/w04-thu-square.jpg"))).toBe(true);
+
+    for (const id of ["w04-tue", "w04-fri"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.format).toBe("carousel");
+      expect(post?.images).toHaveLength(4);
+      expect(post?.video).toBeNull();
+      expect(post?.images?.every((path) => existsSync(join(process.cwd(), "assets/social", path.split("/").pop()!)))).toBe(
+        true,
+      );
+    }
+  });
+
   it("does not invent media for units that have not been rendered", () => {
     const rendered = new Set([
       "w01-tue",
@@ -87,6 +111,9 @@ describe("social preview catalog", () => {
       "w03-tue",
       "w03-thu",
       "w03-fri",
+      "w04-tue",
+      "w04-thu",
+      "w04-fri",
       "w07-fri",
     ]);
     const waiting = posts.filter((post) => !rendered.has(post.id));

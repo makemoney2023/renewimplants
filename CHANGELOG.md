@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Week 4 on the social preview
+
+**What changed:** Week 4 plays on `/social-preview`. Tuesday and Friday are four-slide carousels. Thursday is Nick B.’s quote card, with a square crop beside the 4:5 frame.
+
+**Why:** feature — weeks 1–3 were already rendered. Week 4 is the next ready stretch of the feed, and it has no video to film.
+
+**Code touchpoints:** `assets/social/w04-*`, `scripts/render-social-stills.mjs`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged. The jaw slide leaves the “no percentage” note off the frame and uses the scan sentence from the post.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1350 slides, a 1080×1080 quote square, then `/social-preview?post=w04-thu&catalog=1` and the two carousels.
+
 ## 2026-10-05 — Weeks 1 through 3 on the social preview
 
 **What changed:** The remaining Week 1–3 posts play or swipe on `/social-preview`. That is three quote cards, the Friday carousel, and four reels.

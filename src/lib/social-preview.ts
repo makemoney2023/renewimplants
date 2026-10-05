@@ -36,6 +36,23 @@ const rendered: Record<string, { video?: string; poster?: string; images?: strin
     video: "/media/social/w03-fri.mp4",
     poster: "/media/social/w03-fri-poster.jpg",
   },
+  "w04-tue": {
+    images: [
+      "/media/social/w04-tue-1.jpg",
+      "/media/social/w04-tue-2.jpg",
+      "/media/social/w04-tue-3.jpg",
+      "/media/social/w04-tue-4.jpg",
+    ],
+  },
+  "w04-thu": { images: ["/media/social/w04-thu.jpg"] },
+  "w04-fri": {
+    images: [
+      "/media/social/w04-fri-1.jpg",
+      "/media/social/w04-fri-2.jpg",
+      "/media/social/w04-fri-3.jpg",
+      "/media/social/w04-fri-4.jpg",
+    ],
+  },
   "w07-fri": {
     video: "/media/social/w07-fri.mp4?v=2",
     poster: "/media/social/w07-fri-poster.jpg?v=2",
