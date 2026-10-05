@@ -53,6 +53,41 @@ const rendered: Record<string, { video?: string; poster?: string; images?: strin
       "/media/social/w04-fri-4.jpg",
     ],
   },
+  "w05-tue": {
+    images: [
+      "/media/social/w05-tue-1.jpg",
+      "/media/social/w05-tue-2.jpg",
+      "/media/social/w05-tue-3.jpg",
+      "/media/social/w05-tue-4.jpg",
+    ],
+  },
+  "w05-thu": { images: ["/media/social/w05-thu.jpg"] },
+  "w05-fri": {
+    video: "/media/social/w05-fri.mp4",
+    poster: "/media/social/w05-fri-poster.jpg",
+  },
+  "w06-tue": {
+    video: "/media/social/w06-tue.mp4",
+    poster: "/media/social/w06-tue-poster.jpg",
+  },
+  "w06-thu": { images: ["/media/social/w06-thu.jpg"] },
+  "w06-fri": {
+    images: [
+      "/media/social/w06-fri-1.jpg",
+      "/media/social/w06-fri-2.jpg",
+      "/media/social/w06-fri-3.jpg",
+      "/media/social/w06-fri-4.jpg",
+    ],
+  },
+  "w07-tue": {
+    images: [
+      "/media/social/w07-tue-1.jpg",
+      "/media/social/w07-tue-2.jpg",
+      "/media/social/w07-tue-3.jpg",
+      "/media/social/w07-tue-4.jpg",
+    ],
+  },
+  "w07-thu": { images: ["/media/social/w07-thu.jpg"] },
   "w07-fri": {
     video: "/media/social/w07-fri.mp4?v=2",
     poster: "/media/social/w07-fri-poster.jpg?v=2",

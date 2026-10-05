@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Weeks 4 through 7 on the social preview
+
+**What changed:** The feed preview now includes weeks 4, 5, 6, and the rest of week 7. That is the All-on-4 and jaw carousels, Nick B., Eric B., Tim Appleby, and G Z. quote cards, the suite reel, the sedation reel, and the CDCP and two-arch carousels. Week 7 Friday was already there.
+
+**Why:** feature — the written catalog already runs through week 10. The preview had weeks 1–3 and one later reel.
+
+**Code touchpoints:** `assets/social/`, `scripts/render-social-stills.mjs`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. Catalog copy is unchanged. Quote cards repeat lines from `src/content/testimonials.ts`.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1350 slides, 1080×1080 quote squares, 1080×1920 reels at 9.7 seconds with a 2.5 second end card, then `/social-preview?post=w05-fri&catalog=1`.
+
 ## 2026-10-05 — Week 4 on the social preview
 
 **What changed:** Week 4 plays on `/social-preview`. Tuesday and Friday are four-slide carousels. Thursday is Nick B.’s quote card, with a square crop beside the 4:5 frame.

@@ -100,6 +100,29 @@ describe("social preview catalog", () => {
     }
   });
 
+  it("puts weeks 5 to 7 on the preview", () => {
+    const quote = posts.find((item) => item.id === "w06-thu");
+    expect(quote?.images).toEqual(["/media/social/w06-thu.jpg"]);
+    expect(quote?.caption).toContain("Tim Appleby");
+    expect(quote?.instagramHref).toContain("utm_campaign=w06-thu");
+
+    for (const id of ["w05-fri", "w06-tue"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.video).toBe(`/media/social/${id}.mp4`);
+      expect(post?.poster).toBe(`/media/social/${id}-poster.jpg`);
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}.mp4`))).toBe(true);
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}-poster.jpg`))).toBe(true);
+    }
+
+    for (const id of ["w05-tue", "w06-fri", "w07-tue"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.images).toHaveLength(4);
+      expect(post?.images?.every((path) => existsSync(join(process.cwd(), "assets/social", path.split("/").pop()!)))).toBe(
+        true,
+      );
+    }
+  });
+
   it("does not invent media for units that have not been rendered", () => {
     const rendered = new Set([
       "w01-tue",
@@ -114,6 +137,14 @@ describe("social preview catalog", () => {
       "w04-tue",
       "w04-thu",
       "w04-fri",
+      "w05-tue",
+      "w05-thu",
+      "w05-fri",
+      "w06-tue",
+      "w06-thu",
+      "w06-fri",
+      "w07-tue",
+      "w07-thu",
       "w07-fri",
     ]);
     const waiting = posts.filter((post) => !rendered.has(post.id));

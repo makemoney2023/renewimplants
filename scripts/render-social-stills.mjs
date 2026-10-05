@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 function ensureFonts(dir) {
@@ -58,6 +58,76 @@ const frames = {
       { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
     ],
   },
+  "w05-tue": {
+    eyebrow: "Two options",
+    slides: [
+      { layoutId: "photo-lower-third", onScreen: "Snap-on teeth come out", body: "They clip to implants and you remove them to clean.", photo: "public/media/services/service-snapon.jpg", photoPosition: "center" },
+      { layoutId: "carbon-editorial", onScreen: "All-on-4 stays fixed", body: "It is a bridge you brush. You do not take it out at night." },
+      { layoutId: "light-editorial", onScreen: "Both are made here", body: "The consultation sorts out which one the bone and the routine can support." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w05-thu": {
+    quote: {
+      line: "Tom recommended a new procedure to install a removable bar overdenture at his new Renew Implant Centre.",
+      support: "I am extremely satisfied with the result.",
+      name: "Eric B.",
+      place: "Ottawa, ON",
+    },
+  },
+  "w05-fri": {
+    video: {
+      headline: "Set up before you arrive",
+      body: "The room is prepared before you sit down.",
+      endLine: "Set up before you arrive",
+      photo: "public/media/heroes/renew-hero.jpg",
+      photoPosition: "left center",
+      photoFit: "top",
+    },
+  },
+  "w06-tue": {
+    video: {
+      headline: "You can rest through it",
+      body: "Sleep dentistry is offered so implant surgery can happen while you rest.",
+      endLine: "You can rest through it",
+      photo: "public/media/services/service-sedation.jpg",
+      photoPosition: "center",
+    },
+  },
+  "w06-thu": {
+    quote: {
+      line: "They even went above and beyond for me during an emergency after-hours issue.",
+      support: "If you are considering implants, I highly recommend Tom and his team.",
+      name: "Tim Appleby",
+      place: "Ottawa, ON",
+    },
+  },
+  "w06-fri": {
+    eyebrow: "CDCP",
+    slides: [
+      { layoutId: "carbon-editorial", onScreen: "CDCP can cover dentures", body: "Dentures and overdentures, with preauthorization." },
+      { layoutId: "carbon-editorial", onScreen: "Most implants are not covered", body: "The plan does not cover most implant treatment." },
+      { layoutId: "light-editorial", onScreen: "The team bills plans directly", body: "A quote still waits for the consultation." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w07-tue": {
+    eyebrow: "Two arches",
+    slides: [
+      { layoutId: "photo-lower-third", onScreen: "Each arch gets its own plan", body: "Upper and lower are not one drawing.", photo: "public/media/services/service-fullarch.jpg", photoPosition: "center top" },
+      { layoutId: "light-editorial", onScreen: "The upper jaw sometimes needs help", body: "A sinus lift only when the scan shows it." },
+      { layoutId: "light-editorial", onScreen: "The lower jaw has its own shape", body: "The plan follows that shape." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w07-thu": {
+    quote: {
+      line: "A plan very well executed by the Tom/Alex team",
+      support: "New implants, new teeth for a new smile.",
+      name: "G Z.",
+      place: "Ottawa, ON",
+    },
+  },
 };
 
 function token(name) {
@@ -91,12 +161,23 @@ function paint(layoutId) {
   };
 }
 
-function html({ width, height, layoutId, eyebrow, headline, body, quote }) {
+function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, photoPosition = "center", photoFit }) {
   const color = paint(layoutId);
   const isCta = layoutId === "cta-still";
   const isQuote = layoutId === "quote-card";
-  const headlineSize = width === height ? 72 : 80;
-  const stack = isCta
+  const isPhoto = layoutId === "photo-lower-third";
+  const headlineSize = width === height ? 72 : height > 1400 ? 76 : 80;
+  const quoteSize = !quote ? headlineSize : quote.line.length > 70 ? 52 : quote.line.length > 48 ? 60 : width === height ? 64 : 72;
+  const photoUrl = photo ? `file://${join(ROOT, photo)}` : "";
+  const stack = isPhoto
+    ? `
+      <h1>${escapeHtml(headline)}</h1>
+      <p class="body">${escapeHtml(body)}</p>
+      ${pill(color)}
+      <div class="mark">${wordmark(color)}</div>
+      ${arch(color)}
+    `
+    : isCta
     ? `
       <div class="mark">${wordmark(color)}</div>
       <h1>${escapeHtml(headline)}</h1>
@@ -173,7 +254,27 @@ function html({ width, height, layoutId, eyebrow, headline, body, quote }) {
     line-height: 1.02;
     color: ${color.headline};
   }
-  h1.quote { font-size: ${width === height ? 64 : 72}px; }
+  h1.quote { font-size: ${quoteSize}px; }
+  .frame.photo {
+    position: relative;
+    justify-content: flex-end;
+    padding: 0;
+    background: ${photoFit === "top" ? "#1a1a1a" : `#1a1a1a url("${photoUrl}") ${photoPosition} / cover no-repeat`};
+  }
+  .frame.photo.top-photo::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 62%;
+    background: url("${photoUrl}") ${photoPosition} / cover no-repeat;
+  }
+  .band {
+    position: relative;
+    padding: ${height > 1400 ? 160 : 108}px 80px ${height > 1400 ? 88 : 64}px;
+    background: linear-gradient(to bottom, rgba(26,26,26,0) 0%, #1a1a1a 24%, #1a1a1a 100%);
+  }
   .body, .support {
     max-width: 820px;
     margin-bottom: 36px;
@@ -230,7 +331,7 @@ function html({ width, height, layoutId, eyebrow, headline, body, quote }) {
 </style>
 </head>
 <body>
-  <main class="frame">${stack}</main>
+  <main class="frame${isPhoto ? " photo" : ""}${photoFit === "top" ? " top-photo" : ""}">${isPhoto ? `<div class="band">${stack}</div>` : stack}</main>
 </body>
 </html>`;
 }
@@ -249,14 +350,20 @@ function arch(color) {
   </svg>`;
 }
 
+function nameSafe(path) {
+  return path.split("/").pop().replace(/[^a-z0-9.-]/gi, "");
+}
+
 function shoot(htmlPath, jpgPath, width, height) {
   const png = htmlPath.replace(/\.html$/, ".png");
-  const chrome = spawnSync("timeout", ["8", CHROME,
+  const profile = join("/tmp/social-frames", `chrome-${nameSafe(htmlPath)}`);
+  const chrome = spawnSync("timeout", ["12", CHROME,
     "--headless=new",
     "--disable-gpu",
     "--no-sandbox",
     "--hide-scrollbars",
     "--force-device-scale-factor=1",
+    `--user-data-dir=${profile}`,
     `--window-size=${width},${height}`,
     "--default-background-color=00000000",
     "--virtual-time-budget=2500",
@@ -274,9 +381,44 @@ function renderFrame(name, spec, canvas) {
   const jpgPath = join(OUT, `${name}.jpg`);
   mkdirSync(dirname(htmlPath), { recursive: true });
   mkdirSync(OUT, { recursive: true });
+  if (existsSync(jpgPath) && process.env.FORCE !== "1") {
+    console.log("skip", jpgPath);
+    return jpgPath;
+  }
   writeFileSync(htmlPath, html({ width: canvas.width, height: canvas.height, ...spec }));
   shoot(htmlPath, jpgPath, canvas.width, canvas.height);
   console.log(jpgPath, canvas.width, canvas.height);
+  return jpgPath;
+}
+
+function renderReel(id, video) {
+  const canvas = design.canvases["video-9x16"];
+  const holdJpg = renderFrame(`${id}-hold`, {
+    layoutId: "photo-lower-third",
+    headline: video.headline,
+    body: video.body,
+    photo: video.photo,
+    photoPosition: video.photoPosition,
+    photoFit: video.photoFit,
+  }, canvas);
+  const endJpg = renderFrame(`${id}-end`, { layoutId: "cta-still", headline: video.endLine }, canvas);
+  const mp4 = join(OUT, `${id}.mp4`);
+  const poster = join(OUT, `${id}-poster.jpg`);
+  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
+    console.log("skip", mp4);
+    return;
+  }
+  execFileSync("cp", [holdJpg, poster]);
+  const holdMp4 = join("/tmp/social-frames", `${id}-hold.mp4`);
+  const endMp4 = join("/tmp/social-frames", `${id}-end.mp4`);
+  const list = join("/tmp/social-frames", `${id}-concat.txt`);
+  execFileSync("ffmpeg", ["-y", "-loop", "1", "-framerate", "30", "-t", "7.2", "-i", holdJpg, "-vf", "scale=1080:1920,format=yuv420p", "-c:v", "libx264", "-pix_fmt", "yuv420p", holdMp4], { stdio: "ignore" });
+  execFileSync("ffmpeg", ["-y", "-loop", "1", "-framerate", "30", "-t", "2.5", "-i", endJpg, "-vf", "scale=1080:1920,format=yuv420p", "-c:v", "libx264", "-pix_fmt", "yuv420p", endMp4], { stdio: "ignore" });
+  writeFileSync(list, `file '${holdMp4}'\nfile '${endMp4}'\n`);
+  execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", mp4], { stdio: "ignore" });
+  rmSync(holdJpg, { force: true });
+  rmSync(endJpg, { force: true });
+  console.log(mp4);
 }
 
 const testimonials = readFileSync(join(ROOT, "src/content/testimonials.ts"), "utf8");
@@ -304,7 +446,14 @@ for (const [id, spec] of Object.entries(frames)) {
       if (slide.onScreen !== post.slides[index].onScreen) {
         throw new Error(`${id} slide ${index + 1} headline drifted from the catalog`);
       }
-      renderFrame(`${id}-${index + 1}`, { layoutId: slide.layoutId, eyebrow: spec.eyebrow, headline: slide.onScreen, body: slide.body }, fourByFive);
+      renderFrame(`${id}-${index + 1}`, {
+        layoutId: slide.layoutId,
+        eyebrow: spec.eyebrow,
+        headline: slide.onScreen,
+        body: slide.body,
+        photo: slide.photo,
+        photoPosition: slide.photoPosition,
+      }, fourByFive);
     });
   }
   if (spec.quote) {
@@ -316,5 +465,10 @@ for (const [id, spec] of Object.entries(frames)) {
     if (!matches) throw new Error(`${id} quote is not the catalog excerpt`);
     renderFrame(id, { layoutId: "quote-card", quote: spec.quote }, fourByFive);
     renderFrame(`${id}-square`, { layoutId: "quote-card", quote: spec.quote }, square);
+  }
+  if (spec.video) {
+    if (post.format !== "video") throw new Error(`${id} is not a video`);
+    if (spec.video.headline !== post.onScreen[0]) throw new Error(`${id} video headline drifted from the catalog`);
+    renderReel(id, spec.video);
   }
 }
