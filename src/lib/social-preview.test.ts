@@ -34,8 +34,24 @@ describe("social preview catalog", () => {
     );
   });
 
+  it("puts the rendered w07-fri reel on the Vercel quiz", () => {
+    const post = posts.find((item) => item.id === "w07-fri");
+    expect(post?.label).toBe("Week 7 fri");
+    expect(post?.video).toBe("/media/social/w07-fri.mp4");
+    expect(post?.poster).toBe("/media/social/w07-fri-poster.jpg");
+    expect(post?.caption).toContain("English or French");
+    expect(post?.instagramHref).toBe(
+      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-fri",
+    );
+    expect(post?.facebookHref).toContain("utm_source=facebook");
+    expect(post?.facebookHref).toContain("utm_campaign=w07-fri");
+    expect(existsSync(join(process.cwd(), "assets/social/w07-fri.mp4"))).toBe(true);
+    expect(existsSync(join(process.cwd(), "assets/social/w07-fri-poster.jpg"))).toBe(true);
+  });
+
   it("does not invent media for units that have not been rendered", () => {
-    const waiting = posts.filter((post) => post.id !== "w01-tue");
+    const rendered = new Set(["w01-tue", "w07-fri"]);
+    const waiting = posts.filter((post) => !rendered.has(post.id));
     expect(waiting.every((post) => post.video === null && post.poster === null)).toBe(true);
   });
 });

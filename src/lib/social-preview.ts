@@ -9,6 +9,10 @@ const rendered: Record<string, { video: string; poster: string }> = {
     video: "/media/social/w01-tue.mp4?v=2",
     poster: "/media/social/w01-tue-poster.jpg?v=2",
   },
+  "w07-fri": {
+    video: "/media/social/w07-fri.mp4",
+    poster: "/media/social/w07-fri-poster.jpg",
+  },
 };
 
 function facebookPath(unit: PublishUnit) {

@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Week 7 Friday reel on the social preview
+
+**What changed:** `w07-fri` plays on `/social-preview`. The frame is the team photo with a carbon lower third, the line “English or French,” and the quiz end card.
+
+**Why:** feature — the preview catalog had one rendered unit. This is the next ready video.
+
+**Code touchpoints:** `assets/social/w07-fri.mp4`, `assets/social/w07-fri-poster.jpg`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1920 frames, then the post at `/social-preview?post=w07-fri`.
+
 ## 2026-10-05 — Larger type and a 3D scan on the Tuesday reel
 
 **What changed:** The opening line on `w01-tue` is larger. The black slide shows a 3D scan of the upper and lower teeth.
