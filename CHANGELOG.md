@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Weeks 1 through 3 on the social preview
+
+**What changed:** The remaining Week 1–3 posts play or swipe on `/social-preview`. That is three quote cards, the Friday carousel, and four reels.
+
+**Why:** feature — the preview catalog had two rendered units. These are the rest of the first three weeks.
+
+**Code touchpoints:** `assets/social/`, `src/lib/social-preview.ts`, `src/components/social-preview/`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** frames at the catalog sizes, then `/social-preview` for a quote, the carousel, and a reel.
+
 ## 2026-10-05 — Week 7 photo shows more of both people
 
 **What changed:** The `w07-fri` opening frame uses a shorter carbon band, so Tom and the patient stay in view through the torso.

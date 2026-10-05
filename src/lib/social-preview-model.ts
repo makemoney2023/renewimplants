@@ -16,6 +16,7 @@ export type SocialPreviewPost = {
   facebookHref: string;
   video: string | null;
   poster: string | null;
+  images: string[] | null;
 };
 
 export function socialPreviewHref({

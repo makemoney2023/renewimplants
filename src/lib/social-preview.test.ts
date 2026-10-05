@@ -49,9 +49,47 @@ describe("social preview catalog", () => {
     expect(existsSync(join(process.cwd(), "assets/social/w07-fri-poster.jpg"))).toBe(true);
   });
 
+  it("puts weeks 1 to 3 on the preview", () => {
+    const thu = posts.find((item) => item.id === "w01-thu");
+    expect(thu?.format).toBe("static");
+    expect(thu?.images).toEqual(["/media/social/w01-thu.jpg"]);
+    expect(thu?.video).toBeNull();
+    expect(thu?.instagramHref).toBe(
+      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-thu",
+    );
+    expect(existsSync(join(process.cwd(), "assets/social/w01-thu.jpg"))).toBe(true);
+    expect(existsSync(join(process.cwd(), "assets/social/w01-thu-square.jpg"))).toBe(true);
+
+    const fri = posts.find((item) => item.id === "w02-fri");
+    expect(fri?.format).toBe("carousel");
+    expect(fri?.images).toHaveLength(4);
+    expect(fri?.images?.every((path) => existsSync(join(process.cwd(), "assets/social", path.split("/").pop()!)))).toBe(
+      true,
+    );
+
+    for (const id of ["w01-fri", "w02-tue", "w03-tue", "w03-fri"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.video).toBe(`/media/social/${id}.mp4`);
+      expect(post?.images).toBeNull();
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}.mp4`))).toBe(true);
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}-poster.jpg`))).toBe(true);
+    }
+  });
+
   it("does not invent media for units that have not been rendered", () => {
-    const rendered = new Set(["w01-tue", "w07-fri"]);
+    const rendered = new Set([
+      "w01-tue",
+      "w01-thu",
+      "w01-fri",
+      "w02-tue",
+      "w02-thu",
+      "w02-fri",
+      "w03-tue",
+      "w03-thu",
+      "w03-fri",
+      "w07-fri",
+    ]);
     const waiting = posts.filter((post) => !rendered.has(post.id));
-    expect(waiting.every((post) => post.video === null && post.poster === null)).toBe(true);
+    expect(waiting.every((post) => post.video === null && post.poster === null && post.images === null)).toBe(true);
   });
 });

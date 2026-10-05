@@ -84,7 +84,7 @@ function Catalog({
                   >
                     <span>{post.label}</span>
                     <small>
-                      {post.format} · {post.video ? "Ready" : "Waiting"}
+                      {post.format} · {post.video || post.images?.length ? "Ready" : "Waiting"}
                     </small>
                   </a>
                 </li>
@@ -97,17 +97,38 @@ function Catalog({
 }
 
 function Media({ post }: { post: SocialPreviewPost }) {
-  if (!post.video) {
+  if (post.video) {
     return (
-      <div className="social-waiting">
-        <p>{post.onScreen}</p>
-        <small>This catalog unit is not rendered yet.</small>
+      <video src={post.video} poster={post.poster ?? undefined} autoPlay muted loop playsInline />
+    );
+  }
+
+  if (post.images && post.images.length > 1) {
+    return (
+      <div className="feed-carousel">
+        <div className="feed-slides" tabIndex={0}>
+          {post.images.map((src) => (
+            <img key={src} src={src} alt="" />
+          ))}
+        </div>
+        <div className="feed-dots" aria-hidden="true">
+          {post.images.map((src) => (
+            <span key={src} />
+          ))}
+        </div>
       </div>
     );
   }
 
+  if (post.images?.length === 1) {
+    return <img className="feed-still" src={post.images[0]} alt="" />;
+  }
+
   return (
-    <video src={post.video} poster={post.poster ?? undefined} autoPlay muted loop playsInline />
+    <div className="social-waiting">
+      <p>{post.onScreen}</p>
+      <small>This catalog unit is not rendered yet.</small>
+    </div>
   );
 }
 
@@ -141,10 +162,12 @@ function InstagramPost({ post }: { post: SocialPreviewPost }) {
       <a className="ig-link" href={post.instagramHref}>
         {post.ctaLabel}
       </a>
-      <p className="ig-audio">
-        <span className="ig-disc" aria-hidden="true" />
-        Original audio
-      </p>
+      {post.video ? (
+        <p className="ig-audio">
+          <span className="ig-disc" aria-hidden="true" />
+          Original audio
+        </p>
+      ) : null}
     </article>
   );
 }
