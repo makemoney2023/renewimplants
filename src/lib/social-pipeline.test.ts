@@ -154,6 +154,26 @@ describe("social and ad catalog", () => {
     expect(units.filter((unit) => unit.testimonialName).length).toBeGreaterThanOrEqual(12);
   });
 
+  it("points production at repo skills and keeps the others out", () => {
+    const pipeline = JSON.parse(readFileSync(join(socialDir, "pipeline.json"), "utf8")) as {
+      skills: {
+        overrides: string;
+        use: { path: string }[];
+        doNotUse: { path: string }[];
+      };
+    };
+    const skillFile = (dir: string) => join(process.cwd(), dir, "SKILL.md");
+    expect(pipeline.skills.overrides).toBe(".cursor/skills/renew-social");
+    expect(readFileSync(skillFile(pipeline.skills.overrides), "utf8").length).toBeGreaterThan(80);
+    const used = pipeline.skills.use.map((skill) => skill.path);
+    const blocked = pipeline.skills.doNotUse.map((skill) => skill.path);
+    expect(used).toContain(pipeline.skills.overrides);
+    expect(used.filter((path) => blocked.includes(path))).toEqual([]);
+    for (const path of [...used, ...blocked]) {
+      expect(readFileSync(skillFile(path), "utf8").length, path).toBeGreaterThan(40);
+    }
+  });
+
   it("allows a generated person only for the unnamed denture-slip film", () => {
     const generated = units.filter((unit) => unit.generatedPerson);
     expect(generated.map((unit) => unit.id)).toEqual(["concept-denture-slip"]);

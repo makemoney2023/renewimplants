@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Social pipeline skill map
+
+**What changed:** `docs/content/social/pipeline.json` now names the repo skills a producer may open, and the skills that must stay closed. Renew social stays the override. Carousel size, video specs, FFmpeg, Remotion type frames, and FLUX prompting are in. Hook generators, other brand systems, and avatar presenters are listed as do-not-use.
+
+**Why:** fix — the skills folder is large, and most of it would rewrite the locked copy or paint a different brand.
+
+**Code touchpoints:** `docs/content/social/pipeline.json`, `.cursor/skills/renew-social/SKILL.md`, `src/lib/social-pipeline.test.ts`
+
+**Data-flow impact:** none.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-pipeline.test.ts`.
+
 ## 2026-10-05 — Video, static, and carousel mix
 
 **What changed:** the social catalog no longer ships as video only. Paid units are 14 video, 14 static, and 13 carousel. The 30 feed posts are 10 of each. Static is a 4:5 frame plus a square, with no voiceover. Carousels close on the still CTA card. Video still holds the 2.5 second end card.

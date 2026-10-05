@@ -1,6 +1,6 @@
 {
   "id": "renew-social-ads",
-  "version": 1,
+  "version": 2,
   "sources": [
     {
       "id": "strategy",
@@ -32,7 +32,7 @@
     },
     {
       "id": "make",
-      "action": "Make the unit in its format. Video is filmed or generated with the spoken line. Static is one still. Carousel is the slide list, in order. Clinic stills use approvedMedia only. Generated people are allowed for the denture-slip video and must look lived-in, with no extra facial or hand features and no blood or needles."
+      "action": "Read skills.use entries whose when matches this stage and the unit format. Make the unit in its format. Video is filmed or generated with the spoken line. Static is one still. Carousel is the slide list, in order. Clinic stills use approvedMedia only. Generated people are allowed for the denture-slip video and must look lived-in, with no extra facial or hand features and no blood or needles. Do not open a path in skills.doNotUse."
     },
     {
       "id": "end-card",
@@ -63,5 +63,162 @@
   "secondaryCta": {
     "phone": "613-841-6111",
     "contactPath": "/contact-us"
+  },
+  "skills": {
+    "overrides": ".cursor/skills/renew-social",
+    "use": [
+      {
+        "id": "renew-social",
+        "path": ".cursor/skills/renew-social",
+        "when": "every stage",
+        "take": "The catalog, the design tokens, the wordmark, and the clinic claim rules win over every other skill.",
+        "ignore": "Nothing in this skill is optional."
+      },
+      {
+        "id": "production-artifacts",
+        "path": "skills/org/packs/production-artifacts",
+        "when": "before make",
+        "take": "Do not paint pixels until the unit and design-system.json are the brief.",
+        "ignore": "The org handoff files, verifier ritual, and business-idea paths. This clinic's brief is docs/content/social/."
+      },
+      {
+        "id": "social-media-carousel",
+        "path": "skills/community/inference-sh/social-media-carousel",
+        "when": "make, format carousel",
+        "take": "Instagram and Facebook carousels are 1080x1350. One idea per slide. The last slide is the CTA.",
+        "ignore": "The belt CLI, the 7-slide hook template, LinkedIn and X sizes, and any example that uses a statistic or a generic font."
+      },
+      {
+        "id": "video-ad-specs",
+        "path": "skills/community/inference-sh/video-ad-specs",
+        "when": "make, format video",
+        "take": "Instagram and Facebook video is 1080x1920, short, with sound and a safe margin.",
+        "ignore": "Seedance scene generation, TikTok, YouTube, LinkedIn, and any new hook."
+      },
+      {
+        "id": "ffmpeg",
+        "path": "skills/community/openmontage/.agents/skills/ffmpeg",
+        "when": "make, format video or a square crop of a static",
+        "take": "Assemble the clip, hold the end card, and export the file.",
+        "ignore": "Do not reframe the picture into a different aspect than the unit canvas."
+      },
+      {
+        "id": "remotion-best-practices",
+        "path": "skills/community/remotion/video/remotion-best-practices",
+        "when": "make, when the end card or a type slide is rendered in code",
+        "take": "Render the branded type frames as video rather than filming a slide.",
+        "ignore": "Do not invent a second layout. The frames still use design-system.json."
+      },
+      {
+        "id": "flux-best-practices",
+        "path": "skills/community/openmontage/.agents/skills/flux-best-practices",
+        "when": "make, generated frames only",
+        "take": "Prompt in prose, name the hex from buildPromptPrefix(), and describe the skin and light you want.",
+        "ignore": "Do not generate a frame for a unit whose assetRefs already point at approvedMedia. Do not use a negative prompt."
+      },
+      {
+        "id": "photoreal-stills",
+        "path": "skills/org/packs/photoreal-stills",
+        "when": "make, generated photography only",
+        "take": "Camera, lens, and light in the prompt. One job per image. Positive wording only.",
+        "ignore": "The other brand's subjects, local model routing, and any still that is typeset rather than photographed."
+      },
+      {
+        "id": "visual-skills-image",
+        "path": "skills/community/visual-skills/image",
+        "when": "make, generated stills only, after the Renew prompt prefix",
+        "take": "How to phrase a still prompt once the palette and wordmark are already locked.",
+        "ignore": "Model picks that replace the design system, and any prompt written before buildPromptPrefix()."
+      },
+      {
+        "id": "meta-ads",
+        "path": "skills/community/marketingskills/ads",
+        "when": "ship, paid units only",
+        "take": "How a finished Meta ad is placed. The unit copy is already written.",
+        "ignore": "New headlines, new offers, budgets, and audiences that are not in the unit."
+      }
+    ],
+    "doNotUse": [
+      {
+        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/brand-guidelines",
+        "reason": "Those are Anthropic colors and type, not Renew."
+      },
+      {
+        "path": "skills/community/ui-ux-pro-max-skill/brand",
+        "reason": "A second brand system. Renew tokens already live in design-system.json."
+      },
+      {
+        "path": "skills/community/ui-ux-pro-max-skill/design-system",
+        "reason": "Would rebuild tokens the site already has."
+      },
+      {
+        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/canvas-design",
+        "reason": "Generic posters. Static frames use the Renew layouts."
+      },
+      {
+        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/social-media-strategy",
+        "reason": "The cadence and pillars are already in this pipeline."
+      },
+      {
+        "path": "skills/community/marketingskills/social",
+        "reason": "Asks for a new calendar, new hooks, and other platforms."
+      },
+      {
+        "path": "skills/community/marketingskills/ad-creative",
+        "reason": "Generates new headlines. The unit copy is locked."
+      },
+      {
+        "path": "skills/community/advertising-skills/skills/operator-os/ad-angle-multiplier",
+        "reason": "The pack requires upstream offer and avatar skills, then new angles."
+      },
+      {
+        "path": "skills/community/advertising-skills/skills/operator-os/scroll-stopping-creative",
+        "reason": "Writes a new first three seconds. The hook is already in the unit."
+      },
+      {
+        "path": "skills/community/advertising-skills/skills/copy-chief/headline-matrix",
+        "reason": "Replaces the hook."
+      },
+      {
+        "path": "skills/community/advertising-skills/skills/foundations/offer-extraction",
+        "reason": "Rebuilds an offer. This clinic does not publish a price or a countdown."
+      },
+      {
+        "path": "skills/community/marketingskills/marketing-psychology",
+        "reason": "Scarcity and urgency are claims this catalog already dropped."
+      },
+      {
+        "path": "skills/community/openmontage/.agents/skills/heygen",
+        "reason": "An avatar presenter would invent a clinician."
+      },
+      {
+        "path": "skills/community/openmontage/.agents/skills/create-video",
+        "reason": "Prompt-to-video skips the locked script and the design system."
+      },
+      {
+        "path": "skills/community/inference-sh/talking-head-production",
+        "reason": "AI spokespersons are not Renew patients or staff."
+      },
+      {
+        "path": "skills/community/inference-sh/ai-social-media-content",
+        "reason": "TikTok, hashtags, and a fresh content idea. This pipeline already has the posts."
+      },
+      {
+        "path": ".cursor/skills/renew-blog-writing",
+        "reason": "Blog MDX. Social units are not posts."
+      },
+      {
+        "path": ".cursor/skills/seo-geo-aeo",
+        "reason": "Search pages. The quiz URL is already the click."
+      },
+      {
+        "path": "skills/integrations/google-ads",
+        "reason": "This pipeline ships to Meta, not Google Ads."
+      },
+      {
+        "path": "skills/community/awesome-claude-corporate-skills/06-legal-compliance/compliance-tracking",
+        "reason": "SOC 2 tracking. Clinic claim checks are the social pipeline test."
+      }
+    ]
   }
 }

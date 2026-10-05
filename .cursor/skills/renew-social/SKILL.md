@@ -9,6 +9,15 @@ Blog posts still follow [renew-blog-writing](../renew-blog-writing/SKILL.md). Th
 
 The catalog is `docs/content/social/`. Entity facts and locked claims stay in [docs/search-visibility.md](../../../docs/search-visibility.md).
 
+## Skills
+
+`pipeline.json` lists the only other skills this work may open.
+
+1. Read `skills.use` and open a skill only when its `when` matches the stage and the unit format.
+2. Take the line under `take`. Leave the line under `ignore`.
+3. Do not open a path in `skills.doNotUse`. Those skills rebuild hooks, swap in another brand, or invent a presenter.
+4. This skill overrides every skill it points at. A community skill never adds a price, a new hook, or a color.
+
 ## Design system, every time
 
 1. Read `docs/content/social/design-system.json` before writing a frame, a prompt, or a caption.
