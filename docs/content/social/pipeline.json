@@ -63,7 +63,7 @@
     },
     {
       "id": "ship",
-      "action": "Primary click goes to the unit ctaHref (the implant quiz). The phone number may be spoken or set in caption text. Cross-posting follows distribution.json."
+      "action": "Primary click is primaryCta.host plus the unit ctaHref. That host is https://renewimplants.vercel.app. www.renewimplants.ca does not serve the quiz. The phone number may be spoken or set in caption text. Cross-posting follows distribution.json."
     }
   ],
   "cadence": {
@@ -78,6 +78,7 @@
     "patient-education": 0.2
   },
   "primaryCta": {
+    "host": "https://renewimplants.vercel.app",
     "path": "/implant-candidate-quiz",
     "labelRule": "About two minutes and nine questions. Never promise a faster quiz.",
     "paidUtm": {

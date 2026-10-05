@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Social clicks use the live quiz host
+
+**What changed:** ad and social quiz links resolve on `https://renewimplants.vercel.app`. `absoluteClickHref()` joins that host to each unit’s `ctaHref`.
+
+**Why:** fix — `https://www.renewimplants.ca/implant-candidate-quiz` returns 404. The quiz is served by the Vercel deployment.
+
+**Code touchpoints:** `docs/content/social/pipeline.json`, `docs/content/social/distribution.json`, `src/lib/social-pipeline.ts`, `src/lib/social-pipeline.test.ts`, `.cursor/skills/renew-social/SKILL.md`
+
+**Data-flow impact:** none. Blog canonical host stays `https://www.renewimplants.ca`.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-pipeline.test.ts`.
+
 ## 2026-10-05 — Design and video skills on the social pipeline
 
 **What changed:** stills now open banner layout, token checks, carousel structure, and a contrast pass. Video now opens Remotion for the composition, type motion, captions, and export, and OpenMontage for fades, kinetic type, and the ffmpeg cut.

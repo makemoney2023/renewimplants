@@ -35,7 +35,7 @@ The catalog is `docs/content/social/`. Entity facts and locked claims stay in [d
 
 1. Pick a `ready` unit from `ads.json` (paid) or `organic-calendar.json` (feed). Skip anything that needs a signed social release.
 2. Follow `format`. Video speaks `hook`, `spoken`, and `onScreen`. Static and carousel put `onScreen` and slide lines on the frame and use `body` as the caption. Do not paste the original Gemini hook back in. Do not turn a static or carousel unit into a video to save a setup.
-3. The click goes to `ctaHref` (the implant quiz, about two minutes, nine questions). On video the phone `613-841-6111` may be spoken. On static and carousel it sits on the card. It is not a second price offer.
+3. The click is `https://renewimplants.vercel.app` plus `ctaHref`. Build it with `absoluteClickHref()` from `src/lib/social-pipeline.ts`. The quiz is about two minutes and nine questions. `www.renewimplants.ca` does not serve that page. On video the phone `613-841-6111` may be spoken. On static and carousel it sits on the card. It is not a second price offer.
 4. If `testimonialName` is set, the words must stay a verbatim excerpt of that review in `src/content/testimonials.ts`. Do not show that person’s face.
 5. `concept-denture-slip` is a generated older adult with lived-in skin, wrinkles, and laugh lines. No name, no blood, no needles, no extra facial or hand features. The end card is still the design system.
 6. Cross-posting follows `distribution.json`. Do not invent a third clinic, a new domain, or a city price page.

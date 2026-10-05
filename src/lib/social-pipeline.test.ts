@@ -8,6 +8,7 @@ import {
   cssColorTokens,
   endCardSpec,
   frameSpec,
+  absoluteClickHref,
   loadAds,
   loadDesignSystem,
   loadOrganicPosts,
@@ -94,6 +95,18 @@ describe("social and ad catalog", () => {
     expect(count(ads)).toEqual({ video: 14, static: 14, carousel: 13 });
     expect(count(posts)).toEqual({ video: 10, static: 10, carousel: 10 });
     expect(ads.find((unit) => unit.id === "concept-denture-slip")?.format).toBe("video");
+  });
+
+  it("sends every quiz click to the Vercel host that serves the page", () => {
+    const tuesday = posts.find((unit) => unit.id === "w01-tue");
+    expect(absoluteClickHref(tuesday!.ctaHref)).toBe(
+      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue",
+    );
+    for (const unit of units) {
+      const href = absoluteClickHref(unit.ctaHref);
+      expect(href.startsWith("https://renewimplants.vercel.app/implant-candidate-quiz?"), unit.id).toBe(true);
+      expect(href, unit.id).not.toContain("renewimplants.ca");
+    }
   });
 
   it("publishes only design-system layouts, media, and quiz links", () => {

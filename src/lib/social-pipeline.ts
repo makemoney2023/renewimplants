@@ -229,6 +229,25 @@ export function loadOrganicPosts(): PublishUnit[] {
   return parsed.posts;
 }
 
+export function absoluteClickHref(path: string) {
+  const pipeline = z
+    .object({
+      primaryCta: z.object({
+        host: z.literal("https://renewimplants.vercel.app"),
+        path: z.literal("/implant-candidate-quiz"),
+      }),
+    })
+    .parse(readJson("pipeline.json"));
+  const url = new URL(path, pipeline.primaryCta.host);
+  if (url.origin !== pipeline.primaryCta.host) {
+    throw new Error(`Click URL left ${pipeline.primaryCta.host}`);
+  }
+  if (url.pathname !== pipeline.primaryCta.path) {
+    throw new Error(`Click URL left the quiz path: ${url.pathname}`);
+  }
+  return url.toString();
+}
+
 export function publishText(unit: PublishUnit) {
   return [
     unit.hook,

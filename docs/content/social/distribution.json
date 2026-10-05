@@ -2,6 +2,11 @@
   "model": "single-domain-master-hub",
   "sourceGuide": "https://share.gemini.google/tIrA2VZtpAh2",
   "decision": "Renew Implant Centre is already the master hub on https://www.renewimplants.ca. Educational posts stay on /blog/. Do not launch a second domain, a /learn/ duplicate of /blog/, or city price pages.",
+  "clicks": {
+    "host": "https://renewimplants.vercel.app",
+    "quizPath": "/implant-candidate-quiz",
+    "reason": "The quiz is on the Vercel deployment. https://www.renewimplants.ca/implant-candidate-quiz returns 404."
+  },
   "blogs": {
     "canonicalHost": "https://www.renewimplants.ca",
     "path": "/blog/",
