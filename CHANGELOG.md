@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Larger type and a 3D scan on the Tuesday reel
+
+**What changed:** The opening line on `w01-tue` is larger. The black slide shows a 3D scan of the upper and lower teeth.
+
+**Why:** fix — the spoken line was too small to read on a phone, and the black slide had no scan.
+
+**Code touchpoints:** `assets/social/w01-tue.mp4`, `assets/social/w01-tue-poster.jpg`, `assets/social/w01-tue-scan.jpg`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** frames rendered at 1080×1920, then the reel in `/social-preview`.
+
 ## 2026-10-05 — Social catalog preview
 
 **What changed:** `/social-preview` shows the catalog the way a post sits on Instagram and Facebook. `w01-tue` plays the rendered 9:16 reel. The other units are listed and marked waiting until a file is added under `assets/social/`.

@@ -14,8 +14,8 @@ describe("social preview catalog", () => {
 
   it("puts the rendered w01-tue reel on the Vercel quiz", () => {
     const post = posts.find((item) => item.id === "w01-tue");
-    expect(post?.video).toBe("/media/social/w01-tue.mp4");
-    expect(post?.poster).toBe("/media/social/w01-tue-poster.jpg");
+    expect(post?.video).toBe("/media/social/w01-tue.mp4?v=2");
+    expect(post?.poster).toBe("/media/social/w01-tue-poster.jpg?v=2");
     expect(post?.caption).toContain("3Shape");
     expect(post?.ctaLabel).toBe("Take the two-minute quiz");
     expect(post?.instagramHref).toBe(

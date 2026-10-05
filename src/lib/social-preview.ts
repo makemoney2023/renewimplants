@@ -6,8 +6,8 @@ export { SOCIAL_PREVIEW_PATH, instagramAccount } from "./social-preview-model";
 
 const rendered: Record<string, { video: string; poster: string }> = {
   "w01-tue": {
-    video: "/media/social/w01-tue.mp4",
-    poster: "/media/social/w01-tue-poster.jpg",
+    video: "/media/social/w01-tue.mp4?v=2",
+    poster: "/media/social/w01-tue-poster.jpg?v=2",
   },
 };
 
