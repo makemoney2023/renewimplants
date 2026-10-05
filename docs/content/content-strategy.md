@@ -263,16 +263,16 @@ On this site those intents already have homes: `/pricing`, `/what-to-expect`, an
 
 Gemini asked for a low-friction CTA. Renew’s version is the two-minute, nine-question implant candidate quiz, plus the phone number.
 
-## Social posts and paid video
+## Social posts and paid ads
 
 Two later Gemini shares cover Instagram, Facebook, and Meta video ads. They are adapted in `docs/content/social/`:
 
 | File | Role |
 |---|---|
 | [design-system.json](social/design-system.json) | The only colors, type, wordmark, and end card. Tokens must match `:root` in `src/app/globals.css`. |
-| [pipeline.json](social/pipeline.json) | Stages from pick to ship. |
-| [ads.json](social/ads.json) | 40 paid angles from [the ads share](https://share.gemini.google/AN9qX8ucJp3B), rewritten without prices, fake patients, or same-day-permanent claims, plus the denture-slip film. |
-| [organic-calendar.json](social/organic-calendar.json) | 10 weeks of Tuesday / Thursday / Friday posts from [the strategy share](https://share.gemini.google/tIrA2VZtpAh2), at the 30/30/20/20 pillar mix. |
+| [pipeline.json](social/pipeline.json) | Stages from pick to ship. Paid is 14 video, 14 static, and 13 carousel. The feed is 10 of each. |
+| [ads.json](social/ads.json) | 40 paid angles from [the ads share](https://share.gemini.google/AN9qX8ucJp3B), rewritten without prices, fake patients, or same-day-permanent claims, plus the denture-slip film. Each angle is video, static, or carousel. |
+| [organic-calendar.json](social/organic-calendar.json) | 10 weeks of Tuesday / Thursday / Friday posts from [the strategy share](https://share.gemini.google/tIrA2VZtpAh2), at the 30/30/20/20 pillar mix, split evenly across video, static, and carousel. |
 | [distribution.json](social/distribution.json) | Blogs stay on this domain. A third clinic is not invented. |
 
-Every video ends on the `video-end-card` layout: DM Serif Display, Plus Jakarta Sans, the typed `renew implants` wordmark, a lime pill, and the aqua arch. Generated frames use `buildPromptPrefix()` in `src/lib/social-pipeline.ts`. Quote cards may only repeat a review in `src/content/testimonials.ts`. Run `npx vitest run src/lib/social-pipeline.test.ts` before adding a unit.
+Video ends on the `video-end-card` layout. Static is one 4:5 frame plus a square. Carousels close on `cta-still`. All three use DM Serif Display, Plus Jakarta Sans, the typed `renew implants` wordmark, a lime pill, and the aqua arch. Generated frames use `buildPromptPrefix()` in `src/lib/social-pipeline.ts`. Quote cards may only repeat a review in `src/content/testimonials.ts`. Run `npx vitest run src/lib/social-pipeline.test.ts` before adding a unit.

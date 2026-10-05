@@ -12,10 +12,10 @@
       "id": "ads",
       "url": "https://share.gemini.google/AN9qX8ucJp3B",
       "title": "Dental Implant Social Media Content",
-      "usedFor": ["40 paid video angles", "denture-slip film concept"]
+      "usedFor": ["40 paid angles across video, static, and carousel", "denture-slip film concept"]
     }
   ],
-  "produces": ["instagram-reel", "instagram-carousel", "instagram-story", "facebook-post", "facebook-reel", "meta-video-ad"],
+  "produces": ["instagram-video", "instagram-static", "instagram-carousel", "instagram-story", "facebook-video", "facebook-static", "facebook-carousel", "meta-video-ad", "meta-static-ad", "meta-carousel-ad"],
   "doesNotProduce": ["blog-post", "price-list", "pdf-lead-magnet", "countdown-sale"],
   "stages": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "id": "lock-design",
-      "action": "Resolve layoutId and endCardLayoutId in design-system.json. Paint only with token names. Run buildPromptPrefix() for any generated frame. The end card is always layout video-end-card."
+      "action": "Read formats in design-system.json. Video is 1080x1920 with a 2.5 second video-end-card. Static is one 1080x1350 frame plus a 1080x1080 square, with no voiceover. Carousel is 1080x1350 slides and the last slide is cta-still. Paint only with token names. Run buildPromptPrefix() for any generated frame."
     },
     {
       "id": "compliance",
@@ -32,11 +32,11 @@
     },
     {
       "id": "make",
-      "action": "Shoot or generate the scene. Clinic footage uses approvedMedia only. Generated people are allowed for the denture-slip concept and must look lived-in, with no extra facial or hand features and no blood or needles."
+      "action": "Make the unit in its format. Video is filmed or generated with the spoken line. Static is one still. Carousel is the slide list, in order. Clinic stills use approvedMedia only. Generated people are allowed for the denture-slip video and must look lived-in, with no extra facial or hand features and no blood or needles."
     },
     {
       "id": "end-card",
-      "action": "Hold the branded end card for 2.5 seconds. Wordmark, one serif line, lime pill, and the phone as secondary text."
+      "action": "Video only: hold video-end-card for 2.5 seconds. Static and carousel already end on the design system, and carousel must close on cta-still. Wordmark, one serif line, lime pill, phone as secondary text."
     },
     {
       "id": "ship",
@@ -44,9 +44,9 @@
     }
   ],
   "cadence": {
-    "organic": "Tuesday, Thursday, and Friday. Stories are 3 to 5 short clips a week and are not a substitute for the feed posts.",
-    "paid": "One angle at a time. Do not launch the offer cluster until the copy in ads.json is the copy on the screen.",
-    "batch": "Film 4 to 6 short videos in one sitting. Change scrubs between setups so the weeks do not look identical."
+    "organic": "Tuesday, Thursday, and Friday. The 30 feed posts are 10 video, 10 static, and 10 carousel. Stories are 3 to 5 short clips a week and are not a substitute for that mix.",
+    "paid": "41 units: 14 video, 14 static, and 13 carousel. Launch one angle at a time. Do not launch a unit until the copy in ads.json is the copy on the screen.",
+    "batch": "Film the video units in one sitting, then design the static frames and carousels from the same visit. Change scrubs between setups so the weeks do not look identical."
   },
   "pillars": {
     "clinical-demystification": 0.3,

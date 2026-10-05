@@ -17,21 +17,27 @@ export const LAYOUT_IDS = [
   "photo-lower-third",
   "quote-card",
   "video-end-card",
+  "cta-still",
 ] as const;
 
-const publishUnit = z.object({
+export const FORMATS = ["video", "static", "carousel"] as const;
+
+const slide = z.object({
+  layoutId: z.enum(LAYOUT_IDS),
+  onScreen: z.string().min(1).max(48),
+  body: z.string().min(8).max(200),
+});
+
+const publishBase = {
   id: z.string().min(1),
   status: z.enum(["ready", "needs-consent"]),
   pillar: z.enum(PILLARS),
-  format: z.enum(["video-9x16", "reel", "carousel", "post"]),
   layoutId: z.enum(LAYOUT_IDS),
-  endCardLayoutId: z.literal("video-end-card"),
   usePromptPrefix: z.literal(true),
   generatedPerson: z.boolean(),
   hook: z.string().min(8).max(125),
   body: z.string().min(40).max(900),
   onScreen: z.array(z.string().min(1).max(48)).min(1).max(3),
-  spoken: z.string().min(20).max(500),
   ctaLabel: z.string().min(1).max(40),
   ctaHref: z.string().startsWith("/implant-candidate-quiz?"),
   assetRefs: z.array(z.string()),
@@ -39,17 +45,30 @@ const publishUnit = z.object({
   quoteExcerpt: z.string().min(8).nullable(),
   testimonialName: z.string().min(1).nullable(),
   grounding: z.string().min(8),
-  slides: z
-    .array(
-      z.object({
-        layoutId: z.enum(LAYOUT_IDS),
-        onScreen: z.string().min(1).max(48),
-        body: z.string().min(8).max(200),
-      }),
-    )
-    .min(3)
-    .optional(),
+};
+
+const videoUnit = z.object({
+  ...publishBase,
+  format: z.literal("video"),
+  canvas: z.literal("video-9x16"),
+  spoken: z.string().min(20).max(500),
+  endCardLayoutId: z.literal("video-end-card"),
 });
+
+const staticUnit = z.object({
+  ...publishBase,
+  format: z.literal("static"),
+  canvas: z.literal("static-4x5"),
+  squareCanvas: z.literal("static-1x1"),
+});
+
+const carouselUnit = z.object({
+  ...publishBase,
+  format: z.literal("carousel"),
+  canvas: z.literal("static-4x5"),
+  slides: z.array(slide).min(3).max(6),
+});
+
 
 const designSystemSchema = z.object({
   id: z.literal("renew-implants"),
@@ -69,6 +88,29 @@ const designSystemSchema = z.object({
     light: z.record(z.string(), z.string()),
     dark: z.record(z.string(), z.string()),
   }),
+  canvases: z.object({
+    "video-9x16": z.object({ width: z.literal(1080), height: z.literal(1920) }),
+    "static-4x5": z.object({ width: z.literal(1080), height: z.literal(1350) }),
+    "static-1x1": z.object({ width: z.literal(1080), height: z.literal(1080) }),
+  }),
+  formats: z.object({
+    video: z.object({
+      canvas: z.literal("video-9x16"),
+      audio: z.literal(true),
+      endCardLayoutId: z.literal("video-end-card"),
+    }),
+    static: z.object({
+      canvas: z.literal("static-4x5"),
+      squareCanvas: z.literal("static-1x1"),
+      audio: z.literal(false),
+    }),
+    carousel: z.object({
+      canvas: z.literal("static-4x5"),
+      audio: z.literal(false),
+      minSlides: z.literal(3),
+      lastSlideLayoutId: z.literal("cta-still"),
+    }),
+  }),
   layouts: z.record(
     z.string(),
     z.object({
@@ -82,7 +124,10 @@ const designSystemSchema = z.object({
 });
 
 export type DesignSystem = z.infer<typeof designSystemSchema>;
-export type PublishUnit = z.infer<typeof publishUnit>;
+export type PublishUnit =
+  | z.infer<typeof videoUnit>
+  | z.infer<typeof staticUnit>
+  | z.infer<typeof carouselUnit>;
 
 const BANNED: { id: string; pattern: RegExp }[] = [
   { id: "price", pattern: /\$\s?\d/ },
@@ -136,11 +181,17 @@ export function buildPromptPrefix(design = loadDesignSystem()) {
   });
 }
 
-const adUnit = publishUnit.extend({
+const adFields = {
   geminiNumber: z.number().int().min(1).max(40).nullable(),
   angle: z.enum(["curiosity", "problem", "proof", "offer", "concept"]),
   dropped: z.array(z.string()),
-});
+};
+
+const adUnit = z.discriminatedUnion("format", [
+  videoUnit.extend(adFields),
+  staticUnit.extend(adFields),
+  carouselUnit.extend(adFields),
+]);
 
 export type AdUnit = z.infer<typeof adUnit>;
 
@@ -154,18 +205,24 @@ export function loadAds(): AdUnit[] {
   return parsed.units;
 }
 
+const organicFields = {
+  week: z.number().int().min(1).max(10),
+  weekday: z.enum(["tue", "thu", "fri"]),
+  platforms: z.array(z.enum(["instagram", "facebook"])).min(2),
+  facebookCtaHref: z.string().startsWith("/implant-candidate-quiz?"),
+};
+
 export function loadOrganicPosts(): PublishUnit[] {
   const parsed = z
     .object({
       designSystem: z.literal("renew-implants"),
       weeks: z.literal(10),
       posts: z.array(
-        publishUnit.extend({
-          week: z.number().int().min(1).max(10),
-          weekday: z.enum(["tue", "thu", "fri"]),
-          platforms: z.array(z.enum(["instagram", "facebook"])).min(2),
-          facebookCtaHref: z.string().startsWith("/implant-candidate-quiz?"),
-        }),
+        z.discriminatedUnion("format", [
+          videoUnit.extend(organicFields),
+          staticUnit.extend(organicFields),
+          carouselUnit.extend(organicFields),
+        ]),
       ),
     })
     .parse(readJson("organic-calendar.json"));
@@ -176,11 +233,29 @@ export function publishText(unit: PublishUnit) {
   return [
     unit.hook,
     unit.body,
-    unit.spoken,
+    unit.format === "video" ? unit.spoken : "",
     unit.ctaLabel,
     ...unit.onScreen,
-    ...(unit.slides ?? []).flatMap((slide) => [slide.onScreen, slide.body]),
+    ...(unit.format === "carousel" ? unit.slides.flatMap((item) => [item.onScreen, item.body]) : []),
   ].join("\n");
+}
+
+export function frameSpec(layoutId: string, design = loadDesignSystem()) {
+  const layout = design.layouts[layoutId];
+  if (!layout) throw new Error(`Missing layout ${layoutId}`);
+  const ground = design.grounds[layout.ground];
+  const color = (role: string) => {
+    const token = ground[role];
+    const hex = design.tokens[token];
+    if (!hex) throw new Error(`${layoutId} role ${role} is not a token`);
+    return { token, hex };
+  };
+  return {
+    layoutId,
+    ground: layout.ground,
+    ctaFill: color("ctaFill"),
+    ctaText: color("ctaText"),
+  };
 }
 
 export function complianceIssues(text: string) {
@@ -188,6 +263,9 @@ export function complianceIssues(text: string) {
 }
 
 export function endCardSpec(unit: PublishUnit, design = loadDesignSystem()) {
+  if (unit.format !== "video") {
+    throw new Error(`${unit.id} is ${unit.format}; only video holds an end card`);
+  }
   const layout = design.layouts[unit.endCardLayoutId];
   if (!layout) throw new Error(`${unit.id} is missing an end-card layout`);
   const ground = design.grounds[layout.ground];

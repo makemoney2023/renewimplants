@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Video, static, and carousel mix
+
+**What changed:** the social catalog no longer ships as video only. Paid units are 14 video, 14 static, and 13 carousel. The 30 feed posts are 10 of each. Static is a 4:5 frame plus a square, with no voiceover. Carousels close on the still CTA card. Video still holds the 2.5 second end card.
+
+**Why:** feature — Instagram, Facebook, and Meta need all three shapes, on the same Renew tokens and wordmark.
+
+**Code touchpoints:** `docs/content/social/*`, `src/lib/social-pipeline.ts`, `src/lib/social-pipeline.test.ts`, `.cursor/skills/renew-social/SKILL.md`
+
+**Data-flow impact:** none. No pages, leads, or schema changed.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-pipeline.test.ts`.
+
 ## 2026-10-05 — Social and paid-video pipeline
 
 **What changed:** the Gemini organic-social plan and the 40 implant ad scripts are stored as a production catalog. Every unit resolves to the live Renew design tokens, the typed wordmark, and the quiz URL. Unsafe claims from the drafts (prices, invented patients, same-day permanent teeth, fake scarcity) are dropped before publish.

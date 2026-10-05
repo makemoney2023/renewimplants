@@ -10,9 +10,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
-      "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
+      "format": "carousel",
+      "layoutId": "light-editorial",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Most people are never told what dentures do to the jaw.",
@@ -21,7 +20,6 @@
         "What dentures don't replace",
         "The jaw can change"
       ],
-      "spoken": "A denture sits on the gums. It does not replace the root, so the jaw can change shape and the denture loosens. An implant is fixed in the bone. Tom Szarski, DD, and Dr. Alex look at that on a 3D scan during a free consultation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-01",
       "assetRefs": [],
@@ -31,7 +29,30 @@
       "dropped": [
         "unsourced-stat"
       ],
-      "grounding": "Adapted from Gemini hook 1. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 1. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A denture sits on the gums",
+          "body": "It does not replace the root, so the jaw can change and the denture loosens."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "An implant is fixed in bone",
+          "body": "It does not rely on suction or adhesive to stay in."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "The scan comes first",
+          "body": "Tom Szarski, DD, and Dr. Alex look at a 3D scan during a free consultation."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-02",
@@ -40,9 +61,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Same-day teeth are a temporary bridge, not the final one.",
@@ -51,7 +71,6 @@
         "Temporary teeth the same day",
         "Final teeth after healing"
       ],
-      "spoken": "In many cases you leave the same day with a fixed temporary bridge. The final teeth are made in the onsite lab after the implants have healed. A 3D scan shows whether that path is the safer one.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-02",
       "assetRefs": [
@@ -63,7 +82,10 @@
       "dropped": [
         "same-day-permanent"
       ],
-      "grounding": "Adapted from Gemini hook 2. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 2. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "In many cases you leave the same day with a fixed temporary bridge. The final teeth are made in the onsite lab after the implants have healed. A 3D scan shows whether that path is the safer one.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-03",
@@ -72,9 +94,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Hiding a loose denture is not the only plan.",
@@ -82,7 +103,6 @@
       "onScreen": [
         "Loose is not the only plan"
       ],
-      "spoken": "If you choose meals around what will not slip, a fixed implant bridge stays in. No adhesive. No glass on the nightstand. The quiz is about two minutes and nine questions.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-03",
       "assetRefs": [],
@@ -92,7 +112,10 @@
       "dropped": [
         "hype-hook"
       ],
-      "grounding": "Adapted from Gemini hook 3. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 3. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "If you choose meals around what will not slip, a fixed implant bridge stays in. No adhesive. No glass on the nightstand. The quiz is about two minutes and nine questions.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-04",
@@ -101,9 +124,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Fixed teeth stay in. A denture comes out at night.",
@@ -111,7 +133,6 @@
       "onScreen": [
         "They stay in at night"
       ],
-      "spoken": "Implants are anchored in the jaw. You brush them. You do not take them out at night. Whether that is right for you depends on bone, gums, and health.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-04",
       "assetRefs": [],
@@ -121,7 +142,9 @@
       "dropped": [
         "ease-claim"
       ],
-      "grounding": "Adapted from Gemini hook 4. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 4. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-05",
@@ -130,9 +153,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
-      "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
+      "format": "carousel",
+      "layoutId": "light-editorial",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "A denture slips when the jaw no longer matches it.",
@@ -140,7 +162,6 @@
       "onScreen": [
         "Why a denture starts to slip"
       ],
-      "spoken": "Bone loss changes the shape under a denture. An implant is fixed to the bone, so it does not rely on suction or glue. Outcomes vary. The scan shows your starting point.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-05",
       "assetRefs": [],
@@ -150,7 +171,30 @@
       "dropped": [
         "forever-claim"
       ],
-      "grounding": "Adapted from Gemini hook 5. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 5. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Bone loss changes the shape",
+          "body": "The ridge under a denture can change, so the fit loosens."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Suction and glue are the workaround",
+          "body": "A denture relies on them. An implant is fixed to the bone."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The scan is the starting point",
+          "body": "Outcomes vary. The 3D scan shows your bone before anyone plans."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-06",
@@ -159,9 +203,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "A bridge files down the teeth beside the gap.",
@@ -169,7 +212,6 @@
       "onScreen": [
         "A bridge reduces neighbours"
       ],
-      "spoken": "A traditional bridge needs the neighbouring teeth to be reduced. An implant replaces the missing tooth without grinding them. For a full arch, All-on-4 uses a few implants to hold a whole set of teeth.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-06",
       "assetRefs": [],
@@ -179,7 +221,30 @@
       "dropped": [
         "superior-claim"
       ],
-      "grounding": "Adapted from Gemini hook 6. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 6. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A bridge reduces neighbours",
+          "body": "A traditional bridge needs the teeth beside the gap to be filed down."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "An implant leaves them alone",
+          "body": "It replaces the missing tooth without grinding the neighbours."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "A full arch is different",
+          "body": "All-on-4 uses a few implants to hold a whole set of teeth."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-07",
@@ -188,9 +253,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The plan starts with a 3D scan, not a guess.",
@@ -198,7 +262,6 @@
       "onScreen": [
         "Scan first. Then a plan."
       ],
-      "spoken": "Renew uses 3Shape scanners and an onsite lab, with a PM7 mill and Asiga printers, so the teeth are designed in the same building. The consultation is free.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-07",
       "assetRefs": [
@@ -210,7 +273,10 @@
       "dropped": [
         "cheat-code"
       ],
-      "grounding": "Adapted from Gemini hook 7. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 7. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "Renew uses 3Shape scanners and an onsite lab, with a PM7 mill and Asiga printers, so the teeth are designed in the same building. The consultation is free.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-08",
@@ -219,9 +285,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Stephen E. wrote that he should have done this years ago.",
@@ -229,7 +294,6 @@
       "onScreen": [
         "\"I should have done this years ago.\""
       ],
-      "spoken": "Stephen E., Ottawa, ON: \"I'm so happy I had this procedure done. I should have done this years ago.\" That is one verified review, not a promise about your timing.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-08",
       "assetRefs": [],
@@ -239,7 +303,9 @@
       "dropped": [
         "invented-urgency"
       ],
-      "grounding": "Adapted from Gemini hook 8. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 8. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-09",
@@ -248,9 +314,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "This is about chewing, not a Hollywood smile.",
@@ -258,7 +323,6 @@
       "onScreen": [
         "Chewing, not a poster smile"
       ],
-      "spoken": "Fixed teeth are there so you can chew and speak without planning the day around a denture. The consultation covers bone, gums, and bite. Looks are part of the lab work, not the whole point.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-09",
       "assetRefs": [],
@@ -268,7 +332,30 @@
       "dropped": [
         "hollywood-hype"
       ],
-      "grounding": "Adapted from Gemini hook 9. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 9. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Chewing, not a poster smile",
+          "body": "Fixed teeth are there so you can chew and speak."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The day is not planned around a plate",
+          "body": "Looks are part of the lab work, not the whole point."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Bone, gums, and bite",
+          "body": "The consultation covers those before anyone talks about a smile."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-10",
@@ -277,9 +364,8 @@
       "angle": "curiosity",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "You can leave with teeth the same day. Here is the catch.",
@@ -287,7 +373,6 @@
       "onScreen": [
         "Same day, with a catch"
       ],
-      "spoken": "Many patients leave with a temporary fixed bridge. Those are not the final teeth. The final bridge is made after healing. The quiz asks a few questions and the scan decides the rest.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-10",
       "assetRefs": [
@@ -299,7 +384,10 @@
       "dropped": [
         "same-day-permanent"
       ],
-      "grounding": "Adapted from Gemini hook 10. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 10. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "Many patients leave with a temporary fixed bridge. Those are not the final teeth. The final bridge is made after healing. The quiz asks a few questions and the scan decides the rest.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-11",
@@ -308,9 +396,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Still skipping the foods you actually want?",
@@ -318,7 +405,6 @@
       "onScreen": [
         "\"I can eat anything I want\""
       ],
-      "spoken": "Ken Miller, Ottawa, ON: \"Talk about life changing! Tom and his team changed my life. I can eat anything I want, no more pain, and never see that look in people's eyes when they see your teeth.\" Healing still starts with softer food. His result is not a promise.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-11",
       "assetRefs": [],
@@ -328,7 +414,9 @@
       "dropped": [
         "unsourced-bite-force"
       ],
-      "grounding": "Adapted from Gemini hook 11. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 11. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-12",
@@ -337,9 +425,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Loose dentures turn every meal into a calculation.",
@@ -347,7 +434,6 @@
       "onScreen": [
         "Meals without the math"
       ],
-      "spoken": "A fixed bridge does not click or come out at dinner. If the fear is the chair itself, sedation is available. The quiz takes about two minutes.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-12",
       "assetRefs": [],
@@ -357,7 +443,10 @@
       "dropped": [
         "anxiety-cure"
       ],
-      "grounding": "Adapted from Gemini hook 12. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 12. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "A fixed bridge does not click or come out at dinner. If the fear is the chair itself, sedation is available. The quiz takes about two minutes.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-13",
@@ -366,9 +455,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Adhesive is a workaround, not a tooth.",
@@ -376,7 +464,6 @@
       "onScreen": [
         "No paste to stay in"
       ],
-      "spoken": "We have not tested every paste on the shelf. An implant-supported bridge does not need adhesive to stay in. You still brush it, and you still come in for cleanings.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-13",
       "assetRefs": [],
@@ -386,7 +473,30 @@
       "dropped": [
         "fake-product-test"
       ],
-      "grounding": "Adapted from Gemini hook 13. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 13. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Adhesive is a workaround",
+          "body": "We have not tested every paste on the shelf."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A fixed bridge needs no paste",
+          "body": "An implant-supported bridge does not need adhesive to stay in."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "You still brush and clean",
+          "body": "You still come in for cleanings. Nothing here skips care."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-14",
@@ -395,9 +505,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "A gap does not have to be the long-term plan.",
@@ -405,7 +514,6 @@
       "onScreen": [
         "A gap is not the plan"
       ],
-      "spoken": "Leaving a space can let the bite shift and the bone change. Replacing it starts with a conversation and a 3D scan, not a same-week promise.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-14",
       "assetRefs": [],
@@ -415,7 +523,9 @@
       "dropped": [
         "faster-safer"
       ],
-      "grounding": "Adapted from Gemini hook 14. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 14. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-15",
@@ -424,9 +534,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Covering your mouth in photos is worth a conversation.",
@@ -434,7 +543,6 @@
       "onScreen": [
         "The first visit is a talk"
       ],
-      "spoken": "A lot of patients arrive unsure. The first visit is Tom listening, then a 3D scan. It is not a commitment to surgery.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-15",
       "assetRefs": [
@@ -446,7 +554,10 @@
       "dropped": [
         "cured-fear"
       ],
-      "grounding": "Adapted from Gemini hook 15. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 15. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "A lot of patients arrive unsure. The first visit is Tom listening, then a 3D scan. It is not a commitment to surgery.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-16",
@@ -455,9 +566,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "An upper denture covers the roof of your mouth.",
@@ -465,7 +575,6 @@
       "onScreen": [
         "The palate can stay open"
       ],
-      "spoken": "A fixed upper arch leaves the palate open, which is why people talk about tasting food again. It is still a prosthesis. The scan shows whether the bone can hold it.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-16",
       "assetRefs": [
@@ -477,7 +586,30 @@
       "dropped": [
         "taste-promise"
       ],
-      "grounding": "Adapted from Gemini hook 16. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 16. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "An upper denture covers the palate",
+          "body": "The plate sits on the roof of the mouth."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A fixed arch can leave it open",
+          "body": "That is why people talk about tasting food again."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "It is still a prosthesis",
+          "body": "The scan shows whether the bone can hold it."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-17",
@@ -486,9 +618,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Without tooth roots, the jaw can change shape.",
@@ -496,7 +627,6 @@
       "onScreen": [
         "The jaw needs something to hold"
       ],
-      "spoken": "Dentures rest on the gums. Implants sit in the bone and give it something to hold. They do not freeze a face in time. They are one way to replace missing teeth.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-17",
       "assetRefs": [],
@@ -506,7 +636,9 @@
       "dropped": [
         "younger-claim"
       ],
-      "grounding": "Adapted from Gemini hook 17. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 17. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-18",
@@ -515,9 +647,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
-      "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
+      "format": "carousel",
+      "layoutId": "light-editorial",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "One tooth, a few teeth, or a full arch.",
@@ -525,7 +656,6 @@
       "onScreen": [
         "The scan picks the path"
       ],
-      "spoken": "Renew focuses on full-arch implants, All-on-4, same-day temporary teeth, and snap-on dentures. The right one is the one the scan supports.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-18",
       "assetRefs": [],
@@ -535,7 +665,30 @@
       "dropped": [
         "rock-solid"
       ],
-      "grounding": "Adapted from Gemini hook 18. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 18. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "One tooth, a few, or a full arch",
+          "body": "Renew focuses on full-arch implants and All-on-4."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Same-day teeth are temporary",
+          "body": "Snap-on dentures are the removable option on implants."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The scan picks the path",
+          "body": "The right one is the one the bone can support."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-19",
@@ -544,9 +697,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "A slip mid-sentence wears people out.",
@@ -554,7 +706,6 @@
       "onScreen": [
         "Talking without a slip"
       ],
-      "spoken": "Fixed teeth stay put while you talk. They are not a promise against every future dental problem. They do take away the daily fear of a slip.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-19",
       "assetRefs": [],
@@ -564,7 +715,10 @@
       "dropped": [
         "forever-fix"
       ],
-      "grounding": "Adapted from Gemini hook 19. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 19. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "Fixed teeth stay put while you talk. They are not a promise against every future dental problem. They do take away the daily fear of a slip.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-20",
@@ -573,9 +727,8 @@
       "angle": "problem",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Teeth that do not spend the night in a glass.",
@@ -583,7 +736,6 @@
       "onScreen": [
         "Not in a glass tonight"
       ],
-      "spoken": "Patients say they are tired of a glass on the nightstand. A fixed bridge stays in. You still brush it, and you still book cleanings.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-20",
       "assetRefs": [],
@@ -593,7 +745,9 @@
       "dropped": [
         "temporary-vs-permanent-hype"
       ],
-      "grounding": "Adapted from Gemini hook 20. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 20. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-21",
@@ -602,9 +756,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Chantal has worn a lower denture on implants since 2016.",
@@ -613,7 +766,6 @@
         "A lower denture on implants",
         "Since 2016"
       ],
-      "spoken": "Chantal G., Ottawa, ON: \"In 2016, Tom made my lower denture on implants, and I've been extremely satisfied ever since.\" Her photo is not in this ad. The words are from a verified review.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-21",
       "assetRefs": [],
@@ -623,7 +775,9 @@
       "dropped": [
         "invented-patient"
       ],
-      "grounding": "Adapted from Gemini hook 21. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 21. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-22",
@@ -632,9 +786,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "From the scan to teeth milled in the same building.",
@@ -642,7 +795,6 @@
       "onScreen": [
         "One building. Scan to lab."
       ],
-      "spoken": "The visit starts with a 3D scan. The onsite lab, with a PM7 mill and Asiga printers, makes the teeth here. Dr. Alex places the implants. Tom Szarski, DD, designs and fits the teeth.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-22",
       "assetRefs": [
@@ -655,7 +807,10 @@
       "dropped": [
         "zirconia-guarantee"
       ],
-      "grounding": "Adapted from Gemini hook 22. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 22. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "The visit starts with a 3D scan. The onsite lab, with a PM7 mill and Asiga printers, makes the teeth here. Dr. Alex places the implants. Tom Szarski, DD, designs and fits the teeth.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-23",
@@ -664,9 +819,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Same-day means temporary teeth while you heal.",
@@ -674,7 +828,6 @@
       "onScreen": [
         "Teeth in place the same day"
       ],
-      "spoken": "The change people feel first is leaving with teeth in place. They are a temporary fixed bridge. Final teeth come after the implants heal. There is no before-and-after face in this ad.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-23",
       "assetRefs": [
@@ -686,7 +839,10 @@
       "dropped": [
         "one-visit-erased-pain"
       ],
-      "grounding": "Adapted from Gemini hook 23. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 23. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "The change people feel first is leaving with teeth in place. They are a temporary fixed bridge. Final teeth come after the implants heal. There is no before-and-after face in this ad.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-24",
@@ -695,9 +851,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Bruce L. wrote about the scan and the fit.",
@@ -705,7 +860,6 @@
       "onScreen": [
         "A scan, then the fit"
       ],
-      "spoken": "Bruce L., Ottawa, ON: \"The consultation was so easy and seamless. They scanned me with a new high tech machine and the fit turned out perfectly.\" That is his report of his own case.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-24",
       "assetRefs": [],
@@ -715,7 +869,9 @@
       "dropped": [
         "hype-before-after"
       ],
-      "grounding": "Adapted from Gemini hook 24. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 24. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-25",
@@ -724,18 +880,16 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Five plain reasons people look at All-on-4.",
       "body": "A few implants can hold a full arch. The surgeon, the denturist, and the lab are in one clinic. Temporary teeth are often the same day. The consultation and 3D scan are free. Adhesive is not part of a fixed bridge.",
       "onScreen": [
         "Five plain reasons",
-        "All-on-4 in Orl\u00e9ans"
+        "All-on-4 in Orléans"
       ],
-      "spoken": "A few implants can hold a full arch. The surgeon, the denturist, and the lab are in one clinic. Temporary teeth are often the same day. The consultation and 3D scan are free. Adhesive is not part of a fixed bridge.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-25",
       "assetRefs": [],
@@ -745,7 +899,40 @@
       "dropped": [
         "gold-standard"
       ],
-      "grounding": "Adapted from Gemini hook 25. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 25. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A few implants hold the arch",
+          "body": "All-on-4 is one way to replace a whole arch."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Surgeon, denturist, and lab",
+          "body": "They are in one clinic in Orléans."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Temporary teeth, often same day",
+          "body": "The final teeth come after healing."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The consultation and scan are free",
+          "body": "You get the plan before anyone quotes a number."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "No adhesive on a fixed bridge",
+          "body": "You brush it, and you still book cleanings."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-26",
@@ -754,9 +941,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Nick B. wrote that Tom revived his smile.",
@@ -764,7 +950,6 @@
       "onScreen": [
         "\"Revived my smile and confidence\""
       ],
-      "spoken": "Nick B., Ottawa, ON: \"Tom has revived my smile and confidence. I honestly feel like family!\" We are not showing his face. Confidence is his word, not a measured result.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-26",
       "assetRefs": [],
@@ -774,7 +959,9 @@
       "dropped": [
         "years-younger"
       ],
-      "grounding": "Adapted from Gemini hook 26. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 26. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-27",
@@ -783,9 +970,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Fixed teeth do not come out at night.",
@@ -793,7 +979,6 @@
       "onScreen": [
         "They stay in at night"
       ],
-      "spoken": "The day a bridge is fixed is the day it stops going into a glass. It is not a stunt, and it is not a claim that nothing will ever need care. Cleanings still matter.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-27",
       "assetRefs": [],
@@ -803,7 +988,9 @@
       "dropped": [
         "trash-the-denture"
       ],
-      "grounding": "Adapted from Gemini hook 27. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 27. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-28",
@@ -812,9 +999,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Afraid of the chair? Sedation is a real option.",
@@ -822,7 +1008,6 @@
       "onScreen": [
         "Sedation is on the table"
       ],
-      "spoken": "Sedation is available so the procedure can happen while you rest. Tim Appleby, Ottawa, ON, wrote: \"They even went above and beyond for me during an emergency after-hours issue.\" Ask about sedation at the consultation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-28",
       "assetRefs": [
@@ -834,7 +1019,10 @@
       "dropped": [
         "invented-patient"
       ],
-      "grounding": "Adapted from Gemini hook 28. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 28. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "Sedation is available so the procedure can happen while you rest. Tim Appleby, Ottawa, ON, wrote: \"They even went above and beyond for me during an emergency after-hours issue.\" Ask about sedation at the consultation.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-29",
@@ -843,9 +1031,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Tom and Dr. Alex read the 3D scan together.",
@@ -853,7 +1040,6 @@
       "onScreen": [
         "Two people. One scan."
       ],
-      "spoken": "We do not guess from a flat x-ray alone. Tom Szarski, DD, and Dr. Alex review the 3D scan and explain it in plain language. Where the implants go still depends on your bone.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-29",
       "assetRefs": [
@@ -865,7 +1051,10 @@
       "dropped": [
         "cbct-lifetime"
       ],
-      "grounding": "Adapted from Gemini hook 29. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 29. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "We do not guess from a flat x-ray alone. Tom Szarski, DD, and Dr. Alex review the 3D scan and explain it in plain language. Where the implants go still depends on your bone.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-30",
@@ -874,9 +1063,8 @@
       "angle": "proof",
       "status": "ready",
       "pillar": "social-proof",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Ken Miller wrote that he can eat what he wants.",
@@ -884,7 +1072,6 @@
       "onScreen": [
         "\"I can eat anything I want\""
       ],
-      "spoken": "Ken Miller, Ottawa, ON: \"I can eat anything I want, no more pain.\" During healing, the food is softer. What you eat later is part of your plan, not a promise of a particular meal on day one.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-30",
       "assetRefs": [],
@@ -894,7 +1081,9 @@
       "dropped": [
         "invented-steak"
       ],
-      "grounding": "Adapted from Gemini hook 30. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 30. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-31",
@@ -903,18 +1092,16 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The consultation is free. That is the offer.",
-      "body": "There is no reserved block of secret spots. Call 613-841-6111 or take the quiz. The quiz is about two minutes and nine questions. Orl\u00e9ans, Ottawa.",
+      "body": "There is no reserved block of secret spots. Call 613-841-6111 or take the quiz. The quiz is about two minutes and nine questions. Orléans, Ottawa.",
       "onScreen": [
         "Free consultation",
-        "Orl\u00e9ans, Ottawa"
+        "Orléans, Ottawa"
       ],
-      "spoken": "There is no reserved block of secret spots. Call 613-841-6111 or take the quiz. The quiz is about two minutes and nine questions. Orl\u00e9ans, Ottawa.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-31",
       "assetRefs": [],
@@ -924,7 +1111,10 @@
       "dropped": [
         "fake-scarcity"
       ],
-      "grounding": "Adapted from Gemini hook 31. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 31. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "There is no reserved block of secret spots. Call 613-841-6111 or take the quiz. The quiz is about two minutes and nine questions. Orléans, Ottawa.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-32",
@@ -933,9 +1123,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "There is no sale. The quote comes after the visit.",
@@ -943,7 +1132,6 @@
       "onScreen": [
         "The quote follows the scan"
       ],
-      "spoken": "We do not publish a price, a package, or a countdown. You get the numbers after a consultation, once the scan shows the work. In-house financing can be part of that conversation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-32",
       "assetRefs": [],
@@ -953,7 +1141,9 @@
       "dropped": [
         "package-pricing"
       ],
-      "grounding": "Adapted from Gemini hook 32. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 32. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-33",
@@ -962,9 +1152,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The 3D scan is part of the free consultation.",
@@ -972,7 +1161,6 @@
       "onScreen": [
         "The scan is included"
       ],
-      "spoken": "It is not a limited-week coupon and it has no advertised dollar value. You sit down, Tom listens, and the scan shows the bone and the teeth. Then you decide.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-33",
       "assetRefs": [],
@@ -982,7 +1170,30 @@
       "dropped": [
         "dollar-value"
       ],
-      "grounding": "Adapted from Gemini hook 33. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 33. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "The scan is part of the visit",
+          "body": "It is not a limited-week coupon and it has no advertised dollar value."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Tom listens first",
+          "body": "Then the scan shows the bone and the teeth."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Then you decide",
+          "body": "The consultation is free. It is not a commitment to surgery."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-34",
@@ -991,9 +1202,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "static",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Evenings and weekends are available on request.",
@@ -1001,7 +1211,6 @@
       "onScreen": [
         "Ask for an evening"
       ],
-      "spoken": "Weekdays are by appointment. If you need a later time, ask. The phone is 613-841-6111. The quiz is there if you would rather start in writing.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-34",
       "assetRefs": [],
@@ -1011,7 +1220,9 @@
       "dropped": [
         "false-waitlist"
       ],
-      "grounding": "Adapted from Gemini hook 34. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 34. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "ad-35",
@@ -1020,9 +1231,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Nine questions. About two minutes. Then a talk.",
@@ -1031,7 +1241,6 @@
         "Nine questions",
         "About two minutes"
       ],
-      "spoken": "There is no mailed kit and no download that lists prices. The implant candidate quiz is the first step. A person from the clinic follows up.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-35",
       "assetRefs": [],
@@ -1041,7 +1250,30 @@
       "dropped": [
         "pdf-magnet"
       ],
-      "grounding": "Adapted from Gemini hook 35. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 35. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Nine questions",
+          "body": "The implant candidate quiz is about two minutes."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "No mailed kit",
+          "body": "There is no download that lists prices."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Then a person follows up",
+          "body": "A person from the clinic calls after the quiz."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-36",
@@ -1050,9 +1282,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
-      "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
+      "format": "carousel",
+      "layoutId": "light-editorial",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Financing exists. The numbers are not in this ad.",
@@ -1060,7 +1291,6 @@
       "onScreen": [
         "Ask about financing"
       ],
-      "spoken": "Dentures can need relines and new sets over time. A fixed bridge has a different kind of upkeep: brushing and cleanings, not adhesive. In-house plans are explained at the visit. No rate is quoted here.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-36",
       "assetRefs": [],
@@ -1070,7 +1300,30 @@
       "dropped": [
         "replacement-cycle-stat"
       ],
-      "grounding": "Adapted from Gemini hook 36. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 36. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Dentures need upkeep",
+          "body": "They can need relines and new sets over time."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A fixed bridge is different",
+          "body": "Brushing and cleanings, not adhesive."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Financing is explained in person",
+          "body": "In-house plans are part of the visit. No rate is quoted here."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-37",
@@ -1079,9 +1332,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "In-house plans are discussed at the consultation.",
@@ -1089,7 +1341,6 @@
       "onScreen": [
         "The plan is explained in person"
       ],
-      "spoken": "A new smile should not require a guess about the bill. The consultation is where the work and the payment plan are explained. There is no credit-check claim in this ad.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-37",
       "assetRefs": [],
@@ -1099,7 +1350,30 @@
       "dropped": [
         "credit-hit"
       ],
-      "grounding": "Adapted from Gemini hook 37. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 37. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The bill is not a guess",
+          "body": "The work is explained after the scan, not in an ad."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Payment plans are explained there",
+          "body": "In-house plans can be part of that conversation."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "No credit-check claim",
+          "body": "This ad does not say what a credit check will or will not do."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-38",
@@ -1108,17 +1382,15 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Ready to stop planning meals around a denture?",
-      "body": "Start with the quiz. If a fixed bridge is a fit, the next step is a free consultation at 2530 St Joseph Blvd in Orl\u00e9ans. The phone is 613-841-6111.",
+      "body": "Start with the quiz. If a fixed bridge is a fit, the next step is a free consultation at 2530 St Joseph Blvd in Orléans. The phone is 613-841-6111.",
       "onScreen": [
         "Stop planning around a denture"
       ],
-      "spoken": "Start with the quiz. If a fixed bridge is a fit, the next step is a free consultation at 2530 St Joseph Blvd in Orl\u00e9ans. The phone is 613-841-6111.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-38",
       "assetRefs": [],
@@ -1128,7 +1400,10 @@
       "dropped": [
         "dream-smile-hype"
       ],
-      "grounding": "Adapted from Gemini hook 38. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 38. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "video-9x16",
+      "spoken": "Start with the quiz. If a fixed bridge is a fit, the next step is a free consultation at 2530 St Joseph Blvd in Orléans. The phone is 613-841-6111.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "ad-39",
@@ -1137,9 +1412,8 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
-      "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
+      "format": "carousel",
+      "layoutId": "light-editorial",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Get a straight answer before you decide.",
@@ -1147,7 +1421,6 @@
       "onScreen": [
         "A straight answer first"
       ],
-      "spoken": "Bring the questions about pain, time, and coverage. CDCP can cover dentures and overdentures, with preauthorization. It does not cover most implants. The consult is free.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-39",
       "assetRefs": [],
@@ -1157,7 +1430,30 @@
       "dropped": [
         "more-accessible"
       ],
-      "grounding": "Adapted from Gemini hook 39. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 39. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Bring the real questions",
+          "body": "Pain, time, and coverage belong in the consultation."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "CDCP can cover some dentures",
+          "body": "Dentures and overdentures, with preauthorization."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Most implants are not covered",
+          "body": "The consult is free. A quote still waits for the scan."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "ad-40",
@@ -1166,18 +1462,16 @@
       "angle": "offer",
       "status": "ready",
       "pillar": "patient-education",
-      "format": "video-9x16",
-      "layoutId": "video-end-card",
-      "endCardLayoutId": "video-end-card",
+      "format": "static",
+      "layoutId": "cta-still",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The free consultation is the offer. No countdown.",
-      "body": "If you have been waiting for a push, this is a quieter one. Take the two-minute quiz or call 613-841-6111. Renew Implant Centre, Orl\u00e9ans.",
+      "body": "If you have been waiting for a push, this is a quieter one. Take the two-minute quiz or call 613-841-6111. Renew Implant Centre, Orléans.",
       "onScreen": [
         "No countdown",
         "Free consultation"
       ],
-      "spoken": "If you have been waiting for a push, this is a quieter one. Take the two-minute quiz or call 613-841-6111. Renew Implant Centre, Orl\u00e9ans.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-40",
       "assetRefs": [],
@@ -1187,7 +1481,9 @@
       "dropped": [
         "countdown"
       ],
-      "grounding": "Adapted from Gemini hook 40. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orl\u00e9ans."
+      "grounding": "Adapted from Gemini hook 40. Facts used: free consultation, 3D scan, onsite lab, Tom Szarski DD, Dr. Alex, Orléans.",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "concept-denture-slip",
@@ -1196,9 +1492,8 @@
       "angle": "concept",
       "status": "ready",
       "pillar": "clinical-demystification",
-      "format": "video-9x16",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": true,
       "hook": "A denture can slip at the worst moment.",
@@ -1206,7 +1501,6 @@
       "onScreen": [
         "A slip, then a fixed option"
       ],
-      "spoken": "Loose dentures can slip when you laugh. A fixed bridge stays in. Take the two-minute quiz to see if it is worth a consultation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=concept-denture-slip",
       "assetRefs": [],
@@ -1218,7 +1512,15 @@
         "blood",
         "cruel-humour"
       ],
-      "grounding": "Creative concept only. The person is generated, not a Renew patient, and is never given a name."
+      "grounding": "Creative concept only. The person is generated, not a Renew patient, and is never given a name.",
+      "canvas": "video-9x16",
+      "spoken": "Loose dentures can slip when you laugh. A fixed bridge stays in. Take the two-minute quiz to see if it is worth a consultation.",
+      "endCardLayoutId": "video-end-card"
     }
-  ]
+  ],
+  "mix": {
+    "video": 14,
+    "static": 14,
+    "carousel": 13
+  }
 }

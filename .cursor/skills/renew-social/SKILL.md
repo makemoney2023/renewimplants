@@ -1,11 +1,11 @@
 ---
 name: renew-social
-description: Produce Renew Implant Centre Instagram, Facebook, and Meta video ads from the social catalog. Locks every frame to the Renew design system (tokens, wordmark, end card) and the clinic compliance rules. Use when drafting, filming, or reviewing social posts, Reels, carousels, Stories, or paid dental-implant video ads.
+description: Produce Renew Implant Centre Instagram, Facebook, and Meta ads from the social catalog. Every unit is video, static, or carousel, and every frame stays on the Renew design system. Use when drafting, filming, or reviewing social posts, Reels, stills, carousels, Stories, or paid dental-implant ads.
 ---
 
-# Renew social and paid video
+# Renew social and paid ads
 
-Blog posts still follow [renew-blog-writing](../renew-blog-writing/SKILL.md). This skill is for Instagram, Facebook, and Meta video.
+Blog posts still follow [renew-blog-writing](../renew-blog-writing/SKILL.md). This skill is for Instagram, Facebook, and Meta ads. The feed and the paid catalog are a mix of video, static, and carousel. Do not ship a week or a campaign that is only one of those.
 
 The catalog is `docs/content/social/`. Entity facts and locked claims stay in [docs/search-visibility.md](../../../docs/search-visibility.md).
 
@@ -16,13 +16,17 @@ The catalog is `docs/content/social/`. Entity facts and locked claims stay in [d
 3. Type is DM Serif Display (headlines, weight 400) and Plus Jakarta Sans (labels and body). The wordmark is the word `renew` in the serif and `implants` in small caps. There is no logo file. Do not draw a tooth icon in its place.
 4. Light grounds use aqua eyebrows. Dark grounds use lime eyebrows. The CTA is always a fully rounded lime pill with near-black text.
 5. A single thin aqua arch stroke is allowed. It reads as a jaw curve, not a logo.
-6. Every video’s last 2.5 seconds is layout `video-end-card`. Call `buildPromptPrefix()` from `src/lib/social-pipeline.ts` for any generated frame. Clinic stills must be paths in `approvedMedia`.
+6. Formats are declared in `design-system.json`:
+   - `video` is 1080×1920, with a spoken line. The last 2.5 seconds are layout `video-end-card`.
+   - `static` is one 1080×1350 frame, also cut to 1080×1080. No voiceover.
+   - `carousel` is 1080×1350 slides. The last slide is layout `cta-still`.
+7. Call `buildPromptPrefix()` from `src/lib/social-pipeline.ts` for any generated frame. Clinic stills must be paths in `approvedMedia`.
 
 ## Produce one unit
 
 1. Pick a `ready` unit from `ads.json` (paid) or `organic-calendar.json` (feed). Skip anything that needs a signed social release.
-2. Speak the unit’s `hook`, `body`, and `onScreen` lines. Do not paste the original Gemini hook back in.
-3. The click goes to `ctaHref` (the implant quiz, about two minutes, nine questions). The phone `613-841-6111` can be spoken. It is not a second price offer.
+2. Follow `format`. Video speaks `hook`, `spoken`, and `onScreen`. Static and carousel put `onScreen` and slide lines on the frame and use `body` as the caption. Do not paste the original Gemini hook back in. Do not turn a static or carousel unit into a video to save a setup.
+3. The click goes to `ctaHref` (the implant quiz, about two minutes, nine questions). On video the phone `613-841-6111` may be spoken. On static and carousel it sits on the card. It is not a second price offer.
 4. If `testimonialName` is set, the words must stay a verbatim excerpt of that review in `src/content/testimonials.ts`. Do not show that person’s face.
 5. `concept-denture-slip` is a generated older adult with lived-in skin, wrinkles, and laugh lines. No name, no blood, no needles, no extra facial or hand features. The end card is still the design system.
 6. Cross-posting follows `distribution.json`. Do not invent a third clinic, a new domain, or a city price page.
@@ -33,4 +37,4 @@ The catalog is `docs/content/social/`. Entity facts and locked claims stay in [d
 npx vitest run src/lib/social-pipeline.test.ts
 ```
 
-The test fails if a unit leaves the palette, quotes a price, calls Tom Szarski “Dr.”, says guarantee, or names a patient who is not in the review file.
+The test fails if a catalog collapses back to one format, a unit leaves the palette, a static or carousel grows a voiceover, a carousel skips the closing card, the copy quotes a price, calls Tom Szarski “Dr.”, says guarantee, or names a patient who is not in the review file.

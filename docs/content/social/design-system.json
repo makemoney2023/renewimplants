@@ -123,6 +123,30 @@
       "use": "The last 2.5 seconds of every video. The scene may be photographic. This frame is always the design system.",
       "durationSeconds": 2.5,
       "structure": ["wordmark", "one serif line", "lime pill", "phone as secondary text", "aqua arch"]
+    },
+    "cta-still": {
+      "ground": "dark",
+      "use": "The last slide of every carousel, and any static frame that is only the offer. Same paint as the video end card, with no timed hold.",
+      "structure": ["wordmark", "one serif line", "lime pill", "phone as secondary text", "aqua arch"]
+    }
+  },
+  "formats": {
+    "video": {
+      "canvas": "video-9x16",
+      "audio": true,
+      "endCardLayoutId": "video-end-card",
+      "endCardSeconds": 2.5
+    },
+    "static": {
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1",
+      "audio": false
+    },
+    "carousel": {
+      "canvas": "static-4x5",
+      "audio": false,
+      "minSlides": 3,
+      "lastSlideLayoutId": "cta-still"
     }
   },
   "approvedMedia": [

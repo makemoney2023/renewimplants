@@ -7,6 +7,7 @@ import {
   complianceIssues,
   cssColorTokens,
   endCardSpec,
+  frameSpec,
   loadAds,
   loadDesignSystem,
   loadOrganicPosts,
@@ -84,6 +85,17 @@ describe("social and ad catalog", () => {
     });
   });
 
+  it("mixes video, static, and carousel in both catalogs", () => {
+    const count = (items: { format: string }[]) => ({
+      video: items.filter((item) => item.format === "video").length,
+      static: items.filter((item) => item.format === "static").length,
+      carousel: items.filter((item) => item.format === "carousel").length,
+    });
+    expect(count(ads)).toEqual({ video: 14, static: 14, carousel: 13 });
+    expect(count(posts)).toEqual({ video: 10, static: 10, carousel: 10 });
+    expect(ads.find((unit) => unit.id === "concept-denture-slip")?.format).toBe("video");
+  });
+
   it("publishes only design-system layouts, media, and quiz links", () => {
     const rawAds = readFileSync(join(socialDir, "ads.json"), "utf8");
     const rawPosts = readFileSync(join(socialDir, "organic-calendar.json"), "utf8");
@@ -92,16 +104,39 @@ describe("social and ad catalog", () => {
 
     for (const unit of units) {
       expect(design.layouts[unit.layoutId], unit.id).toBeDefined();
+      expect(design.canvases[unit.canvas], unit.id).toBeDefined();
       expect(unit.usePromptPrefix).toBe(true);
       expect(unit.ctaHref).toContain("utm_campaign=" + unit.id);
       expect(unit.ctaLabel.toLowerCase()).not.toMatch(/30 second|one minute|1 minute/);
       for (const asset of unit.assetRefs) {
         expect(design.approvedMedia, unit.id).toContain(asset);
       }
-      const card = endCardSpec(unit, design);
-      expect(card.ctaFill.hex).toBe(design.tokens.accent);
-      expect(card.ctaText.hex).toBe(design.tokens["ink-deep"]);
-      expect(card.display).toBe("DM Serif Display");
+      const frame = frameSpec(unit.layoutId, design);
+      expect(frame.ctaFill.hex, unit.id).toBe(design.tokens.accent);
+      expect(frame.ctaText.hex, unit.id).toBe(design.tokens["ink-deep"]);
+      if (unit.format === "video") {
+        const card = endCardSpec(unit, design);
+        expect(card.ctaFill.hex).toBe(design.tokens.accent);
+        expect(card.ctaText.hex).toBe(design.tokens["ink-deep"]);
+        expect(card.display).toBe("DM Serif Display");
+        expect(unit.canvas).toBe(design.formats.video.canvas);
+      }
+      if (unit.format === "static") {
+        expect(unit.canvas).toBe(design.formats.static.canvas);
+        expect(unit.squareCanvas).toBe(design.formats.static.squareCanvas);
+        expect(unit).not.toHaveProperty("spoken");
+        expect(unit).not.toHaveProperty("slides");
+      }
+      if (unit.format === "carousel") {
+        expect(unit.canvas).toBe(design.formats.carousel.canvas);
+        expect(unit.slides.length).toBeGreaterThanOrEqual(design.formats.carousel.minSlides);
+        expect(unit.slides.at(-1)?.layoutId).toBe(design.formats.carousel.lastSlideLayoutId);
+        expect(unit).not.toHaveProperty("spoken");
+        for (const slide of unit.slides) {
+          const slideFrame = frameSpec(slide.layoutId, design);
+          expect(slideFrame.ctaFill.hex, unit.id).toBe(design.tokens.accent);
+        }
+      }
       expect(complianceIssues(publishText(unit)), unit.id).toEqual([]);
     }
   });

@@ -18,7 +18,8 @@
       "One frame of the 3Shape scanner. No putty.",
       "Wordmark end card with the quiz and 613-841-6111."
     ],
-    "consent": "No patient face, name, or case without a signed release that names social media."
+    "consent": "No patient face, name, or case without a signed release that names social media.",
+    "note": "Stories stay short video, 3 to 5 a week. They do not replace the feed, which is ten video, ten static, and ten carousel."
   },
   "posts": [
     {
@@ -30,9 +31,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "video",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "This is a 3D scan, not a putty impression.",
@@ -40,7 +40,6 @@
       "onScreen": [
         "No more putty impressions"
       ],
-      "spoken": "The scanner is a 3Shape. It maps the teeth and the jaw so Tom and Dr. Alex can plan in the same building. No messy putty.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w01-tue",
@@ -51,7 +50,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Clinic uses 3Shape scanners, stated on the meet and why-choose pages.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "The scanner is a 3Shape. It maps the teeth and the jaw so Tom and Dr. Alex can plan in the same building. No messy putty.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w01-thu",
@@ -62,9 +64,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Ken Miller wrote that he can eat what he wants.",
@@ -72,7 +73,6 @@
       "onScreen": [
         "\"I can eat anything I want\""
       ],
-      "spoken": "Ken Miller, Ottawa, ON: \"Talk about life changing! Tom and his team changed my life. I can eat anything I want, no more pain, and never see that look in people's eyes when they see your teeth.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w01-thu",
@@ -81,7 +81,9 @@
       "quoteExcerpt": "I can eat anything I want, no more pain",
       "testimonialName": "Ken Miller",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w01-fri",
@@ -92,9 +94,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Tom listens before he talks about teeth.",
@@ -102,7 +103,6 @@
       "onScreen": [
         "He listens first"
       ],
-      "spoken": "The first part of a consultation is the story, not the chair. Tom Szarski, DD, is the denturist and founder. Dr. Alex places the implants in the same building.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w01-fri",
@@ -113,7 +113,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Homepage connection act and meet-your-dentist page.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "The first part of a consultation is the story, not the chair. Tom Szarski, DD, is the denturist and founder. Dr. Alex places the implants in the same building.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w02-tue",
@@ -124,9 +127,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "video",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Same-day teeth are temporary on purpose.",
@@ -134,7 +136,6 @@
       "onScreen": [
         "Temporary on purpose"
       ],
-      "spoken": "You can leave with a fixed temporary bridge. The final teeth are made after healing, in the onsite lab. The scan decides if same-day is the safer plan.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w02-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w02-tue",
@@ -145,7 +146,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Same-day blog: temporary bridge the same day, final bridge after healing.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "You can leave with a fixed temporary bridge. The final teeth are made after healing, in the onsite lab. The scan decides if same-day is the safer plan.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w02-thu",
@@ -156,9 +160,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Chantal's lower teeth have been on implants since 2016.",
@@ -166,7 +169,6 @@
       "onScreen": [
         "On implants since 2016"
       ],
-      "spoken": "Chantal G., Ottawa, ON: \"In 2016, Tom made my lower denture on implants, and I've been extremely satisfied ever since. Next to great work, what I appreciate most is the service.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w02-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w02-thu",
@@ -175,7 +177,9 @@
       "quoteExcerpt": "Tom made my lower denture on implants",
       "testimonialName": "Chantal G.",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w02-fri",
@@ -188,7 +192,6 @@
       "pillar": "patient-education",
       "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Three things worth knowing before you book.",
@@ -196,7 +199,6 @@
       "onScreen": [
         "Three things before you book"
       ],
-      "spoken": "A fixed bridge is not adhesive. Same-day teeth are temporary. The quote comes after the scan, not from an ad.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w02-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w02-fri",
@@ -206,6 +208,7 @@
       "testimonialName": null,
       "grounding": "Compliance rules plus the same-day and pricing pages.",
       "status": "ready",
+      "canvas": "static-4x5",
       "slides": [
         {
           "layoutId": "light-editorial",
@@ -221,6 +224,11 @@
           "layoutId": "carbon-editorial",
           "onScreen": "The quote comes after the scan.",
           "body": "No price in the caption. Take the quiz."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
         }
       ]
     },
@@ -233,9 +241,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Watch a dental implant come apart, slowly.",
@@ -243,7 +250,6 @@
       "onScreen": [
         "Crown, screw, abutment, fixture"
       ],
-      "spoken": "Crown, retaining screw, abutment, fixture. That is the stack. The silent loop shows it assembling. The consultation is where it gets personal.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w03-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w03-tue",
@@ -254,7 +260,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Implant assembly loop alt text in site.ts.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "Crown, retaining screw, abutment, fixture. That is the stack. The silent loop shows it assembling. The consultation is where it gets personal.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w03-thu",
@@ -265,9 +274,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Bruce L. wrote that the scan felt easy.",
@@ -275,7 +283,6 @@
       "onScreen": [
         "\"The fit turned out perfectly.\""
       ],
-      "spoken": "Bruce L., Ottawa, ON: \"The consultation was so easy and seamless. They scanned me with a new high tech machine and the fit turned out perfectly.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w03-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w03-thu",
@@ -284,7 +291,9 @@
       "quoteExcerpt": "The consultation was so easy and seamless",
       "testimonialName": "Bruce L.",
       "grounding": "Verified Google review. His wording, not a clinic promise.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w03-fri",
@@ -295,9 +304,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The lab is in the building, not across town.",
@@ -305,7 +313,6 @@
       "onScreen": [
         "Milled in the building"
       ],
-      "spoken": "Registered dental technicians run a PM7 mill, Asiga printers, and 3Shape scanners. The sister clinic operates that lab. Renew patients do not wait on an outside courier for the teeth.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w03-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w03-fri",
@@ -316,7 +323,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Why-choose and meet pages name the PM7, Asiga printers, and 3Shape scanners.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "Registered dental technicians run a PM7 mill, Asiga printers, and 3Shape scanners. The sister clinic operates that lab. Renew patients do not wait on an outside courier for the teeth.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w04-tue",
@@ -327,9 +337,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "All-on-4 holds a full arch on a few implants.",
@@ -337,7 +346,6 @@
       "onScreen": [
         "A full arch. A few implants."
       ],
-      "spoken": "It is one way to replace a whole arch when the scan says the bone can support it. Tom designs the teeth. Dr. Alex places the implants.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w04-tue",
@@ -348,7 +356,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "All-on-4 service page.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "A few implants hold the arch",
+          "body": "All-on-4 replaces a whole arch when the scan says the bone can support it."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Tom designs. Dr. Alex places.",
+          "body": "The denturist and the surgeon work in the same building."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The scan decides",
+          "body": "It is one option, not a promise for every jaw."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w04-thu",
@@ -359,9 +390,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Nick B. said the care felt like family.",
@@ -369,7 +399,6 @@
       "onScreen": [
         "\"Revived my smile and confidence\""
       ],
-      "spoken": "Nick B., Ottawa, ON: \"The level of care and commitment I've received from Renew is beyond anything I have ever received from any other denture clinic. Tom has revived my smile and confidence.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w04-thu",
@@ -378,7 +407,9 @@
       "quoteExcerpt": "Tom has revived my smile and confidence",
       "testimonialName": "Nick B.",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w04-fri",
@@ -389,9 +420,8 @@
         "facebook"
       ],
       "pillar": "patient-education",
-      "format": "post",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Bone can change after teeth are gone.",
@@ -399,7 +429,6 @@
       "onScreen": [
         "The jaw can change"
       ],
-      "spoken": "A denture does not replace the root, so the jaw under it can change and the fit can loosen. An implant sits in the bone. Whether you have enough bone is a scan question, not a guess. No percentage belongs in this post.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w04-fri",
@@ -408,7 +437,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Do not repeat the unsourced 50 percent grafting claim from the Gemini list.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "A denture does not replace the root",
+          "body": "The jaw under it can change, and the fit can loosen."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "An implant sits in the bone",
+          "body": "It gives the jaw something to hold."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Enough bone is a scan question",
+          "body": "No percentage belongs in this post."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w05-tue",
@@ -419,9 +471,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "carousel",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Snap-on teeth come out. All-on-4 stays fixed.",
@@ -429,7 +480,6 @@
       "onScreen": [
         "Snap-on or fixed"
       ],
-      "spoken": "Snap-on dentures clip to implants and you remove them to clean. All-on-4 is a fixed bridge. Both are made here. The consultation sorts out which one the bone and the daily routine can support.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w05-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w05-tue",
@@ -440,7 +490,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Snap-on and All-on-4 service pages.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "photo-lower-third",
+          "onScreen": "Snap-on teeth come out",
+          "body": "They clip to implants and you remove them to clean."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "All-on-4 stays fixed",
+          "body": "It is a bridge you brush. You do not take it out at night."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Both are made here",
+          "body": "The consultation sorts out which one the bone and the routine can support."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w05-thu",
@@ -451,9 +524,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Eric B. came for a removable bar overdenture.",
@@ -461,7 +533,6 @@
       "onScreen": [
         "A removable bar overdenture"
       ],
-      "spoken": "Eric B., Ottawa, ON: \"Tom recommended a new procedure to install a removable bar overdenture at his new Renew Implant Centre. I am extremely satisfied with the result.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w05-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w05-thu",
@@ -470,7 +541,9 @@
       "quoteExcerpt": "removable bar overdenture",
       "testimonialName": "Eric B.",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w05-fri",
@@ -481,9 +554,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The room is prepared before you sit down.",
@@ -491,7 +563,6 @@
       "onScreen": [
         "Set up before you arrive"
       ],
-      "spoken": "A clean suite is part of the trust. This clip stays on the room, the instruments covered, and the team setting up. No blood, no needles, no surgery in progress.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w05-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w05-fri",
@@ -502,7 +573,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Gemini guardrail: no graphic clinical footage. Use the renovated room still.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "A clean suite is part of the trust. This clip stays on the room, the instruments covered, and the team setting up. No blood, no needles, no surgery in progress.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w06-tue",
@@ -513,9 +587,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "video",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Sedation is there if the chair is the hard part.",
@@ -523,7 +596,6 @@
       "onScreen": [
         "You can rest through it"
       ],
-      "spoken": "Sleep dentistry is offered so implant surgery can happen while you rest. The options are explained at the consultation. This post does not describe doses.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w06-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w06-tue",
@@ -534,7 +606,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Sedation service and dental-anxiety page. No dosing advice.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "Sleep dentistry is offered so implant surgery can happen while you rest. The options are explained at the consultation. This post does not describe doses.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w06-thu",
@@ -545,9 +620,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Tim Appleby wrote about an after-hours emergency.",
@@ -555,7 +629,6 @@
       "onScreen": [
         "After hours, they answered"
       ],
-      "spoken": "Tim Appleby, Ottawa, ON: \"They even went above and beyond for me during an emergency after-hours issue. If you are considering implants, I highly recommend Tom and his team.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w06-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w06-thu",
@@ -564,7 +637,9 @@
       "quoteExcerpt": "emergency after-hours issue",
       "testimonialName": "Tim Appleby",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w06-fri",
@@ -575,9 +650,8 @@
         "facebook"
       ],
       "pillar": "patient-education",
-      "format": "post",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "CDCP covers some dentures, not most implants.",
@@ -585,7 +659,6 @@
       "onScreen": [
         "CDCP is not most implants"
       ],
-      "spoken": "The Canadian Dental Care Plan can cover dentures and overdentures, with preauthorization. It does not cover most implant treatment. The team bills CDCP and other plans directly. A quote still waits for the consultation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w06-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w06-fri",
@@ -594,7 +667,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Locked claim in search-visibility.md and the pricing page.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "CDCP can cover dentures",
+          "body": "Dentures and overdentures, with preauthorization."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Most implants are not covered",
+          "body": "The plan does not cover most implant treatment."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The team bills plans directly",
+          "body": "A quote still waits for the consultation."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w07-tue",
@@ -605,9 +701,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "carousel",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Upper and lower arches are planned apart.",
@@ -615,7 +710,6 @@
       "onScreen": [
         "Upper and lower, apart"
       ],
-      "spoken": "The upper jaw sometimes needs more bone help, including a sinus lift when the scan shows it. The lower jaw has its own shape. Each arch gets its own plan.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w07-tue",
@@ -626,7 +720,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Upper-jaw and lower-jaw service pages. Do not claim every case needs a sinus lift.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "photo-lower-third",
+          "onScreen": "Each arch gets its own plan",
+          "body": "Upper and lower are not one drawing."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The upper jaw sometimes needs help",
+          "body": "A sinus lift only when the scan shows it."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The lower jaw has its own shape",
+          "body": "The plan follows that shape."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w07-thu",
@@ -637,9 +754,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "G Z. named the Tom and Alex team.",
@@ -647,7 +763,6 @@
       "onScreen": [
         "The Tom/Alex team"
       ],
-      "spoken": "G Z., Ottawa, ON: \"New implants, new teeth for a new smile. A plan very well executed by the Tom/Alex team that left another happy customer.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w07-thu",
@@ -656,7 +771,9 @@
       "quoteExcerpt": "the Tom/Alex team",
       "testimonialName": "G Z.",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w07-fri",
@@ -667,9 +784,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "The team speaks English and French.",
@@ -677,7 +793,6 @@
       "onScreen": [
         "English or French"
       ],
-      "spoken": "Consultations, calls, and the quiz follow-up can happen in English or French. Say which you prefer when you book.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w07-fri",
@@ -688,7 +803,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Meet page FAQ: bilingual service.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "Consultations, calls, and the quiz follow-up can happen in English or French. Say which you prefer when you book.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w08-tue",
@@ -699,9 +817,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "What the free consultation actually includes.",
@@ -709,7 +826,6 @@
       "onScreen": [
         "Talk, scan, plain plan"
       ],
-      "spoken": "A conversation, 3D scans and digital images, and a plain-language plan from Tom and Dr. Alex. You leave knowing the next step. You do not leave with a surprise price list from social media.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w08-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w08-tue",
@@ -720,7 +836,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "What-to-expect page: listen, then 3D scans.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "It starts with a conversation",
+          "body": "Tom listens before anyone talks about a procedure."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Then a 3D scan",
+          "body": "Scans and digital images, in the building."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "You leave with a plain plan",
+          "body": "Not a surprise price list from social media."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w08-thu",
@@ -731,9 +870,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Stephen E. said he should have come years earlier.",
@@ -741,7 +879,6 @@
       "onScreen": [
         "\"I should have done this years ago.\""
       ],
-      "spoken": "Stephen E., Ottawa, ON: \"Tom Szarski and his staff were excellent. I'm so happy I had this procedure done. I should have done this years ago.\"",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w08-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w08-thu",
@@ -750,7 +887,9 @@
       "quoteExcerpt": "I should have done this years ago.",
       "testimonialName": "Stephen E.",
       "grounding": "Verified Google review.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w08-fri",
@@ -761,9 +900,8 @@
         "facebook"
       ],
       "pillar": "patient-education",
-      "format": "post",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Pain is the question. Here is the honest shape of it.",
@@ -771,7 +909,6 @@
       "onScreen": [
         "Sore, then it eases"
       ],
-      "spoken": "Implant surgery is done with anesthesia, and sedation is available. Afterwards people have swelling and soreness that eases over days, not a script from an ad. Your surgeon gives the instructions. This post does not list doses.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w08-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w08-fri",
@@ -780,7 +917,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "No dosing. Anxiety cluster. Do not promise a painless procedure.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The surgery uses anesthesia",
+          "body": "Sedation is available if the chair is the hard part."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Afterwards: swelling and soreness",
+          "body": "It eases over days, not on a script from an ad."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Your surgeon writes the instructions",
+          "body": "This post does not list doses."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w09-tue",
@@ -791,9 +951,8 @@
         "facebook"
       ],
       "pillar": "clinical-demystification",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "A healing abutment is a second, smaller visit.",
@@ -801,7 +960,6 @@
       "onScreen": [
         "A step, not the whole visit"
       ],
-      "spoken": "After the implant is in the bone, a healing cap shapes the gum for the tooth that follows. It is a step, not the whole treatment. Timing depends on how the bone is healing.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w09-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w09-tue",
@@ -812,7 +970,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Standard staging, described without a clinic-specific week count.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "After the implant is in the bone, a healing cap shapes the gum for the tooth that follows. It is a step, not the whole treatment. Timing depends on how the bone is healing.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w09-thu",
@@ -823,9 +984,8 @@
         "facebook"
       ],
       "pillar": "social-proof",
-      "format": "post",
+      "format": "static",
       "layoutId": "quote-card",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Ernie Minichilli wrote that there were no surprises.",
@@ -833,7 +993,6 @@
       "onScreen": [
         "Well taken care of"
       ],
-      "spoken": "Ernie Minichilli, Ottawa, ON: \"From start to finish, I felt extremely well taken care of. Everyone was welcoming, helpful, and friendly.\" The review also mentions fair pricing. The numbers themselves stay in the consultation.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w09-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w09-thu",
@@ -842,7 +1001,9 @@
       "quoteExcerpt": "I felt extremely well taken care of",
       "testimonialName": "Ernie Minichilli",
       "grounding": "Verified Google review. Do not turn his price comment into a published fee.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     },
     {
       "id": "w09-fri",
@@ -853,9 +1014,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "video",
       "layoutId": "photo-lower-third",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "Twenty years in Ottawa. Four generations in dentistry.",
@@ -863,7 +1023,6 @@
       "onScreen": [
         "Twenty years in Ottawa"
       ],
-      "spoken": "Tom Szarski, DD, trained at George Brown College and has served on the Denturist Association of Ontario board. The clinic is the surgeon, the denturist, and the lab under one roof.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w09-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w09-fri",
@@ -874,7 +1033,10 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "CONTACTS-NAP.md and the meet page. Do not call him Dr.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "video-9x16",
+      "spoken": "Tom Szarski, DD, trained at George Brown College and has served on the Denturist Association of Ontario board. The clinic is the surgeon, the denturist, and the lab under one roof.",
+      "endCardLayoutId": "video-end-card"
     },
     {
       "id": "w10-tue",
@@ -885,9 +1047,8 @@
         "facebook"
       ],
       "pillar": "patient-education",
-      "format": "post",
+      "format": "carousel",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "How to clean a fixed bridge without folklore.",
@@ -895,7 +1056,6 @@
       "onScreen": [
         "Brush it. Then ask."
       ],
-      "spoken": "Brush it. Clean under the bridge the way the hygienist shows you, often with floss threaders or a water flosser if they say it is appropriate. Skip the homemade recipes. The aftercare visit is where the routine is set.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w10-tue",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w10-tue",
@@ -904,7 +1064,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Aftercare education. No product ranking and no unsourced best-toothpaste claim.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Brush the bridge",
+          "body": "A fixed bridge stays in, so you brush it."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Clean under it the way you are shown",
+          "body": "Often floss threaders or a water flosser, if the hygienist says so."
+        },
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Skip the homemade recipes",
+          "body": "The aftercare visit is where the routine is set."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w10-thu",
@@ -915,9 +1098,8 @@
         "facebook"
       ],
       "pillar": "practice-culture",
-      "format": "reel",
+      "format": "carousel",
       "layoutId": "carbon-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "If a tooth has been gone for years, ask anyway.",
@@ -925,7 +1107,6 @@
       "onScreen": [
         "Years later is not a no"
       ],
-      "spoken": "Bone changes after an extraction, and some people need a graft or a different design. Years later is not an automatic no. The quiz is about candidacy in general. This post is about the long gap, and the scan is the answer.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w10-thu",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w10-thu",
@@ -936,7 +1117,30 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Do not target the quiz's 'am I a candidate' query. Point at bone and time.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "slides": [
+        {
+          "layoutId": "carbon-editorial",
+          "onScreen": "Bone changes after an extraction",
+          "body": "Some people need a graft or a different design."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "Years later is not an automatic no",
+          "body": "Ask anyway. The scan is the answer."
+        },
+        {
+          "layoutId": "light-editorial",
+          "onScreen": "The quiz is general candidacy",
+          "body": "This post is about the long gap, not a yes or no."
+        },
+        {
+          "layoutId": "cta-still",
+          "onScreen": "Take the two-minute quiz",
+          "body": "About two minutes and nine questions. Call 613-841-6111."
+        }
+      ]
     },
     {
       "id": "w10-fri",
@@ -947,9 +1151,8 @@
         "facebook"
       ],
       "pillar": "patient-education",
-      "format": "post",
+      "format": "static",
       "layoutId": "light-editorial",
-      "endCardLayoutId": "video-end-card",
       "usePromptPrefix": true,
       "generatedPerson": false,
       "hook": "What to eat in the first weeks is mostly soft.",
@@ -957,7 +1160,6 @@
       "onScreen": [
         "Soft food first"
       ],
-      "spoken": "Soups, eggs, yogurt, and tender fish while the implants settle. The team writes the food list for your case. A steak is not the day-one story, whatever an ad once promised.",
       "ctaLabel": "Take the two-minute quiz",
       "ctaHref": "/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w10-fri",
       "facebookCtaHref": "/implant-candidate-quiz?utm_source=facebook&utm_medium=organic&utm_campaign=w10-fri",
@@ -966,7 +1168,14 @@
       "quoteExcerpt": null,
       "testimonialName": null,
       "grounding": "Same-day blog: soft foods for the first weeks.",
-      "status": "ready"
+      "status": "ready",
+      "canvas": "static-4x5",
+      "squareCanvas": "static-1x1"
     }
-  ]
+  ],
+  "feedMix": {
+    "video": 10,
+    "static": 10,
+    "carousel": 10
+  }
 }
