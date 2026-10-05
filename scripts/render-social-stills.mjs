@@ -128,6 +128,85 @@ const frames = {
       place: "Ottawa, ON",
     },
   },
+  "w08-tue": {
+    eyebrow: "The visit",
+    slides: [
+      { layoutId: "carbon-editorial", onScreen: "It starts with a conversation", body: "Tom listens before anyone talks about a procedure." },
+      { layoutId: "light-editorial", onScreen: "Then a 3D scan", body: "Scans and digital images, in the building." },
+      { layoutId: "light-editorial", onScreen: "You leave with a plain plan", body: "Not a surprise price list from social media." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w08-thu": {
+    quote: {
+      line: "I should have done this years ago.",
+      support: "I'm so happy I had this procedure done.",
+      name: "Stephen E.",
+      place: "Ottawa, ON",
+    },
+  },
+  "w08-fri": {
+    eyebrow: "Recovery",
+    slides: [
+      { layoutId: "light-editorial", onScreen: "The surgery uses anesthesia", body: "Sedation is available if the chair is the hard part." },
+      { layoutId: "light-editorial", onScreen: "Afterwards: swelling and soreness", body: "It eases over days, not on a script from an ad." },
+      { layoutId: "carbon-editorial", onScreen: "Your surgeon writes the instructions", body: "They are written for your case, after the visit." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w09-tue": {
+    video: {
+      headline: "A step, not the whole visit",
+      body: "A healing cap shapes the gum for the tooth that follows.",
+      endLine: "A step, not the whole visit",
+      photo: "public/media/animation/dental-implant-angled-9x16.png",
+      photoPosition: "center",
+    },
+  },
+  "w09-thu": {
+    quote: {
+      line: "From start to finish, I felt extremely well taken care of.",
+      support: "Everyone was welcoming, helpful, and friendly.",
+      name: "Ernie Minichilli",
+      place: "Ottawa, ON",
+    },
+  },
+  "w09-fri": {
+    video: {
+      headline: "Twenty years in Ottawa",
+      body: "The surgeon, the denturist, and the lab work under one roof.",
+      endLine: "Twenty years in Ottawa",
+      photo: "public/media/staff/tom-szarski.jpg",
+      photoPosition: "center top",
+      photoFit: "top",
+      photoHeight: 48,
+    },
+  },
+  "w10-tue": {
+    eyebrow: "Aftercare",
+    slides: [
+      { layoutId: "light-editorial", onScreen: "Brush the bridge", body: "A fixed bridge stays in, so you brush it." },
+      { layoutId: "light-editorial", onScreen: "Clean under it the way you are shown", body: "Often floss threaders or a water flosser, if the hygienist says so." },
+      { layoutId: "carbon-editorial", onScreen: "Skip the homemade recipes", body: "The aftercare visit is where the routine is set." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w10-thu": {
+    eyebrow: "The long gap",
+    slides: [
+      { layoutId: "carbon-editorial", onScreen: "Bone changes after an extraction", body: "Some people need a graft or a different design." },
+      { layoutId: "light-editorial", onScreen: "Years later is not an automatic no", body: "Ask anyway. The scan is the answer." },
+      { layoutId: "light-editorial", onScreen: "The quiz is general candidacy", body: "This post is about the long gap, not a yes or no." },
+      { layoutId: "cta-still", onScreen: "Take the two-minute quiz", body: "About two minutes and nine questions." },
+    ],
+  },
+  "w10-fri": {
+    still: {
+      eyebrow: "The first weeks",
+      headline: "Soft food first",
+      body: "Soups, eggs, yogurt, and tender fish while the implants settle. The team writes the food list for your case.",
+    },
+  },
 };
 
 function token(name) {
@@ -161,14 +240,25 @@ function paint(layoutId) {
   };
 }
 
-function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, photoPosition = "center", photoFit }) {
+function photoFileUrl(photo) {
+  const source = join(ROOT, photo);
+  const bytes = readFileSync(source).subarray(0, 3);
+  const jpegNamedPng = photo.endsWith(".png") && bytes[0] === 0xff && bytes[1] === 0xd8;
+  if (!jpegNamedPng) return `file://${source}`;
+  const copy = join("/tmp/social-frames", "photos", `${nameSafe(photo)}.jpg`);
+  mkdirSync(dirname(copy), { recursive: true });
+  if (!existsSync(copy)) writeFileSync(copy, readFileSync(source));
+  return `file://${copy}`;
+}
+
+function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, photoPosition = "center", photoFit, photoHeight = 62 }) {
   const color = paint(layoutId);
   const isCta = layoutId === "cta-still";
   const isQuote = layoutId === "quote-card";
   const isPhoto = layoutId === "photo-lower-third";
   const headlineSize = width === height ? 72 : height > 1400 ? 76 : 80;
   const quoteSize = !quote ? headlineSize : quote.line.length > 70 ? 52 : quote.line.length > 48 ? 60 : width === height ? 64 : 72;
-  const photoUrl = photo ? `file://${join(ROOT, photo)}` : "";
+  const photoUrl = photo ? photoFileUrl(photo) : "";
   const stack = isPhoto
     ? `
       <h1>${escapeHtml(headline)}</h1>
@@ -267,7 +357,7 @@ function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, 
     left: 0;
     right: 0;
     top: 0;
-    height: 62%;
+    height: ${photoHeight}%;
     background: url("${photoUrl}") ${photoPosition} / cover no-repeat;
   }
   .band {
@@ -393,6 +483,12 @@ function renderFrame(name, spec, canvas) {
 
 function renderReel(id, video) {
   const canvas = design.canvases["video-9x16"];
+  const mp4 = join(OUT, `${id}.mp4`);
+  const poster = join(OUT, `${id}-poster.jpg`);
+  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
+    console.log("skip", mp4);
+    return;
+  }
   const holdJpg = renderFrame(`${id}-hold`, {
     layoutId: "photo-lower-third",
     headline: video.headline,
@@ -400,14 +496,9 @@ function renderReel(id, video) {
     photo: video.photo,
     photoPosition: video.photoPosition,
     photoFit: video.photoFit,
+    photoHeight: video.photoHeight,
   }, canvas);
   const endJpg = renderFrame(`${id}-end`, { layoutId: "cta-still", headline: video.endLine }, canvas);
-  const mp4 = join(OUT, `${id}.mp4`);
-  const poster = join(OUT, `${id}-poster.jpg`);
-  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
-    console.log("skip", mp4);
-    return;
-  }
   execFileSync("cp", [holdJpg, poster]);
   const holdMp4 = join("/tmp/social-frames", `${id}-hold.mp4`);
   const endMp4 = join("/tmp/social-frames", `${id}-end.mp4`);
@@ -470,5 +561,13 @@ for (const [id, spec] of Object.entries(frames)) {
     if (post.format !== "video") throw new Error(`${id} is not a video`);
     if (spec.video.headline !== post.onScreen[0]) throw new Error(`${id} video headline drifted from the catalog`);
     renderReel(id, spec.video);
+  }
+  if (spec.still) {
+    if (post.format !== "static" || post.layoutId === "quote-card") {
+      throw new Error(`${id} is not an editorial still`);
+    }
+    if (spec.still.headline !== post.onScreen[0]) throw new Error(`${id} still headline drifted from the catalog`);
+    renderFrame(id, { layoutId: post.layoutId, ...spec.still }, fourByFive);
+    renderFrame(`${id}-square`, { layoutId: post.layoutId, ...spec.still }, square);
   }
 }
