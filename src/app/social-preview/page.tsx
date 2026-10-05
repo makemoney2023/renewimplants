@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SocialPreview } from "@/components/social-preview/social-preview";
 import { site } from "@/content/site";
+import { listApprovals } from "@/lib/social-approval";
 import { loadSocialPreview } from "@/lib/social-preview";
 import { parseLibraryQuery } from "@/lib/social-preview-model";
 
@@ -18,6 +19,7 @@ type PageProps = {
     lane?: string;
     format?: string;
     state?: string;
+    approval?: string;
     pillar?: string;
     week?: string;
     sort?: string;
@@ -28,6 +30,7 @@ type PageProps = {
 export default async function SocialPreviewPage({ searchParams }: PageProps) {
   const query = await searchParams;
   const posts = loadSocialPreview();
+  const decisions = await listApprovals();
   const postId = posts.some((post) => post.id === query.post) ? query.post! : "w01-tue";
   const channel = query.channel === "facebook" ? "facebook" : "instagram";
   const view = query.view === "library" ? "library" : "post";
@@ -41,6 +44,7 @@ export default async function SocialPreviewPage({ searchParams }: PageProps) {
       catalogOpen={query.catalog === "1"}
       view={view}
       library={library}
+      decisions={decisions}
     />
   );
 }

@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Approve or hold each social catalog unit
+
+**What changed:** Every catalog row, library card, and open post has Approve and Not approved. The choice is saved by `POST /api/social-approvals`. `GET /api/social-approvals?queue=1` returns approved units that already have media, with absolute quiz and media URLs, for a later scheduler. This route does not post.
+
+**Why:** feature — Ready means the creative exists. Approval is the human gate before anything is scheduled.
+
+**Code touchpoints:** `src/lib/social-approval.ts`, `src/app/api/social-approvals/route.ts`, `src/components/social-preview/approval-controls.tsx`, `src/components/social-preview/social-preview.tsx`, `supabase/migrations/20261005120000_social_approvals.sql`
+
+**Data-flow impact:** Decisions persist in the `social_approvals` table when `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set and the migration has been applied. Otherwise they persist in `data/social-approvals.json` on this machine. The preview buttons post a form and return to the same page. Clicking the active choice returns the unit to pending. `POST` with JSON remains for a scheduler or MCP server.
+
+**API / schema impact:** `GET /api/social-approvals` lists decisions. `GET /api/social-approvals?queue=1` lists approved, rendered units (`scheduledAt` and `postedAt` are null). `POST /api/social-approvals` accepts `{ id, decision }` where decision is `approved`, `not-approved`, or `pending`.
+
+**Verification:** Approve a catalog row, reload, and confirm the queue includes that id. Not approved removes it from the queue.
+
 ## 2026-10-05 — Paid catalog on the social preview
 
 **What changed:** All 41 paid units play on `/social-preview`. That is 14 reels, 14 stills, and 13 carousels, including the six-slide All-on-4 ad and the generated denture-slip scene.

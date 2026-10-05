@@ -5,6 +5,7 @@ node_modules/
 !.env.example
 .venv/
 public/media/
+data/social-approvals.json
 assets/video/orleans-odc-interview.mp4
 skills/community.zip
 *.log
