@@ -43,6 +43,7 @@ export function getMediaSyncJobs(): MediaSyncJob[] {
       to: "public/media/treatments",
       files: treatmentAnimationFiles,
     },
+    { from: "assets/social", to: "public/media/social" },
   ];
 }
 

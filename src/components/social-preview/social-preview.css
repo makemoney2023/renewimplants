@@ -1,0 +1,350 @@
+.social-stage {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  background: #fafafa;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.social-stage-facebook {
+  background: #f0f2f5;
+  color: #050505;
+}
+
+.social-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #111;
+  color: #fff;
+}
+
+.social-tool,
+.social-switch a {
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.social-tool,
+.social-switch a {
+  background: #262626;
+  color: #fff;
+}
+
+.social-switch a[aria-pressed="true"] {
+  background: #fff;
+  color: #000;
+}
+
+.social-stage-facebook .social-switch a[aria-pressed="true"] {
+  background: #0866ff;
+  color: #fff;
+}
+
+.social-switch {
+  display: flex;
+  gap: 6px;
+}
+
+.social-catalog {
+  position: absolute;
+  z-index: 2;
+  top: 58px;
+  bottom: 12px;
+  left: 12px;
+  width: min(340px, calc(100vw - 24px));
+  overflow: auto;
+  padding: 8px;
+  border-radius: 16px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.social-catalog h2 {
+  margin: 12px 8px 6px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.social-catalog ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-catalog a {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-catalog a[aria-current="page"] {
+  background: #262626;
+}
+
+.social-catalog small {
+  color: #a8a8a8;
+  white-space: nowrap;
+}
+
+.social-frame {
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  padding: 16px 12px 32px;
+}
+
+.ig-post,
+.fb-post {
+  width: min(100%, 470px);
+  align-self: flex-start;
+  background: #fff;
+  color: #000;
+}
+
+.ig-post {
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ig-head,
+.fb-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.ig-avatar,
+.fb-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.ig-avatar {
+  background: conic-gradient(#f9ce34, #ee2a7b, #6228d7, #f9ce34);
+}
+
+.ig-avatar span,
+.fb-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #111;
+  font-family: var(--font-display), "DM Serif Display", serif;
+  font-size: 16px;
+}
+
+.fb-avatar {
+  width: 40px;
+  height: 40px;
+  background: #e4e6eb;
+  color: #050505;
+  font-size: 20px;
+}
+
+.ig-id {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.ig-id strong,
+.fb-head strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ig-follow {
+  color: #0095f6;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ig-dots {
+  width: 22px;
+  height: 22px;
+  color: #262626;
+}
+
+.ig-media,
+.fb-media,
+.social-waiting {
+  background: #000;
+}
+
+.ig-media video,
+.fb-media video,
+.social-waiting {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  display: block;
+}
+
+.ig-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 4px;
+}
+
+.ig-action-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ig-actions svg,
+.ig-dots {
+  width: 24px;
+  height: 24px;
+}
+
+.ig-caption,
+.fb-caption {
+  margin: 0;
+  padding: 4px 12px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.ig-caption strong {
+  font-weight: 700;
+}
+
+.ig-link {
+  display: inline-block;
+  margin: 6px 12px 0;
+  color: #0095f6;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ig-audio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 12px 12px;
+  color: #737373;
+  font-size: 12px;
+}
+
+.ig-disc {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #111 0 3px, transparent 4px),
+    conic-gradient(#8dc41d, #009ce3, #111, #8dc41d);
+}
+
+.fb-post {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.fb-head strong {
+  display: block;
+  font-size: 15px;
+}
+
+.fb-head p,
+.fb-link span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  color: #65676b;
+  font-size: 13px;
+}
+
+.fb-head svg {
+  width: 12px;
+  height: 12px;
+}
+
+.fb-caption {
+  padding: 0 12px 12px;
+  font-size: 15px;
+}
+
+.fb-link {
+  display: block;
+  padding: 10px 12px 12px;
+  background: #f0f2f5;
+  color: #050505;
+  text-decoration: none;
+}
+
+.fb-link strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.fb-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 8px 0 10px;
+  border-top: 1px solid #ced0d4;
+  color: #65676b;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.social-waiting {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  padding: 28px;
+  text-align: center;
+  color: #fff;
+  background: #1a1a1a;
+}
+
+.social-waiting p {
+  margin: 0;
+  max-width: 16ch;
+  font-family: var(--font-display), "DM Serif Display", serif;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.05;
+}
+
+.social-waiting small {
+  color: #c7c7c7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}

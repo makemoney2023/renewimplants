@@ -23,6 +23,10 @@ describe("sitemap.xml", () => {
     expect(urls.some((url) => url.includes(QUIZ_THANK_YOU_PATH))).toBe(false);
   });
 
+  it("never lists the social preview", () => {
+    expect(urls.some((url) => url.includes("/social-preview"))).toBe(false);
+  });
+
   it("has no duplicate URLs", () => {
     expect(new Set(urls).size).toBe(urls.length);
   });

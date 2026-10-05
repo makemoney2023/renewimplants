@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Social catalog preview
+
+**What changed:** `/social-preview` shows the catalog the way a post sits on Instagram and Facebook. `w01-tue` plays the rendered 9:16 reel. The other units are listed and marked waiting until a file is added under `assets/social/`.
+
+**Why:** feature — the reel lived only as a local file. The quiz link on that post goes to `https://renewimplants.vercel.app`.
+
+**Code touchpoints:** `src/app/social-preview/page.tsx`, `src/components/social-preview/`, `src/lib/social-preview.ts`, `assets/social/`, `src/lib/media-sync.ts`, `src/app/robots.ts`
+
+**Data-flow impact:** none. The page is noindex and omitted from the sitemap.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-preview.test.ts src/lib/media-sync.test.ts src/app/robots.test.ts src/app/sitemap.test.ts`, then the preview in the browser.
+
 ## 2026-10-05 — Social clicks use the live quiz host
 
 **What changed:** ad and social quiz links resolve on `https://renewimplants.vercel.app`. `absoluteClickHref()` joins that host to each unit’s `ctaHref`.

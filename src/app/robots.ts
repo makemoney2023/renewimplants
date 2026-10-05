@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
 import { QUIZ_THANK_YOU_PATH } from "@/lib/quiz/constants";
 
-const PRIVATE_PATHS = ["/api/", QUIZ_THANK_YOU_PATH];
+const PRIVATE_PATHS = ["/api/", QUIZ_THANK_YOU_PATH, "/social-preview"];
 
 // Retrieval and training bots behind ChatGPT, Perplexity, Claude, Gemini, and
 // Apple/Amazon assistants. Blocking any of them removes the clinic from that

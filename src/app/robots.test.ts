@@ -31,7 +31,7 @@ describe("robots.txt", () => {
 
   it("keeps the API and the lead thank-you page out of every index", () => {
     for (const rule of rules.filter((rule) => rule.allow)) {
-      expect(rule.disallow).toEqual(expect.arrayContaining(["/api/", QUIZ_THANK_YOU_PATH]));
+      expect(rule.disallow).toEqual(expect.arrayContaining(["/api/", QUIZ_THANK_YOU_PATH, "/social-preview"]));
     }
   });
 

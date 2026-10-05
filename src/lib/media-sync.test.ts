@@ -17,6 +17,7 @@ describe("media sync", () => {
       "public/media/video",
       "public/media/animation",
       ...(treatmentAnimationFiles.length > 0 ? ["public/media/treatments"] : []),
+      "public/media/social",
     ]);
   });
 
