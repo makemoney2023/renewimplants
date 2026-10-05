@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Paid catalog on the social preview
+
+**What changed:** All 41 paid units play on `/social-preview`. That is 14 reels, 14 stills, and 13 carousels, including the six-slide All-on-4 ad and the generated denture-slip scene.
+
+**Why:** feature — the organic calendar was already on the preview. The ads were still waiting.
+
+**Code touchpoints:** `assets/social/`, `scripts/render-social-stills.mjs`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. Catalog copy is unchanged. Quote cards repeat lines from `src/content/testimonials.ts`. Producer notes about coupons, rates, prices, and credit checks stay off the frame.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1350 slides, 1080×1080 squares, 1080×1920 reels at 9.7 seconds with a 2.5 second end card, then `/social-preview?post=ad-01&catalog=1`.
+
 ## 2026-10-05 — Weeks 8 through 10 on the social preview
 
 **What changed:** The feed preview now runs the full ten-week calendar. Weeks 8–10 add the consultation and recovery carousels, Stephen E. and Ernie Minichilli quote cards, the healing-cap and Tom reels, the aftercare and long-gap carousels, and the soft-food still.

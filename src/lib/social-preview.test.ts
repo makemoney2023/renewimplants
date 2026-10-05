@@ -73,8 +73,9 @@ describe("social preview catalog", () => {
     expect(scan.some((post) => post.id === "w01-tue")).toBe(true);
 
     const waiting = filterSocialPosts(posts, parseLibraryQuery({ state: "waiting" }));
-    expect(waiting.length).toBeGreaterThan(0);
-    expect(waiting.every((post) => post.video === null && post.images === null)).toBe(true);
+    expect(waiting).toHaveLength(0);
+    const ready = filterSocialPosts(posts, parseLibraryQuery({ state: "ready" }));
+    expect(ready).toHaveLength(posts.length);
   });
 
   it("keeps week and pillar on every unit", () => {
@@ -189,40 +190,55 @@ describe("social preview catalog", () => {
     }
   });
 
+  it("puts the paid catalog on the preview", () => {
+    const carousel = posts.find((item) => item.id === "ad-01");
+    expect(carousel?.format).toBe("carousel");
+    expect(carousel?.images).toHaveLength(4);
+    expect(carousel?.video).toBeNull();
+    expect(carousel?.instagramHref).toBe(
+      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-01",
+    );
+    expect(carousel?.facebookHref).toContain("utm_source=meta");
+    expect(carousel?.facebookHref).toContain("utm_medium=paid");
+
+    const six = posts.find((item) => item.id === "ad-25");
+    expect(six?.images).toHaveLength(6);
+
+    const quote = posts.find((item) => item.id === "ad-08");
+    expect(quote?.images).toEqual(["/media/social/ad-08.jpg"]);
+    expect(quote?.caption).toContain("Stephen E.");
+    expect(quote?.caption).toContain("I should have done this years ago.");
+
+    const ken = posts.find((item) => item.id === "ad-30");
+    expect(ken?.caption).toContain("Ken Miller");
+    expect(ken?.caption).toContain("no more pain");
+
+    const still = posts.find((item) => item.id === "ad-40");
+    expect(still?.format).toBe("static");
+    expect(still?.images).toEqual(["/media/social/ad-40.jpg"]);
+    expect(still?.onScreen).toBe("No countdown");
+
+    for (const id of ["ad-02", "ad-28", "concept-denture-slip"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.format).toBe("video");
+      expect(post?.video).toBe(`/media/social/${id}.mp4`);
+      expect(post?.poster).toBe(`/media/social/${id}-poster.jpg`);
+      expect(post?.instagramHref).toContain("utm_source=meta");
+      expect(post?.instagramHref).toContain("utm_medium=paid");
+    }
+
+    const paid = posts.filter((post) => post.lane === "paid");
+    expect(paid.every((post) => post.video !== null || (post.images?.length ?? 0) > 0)).toBe(true);
+    for (const post of paid) {
+      for (const path of [post.video, post.poster, ...(post.images ?? [])].filter(Boolean)) {
+        const file = path!.split("?")[0]!.split("/").pop()!;
+        expect(existsSync(join(process.cwd(), "assets/social", file)), file).toBe(true);
+      }
+    }
+  });
+
   it("does not invent media for units that have not been rendered", () => {
-    const rendered = new Set([
-      "w01-tue",
-      "w01-thu",
-      "w01-fri",
-      "w02-tue",
-      "w02-thu",
-      "w02-fri",
-      "w03-tue",
-      "w03-thu",
-      "w03-fri",
-      "w04-tue",
-      "w04-thu",
-      "w04-fri",
-      "w05-tue",
-      "w05-thu",
-      "w05-fri",
-      "w06-tue",
-      "w06-thu",
-      "w06-fri",
-      "w07-tue",
-      "w07-thu",
-      "w07-fri",
-      "w08-tue",
-      "w08-thu",
-      "w08-fri",
-      "w09-tue",
-      "w09-thu",
-      "w09-fri",
-      "w10-tue",
-      "w10-thu",
-      "w10-fri",
-    ]);
-    const waiting = posts.filter((post) => !rendered.has(post.id));
-    expect(waiting.every((post) => post.video === null && post.poster === null && post.images === null)).toBe(true);
+    const waiting = posts.filter((post) => post.video === null && post.poster === null && post.images === null);
+    expect(waiting).toHaveLength(0);
   });
 });

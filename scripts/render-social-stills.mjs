@@ -1,4 +1,4 @@
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
@@ -360,6 +360,24 @@ function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, 
     height: ${photoHeight}%;
     background: url("${photoUrl}") ${photoPosition} / cover no-repeat;
   }
+  .frame.photo.strip {
+    justify-content: flex-start;
+    background: #1a1a1a;
+  }
+  .frame.photo.strip::before {
+    content: "";
+    position: relative;
+    flex: 0 0 ${photoHeight}%;
+    background: #1a1a1a url("${photoUrl}") center top / 100% auto no-repeat;
+  }
+  .frame.photo.strip .band {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #1a1a1a;
+    padding: 64px 80px 72px;
+  }
   .band {
     position: relative;
     padding: ${height > 1400 ? 160 : 108}px 80px ${height > 1400 ? 88 : 64}px;
@@ -421,7 +439,7 @@ function html({ width, height, layoutId, eyebrow, headline, body, quote, photo, 
 </style>
 </head>
 <body>
-  <main class="frame${isPhoto ? " photo" : ""}${photoFit === "top" ? " top-photo" : ""}">${isPhoto ? `<div class="band">${stack}</div>` : stack}</main>
+  <main class="frame${isPhoto ? " photo" : ""}${photoFit === "top" ? " top-photo" : ""}${photoFit === "strip" ? " strip" : ""}">${isPhoto ? `<div class="band">${stack}</div>` : stack}</main>
 </body>
 </html>`;
 }
@@ -481,24 +499,30 @@ function renderFrame(name, spec, canvas) {
   return jpgPath;
 }
 
-function renderReel(id, video) {
-  const canvas = design.canvases["video-9x16"];
-  const mp4 = join(OUT, `${id}.mp4`);
-  const poster = join(OUT, `${id}-poster.jpg`);
-  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
-    console.log("skip", mp4);
-    return;
+function holdSpec(video) {
+  if (video.quote) return { layoutId: "quote-card", quote: video.quote };
+  if (video.photo) {
+    return {
+      layoutId: "photo-lower-third",
+      headline: video.headline,
+      body: video.body,
+      photo: video.photo,
+      photoPosition: video.photoPosition ?? "center",
+      photoFit: video.photoFit,
+      photoHeight: video.photoHeight ?? 62,
+    };
   }
-  const holdJpg = renderFrame(`${id}-hold`, {
-    layoutId: "photo-lower-third",
+  return {
+    layoutId: video.layoutId ?? "carbon-editorial",
+    eyebrow: video.eyebrow ?? "Renew",
     headline: video.headline,
     body: video.body,
-    photo: video.photo,
-    photoPosition: video.photoPosition,
-    photoFit: video.photoFit,
-    photoHeight: video.photoHeight,
-  }, canvas);
-  const endJpg = renderFrame(`${id}-end`, { layoutId: "cta-still", headline: video.endLine }, canvas);
+  };
+}
+
+function assembleReel(id, holdJpg, endJpg) {
+  const mp4 = join(OUT, `${id}.mp4`);
+  const poster = join(OUT, `${id}-poster.jpg`);
   execFileSync("cp", [holdJpg, poster]);
   const holdMp4 = join("/tmp/social-frames", `${id}-hold.mp4`);
   const endMp4 = join("/tmp/social-frames", `${id}-end.mp4`);
@@ -510,6 +534,19 @@ function renderReel(id, video) {
   rmSync(holdJpg, { force: true });
   rmSync(endJpg, { force: true });
   console.log(mp4);
+}
+
+function renderReel(id, video) {
+  const canvas = design.canvases["video-9x16"];
+  const mp4 = join(OUT, `${id}.mp4`);
+  const poster = join(OUT, `${id}-poster.jpg`);
+  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
+    console.log("skip", mp4);
+    return;
+  }
+  const holdJpg = renderFrame(`${id}-hold`, holdSpec(video), canvas);
+  const endJpg = renderFrame(`${id}-end`, { layoutId: "cta-still", headline: video.endLine }, canvas);
+  assembleReel(id, holdJpg, endJpg);
 }
 
 const testimonials = readFileSync(join(ROOT, "src/content/testimonials.ts"), "utf8");
@@ -571,3 +608,348 @@ for (const [id, spec] of Object.entries(frames)) {
     renderFrame(`${id}-square`, { layoutId: post.layoutId, ...spec.still }, square);
   }
 }
+
+const labPhoto = {
+  photo: "public/media/interiors/renew-lab.jpg",
+  photoFit: "top",
+  photoHeight: 58,
+  photoPosition: "center",
+};
+const archPhoto = {
+  photo: "public/media/services/service-allon4.jpg",
+  photoFit: "top",
+  photoHeight: 56,
+  photoPosition: "center",
+};
+const teamPhoto = {
+  photo: "assets/social/ad-29-team-crop.jpg",
+  photoFit: "strip",
+  photoHeight: 20,
+  photoPosition: "center",
+};
+
+const ottawa = "Ottawa, ON";
+const paidFrames = {
+  "ad-01": { eyebrow: "The difference" },
+  "ad-02": {
+    eyebrow: "Same day",
+    body: "The final teeth are made in the onsite lab after the implants have healed.",
+  },
+  "ad-03": {
+    eyebrow: "A fixed plan",
+    body: "A fixed implant bridge stays in while you eat. The quiz is about two minutes and nine questions.",
+  },
+  "ad-04": {
+    eyebrow: "At night",
+    body: "Implants are anchored in the jaw. You brush them. You do not take them out at night.",
+  },
+  "ad-05": { eyebrow: "The fit" },
+  "ad-06": { eyebrow: "One tooth" },
+  "ad-07": {
+    body: "The teeth are designed in the same building. The consultation is free.",
+    ...labPhoto,
+  },
+  "ad-08": {
+    quote: {
+      line: "I should have done this years ago.",
+      support: "I'm so happy I had this procedure done.",
+      name: "Stephen E.",
+      place: ottawa,
+    },
+  },
+  "ad-09": { eyebrow: "Daily life" },
+  "ad-10": {
+    body: "You may leave with a temporary fixed bridge. The final bridge is made after healing.",
+    ...archPhoto,
+  },
+  "ad-11": {
+    quote: {
+      line: "I can eat anything I want, no more pain",
+      support: "Tom and his team changed my life.",
+      name: "Ken Miller",
+      place: ottawa,
+    },
+  },
+  "ad-12": {
+    eyebrow: "Dinner",
+    body: "A fixed bridge stays in at dinner. If the chair is the hard part, sedation is available.",
+  },
+  "ad-13": { eyebrow: "Adhesive" },
+  "ad-14": {
+    eyebrow: "A missing tooth",
+    body: "Leaving a space can let the bite shift and the bone change. Replacing it starts with a conversation and a 3D scan.",
+  },
+  "ad-15": {
+    eyebrow: "The first visit",
+    body: "Tom listens, then a 3D scan. It is not a commitment to surgery.",
+  },
+  "ad-16": { eyebrow: "The palate" },
+  "ad-17": {
+    eyebrow: "The bone",
+    body: "Dentures rest on the gums. Implants sit in the bone and give it something to hold.",
+  },
+  "ad-18": { eyebrow: "The options" },
+  "ad-19": {
+    eyebrow: "Speaking",
+    body: "Fixed teeth stay put while you talk, and the daily fear of a slip can ease.",
+  },
+  "ad-20": {
+    eyebrow: "The nightstand",
+    body: "A fixed bridge stays in. You still brush it, and you still book cleanings.",
+  },
+  "ad-21": {
+    quote: {
+      line: "In 2016, Tom made my lower denture on implants, and I've been extremely satisfied ever since.",
+      support: "I feel like family.",
+      name: "Chantal G.",
+      place: ottawa,
+    },
+  },
+  "ad-22": {
+    body: "The visit starts with a 3D scan. Dr. Alex places the implants. Tom designs the teeth.",
+    ...labPhoto,
+  },
+  "ad-23": {
+    body: "A temporary fixed bridge. Final teeth come after the implants heal.",
+    ...archPhoto,
+  },
+  "ad-24": {
+    quote: {
+      line: "They scanned me with a new high tech machine and the fit turned out perfectly.",
+      support: "The consultation was so easy and seamless.",
+      name: "Bruce L.",
+      place: ottawa,
+    },
+  },
+  "ad-25": { eyebrow: "All-on-4" },
+  "ad-26": {
+    quote: {
+      line: "Tom has revived my smile and confidence.",
+      support: "I honestly feel like family!",
+      name: "Nick B.",
+      place: ottawa,
+    },
+  },
+  "ad-27": {
+    eyebrow: "Fixed teeth",
+    body: "A fixed bridge stops going into a glass. Cleanings still matter.",
+  },
+  "ad-28": {
+    quote: {
+      line: "They even went above and beyond for me during an emergency after-hours issue.",
+      support: "If you are considering implants, I highly recommend Tom and his team.",
+      name: "Tim Appleby",
+      place: ottawa,
+    },
+  },
+  "ad-29": {
+    body: "Tom Szarski, DD, and Dr. Alex review the 3D scan and explain it in plain language.",
+    ...teamPhoto,
+  },
+  "ad-30": {
+    quote: {
+      line: "I can eat anything I want, no more pain",
+      support: "Talk about life changing!",
+      name: "Ken Miller",
+      place: ottawa,
+    },
+  },
+  "ad-31": {
+    eyebrow: "Orléans",
+    body: "About two minutes and nine questions. The clinic is in Orléans, Ottawa.",
+  },
+  "ad-32": {
+    eyebrow: "After the scan",
+    body: "You get the numbers after a consultation, once the scan shows the work. Financing can be part of that conversation.",
+  },
+  "ad-33": { eyebrow: "The visit" },
+  "ad-34": {
+    eyebrow: "Evenings",
+    body: "Weekdays are by appointment. If you need a later time, ask.",
+  },
+  "ad-35": { eyebrow: "The quiz" },
+  "ad-36": { eyebrow: "Upkeep" },
+  "ad-37": { eyebrow: "The visit" },
+  "ad-38": {
+    eyebrow: "Orléans",
+    body: "A free consultation at 2530 St Joseph Blvd in Orléans is the next step.",
+  },
+  "ad-39": { eyebrow: "Coverage" },
+  "ad-40": { headline: "Free consultation" },
+  "concept-denture-slip": {
+    body: "A fixed bridge stays in. The quiz shows whether a consultation is worth it.",
+    photo: "assets/social/concept-denture-slip-scene.jpg",
+    photoPosition: "center top",
+  },
+};
+
+const slideBodies = {
+  "ad-13": { 0: "A denture often relies on paste to stay put." },
+  "ad-33": { 0: "The 3D scan happens at the free consultation." },
+  "ad-35": { 1: "The quiz lives on the site, and you answer it there." },
+  "ad-36": { 2: "In-house plans are part of the visit." },
+  "ad-37": { 2: "The payment conversation happens at the consultation." },
+};
+
+const frameBanned = [/\$\d/, /Dr\. Szarski/i, /guarantee/i, /no credit hit/i, /countdown/i, /coupon/i, /\bdollar\b/i, /\bforever\b/i, /lifetime/i, /gold standard/i];
+
+function assertFrameCopy(id, text) {
+  for (const pattern of frameBanned) {
+    if (pattern.test(text)) throw new Error(`${id} frame has banned copy: ${text}`);
+  }
+}
+
+const pendingShots = [];
+const pendingReels = [];
+
+function enqueueFrame(name, spec, canvas) {
+  const jpgPath = join(OUT, `${name}.jpg`);
+  if (existsSync(jpgPath) && process.env.FORCE !== "1") {
+    console.log("skip", name);
+    return jpgPath;
+  }
+  const htmlPath = join("/tmp/social-frames", `${name}.html`);
+  mkdirSync(dirname(htmlPath), { recursive: true });
+  writeFileSync(htmlPath, html({ width: canvas.width, height: canvas.height, ...spec }));
+  pendingShots.push({ htmlPath, jpgPath, width: canvas.width, height: canvas.height, name });
+  return jpgPath;
+}
+
+function shootAsync(job) {
+  const png = job.htmlPath.replace(/\.html$/, ".png");
+  const profile = join("/tmp/social-frames", `chrome-${nameSafe(job.htmlPath)}`);
+  return new Promise((resolve, reject) => {
+    const chrome = spawn("timeout", ["25", CHROME,
+      "--headless=new",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--hide-scrollbars",
+      "--force-device-scale-factor=1",
+      `--user-data-dir=${profile}`,
+      `--window-size=${job.width},${job.height}`,
+      "--default-background-color=00000000",
+      "--virtual-time-budget=2500",
+      `--screenshot=${png}`,
+      job.htmlPath,
+    ], { stdio: "ignore" });
+    chrome.on("error", reject);
+    chrome.on("exit", () => {
+      if (!existsSync(png)) {
+        reject(new Error(`Chrome did not write ${png}`));
+        return;
+      }
+      const ff = spawn("ffmpeg", ["-y", "-i", png, "-q:v", "3", job.jpgPath], { stdio: "ignore" });
+      ff.on("error", reject);
+      ff.on("exit", (code) => {
+        if (code === 0) resolve(job.jpgPath);
+        else reject(new Error(`ffmpeg failed for ${job.name}`));
+      });
+    });
+  });
+}
+
+async function flushShots() {
+  const jobs = pendingShots.splice(0);
+  let cursor = 0;
+  async function worker() {
+    while (cursor < jobs.length) {
+      const job = jobs[cursor];
+      cursor += 1;
+      await shootAsync(job);
+      console.log(job.jpgPath, job.width, job.height);
+    }
+  }
+  const workers = Math.min(4, jobs.length);
+  await Promise.all(Array.from({ length: workers }, () => worker()));
+}
+
+function planReel(id, video) {
+  const canvas = design.canvases["video-9x16"];
+  const mp4 = join(OUT, `${id}.mp4`);
+  const poster = join(OUT, `${id}-poster.jpg`);
+  if (existsSync(mp4) && existsSync(poster) && process.env.FORCE !== "1") {
+    console.log("skip", mp4);
+    return;
+  }
+  const holdJpg = enqueueFrame(`${id}-hold`, holdSpec(video), canvas);
+  const endJpg = enqueueFrame(`${id}-end`, { layoutId: "cta-still", headline: video.endLine }, canvas);
+  pendingReels.push({ id, holdJpg, endJpg });
+}
+
+function assertPhoto(photo) {
+  if (photo.endsWith("concept-denture-slip-scene.jpg") || photo.endsWith("ad-29-team-crop.jpg")) {
+    if (!existsSync(join(ROOT, photo))) throw new Error(`Missing ${photo}`);
+    return;
+  }
+  const webPath = photo.replace(/^public/, "");
+  if (!design.approvedMedia.includes(webPath)) throw new Error(`Photo is not approved media: ${photo}`);
+  if (!existsSync(join(ROOT, photo))) throw new Error(`Missing ${photo}`);
+}
+
+const adCatalog = JSON.parse(readFileSync(join(ROOT, "docs/content/social/ads.json"), "utf8")).units;
+
+for (const post of adCatalog) {
+  const spec = paidFrames[post.id];
+  if (!spec) throw new Error(`Missing paid frame ${post.id}`);
+  if (spec.quote) {
+    if (!testimonials.includes(spec.quote.line) || !testimonials.includes(spec.quote.support)) {
+      throw new Error(`Quote is not verbatim in testimonials.ts: ${spec.quote.line}`);
+    }
+    const excerpt = post.quoteExcerpt ?? "";
+    if (!spec.quote.line.includes(excerpt)) throw new Error(`${post.id} quote is not the catalog excerpt`);
+    if (spec.quote.name !== post.testimonialName) throw new Error(`${post.id} names the wrong reviewer`);
+  }
+  if (spec.photo) assertPhoto(spec.photo);
+  for (const text of [spec.body, spec.headline, spec.eyebrow, spec.quote?.line, spec.quote?.support].filter(Boolean)) {
+    assertFrameCopy(post.id, text);
+  }
+
+  if (post.format === "carousel") {
+    post.slides.forEach((slide, index) => {
+      const body = slideBodies[post.id]?.[index] ?? slide.body;
+      assertFrameCopy(post.id, `${slide.onScreen} ${body}`);
+      enqueueFrame(`${post.id}-${index + 1}`, {
+        layoutId: slide.layoutId,
+        eyebrow: spec.eyebrow,
+        headline: slide.onScreen,
+        body,
+      }, fourByFive);
+    });
+    continue;
+  }
+
+  if (post.format === "static" && post.layoutId === "quote-card") {
+    enqueueFrame(post.id, { layoutId: "quote-card", quote: spec.quote }, fourByFive);
+    enqueueFrame(`${post.id}-square`, { layoutId: "quote-card", quote: spec.quote }, square);
+    continue;
+  }
+
+  if (post.format === "static") {
+    const headline = spec.headline ?? post.onScreen[0];
+    if (!post.onScreen.includes(headline)) throw new Error(`${post.id} still headline is not in the catalog`);
+    assertFrameCopy(post.id, headline);
+    enqueueFrame(post.id, { layoutId: post.layoutId, eyebrow: spec.eyebrow, headline, body: spec.body }, fourByFive);
+    enqueueFrame(`${post.id}-square`, { layoutId: post.layoutId, eyebrow: spec.eyebrow, headline, body: spec.body }, square);
+    continue;
+  }
+
+  if (post.format === "video") {
+    const headline = post.onScreen[0];
+    assertFrameCopy(post.id, headline);
+    planReel(post.id, {
+      headline,
+      body: spec.body,
+      endLine: headline,
+      eyebrow: spec.eyebrow,
+      layoutId: spec.photo ? "photo-lower-third" : post.layoutId,
+      photo: spec.photo,
+      photoFit: spec.photoFit,
+      photoHeight: spec.photoHeight,
+      photoPosition: spec.photoPosition,
+      quote: post.layoutId === "quote-card" ? spec.quote : undefined,
+    });
+  }
+}
+
+await flushShots();
+for (const reel of pendingReels) assembleReel(reel.id, reel.holdJpg, reel.endJpg);
