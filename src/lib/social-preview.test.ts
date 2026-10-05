@@ -37,8 +37,8 @@ describe("social preview catalog", () => {
   it("puts the rendered w07-fri reel on the Vercel quiz", () => {
     const post = posts.find((item) => item.id === "w07-fri");
     expect(post?.label).toBe("Week 7 fri");
-    expect(post?.video).toBe("/media/social/w07-fri.mp4");
-    expect(post?.poster).toBe("/media/social/w07-fri-poster.jpg");
+    expect(post?.video).toBe("/media/social/w07-fri.mp4?v=2");
+    expect(post?.poster).toBe("/media/social/w07-fri-poster.jpg?v=2");
     expect(post?.caption).toContain("English or French");
     expect(post?.instagramHref).toBe(
       "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-fri",

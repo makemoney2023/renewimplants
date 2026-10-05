@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Week 7 photo shows more of both people
+
+**What changed:** The `w07-fri` opening frame uses a shorter carbon band, so Tom and the patient stay in view through the torso.
+
+**Why:** fix — a tall blank lower third was covering them.
+
+**Code touchpoints:** `assets/social/w07-fri.mp4`, `assets/social/w07-fri-poster.jpg`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1920 frames, then `/social-preview?post=w07-fri`.
+
 ## 2026-10-05 — Week 7 Friday reel on the social preview
 
 **What changed:** `w07-fri` plays on `/social-preview`. The frame is the team photo with a carbon lower third, the line “English or French,” and the quiz end card.
