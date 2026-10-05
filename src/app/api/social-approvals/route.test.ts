@@ -93,4 +93,41 @@ describe("POST /api/social-approvals", () => {
     const response = await POST(post("{not json"));
     expect(response.status).toBe(400);
   });
+
+  it("accepts the preview form and returns to the same catalog page", async () => {
+    const body = new URLSearchParams({
+      id: "ad-01",
+      decision: "not-approved",
+      redirect: "/social-preview?post=ad-01&catalog=1",
+    });
+    const response = await POST(
+      new Request("http://localhost/api/social-approvals", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      }),
+    );
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("http://localhost/social-preview?post=ad-01&catalog=1");
+    expect(setApproval).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "ad-01", decision: "not-approved" }),
+    );
+  });
+
+  it("rejects a redirect that leaves the preview", async () => {
+    const body = new URLSearchParams({
+      id: "ad-01",
+      decision: "approved",
+      redirect: "https://example.com/social-preview",
+    });
+    const response = await POST(
+      new Request("http://localhost/api/social-approvals", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      }),
+    );
+    expect(response.status).toBe(400);
+    expect(setApproval).not.toHaveBeenCalled();
+  });
 });

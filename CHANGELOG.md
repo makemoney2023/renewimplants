@@ -11,7 +11,7 @@ are stable references; deltas live here.
 
 **Code touchpoints:** `src/lib/social-approval.ts`, `src/app/api/social-approvals/route.ts`, `src/components/social-preview/approval-controls.tsx`, `src/components/social-preview/social-preview.tsx`, `supabase/migrations/20261005120000_social_approvals.sql`
 
-**Data-flow impact:** Decisions persist in the `social_approvals` table when `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set and the migration has been applied. Otherwise they persist in `data/social-approvals.json` on this machine. Clicking the active choice returns the unit to pending.
+**Data-flow impact:** Decisions persist in the `social_approvals` table when `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set and the migration has been applied. Otherwise they persist in `data/social-approvals.json` on this machine. The preview buttons post a form and return to the same page. Clicking the active choice returns the unit to pending. `POST` with JSON remains for a scheduler or MCP server.
 
 **API / schema impact:** `GET /api/social-approvals` lists decisions. `GET /api/social-approvals?queue=1` lists approved, rendered units (`scheduledAt` and `postedAt` are null). `POST /api/social-approvals` accepts `{ id, decision }` where decision is `approved`, `not-approved`, or `pending`.
 

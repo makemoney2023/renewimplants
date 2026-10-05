@@ -1,4 +1,4 @@
-import { ApprovalControls, LibraryBoard } from "@/components/social-preview/approval-controls";
+import { approvalStatus, decisionsToMap, type ApprovalRecord, type ApprovalStatus } from "@/lib/social-approval";
 import {
   filterSocialPosts,
   instagramAccount,
@@ -27,6 +27,7 @@ export function SocialPreview({
   catalogOpen,
   view,
   library,
+  decisions,
 }: {
   posts: SocialPreviewPost[];
   postId: string;
@@ -34,9 +35,18 @@ export function SocialPreview({
   catalogOpen: boolean;
   view: "post" | "library";
   library: LibraryQuery;
+  decisions: ApprovalRecord[];
 }) {
   const post = posts.find((item) => item.id === postId) ?? posts[0];
   const libraryHref = socialPreviewHref({ view: "library", channel, library });
+  const decisionMap = decisionsToMap(decisions);
+  const returnTo = socialPreviewHref({
+    post: post.id,
+    channel,
+    catalog: view === "post" && catalogOpen,
+    view,
+    library,
+  });
 
   return (
     <main id="main-content" className={`social-stage social-stage-${channel}`} tabIndex={-1}>
@@ -84,15 +94,22 @@ export function SocialPreview({
       </div>
 
       {view === "library" ? (
-        <Library posts={posts} channel={channel} library={library} />
+        <Library posts={posts} channel={channel} library={library} decisions={decisionMap} returnTo={returnTo} />
       ) : (
         <>
           {catalogOpen ? (
-            <Catalog posts={posts} selectedId={post.id} channel={channel} library={library} />
+            <Catalog
+              posts={posts}
+              selectedId={post.id}
+              channel={channel}
+              library={library}
+              decisions={decisionMap}
+              returnTo={returnTo}
+            />
           ) : null}
           <div className="social-frame">
             <div className="social-review">
-              <ApprovalControls id={post.id} tone="light" />
+              <ApprovalControls id={post.id} tone="light" status={approvalStatus(decisions, post.id)} returnTo={returnTo} />
               <p>Approved units join the post queue. This page does not publish.</p>
             </div>
             {channel === "instagram" ? <InstagramPost post={post} /> : <FacebookPost post={post} />}
@@ -107,12 +124,18 @@ function Library({
   posts,
   channel,
   library,
+  decisions,
+  returnTo,
 }: {
   posts: SocialPreviewPost[];
   channel: SocialPreviewChannel;
   library: LibraryQuery;
+  decisions: Map<string, "approved" | "not-approved">;
+  returnTo: string;
 }) {
-  const pool = sortSocialPosts(filterSocialPosts(posts, { ...library, approval: "all" }), library.sort);
+  const visible = sortSocialPosts(filterSocialPosts(posts, library, decisions), library.sort);
+  const ready = visible.filter((post) => postIsReady(post)).length;
+  const approved = visible.filter((post) => decisions.get(post.id) === "approved").length;
   const filtered =
     library.lane !== "all" ||
     library.format !== "all" ||
@@ -207,8 +230,101 @@ function Library({
         ) : null}
       </form>
 
-      <LibraryBoard posts={pool} total={posts.length} channel={channel} library={library} />
+      <p className="library-count">
+        {visible.length} of {posts.length} · {ready} ready · {approved} approved
+      </p>
+
+      {visible.length === 0 ? (
+        <p className="library-empty">No assets match these filters.</p>
+      ) : (
+        <ul className="library-grid">
+          {visible.map((post) => {
+            const status = decisions.get(post.id) ?? "pending";
+            return (
+              <li key={post.id}>
+                <a className="library-card" href={socialPreviewHref({ post: post.id, channel, library })}>
+                  <Thumb post={post} />
+                  <span className="library-meta">
+                    <span className="library-badges">
+                      <span>{post.format}</span>
+                      <span>{post.lane === "paid" ? "Ad" : "Feed"}</span>
+                      <span>{postIsReady(post) ? "Ready" : "Waiting"}</span>
+                      <span className={`approval-badge approval-badge-${status}`}>
+                        {status === "approved" ? "Approved" : status === "not-approved" ? "Not approved" : "Pending"}
+                      </span>
+                      {post.images && post.images.length > 1 ? <span>{post.images.length} slides</span> : null}
+                    </span>
+                    <strong>{post.label}</strong>
+                    <span className="library-line">{post.onScreen}</span>
+                  </span>
+                </a>
+                <ApprovalControls id={post.id} tone="light" status={status} returnTo={returnTo} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
+  );
+}
+
+function ApprovalControls({
+  id,
+  tone,
+  status,
+  returnTo,
+}: {
+  id: string;
+  tone: "dark" | "light";
+  status: ApprovalStatus;
+  returnTo: string;
+}) {
+  return (
+    <form
+      className={`approval-controls approval-controls-${tone}`}
+      action="/api/social-approvals"
+      method="post"
+      aria-label={`Approval for ${id}`}
+      data-decision={status}
+    >
+      <input type="hidden" name="id" value={id} />
+      <input type="hidden" name="redirect" value={returnTo} />
+      <button
+        type="submit"
+        className="approval-approve"
+        name="decision"
+        value={status === "approved" ? "pending" : "approved"}
+        aria-pressed={status === "approved"}
+      >
+        Approve
+      </button>
+      <button
+        type="submit"
+        className="approval-hold"
+        name="decision"
+        value={status === "not-approved" ? "pending" : "not-approved"}
+        aria-pressed={status === "not-approved"}
+      >
+        Not approved
+      </button>
+    </form>
+  );
+}
+
+function Thumb({ post }: { post: SocialPreviewPost }) {
+  const src = post.poster ?? post.images?.[0] ?? null;
+  if (!src) {
+    return (
+      <span className="library-thumb library-thumb-waiting">
+        <span>{post.onScreen}</span>
+      </span>
+    );
+  }
+
+  return (
+    <span className={`library-thumb library-thumb-${post.format}`}>
+      <img src={src} alt="" />
+    </span>
   );
 }
 
@@ -217,11 +333,15 @@ function Catalog({
   selectedId,
   channel,
   library,
+  decisions,
+  returnTo,
 }: {
   posts: SocialPreviewPost[];
   selectedId: string;
   channel: SocialPreviewChannel;
   library: LibraryQuery;
+  decisions: Map<string, "approved" | "not-approved">;
+  returnTo: string;
 }) {
   const lanes = [
     { id: "organic" as const, title: "Feed" },
@@ -248,7 +368,12 @@ function Catalog({
                       {post.format} · {post.video || post.images?.length ? "Ready" : "Waiting"}
                     </small>
                   </a>
-                  <ApprovalControls id={post.id} tone="dark" />
+                  <ApprovalControls
+                    id={post.id}
+                    tone="dark"
+                    status={decisions.get(post.id) ?? "pending"}
+                    returnTo={returnTo}
+                  />
                 </li>
               ))}
           </ul>

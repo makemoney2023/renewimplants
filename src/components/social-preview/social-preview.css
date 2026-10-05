@@ -146,6 +146,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
+  margin: 0;
 }
 
 .approval-controls button {
@@ -170,14 +171,20 @@
 
 .approval-controls-light .approval-approve,
 .approval-controls-dark .approval-approve {
-  border: 0;
+  border: 2px solid transparent;
   background: var(--accent);
   color: var(--ink-deep);
 }
 
+.approval-controls button[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+
 .approval-controls-light .approval-approve[aria-pressed="true"],
 .approval-controls-dark .approval-approve[aria-pressed="true"] {
-  box-shadow: inset 0 0 0 2px var(--ink-deep);
+  border-color: var(--accent);
+  background: var(--ink-deep);
+  color: var(--accent);
 }
 
 .approval-controls-light .approval-hold {

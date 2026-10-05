@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ApprovalProvider } from "@/components/social-preview/approval-controls";
 import { SocialPreview } from "@/components/social-preview/social-preview";
 import { site } from "@/content/site";
 import { listApprovals } from "@/lib/social-approval";
@@ -38,15 +37,14 @@ export default async function SocialPreviewPage({ searchParams }: PageProps) {
   const library = parseLibraryQuery(query);
 
   return (
-    <ApprovalProvider initial={decisions}>
-      <SocialPreview
-        posts={posts}
-        postId={postId}
-        channel={channel}
-        catalogOpen={query.catalog === "1"}
-        view={view}
-        library={library}
-      />
-    </ApprovalProvider>
+    <SocialPreview
+      posts={posts}
+      postId={postId}
+      channel={channel}
+      catalogOpen={query.catalog === "1"}
+      view={view}
+      library={library}
+      decisions={decisions}
+    />
   );
 }
