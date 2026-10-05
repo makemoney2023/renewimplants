@@ -5,9 +5,9 @@ are stable references; deltas live here.
 
 ## 2026-10-05 — Social pipeline skill map
 
-**What changed:** `docs/content/social/pipeline.json` now names the repo skills a producer may open, and the skills that must stay closed. Renew social stays the override. Carousel size, video specs, FFmpeg, Remotion type frames, and FLUX prompting are in. Hook generators, other brand systems, and avatar presenters are listed as do-not-use.
+**What changed:** `docs/content/social/pipeline.json` names the repo skills a producer opens for carousel size, video specs, FFmpeg, Remotion type frames, and FLUX prompting. Every frame stays Renew Implant Centre: the design-system tokens and the typed `renew implants` wordmark.
 
-**Why:** fix — the skills folder is large, and most of it would rewrite the locked copy or paint a different brand.
+**Why:** fix — community skills can supply a technique. The brand on the frame is Renew.
 
 **Code touchpoints:** `docs/content/social/pipeline.json`, `.cursor/skills/renew-social/SKILL.md`, `src/lib/social-pipeline.test.ts`
 

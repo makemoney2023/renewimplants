@@ -6,17 +6,40 @@
       "id": "strategy",
       "url": "https://share.gemini.google/tIrA2VZtpAh2",
       "title": "Dental Implant Content Strategy Guide",
-      "usedFor": ["organic Instagram and Facebook cadence", "content pillars", "multi-clinic publishing rules"]
+      "usedFor": [
+        "organic Instagram and Facebook cadence",
+        "content pillars",
+        "multi-clinic publishing rules"
+      ]
     },
     {
       "id": "ads",
       "url": "https://share.gemini.google/AN9qX8ucJp3B",
       "title": "Dental Implant Social Media Content",
-      "usedFor": ["40 paid angles across video, static, and carousel", "denture-slip film concept"]
+      "usedFor": [
+        "40 paid angles across video, static, and carousel",
+        "denture-slip film concept"
+      ]
     }
   ],
-  "produces": ["instagram-video", "instagram-static", "instagram-carousel", "instagram-story", "facebook-video", "facebook-static", "facebook-carousel", "meta-video-ad", "meta-static-ad", "meta-carousel-ad"],
-  "doesNotProduce": ["blog-post", "price-list", "pdf-lead-magnet", "countdown-sale"],
+  "produces": [
+    "instagram-video",
+    "instagram-static",
+    "instagram-carousel",
+    "instagram-story",
+    "facebook-video",
+    "facebook-static",
+    "facebook-carousel",
+    "meta-video-ad",
+    "meta-static-ad",
+    "meta-carousel-ad"
+  ],
+  "doesNotProduce": [
+    "blog-post",
+    "price-list",
+    "pdf-lead-magnet",
+    "countdown-sale"
+  ],
   "stages": [
     {
       "id": "pick",
@@ -32,7 +55,7 @@
     },
     {
       "id": "make",
-      "action": "Read skills.use entries whose when matches this stage and the unit format. Make the unit in its format. Video is filmed or generated with the spoken line. Static is one still. Carousel is the slide list, in order. Clinic stills use approvedMedia only. Generated people are allowed for the denture-slip video and must look lived-in, with no extra facial or hand features and no blood or needles. Do not open a path in skills.doNotUse."
+      "action": "Read skills.use entries whose when matches this stage and the unit format. The frame is Renew Implant Centre: design-system.json tokens, DM Serif Display, Plus Jakarta Sans, and the typed renew implants wordmark. Make the unit in its format. Video is filmed or generated with the spoken line. Static is one still. Carousel is the slide list, in order. Clinic stills use approvedMedia only. Generated people are allowed for the denture-slip video and must look lived-in, with no extra facial or hand features and no blood or needles."
     },
     {
       "id": "end-card",
@@ -57,8 +80,13 @@
   "primaryCta": {
     "path": "/implant-candidate-quiz",
     "labelRule": "About two minutes and nine questions. Never promise a faster quiz.",
-    "paidUtm": { "utm_source": "meta", "utm_medium": "paid" },
-    "organicUtm": { "utm_medium": "organic" }
+    "paidUtm": {
+      "utm_source": "meta",
+      "utm_medium": "paid"
+    },
+    "organicUtm": {
+      "utm_medium": "organic"
+    }
   },
   "secondaryCta": {
     "phone": "613-841-6111",
@@ -107,7 +135,7 @@
         "path": "skills/community/remotion/video/remotion-best-practices",
         "when": "make, when the end card or a type slide is rendered in code",
         "take": "Render the branded type frames as video rather than filming a slide.",
-        "ignore": "Do not invent a second layout. The frames still use design-system.json."
+        "ignore": "Layouts other than the ones in design-system.json."
       },
       {
         "id": "flux-best-practices",
@@ -120,8 +148,8 @@
         "id": "photoreal-stills",
         "path": "skills/org/packs/photoreal-stills",
         "when": "make, generated photography only",
-        "take": "Camera, lens, and light in the prompt. One job per image. Positive wording only.",
-        "ignore": "The other brand's subjects, local model routing, and any still that is typeset rather than photographed."
+        "take": "Camera, lens, and light in the prompt. One job per image. Positive wording only. The subject is a Renew clinic still or the generated person named in the unit.",
+        "ignore": "Local model routing, and any still that is typeset rather than photographed."
       },
       {
         "id": "visual-skills-image",
@@ -138,87 +166,15 @@
         "ignore": "New headlines, new offers, budgets, and audiences that are not in the unit."
       }
     ],
-    "doNotUse": [
-      {
-        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/brand-guidelines",
-        "reason": "Those are Anthropic colors and type, not Renew."
+    "brand": {
+      "id": "renew-implants",
+      "name": "Renew Implant Centre",
+      "designSystem": "docs/content/social/design-system.json",
+      "wordmark": {
+        "word": "renew",
+        "caps": "implants"
       },
-      {
-        "path": "skills/community/ui-ux-pro-max-skill/brand",
-        "reason": "A second brand system. Renew tokens already live in design-system.json."
-      },
-      {
-        "path": "skills/community/ui-ux-pro-max-skill/design-system",
-        "reason": "Would rebuild tokens the site already has."
-      },
-      {
-        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/canvas-design",
-        "reason": "Generic posters. Static frames use the Renew layouts."
-      },
-      {
-        "path": "skills/community/awesome-claude-corporate-skills/04-marketing/social-media-strategy",
-        "reason": "The cadence and pillars are already in this pipeline."
-      },
-      {
-        "path": "skills/community/marketingskills/social",
-        "reason": "Asks for a new calendar, new hooks, and other platforms."
-      },
-      {
-        "path": "skills/community/marketingskills/ad-creative",
-        "reason": "Generates new headlines. The unit copy is locked."
-      },
-      {
-        "path": "skills/community/advertising-skills/skills/operator-os/ad-angle-multiplier",
-        "reason": "The pack requires upstream offer and avatar skills, then new angles."
-      },
-      {
-        "path": "skills/community/advertising-skills/skills/operator-os/scroll-stopping-creative",
-        "reason": "Writes a new first three seconds. The hook is already in the unit."
-      },
-      {
-        "path": "skills/community/advertising-skills/skills/copy-chief/headline-matrix",
-        "reason": "Replaces the hook."
-      },
-      {
-        "path": "skills/community/advertising-skills/skills/foundations/offer-extraction",
-        "reason": "Rebuilds an offer. This clinic does not publish a price or a countdown."
-      },
-      {
-        "path": "skills/community/marketingskills/marketing-psychology",
-        "reason": "Scarcity and urgency are claims this catalog already dropped."
-      },
-      {
-        "path": "skills/community/openmontage/.agents/skills/heygen",
-        "reason": "An avatar presenter would invent a clinician."
-      },
-      {
-        "path": "skills/community/openmontage/.agents/skills/create-video",
-        "reason": "Prompt-to-video skips the locked script and the design system."
-      },
-      {
-        "path": "skills/community/inference-sh/talking-head-production",
-        "reason": "AI spokespersons are not Renew patients or staff."
-      },
-      {
-        "path": "skills/community/inference-sh/ai-social-media-content",
-        "reason": "TikTok, hashtags, and a fresh content idea. This pipeline already has the posts."
-      },
-      {
-        "path": ".cursor/skills/renew-blog-writing",
-        "reason": "Blog MDX. Social units are not posts."
-      },
-      {
-        "path": ".cursor/skills/seo-geo-aeo",
-        "reason": "Search pages. The quiz URL is already the click."
-      },
-      {
-        "path": "skills/integrations/google-ads",
-        "reason": "This pipeline ships to Meta, not Google Ads."
-      },
-      {
-        "path": "skills/community/awesome-claude-corporate-skills/06-legal-compliance/compliance-tracking",
-        "reason": "SOC 2 tracking. Clinic claim checks are the social pipeline test."
-      }
-    ]
+      "rule": "Every frame is Renew Implant Centre. A skill may supply a technique. The colors, type, and wordmark come from design-system.json."
+    }
   }
 }

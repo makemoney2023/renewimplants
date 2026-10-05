@@ -11,12 +11,11 @@ The catalog is `docs/content/social/`. Entity facts and locked claims stay in [d
 
 ## Skills
 
-`pipeline.json` lists the only other skills this work may open.
+`pipeline.json` names the skills to open for a stage, and the brand those skills paint.
 
-1. Read `skills.use` and open a skill only when its `when` matches the stage and the unit format.
+1. Read `skills.use` and open a skill when its `when` matches the stage and the unit format.
 2. Take the line under `take`. Leave the line under `ignore`.
-3. Do not open a path in `skills.doNotUse`. Those skills rebuild hooks, swap in another brand, or invent a presenter.
-4. This skill overrides every skill it points at. A community skill never adds a price, a new hook, or a color.
+3. The brand is Renew Implant Centre. Colors, type, and the wordmark come from `design-system.json`. A skill supplies a technique. It does not supply a brand.
 
 ## Design system, every time
 

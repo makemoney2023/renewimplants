@@ -154,22 +154,26 @@ describe("social and ad catalog", () => {
     expect(units.filter((unit) => unit.testimonialName).length).toBeGreaterThanOrEqual(12);
   });
 
-  it("points production at repo skills and keeps the others out", () => {
+  it("keeps every production skill on the Renew Implant Centre brand", () => {
     const pipeline = JSON.parse(readFileSync(join(socialDir, "pipeline.json"), "utf8")) as {
       skills: {
         overrides: string;
         use: { path: string }[];
-        doNotUse: { path: string }[];
+        brand: { id: string; name: string; wordmark: { word: string; caps: string } };
       };
     };
+    const design = loadDesignSystem();
     const skillFile = (dir: string) => join(process.cwd(), dir, "SKILL.md");
+    expect(pipeline.skills.brand).toMatchObject({
+      id: design.id,
+      name: "Renew Implant Centre",
+      wordmark: design.wordmark,
+    });
     expect(pipeline.skills.overrides).toBe(".cursor/skills/renew-social");
-    expect(readFileSync(skillFile(pipeline.skills.overrides), "utf8").length).toBeGreaterThan(80);
+    expect(readFileSync(skillFile(pipeline.skills.overrides), "utf8")).toContain("Renew Implant Centre");
     const used = pipeline.skills.use.map((skill) => skill.path);
-    const blocked = pipeline.skills.doNotUse.map((skill) => skill.path);
     expect(used).toContain(pipeline.skills.overrides);
-    expect(used.filter((path) => blocked.includes(path))).toEqual([]);
-    for (const path of [...used, ...blocked]) {
+    for (const path of used) {
       expect(readFileSync(skillFile(path), "utf8").length, path).toBeGreaterThan(40);
     }
   });
