@@ -92,6 +92,49 @@ const rendered: Record<string, { video?: string; poster?: string; images?: strin
     video: "/media/social/w07-fri.mp4?v=2",
     poster: "/media/social/w07-fri-poster.jpg?v=2",
   },
+  "w08-tue": {
+    images: [
+      "/media/social/w08-tue-1.jpg",
+      "/media/social/w08-tue-2.jpg",
+      "/media/social/w08-tue-3.jpg",
+      "/media/social/w08-tue-4.jpg",
+    ],
+  },
+  "w08-thu": { images: ["/media/social/w08-thu.jpg"] },
+  "w08-fri": {
+    images: [
+      "/media/social/w08-fri-1.jpg",
+      "/media/social/w08-fri-2.jpg",
+      "/media/social/w08-fri-3.jpg",
+      "/media/social/w08-fri-4.jpg",
+    ],
+  },
+  "w09-tue": {
+    video: "/media/social/w09-tue.mp4",
+    poster: "/media/social/w09-tue-poster.jpg",
+  },
+  "w09-thu": { images: ["/media/social/w09-thu.jpg"] },
+  "w09-fri": {
+    video: "/media/social/w09-fri.mp4",
+    poster: "/media/social/w09-fri-poster.jpg",
+  },
+  "w10-tue": {
+    images: [
+      "/media/social/w10-tue-1.jpg",
+      "/media/social/w10-tue-2.jpg",
+      "/media/social/w10-tue-3.jpg",
+      "/media/social/w10-tue-4.jpg",
+    ],
+  },
+  "w10-thu": {
+    images: [
+      "/media/social/w10-thu-1.jpg",
+      "/media/social/w10-thu-2.jpg",
+      "/media/social/w10-thu-3.jpg",
+      "/media/social/w10-thu-4.jpg",
+    ],
+  },
+  "w10-fri": { images: ["/media/social/w10-fri.jpg"] },
 };
 
 function facebookPath(unit: PublishUnit) {

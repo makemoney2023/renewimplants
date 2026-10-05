@@ -159,6 +159,36 @@ describe("social preview catalog", () => {
     expect(gz?.caption).not.toContain("Dr. Tom");
   });
 
+  it("puts weeks 8 to 10 on the preview", () => {
+    const quote = posts.find((item) => item.id === "w08-thu");
+    expect(quote?.images).toEqual(["/media/social/w08-thu.jpg"]);
+    expect(quote?.caption).toContain("Stephen E.");
+    expect(quote?.instagramHref).toContain("utm_campaign=w08-thu");
+
+    const still = posts.find((item) => item.id === "w10-fri");
+    expect(still?.format).toBe("static");
+    expect(still?.images).toEqual(["/media/social/w10-fri.jpg"]);
+    expect(still?.video).toBeNull();
+    expect(existsSync(join(process.cwd(), "assets/social/w10-fri.jpg"))).toBe(true);
+    expect(existsSync(join(process.cwd(), "assets/social/w10-fri-square.jpg"))).toBe(true);
+
+    for (const id of ["w09-tue", "w09-fri"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.video).toBe(`/media/social/${id}.mp4`);
+      expect(post?.poster).toBe(`/media/social/${id}-poster.jpg`);
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}.mp4`))).toBe(true);
+      expect(existsSync(join(process.cwd(), "assets/social", `${id}-poster.jpg`))).toBe(true);
+    }
+
+    for (const id of ["w08-tue", "w08-fri", "w10-tue", "w10-thu"]) {
+      const post = posts.find((item) => item.id === id);
+      expect(post?.images).toHaveLength(4);
+      expect(post?.images?.every((path) => existsSync(join(process.cwd(), "assets/social", path.split("/").pop()!)))).toBe(
+        true,
+      );
+    }
+  });
+
   it("does not invent media for units that have not been rendered", () => {
     const rendered = new Set([
       "w01-tue",
@@ -182,6 +212,15 @@ describe("social preview catalog", () => {
       "w07-tue",
       "w07-thu",
       "w07-fri",
+      "w08-tue",
+      "w08-thu",
+      "w08-fri",
+      "w09-tue",
+      "w09-thu",
+      "w09-fri",
+      "w10-tue",
+      "w10-thu",
+      "w10-fri",
     ]);
     const waiting = posts.filter((post) => !rendered.has(post.id));
     expect(waiting.every((post) => post.video === null && post.poster === null && post.images === null)).toBe(true);

@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Weeks 8 through 10 on the social preview
+
+**What changed:** The feed preview now runs the full ten-week calendar. Weeks 8–10 add the consultation and recovery carousels, Stephen E. and Ernie Minichilli quote cards, the healing-cap and Tom reels, the aftercare and long-gap carousels, and the soft-food still.
+
+**Why:** feature — the written catalog already ends at week 10. The preview stopped at week 7.
+
+**Code touchpoints:** `assets/social/`, `scripts/render-social-stills.mjs`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. Catalog copy is unchanged. Quote cards repeat lines from `src/content/testimonials.ts`. The recovery slide leaves the dose note off the frame. Ernie’s price comment stays off the frame.
+
+**API / schema impact:** none.
+
+**Verification:** 1080×1350 slides, 1080×1080 squares, 1080×1920 reels at 9.7 seconds with a 2.5 second end card, then `/social-preview?post=w09-fri&catalog=1`.
+
 ## 2026-10-05 — Weeks 4 through 7 on the social preview
 
 **What changed:** The remaining Week 4–7 posts play or swipe on `/social-preview`. Week 7 Friday was already there. This adds four carousels, four quote cards, and two reels.
