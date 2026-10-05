@@ -76,6 +76,20 @@ describe("social preview catalog", () => {
     expect(waiting).toHaveLength(0);
     const ready = filterSocialPosts(posts, parseLibraryQuery({ state: "ready" }));
     expect(ready).toHaveLength(posts.length);
+
+    const decisions = new Map<string, "approved" | "not-approved">([
+      ["w01-tue", "approved"],
+      ["ad-01", "not-approved"],
+    ]);
+    expect(filterSocialPosts(posts, parseLibraryQuery({ approval: "approved" }), decisions).map((post) => post.id)).toEqual([
+      "w01-tue",
+    ]);
+    const pending = filterSocialPosts(posts, parseLibraryQuery({ approval: "pending" }), decisions);
+    expect(pending.some((post) => post.id === "w01-tue" || post.id === "ad-01")).toBe(false);
+    expect(pending.some((post) => post.id === "w01-thu")).toBe(true);
+    expect(socialPreviewHref({ view: "library", library: { approval: "approved" } })).toBe(
+      "/social-preview?view=library&approval=approved",
+    );
   });
 
   it("keeps week and pillar on every unit", () => {

@@ -1,3 +1,4 @@
+import { ApprovalControls, LibraryBoard } from "@/components/social-preview/approval-controls";
 import {
   filterSocialPosts,
   instagramAccount,
@@ -90,6 +91,10 @@ export function SocialPreview({
             <Catalog posts={posts} selectedId={post.id} channel={channel} library={library} />
           ) : null}
           <div className="social-frame">
+            <div className="social-review">
+              <ApprovalControls id={post.id} tone="light" />
+              <p>Approved units join the post queue. This page does not publish.</p>
+            </div>
             {channel === "instagram" ? <InstagramPost post={post} /> : <FacebookPost post={post} />}
           </div>
         </>
@@ -107,12 +112,12 @@ function Library({
   channel: SocialPreviewChannel;
   library: LibraryQuery;
 }) {
-  const visible = sortSocialPosts(filterSocialPosts(posts, library), library.sort);
-  const ready = visible.filter((post) => postIsReady(post)).length;
+  const pool = sortSocialPosts(filterSocialPosts(posts, { ...library, approval: "all" }), library.sort);
   const filtered =
     library.lane !== "all" ||
     library.format !== "all" ||
     library.state !== "all" ||
+    library.approval !== "all" ||
     library.pillar !== "all" ||
     library.week !== "all" ||
     library.sort !== "catalog" ||
@@ -146,6 +151,15 @@ function Library({
             <option value="all">All</option>
             <option value="ready">Ready</option>
             <option value="waiting">Waiting</option>
+          </select>
+        </label>
+        <label>
+          Approval
+          <select name="approval" defaultValue={library.approval}>
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="not-approved">Not approved</option>
           </select>
         </label>
         <label>
@@ -193,51 +207,8 @@ function Library({
         ) : null}
       </form>
 
-      <p className="library-count">
-        {visible.length} of {posts.length} · {ready} ready
-      </p>
-
-      {visible.length === 0 ? (
-        <p className="library-empty">No assets match these filters.</p>
-      ) : (
-        <ul className="library-grid">
-          {visible.map((post) => (
-            <li key={post.id}>
-              <a className="library-card" href={socialPreviewHref({ post: post.id, channel, library })}>
-                <Thumb post={post} />
-                <span className="library-meta">
-                  <span className="library-badges">
-                    <span>{post.format}</span>
-                    <span>{post.lane === "paid" ? "Ad" : "Feed"}</span>
-                    <span>{postIsReady(post) ? "Ready" : "Waiting"}</span>
-                    {post.images && post.images.length > 1 ? <span>{post.images.length} slides</span> : null}
-                  </span>
-                  <strong>{post.label}</strong>
-                  <span className="library-line">{post.onScreen}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <LibraryBoard posts={pool} total={posts.length} channel={channel} library={library} />
     </div>
-  );
-}
-
-function Thumb({ post }: { post: SocialPreviewPost }) {
-  const src = post.poster ?? post.images?.[0] ?? null;
-  if (!src) {
-    return (
-      <span className="library-thumb library-thumb-waiting">
-        <span>{post.onScreen}</span>
-      </span>
-    );
-  }
-
-  return (
-    <span className={`library-thumb library-thumb-${post.format}`}>
-      <img src={src} alt="" />
-    </span>
   );
 }
 
@@ -267,7 +238,7 @@ function Catalog({
               .filter((post) => post.lane === lane.id)
               .toSorted((a, b) => Number(postIsReady(b)) - Number(postIsReady(a)))
               .map((post) => (
-                <li key={post.id}>
+                <li key={post.id} className="catalog-item">
                   <a
                     href={socialPreviewHref({ post: post.id, channel, library })}
                     aria-current={post.id === selectedId ? "page" : undefined}
@@ -277,6 +248,7 @@ function Catalog({
                       {post.format} · {post.video || post.images?.length ? "Ready" : "Waiting"}
                     </small>
                   </a>
+                  <ApprovalControls id={post.id} tone="dark" />
                 </li>
               ))}
           </ul>
