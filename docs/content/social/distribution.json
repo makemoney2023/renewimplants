@@ -1,0 +1,44 @@
+{
+  "model": "single-domain-master-hub",
+  "sourceGuide": "https://share.gemini.google/tIrA2VZtpAh2",
+  "decision": "Renew Implant Centre is already the master hub on https://www.renewimplants.ca. Educational posts stay on /blog/. Do not launch a second domain, a /learn/ duplicate of /blog/, or city price pages.",
+  "blogs": {
+    "canonicalHost": "https://www.renewimplants.ca",
+    "path": "/blog/",
+    "publishOnSisterDomain": false,
+    "reason": "Copying the same article onto another domain splits authority and creates duplicates. The Gemini canonical-tag rotation is not the path for this brand."
+  },
+  "social": {
+    "duplicatePenalty": false,
+    "rule": "The same Renew-branded asset may be posted to another account only after a person changes the last line to that clinic and confirms the account. The layout stays on this design system.",
+    "doNotInvent": [
+      "A third clinic",
+      "Cambridge, Kitchener, or Waterloo locations",
+      "apexdentalimplants.ca or any new umbrella domain",
+      "A local price, surgeon name, or phone number that is not in brand facts"
+    ]
+  },
+  "clinics": [
+    {
+      "id": "renew",
+      "name": "Renew Implant Centre",
+      "url": "https://www.renewimplants.ca",
+      "phone": "613-841-6111",
+      "address": "2530 St Joseph Blvd #6, Orléans, ON K1C 1G1",
+      "place": "Orléans, Ottawa",
+      "role": "primary",
+      "designSystem": "renew-implants"
+    },
+    {
+      "id": "orleans-denture-clinic",
+      "name": "Orléans Denture Clinic",
+      "url": "https://orleansdentureclinic.com/",
+      "role": "sister",
+      "designSystem": "renew-implants",
+      "notes": "Sister site and lab. Do not republish Renew blog posts there. Do not show its reception sign in Renew video. Social cross-posts need a human to rewrite the closing line."
+    }
+  ],
+  "unresolved": [
+    "The Gemini guide assumed three clinics and invented example cities. Only two clinics are on record. Leave the third unnamed until a real NAP is supplied."
+  ]
+}

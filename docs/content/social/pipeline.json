@@ -1,0 +1,67 @@
+{
+  "id": "renew-social-ads",
+  "version": 1,
+  "sources": [
+    {
+      "id": "strategy",
+      "url": "https://share.gemini.google/tIrA2VZtpAh2",
+      "title": "Dental Implant Content Strategy Guide",
+      "usedFor": ["organic Instagram and Facebook cadence", "content pillars", "multi-clinic publishing rules"]
+    },
+    {
+      "id": "ads",
+      "url": "https://share.gemini.google/AN9qX8ucJp3B",
+      "title": "Dental Implant Social Media Content",
+      "usedFor": ["40 paid video angles", "denture-slip film concept"]
+    }
+  ],
+  "produces": ["instagram-reel", "instagram-carousel", "instagram-story", "facebook-post", "facebook-reel", "meta-video-ad"],
+  "doesNotProduce": ["blog-post", "price-list", "pdf-lead-magnet", "countdown-sale"],
+  "stages": [
+    {
+      "id": "pick",
+      "action": "Choose one ready unit from ads.json or organic-calendar.json. Skip needs-consent units until a signed social-media release exists."
+    },
+    {
+      "id": "lock-design",
+      "action": "Resolve layoutId and endCardLayoutId in design-system.json. Paint only with token names. Run buildPromptPrefix() for any generated frame. The end card is always layout video-end-card."
+    },
+    {
+      "id": "compliance",
+      "action": "Run the social pipeline test. No prices, no guarantee, no Dr. Szarski, no invented patient, no unsourced percentage, no fake scarcity."
+    },
+    {
+      "id": "make",
+      "action": "Shoot or generate the scene. Clinic footage uses approvedMedia only. Generated people are allowed for the denture-slip concept and must look lived-in, with no extra facial or hand features and no blood or needles."
+    },
+    {
+      "id": "end-card",
+      "action": "Hold the branded end card for 2.5 seconds. Wordmark, one serif line, lime pill, and the phone as secondary text."
+    },
+    {
+      "id": "ship",
+      "action": "Primary click goes to the unit ctaHref (the implant quiz). The phone number may be spoken or set in caption text. Cross-posting follows distribution.json."
+    }
+  ],
+  "cadence": {
+    "organic": "Tuesday, Thursday, and Friday. Stories are 3 to 5 short clips a week and are not a substitute for the feed posts.",
+    "paid": "One angle at a time. Do not launch the offer cluster until the copy in ads.json is the copy on the screen.",
+    "batch": "Film 4 to 6 short videos in one sitting. Change scrubs between setups so the weeks do not look identical."
+  },
+  "pillars": {
+    "clinical-demystification": 0.3,
+    "social-proof": 0.3,
+    "practice-culture": 0.2,
+    "patient-education": 0.2
+  },
+  "primaryCta": {
+    "path": "/implant-candidate-quiz",
+    "labelRule": "About two minutes and nine questions. Never promise a faster quiz.",
+    "paidUtm": { "utm_source": "meta", "utm_medium": "paid" },
+    "organicUtm": { "utm_medium": "organic" }
+  },
+  "secondaryCta": {
+    "phone": "613-841-6111",
+    "contactPath": "/contact-us"
+  }
+}

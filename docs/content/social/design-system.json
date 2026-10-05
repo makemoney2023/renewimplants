@@ -1,0 +1,163 @@
+{
+  "id": "renew-implants",
+  "name": "Renew Implant Centre",
+  "tokenSource": "src/app/globals.css",
+  "fontSource": "src/app/layout.tsx",
+  "wordmarkSource": "src/components/brand-mark.tsx",
+  "voiceSource": "docs/scroll-world-brief.md",
+  "notes": "There is no logo file. The mark is type: renew in DM Serif Display, implants in Plus Jakarta Sans small caps. Social and paid end cards use this mark. Do not draw a symbol, shield, or tooth icon in its place.",
+  "tokens": {
+    "canvas": "#ffffff",
+    "surface": "#ffffff",
+    "surface-alt": "#eaf7fd",
+    "ink": "#1a1a1a",
+    "ink-soft": "#5b6670",
+    "carbon": "#1a1a1a",
+    "ink-deep": "#111111",
+    "accent": "#8dc41d",
+    "accent-deep": "#5f8a0e",
+    "accent-light": "#d8f0a6",
+    "aqua": "#009ce3",
+    "aqua-deep": "#006ca6",
+    "aqua-light": "#85d4f2",
+    "aqua-pale": "#bfebf6"
+  },
+  "type": {
+    "display": {
+      "family": "DM Serif Display",
+      "cssVariable": "--font-display",
+      "weight": 400,
+      "tracking": "-0.02em"
+    },
+    "text": {
+      "family": "Plus Jakarta Sans",
+      "cssVariable": "--font-text",
+      "weights": [400, 600, 700]
+    },
+    "eyebrow": {
+      "family": "Plus Jakarta Sans",
+      "weight": 700,
+      "tracking": "0.22em",
+      "transform": "uppercase",
+      "sizeRatio": 0.39
+    }
+  },
+  "wordmark": {
+    "word": "renew",
+    "caps": "implants",
+    "wordToken": "display",
+    "capsToken": "eyebrow"
+  },
+  "button": {
+    "radius": "999px",
+    "minHeightRem": 2.75,
+    "padding": "0.72rem 1.25rem",
+    "labelSizeRem": 0.86,
+    "labelFamily": "Plus Jakarta Sans",
+    "labelWeight": 600
+  },
+  "shape": {
+    "cardRadius": "1.75rem",
+    "focus": "3px solid aqua-deep, 3px offset"
+  },
+  "signature": "One thin aqua arch stroke, faint, read as a jaw curve. It is a guide, not a logo.",
+  "grounds": {
+    "light": {
+      "ground": "canvas",
+      "headline": "ink-deep",
+      "body": "ink-soft",
+      "eyebrow": "aqua-deep",
+      "wordmarkWord": "ink-deep",
+      "wordmarkCaps": "aqua-deep",
+      "ctaFill": "accent",
+      "ctaText": "ink-deep",
+      "rule": "aqua"
+    },
+    "dark": {
+      "ground": "carbon",
+      "headline": "canvas",
+      "body": "canvas",
+      "eyebrow": "accent",
+      "wordmarkWord": "canvas",
+      "wordmarkCaps": "accent",
+      "ctaFill": "accent",
+      "ctaText": "ink-deep",
+      "rule": "aqua"
+    }
+  },
+  "canvases": {
+    "video-9x16": { "width": 1080, "height": 1920, "safeMarginPx": 96 },
+    "static-4x5": { "width": 1080, "height": 1350, "safeMarginPx": 80 },
+    "static-1x1": { "width": 1080, "height": 1080, "safeMarginPx": 72 }
+  },
+  "typeScaleOn1080": {
+    "headlinePx": 84,
+    "bodyPx": 36,
+    "eyebrowPx": 22,
+    "ctaPx": 32,
+    "ctaHeightPx": 88
+  },
+  "layouts": {
+    "light-editorial": {
+      "ground": "light",
+      "use": "Quote-free education, carousels, and static feed posts.",
+      "structure": ["eyebrow", "serif headline", "short body", "lime pill", "wordmark", "aqua arch"]
+    },
+    "carbon-editorial": {
+      "ground": "dark",
+      "use": "Hooks that need contrast on a phone screen. Lime labels on matte black.",
+      "structure": ["lime eyebrow", "white serif headline", "lime pill", "wordmark", "aqua arch"]
+    },
+    "photo-lower-third": {
+      "ground": "dark",
+      "use": "A real clinic still or silent loop, with a carbon lower third. Never a stock smile.",
+      "structure": ["full-bleed approved photo or loop", "carbon scrim on the lower third", "serif headline", "lime pill", "wordmark"]
+    },
+    "quote-card": {
+      "ground": "light",
+      "use": "A verified Google review, attributed with the name and Ottawa, ON. No invented patients.",
+      "structure": ["eyebrow Review", "serif quote", "name and city", "lime pill", "wordmark"]
+    },
+    "video-end-card": {
+      "ground": "dark",
+      "use": "The last 2.5 seconds of every video. The scene may be photographic. This frame is always the design system.",
+      "durationSeconds": 2.5,
+      "structure": ["wordmark", "one serif line", "lime pill", "phone as secondary text", "aqua arch"]
+    }
+  },
+  "approvedMedia": [
+    "/media/heroes/renew-hero.jpg",
+    "/media/heroes/meet-hero.jpg",
+    "/media/interiors/renew-lab.jpg",
+    "/media/staff/tom-szarski.jpg",
+    "/media/staff/team-group.jpg",
+    "/media/services/service-allon4.jpg",
+    "/media/services/service-fullarch.jpg",
+    "/media/services/service-sedation.jpg",
+    "/media/services/service-snapon.jpg",
+    "/media/video/renew-hero-16x9.mp4",
+    "/media/video/renew-hero-9x16.mp4",
+    "/media/animation/dental-implant-angled-16x9.png",
+    "/media/animation/dental-implant-angled-9x16.png",
+    "/media/animation/implant-assemble-web-16x9.mp4",
+    "/media/animation/implant-assemble-web-9x16.mp4",
+    "/media/animation/implant-assemble-web-16x9.webm",
+    "/media/animation/implant-assemble-web-9x16.webm"
+  ],
+  "bannedVisuals": [
+    "gold foil",
+    "marble",
+    "neon",
+    "glossy 3D logo",
+    "stock dental-blue gradient",
+    "countdown clock",
+    "price tag",
+    "dollar amount",
+    "blood",
+    "needles",
+    "active surgical site",
+    "uncanny extra features",
+    "sister-clinic reception sign"
+  ],
+  "promptPrefix": "End card and any typography use only the Renew Implant Centre design system. Ground is white {canvas} or matte carbon {carbon}. Headlines are DM Serif Display regular, tracking tight. Labels are Plus Jakarta Sans bold, uppercase, wide tracking. On white, eyebrows and the wordmark caps are {aqua-deep}. On carbon, eyebrows and the wordmark caps are lime {accent}. The CTA is a fully rounded pill filled {accent} with {ink-deep} text. The wordmark is the word renew in the serif and the word implants in small caps. A single thin {aqua} arch stroke may appear, like a jaw curve. No gold, neon, marble, glossy logo, countdown, price tag, blood, or needles. If a person is generated, the skin looks lived-in, with real wrinkles and laugh lines, and nothing extra is added to the face or hands."
+}

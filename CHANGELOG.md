@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Social and paid-video pipeline
+
+**What changed:** the Gemini organic-social plan and the 40 implant ad scripts are stored as a production catalog. Every unit resolves to the live Renew design tokens, the typed wordmark, and the quiz URL. Unsafe claims from the drafts (prices, invented patients, same-day permanent teeth, fake scarcity) are dropped before publish.
+
+**Why:** feature — give Instagram, Facebook, and Meta video a single brief format that cannot drift off the clinic’s palette or compliance rules.
+
+**Code touchpoints:** `docs/content/social/*`, `src/lib/social-pipeline.ts`, `src/lib/social-pipeline.test.ts`, `.cursor/skills/renew-social/SKILL.md`, `docs/content/content-strategy.md`, `docs/search-visibility.md`
+
+**Data-flow impact:** none. No pages, leads, or schema changed.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-pipeline.test.ts` (10 tests) and `npx tsc --noEmit`.
+
 ## 2026-10-02 — Blog content strategy backlog
 
 **What changed:** the Gemini implant content strategy (hub-and-spoke guides plus 105 blog topics) is saved as a Renew working backlog, with Wave 1 titles, clusters, and the clinic’s locked claims applied before any new posts are drafted.

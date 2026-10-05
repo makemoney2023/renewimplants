@@ -1,6 +1,6 @@
 # Search visibility — project binding
 
-Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-blog-writing](../.cursor/skills/renew-blog-writing/SKILL.md) skills. Every page and post inherits these facts; change them here first. The blog topic backlog and Wave 1 order live in [content/content-strategy.md](content/content-strategy.md).
+Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-blog-writing](../.cursor/skills/renew-blog-writing/SKILL.md) skills. Every page and post inherits these facts; change them here first. The blog topic backlog and Wave 1 order live in [content/content-strategy.md](content/content-strategy.md). Instagram, Facebook, and Meta video ads live in [content/social/](content/social/) and must use the design tokens in `src/app/globals.css`.
 
 ## Canonical host and conversion
 
