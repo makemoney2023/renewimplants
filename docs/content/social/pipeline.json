@@ -110,6 +110,34 @@
         "ignore": "The org handoff files, verifier ritual, and business-idea paths. This clinic's brief is docs/content/social/."
       },
       {
+        "id": "design-system",
+        "path": "skills/community/ui-ux-pro-max-skill/design-system",
+        "when": "lock-design",
+        "take": "Treat color and type as named tokens and a fixed scale. Check the frame against design-system.json before paint.",
+        "ignore": "Do not generate a new palette, a Tailwind theme, or a three-layer token file. The tokens already live in globals.css and design-system.json."
+      },
+      {
+        "id": "banner-design",
+        "path": "skills/community/ui-ux-pro-max-skill/banner-design",
+        "when": "lock-design and make, format static or carousel",
+        "take": "One CTA, two typefaces, type inside the safe inset, and enough contrast to read the headline.",
+        "ignore": "The style menu, Pinterest research, logo placement, Gemini image generation, and any size other than the unit canvas."
+      },
+      {
+        "id": "slides",
+        "path": "skills/community/ui-ux-pro-max-skill/slides",
+        "when": "make, format carousel",
+        "take": "One idea per slide and a layout that leads to the closing card.",
+        "ignore": "Chart.js, pitch-deck copy formulas, and any rewrite of the slide lines in the unit."
+      },
+      {
+        "id": "web-design-guidelines",
+        "path": "skills/community/openmontage/.agents/skills/web-design-guidelines",
+        "when": "compliance, after a frame exists",
+        "take": "Check contrast, type size, and that the CTA is readable on the canvas.",
+        "ignore": "A site-wide UX audit, and any restyle of the marketing pages."
+      },
+      {
         "id": "social-media-carousel",
         "path": "skills/community/inference-sh/social-media-carousel",
         "when": "make, format carousel",
@@ -131,11 +159,60 @@
         "ignore": "Do not reframe the picture into a different aspect than the unit canvas."
       },
       {
+        "id": "remotion-create",
+        "path": "skills/community/remotion/video/remotion-create",
+        "when": "make, format video, when no Remotion composition exists yet",
+        "take": "Scaffold one blank Remotion project and add the unit as a composition at the unit canvas.",
+        "ignore": "A second scaffold, Tailwind, and default fonts. Type stays DM Serif Display and Plus Jakarta Sans."
+      },
+      {
+        "id": "remotion-markup",
+        "path": "skills/community/remotion/video/remotion-markup",
+        "when": "make, format video, when the end card or a type slide is rendered in code",
+        "take": "Drive type and the pill with useCurrentFrame() and interpolate(). Hold the end card for 2.5 seconds.",
+        "ignore": "Overshoot, springy motion, and any line that is not already in the unit."
+      },
+      {
         "id": "remotion-best-practices",
         "path": "skills/community/remotion/video/remotion-best-practices",
         "when": "make, when the end card or a type slide is rendered in code",
         "take": "Render the branded type frames as video rather than filming a slide.",
         "ignore": "Layouts other than the ones in design-system.json."
+      },
+      {
+        "id": "openmontage-remotion",
+        "path": "skills/community/openmontage/.agents/skills/remotion",
+        "when": "make, format video, between type scenes",
+        "take": "A short fade or slide between scenes.",
+        "ignore": "Glitch, light leak, logo watermark, narrator picture-in-picture, pointing hand, and the toolkit backgrounds."
+      },
+      {
+        "id": "motion-graphics",
+        "path": "skills/community/openmontage/.agents/skills/motion-graphics",
+        "when": "make, format video, for a type-led end card or lower third",
+        "take": "Kinetic type and a lower third for the on-screen line, short, with no extra narration.",
+        "ignore": "A new palette or type spec, logo stings, stat count-ups, and HyperFrames design files that replace design-system.json."
+      },
+      {
+        "id": "remotion-captions",
+        "path": "skills/community/remotion/video/remotion-captions",
+        "when": "make, format video, when the spoken line needs on-screen text",
+        "take": "Time the unit's onScreen lines as captions.",
+        "ignore": "A transcript that adds words, claims, or a name the unit does not already contain."
+      },
+      {
+        "id": "remotion-render",
+        "path": "skills/community/remotion/video/remotion-render",
+        "when": "make, format video, after the composition matches the unit",
+        "take": "Export with remotion render at the unit canvas. Use remotion still for a poster frame.",
+        "ignore": "A transparent master, and any resolution other than 1080x1920."
+      },
+      {
+        "id": "video-edit",
+        "path": "skills/community/openmontage/.agents/skills/video-edit",
+        "when": "make, format video, after the clips exist",
+        "take": "Trim and concatenate with ffmpeg. Confirm duration and frame size with ffprobe.",
+        "ignore": "A resize to another aspect, a speed change, and a cut that shortens the 2.5 second end card."
       },
       {
         "id": "flux-best-practices",

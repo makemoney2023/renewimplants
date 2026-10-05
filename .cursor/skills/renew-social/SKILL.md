@@ -16,6 +16,7 @@ The catalog is `docs/content/social/`. Entity facts and locked claims stay in [d
 1. Read `skills.use` and open a skill when its `when` matches the stage and the unit format.
 2. Take the line under `take`. Leave the line under `ignore`.
 3. The brand is Renew Implant Centre. Colors, type, and the wordmark come from `design-system.json`. A skill supplies a technique. It does not supply a brand.
+4. Design skills in that list cover banner layout, token checks, carousel structure, and contrast. Video skills cover Remotion compositions and OpenMontage motion, captions, and cuts. They change how a frame is built. They leave the Renew palette, the two typefaces, and the wordmark alone.
 
 ## Design system, every time
 

@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Design and video skills on the social pipeline
+
+**What changed:** stills now open banner layout, token checks, carousel structure, and a contrast pass. Video now opens Remotion for the composition, type motion, captions, and export, and OpenMontage for fades, kinetic type, and the ffmpeg cut.
+
+**Why:** fix — those skills were already in the repo. The frame stays Renew Implant Centre: the same tokens, DM Serif Display, Plus Jakarta Sans, and the typed wordmark.
+
+**Code touchpoints:** `docs/content/social/pipeline.json`, `.cursor/skills/renew-social/SKILL.md`
+
+**Data-flow impact:** none.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-pipeline.test.ts`.
+
 ## 2026-10-05 — Social pipeline skill map
 
 **What changed:** `docs/content/social/pipeline.json` names the repo skills a producer opens for carousel size, video specs, FFmpeg, Remotion type frames, and FLUX prompting. Every frame stays Renew Implant Centre: the design-system tokens and the typed `renew implants` wordmark.
