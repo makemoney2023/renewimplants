@@ -42,10 +42,6 @@ const rendered: Record<string, { video?: string; poster?: string; images?: strin
   },
 };
 
-function isReady(post: { video: string | null; images: string[] | null }) {
-  return post.video !== null || (post.images?.length ?? 0) > 0;
-}
-
 function facebookPath(unit: PublishUnit) {
   const extra = unit as PublishUnit & { facebookCtaHref?: string };
   return extra.facebookCtaHref ?? unit.ctaHref;
@@ -72,11 +68,14 @@ function toPost(unit: PublishUnit, lane: "organic" | "paid"): SocialPreviewPost 
     video: media?.video ?? null,
     poster: media?.poster ?? null,
     images: media?.images ?? null,
+    week: lane === "organic" ? (organic.week ?? null) : null,
+    weekday: lane === "organic" ? (organic.weekday ?? null) : null,
+    pillar: unit.pillar,
   };
 }
 
 export function loadSocialPreview(): SocialPreviewPost[] {
   const organic = loadOrganicPosts().map((unit) => toPost(unit, "organic"));
   const paid = loadAds().map((unit) => toPost(unit, "paid"));
-  return [...organic, ...paid].sort((a, b) => Number(isReady(b)) - Number(isReady(a)));
+  return [...organic, ...paid];
 }

@@ -1,43 +1,80 @@
 import {
+  filterSocialPosts,
   instagramAccount,
+  LIBRARY_PILLARS,
+  postIsReady,
   socialPreviewHref,
+  sortSocialPosts,
+  type LibraryPillar,
+  type LibraryQuery,
   type SocialPreviewChannel,
   type SocialPreviewPost,
 } from "@/lib/social-preview-model";
 import "./social-preview.css";
+
+const PILLAR_LABELS: Record<LibraryPillar, string> = {
+  "clinical-demystification": "Clinical",
+  "social-proof": "Reviews",
+  "practice-culture": "Practice",
+  "patient-education": "Education",
+};
 
 export function SocialPreview({
   posts,
   postId,
   channel,
   catalogOpen,
+  view,
+  library,
 }: {
   posts: SocialPreviewPost[];
   postId: string;
   channel: SocialPreviewChannel;
   catalogOpen: boolean;
+  view: "post" | "library";
+  library: LibraryQuery;
 }) {
   const post = posts.find((item) => item.id === postId) ?? posts[0];
+  const libraryHref = socialPreviewHref({ view: "library", channel, library });
 
   return (
     <main id="main-content" className={`social-stage social-stage-${channel}`} tabIndex={-1}>
       <div className="social-tools">
-        <a
-          className="social-tool"
-          href={socialPreviewHref({ post: post.id, channel, catalog: !catalogOpen })}
-          aria-expanded={catalogOpen}
-        >
-          Catalog
-        </a>
+        <div className="social-tool-group">
+          <a className="social-tool" href={libraryHref} aria-pressed={view === "library"}>
+            Library
+          </a>
+          {view === "post" ? (
+            <a
+              className="social-tool"
+              href={socialPreviewHref({ post: post.id, channel, catalog: !catalogOpen, library })}
+              aria-expanded={catalogOpen}
+            >
+              Catalog
+            </a>
+          ) : null}
+        </div>
         <div className="social-switch" role="group" aria-label="Channel">
           <a
-            href={socialPreviewHref({ post: post.id, channel: "instagram", catalog: catalogOpen })}
+            href={socialPreviewHref({
+              post: post.id,
+              channel: "instagram",
+              catalog: view === "post" && catalogOpen,
+              view,
+              library,
+            })}
             aria-pressed={channel === "instagram"}
           >
             Instagram
           </a>
           <a
-            href={socialPreviewHref({ post: post.id, channel: "facebook", catalog: catalogOpen })}
+            href={socialPreviewHref({
+              post: post.id,
+              channel: "facebook",
+              catalog: view === "post" && catalogOpen,
+              view,
+              library,
+            })}
             aria-pressed={channel === "facebook"}
           >
             Facebook
@@ -45,12 +82,162 @@ export function SocialPreview({
         </div>
       </div>
 
-      {catalogOpen ? <Catalog posts={posts} selectedId={post.id} channel={channel} /> : null}
-
-      <div className="social-frame">
-        {channel === "instagram" ? <InstagramPost post={post} /> : <FacebookPost post={post} />}
-      </div>
+      {view === "library" ? (
+        <Library posts={posts} channel={channel} library={library} />
+      ) : (
+        <>
+          {catalogOpen ? (
+            <Catalog posts={posts} selectedId={post.id} channel={channel} library={library} />
+          ) : null}
+          <div className="social-frame">
+            {channel === "instagram" ? <InstagramPost post={post} /> : <FacebookPost post={post} />}
+          </div>
+        </>
+      )}
     </main>
+  );
+}
+
+function Library({
+  posts,
+  channel,
+  library,
+}: {
+  posts: SocialPreviewPost[];
+  channel: SocialPreviewChannel;
+  library: LibraryQuery;
+}) {
+  const visible = sortSocialPosts(filterSocialPosts(posts, library), library.sort);
+  const ready = visible.filter((post) => postIsReady(post)).length;
+  const filtered =
+    library.lane !== "all" ||
+    library.format !== "all" ||
+    library.state !== "all" ||
+    library.pillar !== "all" ||
+    library.week !== "all" ||
+    library.sort !== "catalog" ||
+    library.q !== "";
+
+  return (
+    <div className="library">
+      <form className="library-filters" action="/social-preview" method="get">
+        <input type="hidden" name="view" value="library" />
+        {channel === "facebook" ? <input type="hidden" name="channel" value="facebook" /> : null}
+        <label>
+          Lane
+          <select name="lane" defaultValue={library.lane}>
+            <option value="all">All</option>
+            <option value="organic">Feed</option>
+            <option value="paid">Ads</option>
+          </select>
+        </label>
+        <label>
+          Format
+          <select name="format" defaultValue={library.format}>
+            <option value="all">All</option>
+            <option value="video">Video</option>
+            <option value="static">Static</option>
+            <option value="carousel">Carousel</option>
+          </select>
+        </label>
+        <label>
+          State
+          <select name="state" defaultValue={library.state}>
+            <option value="all">All</option>
+            <option value="ready">Ready</option>
+            <option value="waiting">Waiting</option>
+          </select>
+        </label>
+        <label>
+          Pillar
+          <select name="pillar" defaultValue={library.pillar}>
+            <option value="all">All</option>
+            {LIBRARY_PILLARS.map((pillar) => (
+              <option key={pillar} value={pillar}>
+                {PILLAR_LABELS[pillar]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Week
+          <select name="week" defaultValue={library.week}>
+            <option value="all">All</option>
+            <option value="ads">Ads</option>
+            {Array.from({ length: 10 }, (_, index) => String(index + 1)).map((week) => (
+              <option key={week} value={week}>
+                Week {week}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Sort
+          <select name="sort" defaultValue={library.sort}>
+            <option value="catalog">Catalog</option>
+            <option value="week">Week</option>
+            <option value="ready">Ready first</option>
+            <option value="format">Format</option>
+            <option value="name">Name</option>
+          </select>
+        </label>
+        <label className="library-search">
+          Search
+          <input name="q" type="search" defaultValue={library.q} maxLength={80} placeholder="Scan, quiz, mill…" />
+        </label>
+        <button type="submit">Apply</button>
+        {filtered ? (
+          <a className="library-clear" href={socialPreviewHref({ view: "library", channel })}>
+            Clear
+          </a>
+        ) : null}
+      </form>
+
+      <p className="library-count">
+        {visible.length} of {posts.length} · {ready} ready
+      </p>
+
+      {visible.length === 0 ? (
+        <p className="library-empty">No assets match these filters.</p>
+      ) : (
+        <ul className="library-grid">
+          {visible.map((post) => (
+            <li key={post.id}>
+              <a className="library-card" href={socialPreviewHref({ post: post.id, channel, library })}>
+                <Thumb post={post} />
+                <span className="library-meta">
+                  <span className="library-badges">
+                    <span>{post.format}</span>
+                    <span>{post.lane === "paid" ? "Ad" : "Feed"}</span>
+                    <span>{postIsReady(post) ? "Ready" : "Waiting"}</span>
+                    {post.images && post.images.length > 1 ? <span>{post.images.length} slides</span> : null}
+                  </span>
+                  <strong>{post.label}</strong>
+                  <span className="library-line">{post.onScreen}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function Thumb({ post }: { post: SocialPreviewPost }) {
+  const src = post.poster ?? post.images?.[0] ?? null;
+  if (!src) {
+    return (
+      <span className="library-thumb library-thumb-waiting">
+        <span>{post.onScreen}</span>
+      </span>
+    );
+  }
+
+  return (
+    <span className={`library-thumb library-thumb-${post.format}`}>
+      <img src={src} alt="" />
+    </span>
   );
 }
 
@@ -58,10 +245,12 @@ function Catalog({
   posts,
   selectedId,
   channel,
+  library,
 }: {
   posts: SocialPreviewPost[];
   selectedId: string;
   channel: SocialPreviewChannel;
+  library: LibraryQuery;
 }) {
   const lanes = [
     { id: "organic" as const, title: "Feed" },
@@ -76,10 +265,11 @@ function Catalog({
           <ul>
             {posts
               .filter((post) => post.lane === lane.id)
+              .toSorted((a, b) => Number(postIsReady(b)) - Number(postIsReady(a)))
               .map((post) => (
                 <li key={post.id}>
                   <a
-                    href={socialPreviewHref({ post: post.id, channel })}
+                    href={socialPreviewHref({ post: post.id, channel, library })}
                     aria-current={post.id === selectedId ? "page" : undefined}
                   >
                     <span>{post.label}</span>

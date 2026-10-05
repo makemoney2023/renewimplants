@@ -1,7 +1,13 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { socialPreviewHref } from "./social-preview-model";
+import {
+  defaultLibraryQuery,
+  filterSocialPosts,
+  parseLibraryQuery,
+  socialPreviewHref,
+  sortSocialPosts,
+} from "./social-preview-model";
 import { loadSocialPreview } from "./social-preview";
 
 describe("social preview catalog", () => {
@@ -32,6 +38,54 @@ describe("social preview catalog", () => {
     expect(socialPreviewHref({ post: "w02-fri", channel: "facebook", catalog: true })).toBe(
       "/social-preview?post=w02-fri&channel=facebook&catalog=1",
     );
+    expect(socialPreviewHref({ view: "library" })).toBe("/social-preview?view=library");
+    expect(
+      socialPreviewHref({
+        view: "library",
+        channel: "facebook",
+        library: { format: "video", state: "ready", sort: "name" },
+      }),
+    ).toBe("/social-preview?view=library&channel=facebook&format=video&state=ready&sort=name");
+    expect(socialPreviewHref({ post: "w01-fri", library: { format: "video", week: "1" } })).toBe(
+      "/social-preview?post=w01-fri&format=video&week=1",
+    );
+  });
+
+  it("filters and sorts the full catalog", () => {
+    expect(parseLibraryQuery({ format: "nope", week: "99", q: "  scan  " })).toEqual({
+      ...defaultLibraryQuery,
+      q: "scan",
+    });
+    expect(parseLibraryQuery({ q: "x".repeat(120) }).q).toHaveLength(80);
+
+    const weekOneVideo = sortSocialPosts(
+      filterSocialPosts(posts, parseLibraryQuery({ week: "1", format: "video" })),
+      "name",
+    );
+    expect(weekOneVideo.map((post) => post.id)).toEqual(["w01-fri", "w01-tue"]);
+
+    const byWeek = sortSocialPosts(posts, "week");
+    expect(byWeek[0]?.week).toBe(10);
+    expect(byWeek.at(-1)?.lane).toBe("paid");
+    expect(byWeek.at(-1)?.week).toBeNull();
+
+    const scan = filterSocialPosts(posts, parseLibraryQuery({ q: "3Shape" }));
+    expect(scan.some((post) => post.id === "w01-tue")).toBe(true);
+
+    const waiting = filterSocialPosts(posts, parseLibraryQuery({ state: "waiting" }));
+    expect(waiting.length).toBeGreaterThan(0);
+    expect(waiting.every((post) => post.video === null && post.images === null)).toBe(true);
+  });
+
+  it("keeps week and pillar on every unit", () => {
+    const tue = posts.find((post) => post.id === "w01-tue");
+    expect(tue?.week).toBe(1);
+    expect(tue?.weekday).toBe("tue");
+    expect(tue?.pillar).toBe("clinical-demystification");
+    const ad = posts.find((post) => post.id === "ad-01");
+    expect(ad?.week).toBeNull();
+    expect(ad?.weekday).toBeNull();
+    expect(ad?.pillar).toBeTruthy();
   });
 
   it("puts the rendered w07-fri reel on the Vercel quiz", () => {

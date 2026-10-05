@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Social preview library
+
+**What changed:** `/social-preview?view=library` lists every catalog unit. Lane, format, ready state, pillar, week, and text can be filtered, and the grid can be sorted. Each card opens the Instagram or Facebook preview.
+
+**Why:** feature — the channel view shows one post at a time. The library is the way to scan the full set.
+
+**Code touchpoints:** `src/app/social-preview/page.tsx`, `src/components/social-preview/`, `src/lib/social-preview.ts`, `src/lib/social-preview-model.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** `npx vitest run src/lib/social-preview.test.ts`, then the library filters in the browser.
+
 ## 2026-10-05 — Weeks 1 through 3 on the social preview
 
 **What changed:** The remaining Week 1–3 posts play or swipe on `/social-preview`. That is three quote cards, the Friday carousel, and four reels.

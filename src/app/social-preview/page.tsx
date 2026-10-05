@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SocialPreview } from "@/components/social-preview/social-preview";
 import { site } from "@/content/site";
 import { loadSocialPreview } from "@/lib/social-preview";
+import { parseLibraryQuery } from "@/lib/social-preview-model";
 
 export const metadata: Metadata = {
   title: `Social preview | ${site.name}`,
@@ -9,7 +10,19 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams: Promise<{ post?: string; channel?: string; catalog?: string }>;
+  searchParams: Promise<{
+    post?: string;
+    channel?: string;
+    catalog?: string;
+    view?: string;
+    lane?: string;
+    format?: string;
+    state?: string;
+    pillar?: string;
+    week?: string;
+    sort?: string;
+    q?: string;
+  }>;
 };
 
 export default async function SocialPreviewPage({ searchParams }: PageProps) {
@@ -17,8 +30,17 @@ export default async function SocialPreviewPage({ searchParams }: PageProps) {
   const posts = loadSocialPreview();
   const postId = posts.some((post) => post.id === query.post) ? query.post! : "w01-tue";
   const channel = query.channel === "facebook" ? "facebook" : "instagram";
+  const view = query.view === "library" ? "library" : "post";
+  const library = parseLibraryQuery(query);
 
   return (
-    <SocialPreview posts={posts} postId={postId} channel={channel} catalogOpen={query.catalog === "1"} />
+    <SocialPreview
+      posts={posts}
+      postId={postId}
+      channel={channel}
+      catalogOpen={query.catalog === "1"}
+      view={view}
+      library={library}
+    />
   );
 }
