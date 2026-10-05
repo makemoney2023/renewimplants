@@ -3,6 +3,20 @@
 Newest first. Hub docs (`README.md`, `SITE-MAP.md`, `docs/scroll-world-brief.md`)
 are stable references; deltas live here.
 
+## 2026-10-05 — Weeks 4 through 7 on the social preview
+
+**What changed:** The remaining Week 4–7 posts play or swipe on `/social-preview`. Week 7 Friday was already there. This adds four carousels, four quote cards, and two reels.
+
+**Why:** feature — the preview had stopped at week 3, plus the Friday bilingual reel.
+
+**Code touchpoints:** `assets/social/`, `src/lib/social-preview.ts`
+
+**Data-flow impact:** none. The catalog copy is unchanged.
+
+**API / schema impact:** none.
+
+**Verification:** frames at the catalog sizes, then `/social-preview` for a quote, a carousel, and a reel.
+
 ## 2026-10-05 — Social preview library
 
 **What changed:** `/social-preview?view=library` lists every catalog unit. Lane, format, ready state, pillar, week, and text can be filtered, and the grid can be sorted. Each card opens the Instagram or Facebook preview.
