@@ -90,20 +90,12 @@ Do this from a Cloudflare account you control. This repository change does not
 deploy and does not edit DNS.
 
 1. `npx wrangler login` (or set `CLOUDFLARE_API_TOKEN` with Workers and D1 edit).
-2. Create the database and paste the printed id over the placeholder in
-   `wrangler.jsonc` (`database_id` under `d1_databases`):
+2. The D1 database `renewimplants-leads` already exists. Its id is
+   `9a27ec79-78cd-4dc1-af24-2eea59d72701` in `wrangler.jsonc`, and
+   `0001_quiz_leads.sql` has been applied. Do not create a second database.
+   A later schema change is `npx wrangler d1 migrations apply DB --remote`.
 
-   ```bash
-   npx wrangler d1 create renewimplants-leads
-   ```
-
-3. Apply the migration to that database:
-
-   ```bash
-   npx wrangler d1 migrations apply DB --remote
-   ```
-
-4. Build with any public env you want baked into HTML, then deploy:
+3. Build with any public env you want baked into HTML, then deploy:
 
    ```bash
    NEXT_PUBLIC_GA_ID=G-... \
@@ -113,12 +105,19 @@ deploy and does not edit DNS.
    npm run deploy:vinext
    ```
 
-   `deploy:vinext` runs `vinext-cloudflare deploy`. It builds again if you skip
-   the explicit build. The first deploy prints a `*.workers.dev` URL. Check the
-   quiz, a blog post, and `/blog/<slug>/opengraph-image` there before any DNS
-   change.
+   `deploy:vinext` runs `vinext-cloudflare deploy`, which builds with Vite
+   directly. That build copies `public/media` into the asset bundle. The Vite
+   config runs `media:sync` first, because this command does not run npm's
+   `prebuild:vinext` hook and `public/media` is gitignored. Without those
+   files, a request such as `/media/heroes/renew-hero.jpg` misses static
+   assets. `not_found_handling` is `none`, so the Worker renders the app 404
+   page: the root layout title, and the body "404: This page could not be
+   found." Check `/`, a service page, `/media/heroes/renew-hero.jpg`, the
+   quiz, a blog post, and `/blog/<slug>/opengraph-image` on the `workers.dev`
+   URL before any DNS change. `/quiz` is not a route here or on the Vercel
+   deploy; the quiz is `/implant-candidate-quiz`.
 
-5. When that URL is good, attach the hostname in the Workers dashboard or with
+4. When that URL is good, attach the hostname in the Workers dashboard or with
    a route (not added here, so a deploy cannot take the domain):
 
    ```jsonc
@@ -129,7 +128,7 @@ deploy and does not edit DNS.
    on the hostname. Apex and `www` both need a decision; the canonical host in
    `src/content/site.ts` is `https://www.renewimplants.ca`.
 
-6. After the canonical host serves the new sitemap, run `npm run indexnow`.
+5. After the canonical host serves the new sitemap, run `npm run indexnow`.
 
 Day-to-day development is `npm run dev:vinext` (port 3001, media sync included).
 It uses the same local D1 file once `dist/server/wrangler.json` exists.

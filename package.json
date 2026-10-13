@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "media:sync": "node scripts/media-sync.mjs",
+    "media:sync": "node --experimental-strip-types scripts/media-sync.mjs",
     "blog:embed": "node scripts/embed-blog.mjs",
     "media:hero": "node scripts/optimize-hero-video.mjs",
     "indexnow": "node scripts/submit-indexnow.ts",

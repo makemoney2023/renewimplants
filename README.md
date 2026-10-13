@@ -204,7 +204,7 @@ which copies:
 | `assets/treatment-animation` (web renders only) | `public/media/treatments` |
 
 `public/media/` is gitignored and rebuilt on every install/build, including the
-Vercel build and `build:vinext`.
+Vercel build, `build:vinext`, and the Vite build inside `deploy:vinext`.
 
 The implant animation folder holds every render from the generation run; only the
 web deliverables ship: `implant-assemble-web-{16x9,9x16}.{mp4,webm}` (8 s, silent,
