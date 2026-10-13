@@ -1,0 +1,40 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "renewimplants",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "vinext/server/fetch-handler",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": ["/_vinext/static-cache/*"]
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    }
+  },
+  // Canonical host for metadata that is read at request time. Prerendered
+  // pages bake site.url from src/content/site.ts. Verification tokens and the
+  // GA measurement ID are build-time env vars; see MIGRATION.md.
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://www.renewimplants.ca"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "renewimplants-leads",
+      // Replace after `npx wrangler d1 create renewimplants-leads`.
+      // A placeholder is committed so the first deploy does not auto-provision a database.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "d1/migrations"
+    }
+  ]
+}

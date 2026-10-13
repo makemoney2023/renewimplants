@@ -3,6 +3,7 @@ import { join } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 import { AUTHOR_KEYS } from "@/content/authors";
+import embeddedPosts from "./blog-sources.json";
 
 export const BLOG_DIR = join(process.cwd(), "content", "blog");
 
@@ -70,13 +71,24 @@ export function readingMinutes(body: string) {
   return Math.max(1, Math.ceil(words / 200));
 }
 
+function readMdxFiles(dir: string): { file: string; raw: string }[] {
+  try {
+    return readdirSync(dir)
+      .filter((file) => file.endsWith(".mdx"))
+      .map((file) => ({ file, raw: readFileSync(join(dir, file), "utf8") }));
+  } catch (error) {
+    // Workers has no source tree. The embedded copy is produced by scripts/embed-blog.mjs.
+    if (dir !== BLOG_DIR) throw error;
+    return Object.entries(embeddedPosts).map(([file, raw]) => ({ file, raw }));
+  }
+}
+
 export function loadPosts(dir = BLOG_DIR, now = new Date()): BlogPost[] {
   const today = now.toISOString().slice(0, 10);
 
-  return readdirSync(dir)
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const { data, content } = matter(readFileSync(join(dir, file), "utf8"));
+  return readMdxFiles(dir)
+    .map(({ file, raw }) => {
+      const { data, content } = matter(raw);
       const parsed = frontmatterSchema.safeParse({
         ...data,
         // YAML turns bare dates into Date objects; the schema wants ISO strings.

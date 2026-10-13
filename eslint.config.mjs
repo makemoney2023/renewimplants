@@ -12,5 +12,8 @@ export default defineConfig([
     "raw/**",
     "recovered/**",
     "next-env.d.ts",
+    "worker-configuration.d.ts",
+    "dist/**",
+    ".vinext/**",
   ]),
 ]);

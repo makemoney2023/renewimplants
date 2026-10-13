@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import { CONSENT_TEXT, type ParsedLead } from "./lead-schema";
 import { ANSWERS_VERSION } from "./questions";
 import type { QuizResult } from "./result";
@@ -40,17 +39,52 @@ export function toLeadRow(
 
 export type LeadRow = ReturnType<typeof toLeadRow>;
 
-export async function insertQuizLead(row: LeadRow): Promise<{ id: string }> {
-  const url = process.env.SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !serviceKey) {
-    throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set to store quiz leads.");
-  }
+const INSERT_QUIZ_LEAD = `INSERT INTO quiz_leads (
+  id, first_name, email, phone, preferred_contact, best_time,
+  answers, answers_version, result_path, modifiers,
+  lead_score, lead_tier, marketing_consent, consent_text, consent_at,
+  landing_path, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-  const supabase = createClient(url, serviceKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-  const { data, error } = await supabase.from("quiz_leads").insert(row).select("id").single();
-  if (error) throw new Error(`quiz_leads insert failed: ${error.message}`);
-  return { id: data.id as string };
+export function quizLeadInsert(row: LeadRow, id: string): { sql: string; params: Array<string | number | null> } {
+  return {
+    sql: INSERT_QUIZ_LEAD,
+    params: [
+      id,
+      row.first_name,
+      row.email,
+      row.phone,
+      row.preferred_contact,
+      row.best_time,
+      JSON.stringify(row.answers),
+      row.answers_version,
+      row.result_path,
+      JSON.stringify(row.modifiers),
+      row.lead_score,
+      row.lead_tier,
+      row.marketing_consent ? 1 : 0,
+      row.consent_text,
+      row.consent_at,
+      row.landing_path,
+      row.referrer,
+      row.utm_source,
+      row.utm_medium,
+      row.utm_campaign,
+      row.utm_term,
+      row.utm_content,
+    ],
+  };
+}
+
+export async function insertQuizLead(row: LeadRow): Promise<{ id: string }> {
+  const { env } = await import("cloudflare:workers");
+  const id = crypto.randomUUID();
+  const statement = quizLeadInsert(row, id);
+  try {
+    await env.DB.prepare(statement.sql).bind(...statement.params).run();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "unknown";
+    throw new Error(`quiz_leads insert failed: ${message}`);
+  }
+  return { id };
 }

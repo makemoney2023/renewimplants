@@ -1,3 +1,8 @@
+-- Unused by the Cloudflare Worker. The runtime store is D1: d1/migrations/0001_quiz_leads.sql.
+-- This Postgres script was the original Supabase design and was never applied
+-- (the Supabase org was at its free-project limit). Kept so the column list
+-- stays comparable. See MIGRATION.md.
+--
 -- Implant candidate quiz leads (spec: docs/specs/2026-09-29-seo-blog-lead-quiz-spec.md §9).
 -- Written only by the Next.js route /api/quiz-leads with the service-role key.
 -- RLS is on with no policies, so anon/authenticated clients can neither read nor write.

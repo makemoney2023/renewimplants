@@ -10,3 +10,8 @@ skills/community.zip
 *.log
 *.tsbuildinfo
 .DS_Store
+/dist/
+.vinext/
+.wrangler/
+.dev.vars
+worker-configuration.d.ts
