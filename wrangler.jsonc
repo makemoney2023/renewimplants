@@ -31,9 +31,8 @@
     {
       "binding": "DB",
       "database_name": "renewimplants-leads",
-      // Replace after `npx wrangler d1 create renewimplants-leads`.
-      // A placeholder is committed so the first deploy does not auto-provision a database.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      // Created in the Cloudflare account. The quiz_leads migration is already applied.
+      "database_id": "9a27ec79-78cd-4dc1-af24-2eea59d72701",
       "migrations_dir": "d1/migrations"
     }
   ]
