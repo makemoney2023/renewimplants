@@ -1,6 +1,7 @@
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import embeddedPosts from "./blog-sources.json";
 import { describe, expect, it } from "vitest";
 import { authors } from "@/content/authors";
 import { QUIZ_PATH } from "@/lib/quiz/constants";
@@ -20,6 +21,20 @@ const LEGACY_SLUGS = [
   "all-on-4-dental-implants-after-years-of-missing-teeth",
   "full-arch-vs-individual-dental-implants",
 ];
+
+describe("embedded blog sources", () => {
+  it("matches every file in content/blog so Workers can render without a filesystem", () => {
+    const files = readdirSync(join(process.cwd(), "content", "blog"))
+      .filter((name) => name.endsWith(".mdx"))
+      .sort();
+    expect(Object.keys(embeddedPosts).sort()).toEqual(files);
+    for (const file of files) {
+      expect(embeddedPosts[file as keyof typeof embeddedPosts]).toBe(
+        readFileSync(join(process.cwd(), "content", "blog", file), "utf8"),
+      );
+    }
+  });
+});
 
 describe("published posts", () => {
   const posts = getAllPosts();

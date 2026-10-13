@@ -38,7 +38,12 @@ export async function POST(request: Request) {
       { status: 201 },
     );
   } catch (error) {
-    console.error("quiz lead could not be stored", error);
+    console.error(
+      JSON.stringify({
+        event: "quiz_lead_store_failed",
+        message: error instanceof Error ? error.message : "unknown",
+      }),
+    );
     return Response.json(
       { error: `We couldn't save your answers. Please call us at ${site.phone.label} and we'll help right away.` },
       { status: 500 },

@@ -13,25 +13,31 @@ documented in [Salvage pack](#salvage-pack) below and stays untouched under
 
 ```bash
 npm install
-npm run dev        # predev copies assets/ → public/media/
+npm run dev        # predev copies assets/ → public/media/ (Next.js, used by the current Vercel deploy)
+npm run dev:vinext # same media sync, then the Cloudflare Workers dev server on port 3001
 npm test           # Vitest content + lib specs
 npm run lint       # ESLint (next/core-web-vitals + typescript)
 npm run typecheck  # tsc --noEmit
-npm run build      # prebuild syncs media, then next build
+npm run build      # Next.js production build (Vercel cutover path)
+npm run build:vinext # Workers production build
 npm run media:hero # re-derive the hero loops with ffmpeg (needs brew install ffmpeg)
 npm run indexnow   # after a deploy: submit every sitemap URL to IndexNow (Bing / ChatGPT)
 ```
 
 Node 24+ (the IndexNow script uses native type stripping) and npm. Copy
-`.env.example` to `.env.local`; every variable is optional in development:
+`.env.example` to `.env.local`. Quiz leads use the local D1 database
+(`npm run d1:migrate:local`) rather than env secrets. The other variables are
+optional in development:
 
 | Variable | Used by |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | IndexNow script (defaults to `site.url`) |
-| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | `POST /api/quiz-leads` (server only; without them the API returns a 500 with the clinic phone number) |
+| `NEXT_PUBLIC_SITE_URL` | IndexNow script (defaults to `site.url`); also a Worker var in `wrangler.jsonc` |
 | `NEXT_PUBLIC_GA_ID` | GA4 tag + quiz funnel events (`G-…`; omitted = no tag) |
 | `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION` | Search Console / Bing Webmaster meta tags |
 | `INDEXNOW_KEY` | `npm run indexnow`; must match `public/<key>.txt` |
+
+Cloudflare deploy, D1, and the env vars that must be set at build time are in
+[MIGRATION.md](MIGRATION.md).
 
 ## Layout
 
@@ -42,6 +48,7 @@ Node 24+ (the IndexNow script uses native type stripping) and npm. Copy
 | `src/app/[...slug]/page.tsx` | Catch-all for the 23 inner routes (`services/*` keeps its nesting); picks the `experience` or `document` grammar; emits WebPage/MedicalWebPage + BreadcrumbList + FAQPage JSON-LD |
 | `src/app/blog/**` | Blog index, MDX posts, per-post OG image, `/blog/rss.xml` — see [Blog](#blog) |
 | `src/app/implant-candidate-quiz/**`, `src/app/api/quiz-leads/route.ts` | Lead quiz page, noindex thank-you page, lead API — see [Lead quiz](#lead-quiz) |
+| `wrangler.jsonc`, `vite.config.ts`, `d1/migrations/` | Cloudflare Workers deploy (vinext) and the D1 quiz-lead store — see [MIGRATION.md](MIGRATION.md) |
 | `src/app/{sitemap,robots}.ts`, `public/llms.txt` | Crawl surface: sitemap from `getIndexablePaths()`, AI-crawler allowlist, llms.txt |
 | `src/app/globals.css` | The whole design system as tokens + classes (`--carbon`, `--accent` lime, `--aqua`, …) — see [Palette](#palette) |
 | `src/content/site.ts` | NAP, CTAs, hours, media map, the six `scrollActs`, treatments, process steps |
@@ -113,7 +120,10 @@ The five implant-placement services (`all-on-4-dental-implants`,
 ## Blog
 
 Posts are MDX files in `content/blog/`, loaded by `src/lib/blog.ts` (gray-matter +
-zod frontmatter; posts dated in the future stay hidden) and compiled with
+zod frontmatter; posts dated in the future stay hidden). `npm run blog:embed`
+copies them into `src/lib/blog-sources.json` so sitemap, RSS, and OG images still
+render on Workers, which has no source filesystem. A test fails if that JSON
+drifts from `content/blog`. Posts are compiled with
 `@mdx-js/mdx` `evaluate` in `src/components/blog/render-post-body.tsx`. MDX may use
 only `<BlogCta />`, `<ExtractionTable caption columns rows />`, and
 `<KeyStat value label source />`. Each post page renders the byline, table of
@@ -139,11 +149,12 @@ preview → a lead form → `POST /api/quiz-leads` → `/implant-candidate-quiz/
   on the server before inserting.
 - Marketing consent is unchecked by default; when ticked, the exact consent text
   and time are stored (CASL).
-- Leads go to the Supabase table in
-  `supabase/migrations/20260929150000_quiz_leads.sql` (RLS on, no policies;
-  service-role writes only). **The migration is not applied yet** — the Supabase
-  org was at its free-project limit. Apply it and set the two Supabase env vars
-  before launch. Email/SMS follow-up (Resend) is out of scope here.
+- Leads go to the D1 table in `d1/migrations/0001_quiz_leads.sql`, written
+  only through the Worker binding `DB`. After `npm run build:vinext`, apply the
+  local migration with `npm run d1:migrate:local` (the local database lives
+  under `dist/` and a rebuild replaces it). Create the remote database before
+  the first Cloudflare deploy ([MIGRATION.md](MIGRATION.md)). The earlier
+  Supabase script was never applied. Email/SMS follow-up (Resend) is out of scope here.
 - Entry points: Patients menu, every service page, every blog post (UTM-tagged).
   GA4 events: `quiz_started`, `quiz_step_completed`, `quiz_result_previewed`,
   `generate_lead`, `quiz_cta_clicked`, `quiz_call_clicked`.
@@ -192,7 +203,8 @@ which copies:
 | `assets/implant-animation` (six files only, see below) | `public/media/animation` |
 | `assets/treatment-animation` (web renders only) | `public/media/treatments` |
 
-`public/media/` is gitignored and rebuilt on every install/build (Vercel-safe).
+`public/media/` is gitignored and rebuilt on every install/build, including the
+Vercel build and `build:vinext`.
 
 The implant animation folder holds every render from the generation run; only the
 web deliverables ship: `implant-assemble-web-{16x9,9x16}.{mp4,webm}` (8 s, silent,

@@ -1,8 +1,10 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { z } from "zod";
-
-const ROOT = join(process.cwd(), "docs", "content", "social");
+import adsJson from "../../docs/content/social/ads.json";
+import designSystemJson from "../../docs/content/social/design-system.json";
+import organicCalendarJson from "../../docs/content/social/organic-calendar.json";
+import pipelineJson from "../../docs/content/social/pipeline.json";
 
 export const PILLARS = [
   "clinical-demystification",
@@ -155,8 +157,17 @@ const BANNED: { id: string; pattern: RegExp }[] = [
   { id: "same-day-permanent", pattern: /same day.{0,40}permanent|permanent.{0,40}same day/i },
 ];
 
-function readJson(name: string): unknown {
-  return JSON.parse(readFileSync(join(ROOT, name), "utf8"));
+// Bundled JSON so the social preview can render on Workers, which has no
+// source-tree filesystem. Node tests still read the same files from disk.
+const socialJson = {
+  "ads.json": adsJson,
+  "design-system.json": designSystemJson,
+  "organic-calendar.json": organicCalendarJson,
+  "pipeline.json": pipelineJson,
+} as const;
+
+function readJson(name: keyof typeof socialJson): unknown {
+  return socialJson[name];
 }
 
 export function cssColorTokens(css = readFileSync(join(process.cwd(), "src/app/globals.css"), "utf8")) {

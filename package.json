@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "npm run media:sync",
+    "predev": "npm run media:sync && npm run blog:embed",
     "dev": "next dev",
-    "prebuild": "npm run media:sync",
+    "prebuild": "npm run media:sync && npm run blog:embed",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -14,14 +14,22 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "media:sync": "node scripts/media-sync.mjs",
+    "blog:embed": "node scripts/embed-blog.mjs",
     "media:hero": "node scripts/optimize-hero-video.mjs",
-    "indexnow": "node scripts/submit-indexnow.ts"
+    "indexnow": "node scripts/submit-indexnow.ts",
+    "predev:vinext": "npm run media:sync && npm run blog:embed",
+    "dev:vinext": "vite dev --port 3001",
+    "prebuild:vinext": "npm run media:sync && npm run blog:embed",
+    "build:vinext": "vite build",
+    "start:vinext": "wrangler dev --config dist/server/wrangler.json",
+    "deploy:vinext": "vinext-cloudflare deploy",
+    "cf:types": "wrangler types",
+    "d1:migrate:local": "wrangler d1 migrations apply DB --local --config dist/server/wrangler.json"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@mdx-js/mdx": "^3.1.1",
     "@radix-ui/react-slot": "^1.2.4",
-    "@supabase/supabase-js": "^2.117.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
@@ -33,10 +41,16 @@
     "react-dom": "19.2.8",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
+    "react-server-dom-webpack": "19.2.8",
+    "vinext": "^1.1.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.13.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "@vinext/cloudflare": "^1.1.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "@vitejs/plugin-rsc": "^0.5.34",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
@@ -48,6 +62,8 @@
     "jsdom": "^29.1.1",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vite": "^8.0.0",
+    "vitest": "^5.0.4",
+    "wrangler": "^4.45.0"
   }
 }

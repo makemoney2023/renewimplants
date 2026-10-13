@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { ANSWERS_VERSION } from "./questions";
 import { CONSENT_TEXT } from "./lead-schema";
-import { toLeadRow } from "./lead-store";
+import { quizLeadInsert, toLeadRow } from "./lead-store";
 
 const lead = {
   firstName: "Marie",
@@ -54,5 +54,22 @@ describe("toLeadRow", () => {
       now,
     );
     expect(row).toMatchObject({ marketing_consent: false, consent_text: null, consent_at: null, best_time: null, utm_source: null });
+  });
+});
+
+describe("quizLeadInsert", () => {
+  it("stores answers and modifiers as JSON and consent as 0 or 1", () => {
+    const row = toLeadRow(
+      lead,
+      { path: "denture-alternative", modifiers: ["coverage"] },
+      { score: 80, tier: "hot" },
+      new Date("2026-09-29T15:00:00.000Z"),
+    );
+    const statement = quizLeadInsert(row, "11111111-1111-4111-8111-111111111111");
+    expect(statement.sql).toContain("INSERT INTO quiz_leads");
+    expect(statement.params[0]).toBe("11111111-1111-4111-8111-111111111111");
+    expect(statement.params[6]).toBe(JSON.stringify({ situation: ["dentures"] }));
+    expect(statement.params[9]).toBe(JSON.stringify(["coverage"]));
+    expect(statement.params[12]).toBe(1);
   });
 });
