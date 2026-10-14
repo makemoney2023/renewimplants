@@ -4,7 +4,9 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 import { JsonLd } from "@/components/json-ld";
 import { SiteHeader } from "@/components/site-header";
 import { UtmCapture } from "@/components/utm-capture";
+import { QuizStickyBar } from "@/components/quiz/quiz-sticky-bar";
 import { site } from "@/content/site";
+import { siteOrigin } from "@/lib/site-origin";
 import { buildSiteGraph } from "@/lib/site-schema";
 import { getSiteVerification } from "@/lib/site-verification";
 import "./globals.css";
@@ -21,7 +23,7 @@ const text = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteOrigin()),
   title: `${site.name} | All-on-4 Dental Implants in Orléans, Ottawa`,
   description: site.description,
   alternates: {
@@ -56,6 +58,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <JsonLd data={buildSiteGraph()} />
+        <QuizStickyBar />
         <UtmCapture />
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_ID} />
       </body>

@@ -1,5 +1,6 @@
 import type { RouteContent, RouteFaq } from "@/content/routes";
 import { media, site } from "@/content/site";
+import { siteOrigin } from "@/lib/site-origin";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -11,7 +12,7 @@ export const schemaIds = {
 
 export function absoluteUrl(path: string) {
   if (path.startsWith("http")) return path;
-  return `${site.url}${path.startsWith("/") ? path : `/${path}`}`;
+  return `${siteOrigin()}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 export function serializeJsonLd(data: unknown) {

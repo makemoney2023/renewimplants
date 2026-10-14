@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ClusterArticles } from "@/components/blog/cluster-articles";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { RouteActions } from "@/components/route-actions";
@@ -70,6 +71,8 @@ export function DocumentPage({ page }: { page: RouteContent }) {
         </div>
         <RouteActions links={page.links} />
       </section>
+
+      <ClusterArticles slug={page.slug} />
 
       <footer className="content-footer">
         <Link href="/">

@@ -6,7 +6,6 @@ import type { BlogPost } from "@/lib/blog";
 import {
   AnchoredH2,
   BarChart,
-  CitationContext,
   Cite,
   ExtractionTable,
   KeyStat,
@@ -25,29 +24,27 @@ export async function renderPostBody(post: BlogPost) {
   });
 
   return (
-    <CitationContext value={post.citations}>
-      <Content
-        components={{
-          h2: AnchoredH2,
-          ExtractionTable,
-          KeyStat,
-          BarChart,
-          Tldr,
-          Cite,
-          References,
-          KeyTakeaways: () => <KeyTakeaways items={post.takeaways ?? []} />,
-          BlogCta: (props: { label?: string }) => (
-            <QuizCta
-              source="blog"
-              medium="content"
-              campaign={post.slug}
-              content={post.slug}
-              label={props.label ?? post.quizCtaLabel}
-              intro={BLOG_CTA_INTRO}
-            />
-          ),
-        }}
-      />
-    </CitationContext>
+    <Content
+      components={{
+        h2: AnchoredH2,
+        ExtractionTable,
+        KeyStat,
+        BarChart,
+        Tldr,
+        Cite: ({ id }: { id: string }) => <Cite id={id} citations={post.citations} />,
+        References: () => <References citations={post.citations} />,
+        KeyTakeaways: () => <KeyTakeaways items={post.takeaways ?? []} />,
+        BlogCta: (props: { label?: string }) => (
+          <QuizCta
+            source="blog"
+            medium="content"
+            campaign={post.slug}
+            content={post.slug}
+            label={props.label ?? post.quizCtaLabel}
+            intro={BLOG_CTA_INTRO}
+          />
+        ),
+      }}
+    />
   );
 }

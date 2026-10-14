@@ -3,7 +3,10 @@ import { join } from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 import { AUTHOR_KEYS } from "@/content/authors";
+import { slugifyHeading } from "./blog-text";
 import embeddedPosts from "./blog-sources.json";
+
+export { slugifyHeading };
 
 export const BLOG_DIR = join(process.cwd(), "content", "blog");
 
@@ -16,6 +19,8 @@ export const BLOG_CLUSTERS = [
   "local",
   "risks",
 ] as const;
+
+export type BlogCluster = (typeof BLOG_CLUSTERS)[number];
 
 export const BLOG_PILLARS = [
   "cost-financing",
@@ -107,15 +112,6 @@ export function postCrumbs(post: Pick<BlogPost, "pillar" | "title" | "url">) {
     { name: pillar.label, path: pillar.href },
     { name: post.title, path: post.url },
   ];
-}
-
-export function slugifyHeading(text: string) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }
 
 export function extractHeadings(body: string): BlogHeading[] {

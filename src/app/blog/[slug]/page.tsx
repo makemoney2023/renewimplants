@@ -12,6 +12,7 @@ import { QuizCta } from "@/components/quiz/quiz-cta";
 import { authors } from "@/content/authors";
 import { site } from "@/content/site";
 import { getAllPosts, getPost, getRelatedPosts, postCrumbs } from "@/lib/blog";
+import { toPostCard } from "@/lib/blog-cards";
 import { buildBlogPostGraph } from "@/lib/blog-schema";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -26,6 +27,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPost((await params).slug);
   if (!post) return {};
 
+  const image = {
+    url: `${post.url}/opengraph-image`,
+    width: 1200,
+    height: 630,
+    alt: post.title,
+  };
+
   return {
     title: `${post.title} | ${site.name}`,
     description: post.description,
@@ -39,6 +47,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
       authors: [authors[post.author].name],
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [image],
     },
   };
 }
@@ -94,7 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </article>
 
       <div className="post-related">
-        <PostCardList posts={getRelatedPosts(post.slug)} heading="Keep reading" />
+        <PostCardList posts={getRelatedPosts(post.slug).map(toPostCard)} heading="Related articles" />
       </div>
 
       <footer className="content-footer">

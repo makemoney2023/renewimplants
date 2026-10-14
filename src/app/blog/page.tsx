@@ -7,16 +7,36 @@ import { JsonLd } from "@/components/json-ld";
 import { QuizCta } from "@/components/quiz/quiz-cta";
 import { site } from "@/content/site";
 import { getAllPosts } from "@/lib/blog";
+import { toPostCard } from "@/lib/blog-cards";
 import { BLOG_NAME, buildBlogIndexGraph } from "@/lib/blog-schema";
 
 const description =
   "Straight answers about All-on-4, dentures, and same-day implants from the Orléans team that designs and builds your teeth in its own lab.";
 
+const ogImage = {
+  url: "/blog/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: `${BLOG_NAME} — ${site.name}`,
+};
+
 export const metadata: Metadata = {
   title: `Blog | ${site.name}`,
   description,
   alternates: { canonical: "/blog", types: { "application/rss+xml": "/blog/rss.xml" } },
-  openGraph: { title: BLOG_NAME, description, url: "/blog", type: "website" },
+  openGraph: {
+    title: BLOG_NAME,
+    description,
+    url: "/blog",
+    type: "website",
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: BLOG_NAME,
+    description,
+    images: [ogImage],
+  },
 };
 
 export default function BlogIndexPage() {
@@ -33,7 +53,7 @@ export default function BlogIndexPage() {
       </section>
 
       <section className="content-body">
-        <PostCardList posts={posts} />
+        <PostCardList posts={posts.map(toPostCard)} />
         <div className="post-aside">
           <QuizCta source="blog" medium="sticky" campaign="blog-index" />
         </div>
