@@ -477,3 +477,328 @@ Sources:
 
 - Peri-implant diseases and conditions: Consensus report of workgroup 4 of the 2017 World Workshop (Journal of Clinical Periodontology): https://pubmed.ncbi.nlm.nih.gov/29926491/
 - Contact Renew Implant Centre (Renew Implant Centre): https://www.renewimplants.ca/contact-us
+
+## All-on-4 vs All-on-6: What the Reviews Compared
+
+URL: https://www.renewimplants.ca/blog/all-on-4-vs-all-on-6
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: all-on-4 vs all-on-6
+
+All-on-4 vs all-on-6: a maxillary review found no significant survival gap, and more bone loss with four implants than with six.
+
+Short answer:
+
+All-on-4 vs all-on-6 compares how many implants hold a fixed full-arch bridge. A maxillary review found no significant survival difference, and significantly more bone loss with four implants. A 2026 pool of the named concepts also showed high survival for both, with wide heterogeneity. Neither paper chooses the number for your jaw.
+
+Key takeaways:
+
+- A 2024 review of maxillary fixed dentures found no significant survival difference between four and six implants.
+- That same review found more marginal bone loss with four implants (1.02 mm) than with six (0.46 mm).
+- A 2026 pooled review reported high survival for both All-on-4 and All-on-6, with high heterogeneity and one direct randomized trial.
+- The implant count at this clinic comes from the 3D scan, bone, and the plan for that jaw.
+
+Questions:
+
+Q: Is All-on-6 safer than All-on-4?
+A: Sharaf and colleagues found no significant survival difference between four and six implants in maxillary fixed dentures, and they did find more bone loss with four. Shao and colleagues reported high pooled survival for both named concepts, with high heterogeneity and only one randomized trial that compared them directly.
+
+Q: Do those percentages tell me how many implants I need?
+A: No. They pool other people's jaws. Sharaf 2024 is mostly maxillary fixed dentures. Shao 2026 mixed studies and had only one randomized trial that compared the two concepts directly. Your count depends on bone, the jaw, and the prosthesis.
+
+Q: Can the upper jaw use more than four implants?
+A: Yes. This clinic's upper-jaw page says some people are candidates for All-on-4 and others may benefit from six or more implants, depending on bone density and anatomy. A removable snap-on denture is a separate option.
+
+Sources:
+
+- Outcomes that may affect implant and prosthesis survival and complications in maxillary fixed prosthesis supported by four or six implants: A systematic review and meta-analysis (Heliyon): https://pubmed.ncbi.nlm.nih.gov/38317918/
+- All-on-4 and All-on-6 implant concepts in edentulous patients: a systematic review and meta-analysis (International Journal of Oral and Maxillofacial Surgery): https://doi.org/10.1016/j.ijom.2026.04.002
+- Upper jaw implants (Renew Implant Centre): https://www.renewimplants.ca/services/upper-jaw-implants
+
+## What Is All-on-4? Four Implants and Fixed Teeth
+
+URL: https://www.renewimplants.ca/blog/what-is-all-on-4
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: what is all-on-4
+
+What is All-on-4? The 2003 series used four immediately loaded lower implants and a fixed acrylic bridge delivered within two hours of surgery.
+
+Short answer:
+
+What is All-on-4? In the 2003 paper, it is four lower-jaw implants loaded the same day with a fixed acrylic bridge. The back implants were tilted. The bridge in that series held at least 10 teeth and was made so the later version could reach about 12, with a cantilever of about one molar.
+
+Key takeaways:
+
+- The 2003 paper reported 44 lower jaws, 176 immediately loaded implants, and an acrylic bridge delivered within two hours.
+- The back implants were tilted so the bridge could reach about 12 teeth with a short cantilever.
+- Prosthesis survival in that series was 100%. Implant survival was 96.7% and 98.2% in the two groups.
+- All-on-4 is one full-arch technique. Six implants, a snap-on denture, and single implants are other plans.
+
+Questions:
+
+Q: What is All-on-4 in the original paper?
+A: Maló, Rangert, and Nobre described four implants in the lower jaw, in front of the nerve openings, loaded the same day with a fixed acrylic bridge. The series ran from April 1998 to June 2002 in a private clinic in Lisbon: 44 patients and 176 immediately loaded implants.
+
+Q: Does All-on-4 mean any full set of implant teeth?
+A: No. It is a specific four-implant immediate-function concept. A full arch can also be built on six or more implants, and a snap-on denture is removable. Those are different plans.
+
+Q: Did everyone in that first series get extra rescue implants?
+A: No. Twenty-four of the first 30 patients had 62 extra implants that were kept out of the temporary bridge. The authors later stopped placing them. The last third of the patients received only the four immediately loaded implants.
+
+Sources:
+
+- "All-on-Four" immediate-function concept with Branemark System implants for completely edentulous mandibles: a retrospective clinical study (Clinical Implant Dentistry and Related Research): https://pubmed.ncbi.nlm.nih.gov/12691645/
+- All-on-4 dental implants (Renew Implant Centre): https://www.renewimplants.ca/services/all-on-4-dental-implants
+
+## Temporary Teeth After All-on-4 Are Not the Final Set
+
+URL: https://www.renewimplants.ca/blog/temporary-teeth-after-all-on-4
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: temporary teeth after all-on-4
+
+Temporary teeth after All-on-4 were acrylic in the original series, and nine of the early bridges had a repairable fracture before the acrylic was thickened.
+
+Short answer:
+
+Temporary teeth after All-on-4, in the original series, were an acrylic bridge reinforced with a metal strip and delivered within two hours. Nine of the early ones fractured and were repaired. This clinic's page uses the same idea: teeth on the day of surgery, and a later bridge once the implants have integrated.
+
+Key takeaways:
+
+- The 2003 series delivered a metal-reinforced acrylic bridge within two hours of lower-jaw surgery.
+- Nine of those early acrylic bridges, 30% of the development group, had a repairable fracture.
+- After the acrylic was made thicker, the routine group in that series had no fractures during the study.
+- A 2014 review named fracture of the all-acrylic bridge as the main prosthetic complication.
+
+Questions:
+
+Q: Are the teeth you leave with on surgery day the final bridge?
+A: At this clinic, no. The All-on-4 page says most people receive implants and temporary teeth in one visit, and that the permanent bridge is placed a few months later. The 2003 series also started with acrylic, then made a different prosthesis for its first 30 patients.
+
+Q: Why did the early acrylic bridges break?
+A: Maló and colleagues reported repairable fractures in nine of the development-group acrylic prostheses, 30%. They then thickened the acrylic and cured it under higher pressure. The routine group had no fractures during the study. A 2014 review still names all-acrylic fracture as the main prosthetic complication of the concept.
+
+Q: Did a fracture mean the implants had failed?
+A: In the 2003 series, prosthesis survival was 100% even when an acrylic bridge needed repair. Implant losses were counted separately. A repairable fracture of the plastic teeth is a prosthetic event.
+
+Sources:
+
+- "All-on-Four" immediate-function concept with Branemark System implants for completely edentulous mandibles: a retrospective clinical study (Clinical Implant Dentistry and Related Research): https://pubmed.ncbi.nlm.nih.gov/12691645/
+- The all-on-four treatment concept: a systematic review (Clinical Implant Dentistry and Related Research): https://doi.org/10.1111/cid.12068
+- All-on-4 dental implants (Renew Implant Centre): https://www.renewimplants.ca/services/all-on-4-dental-implants
+
+## When Do You Get the Final Teeth After All-on-4?
+
+URL: https://www.renewimplants.ca/blog/when-do-you-get-final-teeth-after-all-on-4
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: when do you get final teeth after all-on-4
+
+When do you get final teeth after All-on-4? One 2003 group waited 4 to 6 months. This clinic says a few months, with temporary teeth on day one.
+
+Short answer:
+
+When do you get final teeth after All-on-4? In the first published series, one group received a final prosthesis 4 to 6 months after surgery, and the other group mostly kept the reinforced acrylic. This clinic describes the later bridge as arriving in a few months, with temporary teeth already in place on the day of surgery.
+
+Key takeaways:
+
+- In the 2003 development group, final prostheses were made 4 to 6 months after surgery.
+- The routine group in that paper mostly kept the reinforced acrylic, except two people who received titanium frameworks after 12 months.
+- This clinic's All-on-4 page says the permanent bridge comes a few months later, and that people leave with temporary teeth the same day.
+- A single month on a webpage would collapse two different protocols into one date.
+
+Questions:
+
+Q: When do you get the final teeth after All-on-4?
+A: This clinic's All-on-4 page says the permanent bridge is placed within a few months, after the implants integrate, and that most people already have temporary teeth from the surgery visit. The 2003 paper used 4 to 6 months for one subgroup and a different schedule for the other.
+
+Q: Did the original study give everyone a new bridge at 4 to 6 months?
+A: No. That interval was for the development group of 30 patients. Their first seven finals were cast metal, and the other 23 were milled titanium. The routine group mostly continued with the reinforced acrylic. Two of those patients received titanium frameworks after 12 months.
+
+Q: Are you without teeth while you wait?
+A: The clinic page says you leave with teeth on day one. The wait it describes is the wait for the later bridge, not a wait with an empty jaw. What those first teeth were made of, and why some early acrylic ones fractured, is a separate question.
+
+Sources:
+
+- "All-on-Four" immediate-function concept with Branemark System implants for completely edentulous mandibles: a retrospective clinical study (Clinical Implant Dentistry and Related Research): https://pubmed.ncbi.nlm.nih.gov/12691645/
+- All-on-4 dental implants (Renew Implant Centre): https://www.renewimplants.ca/services/all-on-4-dental-implants
+
+## What the On-Site Lab Changes for All-on-4 Teeth
+
+URL: https://www.renewimplants.ca/blog/on-site-dental-lab-for-all-on-4
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: on-site dental lab for all-on-4
+
+An on-site dental lab for All-on-4 means the teeth are designed in this building. The studies do not show that the address changes implant survival.
+
+Short answer:
+
+An on-site dental lab for All-on-4, at this clinic, means the restoration is designed and made in the Orléans building rather than sent out. The published All-on-4 series describe what the prosthesis was made of. They do not show that keeping the lab on site changes how long the implants survive.
+
+Key takeaways:
+
+- The clinic says the sister lab in Orléans mills and prints the restorations, with no outsourcing.
+- Named equipment on the team page: a PM7 mill, Asiga Professional Series printers, and 3Shape scanners, run by registered dental technicians.
+- The 2003 series built a reinforced acrylic bridge the same day, then metal or milled titanium for one group of patients.
+- Those papers do not compare an in-house lab with a lab in another building.
+
+Questions:
+
+Q: What is in the on-site lab?
+A: The team page says the sister clinic, Orléans Denture Clinic, runs a full on-site lab staffed by registered dental technicians. The equipment named there is a PM7 milling machine, Asiga Professional Series printers, and 3Shape scanners, on a digital workflow, with no outsourcing.
+
+Q: Does an on-site lab raise implant survival?
+A: The All-on-4 studies cited here do not make that comparison. They describe the prosthesis: acrylic on the day of surgery in the 2003 series, then cast metal or milled titanium for one group. Survival in those papers is about implants and bridges, not about which building housed the lab.
+
+Q: Who designs the teeth if the surgeon places the implants?
+A: Tom Szarski, DD, is the denturist. He designs and fits the teeth. The implant surgeon places the implants. The lab technicians fabricate the restoration. Scope for the denturist, as distinct from the dentist who places implants, is explained in a separate article.
+
+Sources:
+
+- Meet your dentist (Renew Implant Centre): https://www.renewimplants.ca/meet-your-dentist
+- All-on-4 dental implants (Renew Implant Centre): https://www.renewimplants.ca/services/all-on-4-dental-implants
+- "All-on-Four" immediate-function concept with Branemark System implants for completely edentulous mandibles: a retrospective clinical study (Clinical Implant Dentistry and Related Research): https://pubmed.ncbi.nlm.nih.gov/12691645/
+
+## Dental Implants vs a Bridge When Several Teeth Fail
+
+URL: https://www.renewimplants.ca/blog/dental-implants-vs-bridge
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: dental implants vs bridge
+
+Dental implants vs bridge, in a Canadian journal, meant one missing tooth: a three-unit bridge prepares the neighbours, and an implant leaves them alone.
+
+Short answer:
+
+Dental implants vs bridge, in the Canadian journal article that takes the question seriously, is a single-tooth choice. A three-unit bridge prepares the teeth next door. An implant is meant to leave those teeth alone. A jaw full of failing teeth is a different problem from that one gap.
+
+Key takeaways:
+
+- Hebel, Gajjar, and Hofstede wrote about replacing one tooth, in the Journal of the Canadian Dental Association in 2000.
+- A conventional three-unit bridge reduces the neighbouring teeth. The authors said that raises the chance of root-canal treatment and root decay when those teeth were sound or lightly filled.
+- They also wrote that cement washout can lead to tooth loss, and that failure of one part can take an abutment tooth with it.
+- A full arch of failing teeth is a different comparison from that single gap.
+
+Questions:
+
+Q: What is the difference between a dental implant and a bridge for one missing tooth?
+A: Hebel, Gajjar, and Hofstede, in the Journal of the Canadian Dental Association, said a conventional three-unit bridge requires reduction of the teeth on either side. An implant replaces the missing tooth without preparing those neighbours. They were writing about a single gap.
+
+Q: Do the neighbouring teeth have to be cut down for a bridge?
+A: For the conventional three-unit bridge they describe, yes. They wrote that the reduction increases the incidence of endodontic treatment and root decay, and that sound teeth or teeth with small fillings would be damaged by that preparation. Teeth that already have large restorations, they said, may benefit from being used as abutments.
+
+Q: Does that article decide a full mouth of failing teeth?
+A: No. It is a single-tooth paper. When many teeth are failing, the comparison is a full-arch plan or a denture plan, not a three-unit bridge repeated across the jaw. Those options are separate articles.
+
+Sources:
+
+- Single-tooth replacement: bridge vs. implant-supported restoration (Journal of the Canadian Dental Association): https://pubmed.ncbi.nlm.nih.gov/11040527/
+
+## Denture Adhesive vs Teeth That Stay In
+
+URL: https://www.renewimplants.ca/blog/denture-adhesive-vs-implants
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: denture adhesive vs implants
+
+Denture adhesive vs implants: a 2002 consensus called widespread adhesive a sign that many dentures fall short, especially the lower one.
+
+Short answer:
+
+Denture adhesive vs implants, in the McGill consensus, starts with a blunt observation: widespread adhesive is one sign that conventional dentures are inadequate for many people. The treatment they put first for a lower jaw with no teeth was a two-implant overdenture. That is a removable denture that clips on. It is not All-on-4.
+
+Key takeaways:
+
+- The McGill consensus said widespread denture adhesive is one sign that conventional dentures are inadequate for many wearers.
+- The alternative they named was a mandibular two-implant overdenture, tested against new conventional dentures for 6 months to 9 years.
+- That overdenture still comes out. It clips on with a bar, ball, or magnet. It is not a fixed All-on-4 bridge.
+- People in the trials found the two-implant denture more stable, easier for chewing and speech, and more comfortable.
+
+Questions:
+
+Q: Does denture adhesive mean the denture is failing?
+A: The McGill consensus treated widespread adhesive use as one indication that conventional dentures are inadequate for many wearers. It is a sign across a population, not a diagnosis of one tube in one bathroom. The statement focused on the lower denture.
+
+Q: What did the consensus recommend instead?
+A: A two-implant overdenture on the lower jaw, as the first-choice treatment for an edentulous mandible. Trials of 6 months to 9 years, using bar, ball, or magnet attachments, found people more satisfied than with new conventional dentures. That denture is still removable.
+
+Q: Is that the same thing as All-on-4?
+A: No. All-on-4 is a fixed bridge on four implants. The McGill statement is about two implants and a denture that clips on and comes out. A fixed full arch is a third option, described in the snap-on comparison.
+
+Sources:
+
+- The McGill consensus statement on overdentures. Mandibular two-implant overdentures as first choice standard of care for edentulous patients (Gerodontology): https://pubmed.ncbi.nlm.nih.gov/12164236/
+
+## Upper Denture vs Upper All-on-4: What Changes
+
+URL: https://www.renewimplants.ca/blog/upper-denture-vs-all-on-4
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: upper denture vs all-on-4
+
+Upper denture vs All-on-4: the McGill statement said people usually manage an upper denture. A fixed upper arch is a separate plan.
+
+Short answer:
+
+Upper denture vs All-on-4 is not the comparison the McGill consensus was built to settle. That statement said people usually manage an upper denture, and that the mobile one is the lower denture. A fixed upper arch is a different prosthesis from both the upper plate and the two-implant lower overdenture they recommended.
+
+Key takeaways:
+
+- The McGill consensus said complete-denture wearers are usually able to wear an upper denture without problems.
+- The struggle they described was the lower denture, because it is too mobile.
+- A fixed upper All-on-4 bridge is not the two-implant lower overdenture that statement recommended.
+- This clinic's upper-jaw page allows for four implants, six or more, or a removable snap-on, depending on the jaw.
+
+Questions:
+
+Q: Is an upper denture usually the difficult one?
+A: The McGill consensus said the opposite of that folk rule. Complete denture wearers are usually able to wear an upper denture without problems. Many struggle to eat with the complete lower denture because it is too mobile.
+
+Q: What is upper All-on-4, if the upper denture often works?
+A: All-on-4 is a fixed bridge on four implants. It is not a removable upper plate, and it is not the two-implant lower overdenture from the consensus. People still choose it when they want the upper teeth fixed, or when the upper denture is the part that fails for them. The consensus did not study that choice.
+
+Q: Does every upper jaw get exactly four implants?
+A: No. This clinic's upper-jaw page says some people are candidates for All-on-4 and others may benefit from six or more implants, depending on bone density and anatomy. A snap-on overdenture is the removable implant option on that page.
+
+Sources:
+
+- The McGill consensus statement on overdentures. Mandibular two-implant overdentures as first choice standard of care for edentulous patients (Gerodontology): https://pubmed.ncbi.nlm.nih.gov/12164236/
+- Upper jaw implants (Renew Implant Centre): https://www.renewimplants.ca/services/upper-jaw-implants
+
+## Lower Denture vs Lower Implants: What the Evidence Says
+
+URL: https://www.renewimplants.ca/blog/lower-denture-vs-implants
+Published: 2026-10-14
+Updated: 2026-10-14
+Query: lower denture vs implants
+
+Lower denture vs implants: the McGill consensus recommended two implants and a removable overdenture, a different plan from a fixed All-on-4 bridge.
+
+Short answer:
+
+Lower denture vs implants, in the McGill consensus, comes out as a two-implant overdenture. People usually cope with the upper denture. Many cannot eat well with the lower one because it moves. The statement's first choice for that lower jaw is a removable denture clipped to two implants, which is a different treatment from All-on-4.
+
+Key takeaways:
+
+- Many complete-denture wearers struggle to eat with the lower denture because it is too mobile.
+- The McGill consensus recommended a two-implant mandibular overdenture as the first choice for an edentulous lower jaw.
+- Trials from 6 months to 9 years found that denture more stable, more comfortable, and easier for chewing and speech than a new conventional denture.
+- Two implants and a clip-in denture are not four implants and a fixed All-on-4 bridge.
+
+Questions:
+
+Q: Why does a lower denture move more than an upper one?
+A: The McGill consensus said complete denture wearers are usually able to wear an upper denture without problems, but many struggle to eat with the complete lower denture because it is too mobile. Conventional dentures depend on the residual ridge and the mucosa, and the statement says the mandibular one is the harder adaptation.
+
+Q: How many implants did the consensus recommend?
+A: Two, in the lower jaw, holding a removable overdenture with a bar, ball, or magnet. That was their first-choice treatment for an edentulous mandible. It is not a fixed bridge and it is not All-on-4.
+
+Q: What improved in the trials?
+A: Across randomized and non-randomized trials lasting 6 months to 9 years, people were significantly more satisfied with the two-implant overdenture than with a new conventional denture. They found it more stable, easier for chewing, more comfortable, and easier for speech. Quality-of-life ratings were higher when that lower overdenture opposed a conventional upper denture.
+
+Sources:
+
+- The McGill consensus statement on overdentures. Mandibular two-implant overdentures as first choice standard of care for edentulous patients (Gerodontology): https://pubmed.ncbi.nlm.nih.gov/12164236/
+- Lower jaw implants (Renew Implant Centre): https://www.renewimplants.ca/services/lower-jaw-implants

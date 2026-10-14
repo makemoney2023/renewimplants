@@ -20,14 +20,17 @@ const BLOG_CTA_INTRO =
   "Not sure which option fits your mouth? Nine questions, no obligation, and a personalized next step.";
 
 export async function renderPostBody(post: BlogPost) {
-  const figures = post.imagePrompts
-    .filter((item) => item.aspectRatio === "4:3")
-    .slice(0, 2)
-    .map((item, index) => ({
-      heading: item.placement,
-      src: `/media/blog/${post.slug}-${index + 2}.jpg`,
-      alt: item.alt,
-    }));
+  // Posts waiting on photographs keep imagePrompts, but they must not request files that are not in the build yet.
+  const figures = post.heroImage
+    ? post.imagePrompts
+        .filter((item) => item.aspectRatio === "4:3")
+        .slice(0, 2)
+        .map((item, index) => ({
+          heading: item.placement,
+          src: `/media/blog/${post.slug}-${index + 2}.jpg`,
+          alt: item.alt,
+        }))
+    : [];
   const { default: Content } = await evaluate(insertPostFigures(post.body, figures), {
     ...runtime,
     remarkPlugins: [remarkGfm],
