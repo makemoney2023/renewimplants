@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ClusterArticles } from "@/components/blog/cluster-articles";
 import { DocumentPage } from "@/components/document-page";
 import { ExperiencePage } from "@/components/experience-page";
 import { JsonLd } from "@/components/json-ld";
@@ -44,7 +45,9 @@ export default async function ContentPage({ params }: PageProps) {
   return (
     <>
       {page.grammar === "experience" ? (
-        <ExperiencePage page={page} />
+        <ExperiencePage page={page}>
+          <ClusterArticles slug={page.slug} />
+        </ExperiencePage>
       ) : (
         <DocumentPage page={page} />
       )}

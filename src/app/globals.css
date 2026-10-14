@@ -1818,6 +1818,23 @@ footer p {
   background: var(--canvas);
 }
 
+.post-card-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--surface-alt);
+}
+
+.post-card-photo img {
+  object-fit: cover;
+}
+
+.cluster-articles {
+  padding: 0 var(--page-rail) clamp(3rem, 6vw, 5rem);
+}
+
 .post-cards a:hover,
 .post-cards a:focus-visible {
   border-color: var(--ink-deep);
@@ -2007,6 +2024,76 @@ footer p {
 
 .content-actions .quiz-cta {
   margin: 1rem 0 0;
+}
+
+.quiz-sticky {
+  position: fixed;
+  z-index: 40;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem var(--page-rail) calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  background: #111111;
+  color: #ffffff;
+}
+
+.quiz-sticky p {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.quiz-sticky a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.quiz-sticky a:focus-visible,
+.quiz-sticky button:focus-visible {
+  outline: 3px solid #85d4f2;
+  outline-offset: 2px;
+}
+
+.quiz-sticky button {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+body:has(.quiz-sticky:not([hidden])) {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 801px) {
+  body:has(.post-aside) .quiz-sticky,
+  body:has(.content-actions .quiz-cta) .quiz-sticky {
+    display: none;
+  }
+
+  /* Match the padding rule's specificity so the hidden bar does not reserve space. */
+  body:has(.post-aside):has(.quiz-sticky),
+  body:has(.content-actions .quiz-cta):has(.quiz-sticky) {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width: 800px) {

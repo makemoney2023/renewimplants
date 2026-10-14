@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { LoopVideo, ResponsivePoster } from "@/components/loop-video";
@@ -20,7 +20,7 @@ import { getRailDistance } from "@/lib/scroll-motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export function ExperiencePage({ page }: { page: RouteContent }) {
+export function ExperiencePage({ page, children }: { page: RouteContent; children?: ReactNode }) {
   const root = useRef<HTMLElement>(null);
   const acts = page.acts?.length
     ? page.acts
@@ -208,6 +208,8 @@ export function ExperiencePage({ page }: { page: RouteContent }) {
           ) : null}
         </RouteActions>
       </section>
+
+      {children}
 
       <footer className="content-footer">
         <Link href="/">

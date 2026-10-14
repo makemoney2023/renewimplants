@@ -21,9 +21,11 @@
       "head_sampling_rate": 1
     }
   },
-  // Canonical host for metadata that is read at request time. Prerendered
-  // pages bake site.url from src/content/site.ts. Verification tokens and the
-  // GA measurement ID are build-time env vars; see MIGRATION.md.
+  // Open Graph, Twitter, and canonical URLs. Prerender bakes this at build
+  // time, so set it in the build environment as well as here.
+  // Preview: https://renewimplants.abracadabra-ai.workers.dev
+  // Production: https://www.renewimplants.ca
+  // Unset falls back to site.url in src/content/site.ts.
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://www.renewimplants.ca"
   },

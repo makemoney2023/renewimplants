@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { authors } from "@/content/authors";
+import type { PostCardData } from "@/lib/blog-cards";
 import type { BlogHeading, BlogPost } from "@/lib/blog";
 
 const formatDate = (date: string) =>
@@ -49,7 +51,7 @@ export function PostToc({ headings }: { headings: BlogHeading[] }) {
   );
 }
 
-export function PostCardList({ posts, heading }: { posts: BlogPost[]; heading?: string }) {
+export function PostCardList({ posts, heading }: { posts: PostCardData[]; heading?: string }) {
   if (posts.length === 0) return null;
 
   return (
@@ -59,6 +61,9 @@ export function PostCardList({ posts, heading }: { posts: BlogPost[]; heading?: 
         {posts.map((post) => (
           <li key={post.slug}>
             <Link href={post.url}>
+              <span className="post-card-photo">
+                <Image src={post.image} alt={post.imageAlt} fill sizes="(max-width: 700px) 100vw, 24rem" />
+              </span>
               <strong>{post.title}</strong>
               <span>{post.description}</span>
             </Link>

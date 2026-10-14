@@ -1,10 +1,9 @@
 "use client";
 
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { Children, createContext, isValidElement, use } from "react";
-import { slugifyHeading, type BlogCitation } from "@/lib/blog";
-
-export const CitationContext = createContext<BlogCitation[]>([]);
+import { Children, isValidElement } from "react";
+import type { BlogCitation } from "@/lib/blog";
+import { slugifyHeading } from "@/lib/blog-text";
 
 type ExtractionTableProps = {
   caption: string;
@@ -117,8 +116,7 @@ export function BarChart({
   );
 }
 
-export function Cite({ id }: { id: string }) {
-  const citations = use(CitationContext);
+export function Cite({ id, citations }: { id: string; citations: BlogCitation[] }) {
   const index = citations.findIndex((citation) => citation.id === id);
   const citation = citations[index];
   if (!citation) return null;
@@ -129,8 +127,7 @@ export function Cite({ id }: { id: string }) {
   );
 }
 
-export function References() {
-  const citations = use(CitationContext);
+export function References({ citations }: { citations: BlogCitation[] }) {
   if (citations.length === 0) return null;
   return (
     <ol className="post-references">
