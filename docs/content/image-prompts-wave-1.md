@@ -431,7 +431,7 @@ Slug: `all-on-4-vs-all-on-6`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A man in his sixties counting chairs around a dining table in afternoon light
+- Alt text: A man in his sixties counting wooden chairs around a dining table
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, natural afternoon window light, shot on a 35mm lens at f/2.8. A man around 64 with imperfect skin and ordinary wrinkles stands beside a worn dining table, counting mismatched wooden chairs, looking down at the seats rather than at the camera. A Canadian dining room, a folded newspaper, slight film grain. Candid, not a stock smile. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -439,7 +439,7 @@ Documentary photograph, natural afternoon window light, shot on a 35mm lens at f
 ### 2. What did four-versus-six reviews actually find?
 
 - Aspect ratio: 4:3
-- Alt text: A woman in her sixties moving two mismatched mugs aside on a kitchen counter
+- Alt text: A woman in her sixties setting two ceramic mugs on a kitchen counter
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, overcast window light, shot on a 50mm lens at f/2.8. A woman around 66 in a wool cardigan sets two mismatched ceramic mugs aside on a scratched kitchen counter, seen from the side, mouth closed. Imperfect skin, a dish towel, slight film grain. Hands are in the scene but not a close-up. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -447,7 +447,7 @@ Documentary photograph, overcast window light, shot on a 50mm lens at f/2.8. A w
 ### 3. Why is a pooled percentage not your implant count?
 
 - Aspect ratio: 4:3
-- Alt text: Two neighbours in their sixties talking beside a pickup in an autumn driveway
+- Alt text: Two neighbours in their sixties talking beside a dark pickup in an autumn driveway
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, late-day autumn light, shot on a 35mm lens at f/2.8. A man around 70 and a woman around 63 in ordinary jackets stand beside an older pickup in a residential driveway, mid-conversation, mouths not posed toward the camera. Fallen leaves, a garden rake, imperfect skin, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -475,7 +475,7 @@ Documentary photograph, flat daylight through bus glass, shot on a 50mm lens at 
 ### 3. Is All-on-4 the same thing as any full arch?
 
 - Aspect ratio: 4:3
-- Alt text: A man in his late sixties sitting on front steps with a canvas tote beside him
+- Alt text: A man in his late sixties sitting on brick front steps with a canvas bag beside him
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, morning side light, shot on a 50mm lens at f/2.8. A man around 68 sits on concrete front steps of a brick house, a canvas tote beside him, one shoe loosened but his hands resting on his knees rather than filling the frame. Mouth closed, imperfect skin, a doormat, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -487,7 +487,7 @@ Slug: `temporary-teeth-after-all-on-4`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A woman around sixty packing an overnight bag on a bed in a small bedroom
+- Alt text: A woman around sixty packing clothes into an overnight bag on a bed
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, warm lamp light mixed with window light, shot on a 35mm lens at f/2.8. A woman around 60 in a sweater packs a soft overnight bag on a quilted bed, seen from the doorway, looking down at folded clothes. Imperfect skin, a paperback, slight film grain. Mouth closed. No luggage logos. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -495,7 +495,7 @@ Documentary photograph, warm lamp light mixed with window light, shot on a 35mm 
 ### 2. What were the first teeth in the original series?
 
 - Aspect ratio: 4:3
-- Alt text: A person around seventy in a robe at a small table with a breakfast tray of oatmeal
+- Alt text: A woman in a white robe at a kitchen table with a bowl of oatmeal
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, morning window light, shot on a 50mm lens at f/2.8. An adult around 70 in a cotton robe sits sideways at a small kitchen table with a breakfast tray: oatmeal, a spoon, a glass of water. Face in three-quarter view, mouth closed, imperfect skin, a radio, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -503,7 +503,7 @@ Documentary photograph, morning window light, shot on a 50mm lens at f/2.8. An a
 ### 3. Why did some of those acrylic teeth fracture?
 
 - Aspect ratio: 4:3
-- Alt text: A man in his sixties checking a coat in a hallway mirror at home
+- Alt text: A man in his sixties checking a coat in a home hallway mirror
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, indoor daylight, shot on a 50mm lens at f/2.8. A man around 65 stands in a home hallway, coat half on, looking at his reflection in a narrow mirror. Three-quarter view, mouth closed, imperfect skin, a pair of shoes on the floor, slight film grain. This is a house hallway, not a clinic. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -515,7 +515,7 @@ Slug: `when-do-you-get-final-teeth-after-all-on-4`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A woman in her sixties waiting on a train platform with a canvas tote
+- Alt text: A woman in a rust coat waiting on a train platform with a canvas tote
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, overcast platform light, shot on a 35mm lens at f/2.8. A woman around 63 in a wool coat stands on a commuter-rail platform with a plain canvas tote, looking down the track, mouth closed. Imperfect skin, natural wrinkles, a bench, slight film grain. No readable signs or timetables. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -543,7 +543,7 @@ Slug: `on-site-dental-lab-for-all-on-4`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A man in his late sixties in a canvas apron looking across a bright workshop at a milling machine
+- Alt text: A man in a canvas apron looking across a bright workshop at a milling machine
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, bright north-facing workshop light, shot on a 35mm lens at f/2.8. A man around 68 in a canvas apron stands across a tidy workshop, looking toward a milling machine that is soft in the background. No dental models, no teeth, no close machinery detail. Imperfect skin, a pencil behind one ear, slight film grain. Mouth closed. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -551,7 +551,7 @@ Documentary photograph, bright north-facing workshop light, shot on a 35mm lens 
 ### 2. What does this clinic say the lab does?
 
 - Aspect ratio: 4:3
-- Alt text: A woman in her sixties carrying a closed white box through an interior doorway
+- Alt text: An older woman in a cardigan carrying a plain white box through a doorway between workrooms
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, mixed indoor daylight, shot on a 50mm lens at f/2.8. A woman around 64 in a simple blouse carries a closed unmarked white box through a doorway between two workrooms. Mouth closed, imperfect skin, a scuffed floor, slight film grain. The box has no logo and no contents visible. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -559,7 +559,7 @@ Documentary photograph, mixed indoor daylight, shot on a 50mm lens at f/2.8. A w
 ### 3. What do the studies say the lab is building?
 
 - Aspect ratio: 4:3
-- Alt text: A workbench with a closed laptop, a mug, and a dust sheet, with nobody in the frame
+- Alt text: A workshop desk with a 3D printer, a monitor, a mug, and a dust sheet
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Editorial still, natural side light, shot on a 50mm lens at f/2.8. A workshop bench holds a closed laptop, a chipped mug, and a cotton dust sheet pulled over a machine. No people, no teeth, no hands, no readable screen, slight film grain, realistic dust. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -599,7 +599,7 @@ Slug: `denture-adhesive-vs-implants`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A man in his sixties at a kitchen table with toast and a small unlabelled tube beside the plate
+- Alt text: A man in his sixties at a kitchen table with coffee, toast, and a small white tube
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, morning kitchen light, shot on a 35mm lens at f/2.8. A man around 64 sits at a kitchen table with toast on a plate and a small plain tube with no readable label beside it. He looks toward the window, mouth closed, imperfect skin, a crumpled napkin, slight film grain. This is a home kitchen, not a diner and not a bathroom. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -607,7 +607,7 @@ Documentary photograph, morning kitchen light, shot on a 35mm lens at f/2.8. A m
 ### 2. What did the McGill statement say about adhesive?
 
 - Aspect ratio: 4:3
-- Alt text: A woman in her seventies searching a coat pocket while seated on a park bench
+- Alt text: An elderly woman in a grey coat on a park bench with a paper bag and bare trees
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, overcast park light, shot on a 50mm lens at f/2.8. A woman around 71 in a wool coat sits on a park bench, one hand in a coat pocket, looking aside. The hand is not a close-up. Mouth closed, imperfect skin, a paper bag on the bench, bare trees, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -615,7 +615,7 @@ Documentary photograph, overcast park light, shot on a 50mm lens at f/2.8. A wom
 ### 3. Is an implant-held denture the same as All-on-4?
 
 - Aspect ratio: 4:3
-- Alt text: A woman around sixty in the passenger seat of a parked car with a purse on her lap
+- Alt text: An older woman in glasses in the passenger seat of a parked car with a purse on her lap
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, daylight through a car window, shot on a 50mm lens at f/2.8. A woman around 60 sits in the passenger seat of a parked car, a worn purse on her lap, looking out the side window. Mouth closed, imperfect skin, a seatbelt, slight film grain. No readable dashboard text. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -627,7 +627,7 @@ Slug: `upper-denture-vs-all-on-4`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: Two women in their sixties and seventies talking at an outdoor cafe table
+- Alt text: Two older women talking over cappuccinos at an outdoor cafe table
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, open shade at an outdoor cafe, shot on a 35mm lens at f/2.8. Two women around 66 and 72 sit at a small metal table with coffee cups, turned toward each other, mouths not posed at the camera. Ordinary coats, imperfect skin, a folded scarf, slight film grain. No readable menus. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -635,7 +635,7 @@ Documentary photograph, open shade at an outdoor cafe, shot on a 35mm lens at f/
 ### 2. What did the consensus say about upper dentures?
 
 - Aspect ratio: 4:3
-- Alt text: A man in his late sixties looking up into the trees in a park
+- Alt text: An older man in a tan jacket looking up at autumn maple leaves
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, dappled daylight, shot on a 50mm lens at f/2.8. A man around 68 in a jacket stands on a park path, chin slightly raised, looking into maple branches. Mouth closed, imperfect skin, fallen leaves, slight film grain. The frame includes his shoulders, not a portrait-studio crop. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -643,7 +643,7 @@ Documentary photograph, dappled daylight, shot on a 50mm lens at f/2.8. A man ar
 ### 3. What is a fixed upper arch, then?
 
 - Aspect ratio: 4:3
-- Alt text: An empty wooden chair pulled out from a dining table in afternoon light
+- Alt text: An empty wooden chair beside a table set with a plate, a water glass, and a placemat
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Editorial still, afternoon window light, shot on a 50mm lens at f/2.8. A wooden dining chair is pulled out from a table set for one, with a water glass and a plain placemat. No people, no teeth, no hands, no readable print, slight film grain, a scuffed floor. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -655,7 +655,7 @@ Slug: `lower-denture-vs-implants`
 ### 1. Hero
 
 - Aspect ratio: 16:9
-- Alt text: A man in his seventies eating stew at a long table in a community hall
+- Alt text: An older man in flannel eating from a bowl at a community hall table
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, fluorescent-and-window mix in a community hall, shot on a 35mm lens at f/2.8. A man around 73 in a flannel shirt eats stew from a bowl at a long folding table, looking down at the bowl, mouth closed between bites. Imperfect skin, a paper napkin, other people soft in the background, slight film grain. Not a sandwich, not corn on the cob. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -663,7 +663,7 @@ Documentary photograph, fluorescent-and-window mix in a community hall, shot on 
 ### 2. Why do people struggle with a lower denture?
 
 - Aspect ratio: 4:3
-- Alt text: A woman in her sixties walking a dog on a gravel path
+- Alt text: A grey-haired woman in a parka walking a dog on a gravel path beside a field
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, overcast daylight, shot on a 50mm lens at f/2.8. A woman around 66 in a parka walks a medium-sized dog on a gravel path beside a field, seen from a few metres away. Mouth closed, imperfect skin, a leash slack, slight film grain. The dog is ordinary, not a show animal. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
@@ -671,7 +671,7 @@ Documentary photograph, overcast daylight, shot on a 50mm lens at f/2.8. A woman
 ### 3. Is the recommended implant denture the same as All-on-4?
 
 - Aspect ratio: 4:3
-- Alt text: A man around seventy stirring a pot, seen from the side in a home kitchen
+- Alt text: An older man stirring a pot at a gas stove
 - Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
 
 Documentary photograph, evening kitchen light, shot on a 50mm lens at f/2.8. A man around 70 in a sweater stands in profile at a stove, stirring a pot with a wooden spoon. The spoon and hand are small in the frame, not a close-up. Mouth closed, imperfect skin, a tiled wall, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.

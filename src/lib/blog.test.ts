@@ -252,7 +252,7 @@ const WAVE_2_SLUGS = [
 ];
 
 describe("wave 2 posts", () => {
-  it("answers the query, cites sources, and briefs three photographs without files yet", () => {
+  it("answers the query, cites sources, and ships three photographs", () => {
     const catalog = readFileSync(join(process.cwd(), "docs/content/image-prompts-wave-1.md"), "utf8");
     for (const slug of WAVE_2_SLUGS) {
       const post = getPost(slug);
@@ -265,7 +265,8 @@ describe("wave 2 posts", () => {
       expect(post.takeaways?.length, slug).toBeGreaterThanOrEqual(3);
       expect(post.citations.length, slug).toBeGreaterThan(0);
       expect(post.reviewedBy, slug).toBeUndefined();
-      expect(post.heroImage, slug).toBeUndefined();
+      expect(post.heroImage, slug).toBe(`/media/blog/${slug}.jpg`);
+      expect(post.heroImageAlt?.trim().length, slug).toBeGreaterThan(20);
       expect(post.imagePrompts, slug).toHaveLength(3);
       expect(post.imagePrompts[0]?.aspectRatio, slug).toBe("16:9");
       expect(post.imagePrompts.slice(1).every((item) => item.aspectRatio === "4:3"), slug).toBe(true);
