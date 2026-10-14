@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { PostCardList } from "@/components/blog/post-chrome";
@@ -13,11 +14,19 @@ import { BLOG_NAME, buildBlogIndexGraph } from "@/lib/blog-schema";
 const description =
   "Straight answers about All-on-4, dentures, and same-day implants from the Orléans team that designs and builds your teeth in its own lab.";
 
+// Temporary until the final blog-index photograph and alt text replace this file.
+const blogIndexHero = {
+  src: "/media/blog/blog-index-hero.jpg",
+  width: 1280,
+  height: 720,
+  alt: "Placeholder for the Renew Implant Centre blog header.",
+};
+
 const ogImage = {
-  url: "/blog/opengraph-image",
-  width: 1200,
-  height: 630,
-  alt: `${BLOG_NAME} — ${site.name}`,
+  url: blogIndexHero.src,
+  width: blogIndexHero.width,
+  height: blogIndexHero.height,
+  alt: blogIndexHero.alt,
 };
 
 export const metadata: Metadata = {
@@ -49,6 +58,18 @@ export default function BlogIndexPage() {
           <Breadcrumbs crumbs={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
           <h1>Implant questions, answered plainly.</h1>
           <p>{description}</p>
+        </div>
+        <div className="content-hero-photo">
+          <Image
+            src={blogIndexHero.src}
+            alt={blogIndexHero.alt}
+            width={blogIndexHero.width}
+            height={blogIndexHero.height}
+            priority
+            loading="eager"
+            sizes="(max-width: 800px) 100vw, 46vw"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
       </section>
 
