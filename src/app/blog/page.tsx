@@ -6,7 +6,7 @@ import { PostCardList } from "@/components/blog/post-chrome";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { QuizCta } from "@/components/quiz/quiz-cta";
-import { site } from "@/content/site";
+import { media, site } from "@/content/site";
 import { getAllPosts } from "@/lib/blog";
 import { toPostCard } from "@/lib/blog-cards";
 import { BLOG_NAME, buildBlogIndexGraph } from "@/lib/blog-schema";
@@ -14,12 +14,11 @@ import { BLOG_NAME, buildBlogIndexGraph } from "@/lib/blog-schema";
 const description =
   "Straight answers about All-on-4, dentures, and same-day implants from the Orléans team that designs and builds your teeth in its own lab.";
 
-// Temporary until the final blog-index photograph and alt text replace this file.
 const blogIndexHero = {
-  src: "/media/blog/blog-index-hero.jpg",
-  width: 1280,
-  height: 720,
-  alt: "Placeholder for the Renew Implant Centre blog header.",
+  src: media.tom,
+  width: 800,
+  height: 1000,
+  alt: "Tom Szarski, DD, denturist at Renew Implant Centre",
 };
 
 const ogImage = {
@@ -67,8 +66,9 @@ export default function BlogIndexPage() {
             height={blogIndexHero.height}
             priority
             loading="eager"
-            sizes="(max-width: 800px) 100vw, 46vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            unoptimized
+            sizes="(max-width: 800px) 100vw, 25rem"
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
           />
         </div>
       </section>

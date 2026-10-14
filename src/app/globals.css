@@ -1546,9 +1546,14 @@ footer p {
 /* Blog: article chrome, extraction tables, and the quiz call to action. */
 .blog-index-hero {
   min-height: auto;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 25rem);
 }
 
 .blog-index-hero .content-hero-photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  min-height: 0;
   margin: clamp(1.25rem, 2.5vw, 2rem);
   margin-left: 0;
   border-radius: var(--radius);
@@ -1557,6 +1562,7 @@ footer p {
 .blog-index-hero .content-hero-photo img {
   position: absolute;
   inset: 0;
+  object-position: center top;
 }
 
 .post-byline {
@@ -1868,7 +1874,13 @@ footer p {
 }
 
 @media (max-width: 800px) {
+  .blog-index-hero {
+    grid-template-columns: 1fr;
+  }
+
   .blog-index-hero .content-hero-photo {
+    aspect-ratio: auto;
+    width: auto;
     height: 13rem;
     min-height: 13rem;
     margin: 0 var(--page-rail) 1.75rem;
