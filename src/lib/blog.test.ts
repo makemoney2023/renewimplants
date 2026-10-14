@@ -51,10 +51,12 @@ describe("published posts", () => {
     expect(new Set(posts.map((post) => post.slug)).size).toBe(posts.length);
   });
 
-  it("gives every post its own hero instead of a shared cluster photo", () => {
-    const cards = posts.map(toPostCard);
-    expect(new Set(cards.map((card) => card.image)).size).toBe(cards.length);
-    for (const post of posts) {
+  it("gives photographed posts their own hero and uses the cluster photo until images land", () => {
+    const ready = posts.filter((post) => post.heroImage);
+    const pending = posts.filter((post) => !post.heroImage);
+    const readyImages = ready.map((post) => toPostCard(post).image);
+    expect(new Set(readyImages).size).toBe(ready.length);
+    for (const post of ready) {
       expect(post.heroImage).toBe(`/media/blog/${post.slug}.jpg`);
       expect(post.heroImageAlt?.trim().length).toBeGreaterThan(20);
       for (const name of [`${post.slug}.jpg`, `${post.slug}-2.jpg`, `${post.slug}-3.jpg`]) {
@@ -62,6 +64,20 @@ describe("published posts", () => {
       }
       expect(toPostCard(post).image).toBe(post.heroImage);
       expect(toPostCard(post).imageAlt).toBe(post.heroImageAlt);
+    }
+    for (const post of pending) {
+      expect(post.imagePrompts, post.slug).toHaveLength(3);
+      expect(post.imagePrompts[0]?.aspectRatio, post.slug).toBe("16:9");
+      expect(
+        post.imagePrompts.slice(1).every((item) => item.aspectRatio === "4:3"),
+        post.slug,
+      ).toBe(true);
+      const card = toPostCard(post);
+      expect(card.image.startsWith("/media/"), post.slug).toBe(true);
+      expect(card.image.includes(post.slug), post.slug).toBe(false);
+      for (const name of [`${post.slug}.jpg`, `${post.slug}-2.jpg`, `${post.slug}-3.jpg`]) {
+        expect(existsSync(join(process.cwd(), "assets", "blog", name)), name).toBe(false);
+      }
     }
   });
 
@@ -204,6 +220,53 @@ describe("wave 1 posts", () => {
       expect(post.takeaways?.length, slug).toBeGreaterThanOrEqual(3);
       expect(post.citations.length, slug).toBeGreaterThan(0);
       expect(post.reviewedBy, slug).toBeUndefined();
+      expect(post.imagePrompts, slug).toHaveLength(3);
+      expect(post.imagePrompts[0]?.aspectRatio, slug).toBe("16:9");
+      expect(post.imagePrompts.slice(1).every((item) => item.aspectRatio === "4:3"), slug).toBe(true);
+      for (const item of post.imagePrompts) {
+        expect(item.avoid.length, slug).toBeGreaterThan(20);
+        expect(item.prompt.toLowerCase(), slug).toContain("avoid");
+        expect(item.prompt, slug).toMatch(/35mm|50mm/);
+        expect(item.prompt, slug).toMatch(/f\/2\.8/);
+      }
+      const ids = [...post.body.matchAll(/<Cite id="([^"]+)"/g)].map((match) => match[1]);
+      expect(ids.length, slug).toBeGreaterThan(0);
+      for (const id of ids) {
+        expect(post.citations.some((citation) => citation.id === id), `${slug} ${id}`).toBe(true);
+      }
+      expect(catalog, slug).toContain(slug);
+    }
+  });
+});
+
+const WAVE_2_SLUGS = [
+  "all-on-4-vs-all-on-6",
+  "what-is-all-on-4",
+  "temporary-teeth-after-all-on-4",
+  "when-do-you-get-final-teeth-after-all-on-4",
+  "on-site-dental-lab-for-all-on-4",
+  "dental-implants-vs-bridge",
+  "denture-adhesive-vs-implants",
+  "upper-denture-vs-all-on-4",
+  "lower-denture-vs-implants",
+];
+
+describe("wave 2 posts", () => {
+  it("answers the query, cites sources, and ships three photographs", () => {
+    const catalog = readFileSync(join(process.cwd(), "docs/content/image-prompts-wave-1.md"), "utf8");
+    for (const slug of WAVE_2_SLUGS) {
+      const post = getPost(slug);
+      expect(post, slug).toBeDefined();
+      if (!post) continue;
+      expect(post.description.toLowerCase(), slug).toContain(post.primaryQuery.toLowerCase());
+      expect(post.body, slug).toMatch(/<Tldr>/);
+      expect(post.body, slug).toMatch(/<KeyTakeaways\s*\/>/);
+      expect(post.body, slug).toMatch(/<References\s*\/>/);
+      expect(post.takeaways?.length, slug).toBeGreaterThanOrEqual(3);
+      expect(post.citations.length, slug).toBeGreaterThan(0);
+      expect(post.reviewedBy, slug).toBeUndefined();
+      expect(post.heroImage, slug).toBe(`/media/blog/${slug}.jpg`);
+      expect(post.heroImageAlt?.trim().length, slug).toBeGreaterThan(20);
       expect(post.imagePrompts, slug).toHaveLength(3);
       expect(post.imagePrompts[0]?.aspectRatio, slug).toBe("16:9");
       expect(post.imagePrompts.slice(1).every((item) => item.aspectRatio === "4:3"), slug).toBe(true);
