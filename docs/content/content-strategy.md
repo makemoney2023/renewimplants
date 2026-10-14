@@ -54,16 +54,16 @@ Ten posts, aligned with Phase 4.5 in [the SEO blog plan](../plans/2026-09-29-seo
 |---|---|---|---|---|---|
 | 6 | Does the Canadian Dental Care Plan Cover Dental Implants? | cost-coverage | does cdcp cover dental implants | 17 | `/pricing`, dentures vs implants |
 | 7 | Can You Get Dental Implants If You Have Bone Loss? | candidacy-recovery | dental implants with bone loss | 50, 57 | All-on-4 after missing teeth, `/services/all-on-4-dental-implants` |
-| 8 | Snap-On Dentures vs All-on-4: Which Stays Fixed? | dentures-vs-implants | snap-on dentures vs all-on-4 | 63 | dentures vs implants, `/services/snap-on-dentures` |
+| 8 | Snap-On Dentures vs All-on-4: Which Stays Fixed? | dentures-vs-implants | snap-on dentures vs all-on-4 | 63 | dentures vs implants, `/services/denture-alternative` |
 | 9 | All-on-4 Recovery: What the First Weeks Feel Like | candidacy-recovery | all-on-4 recovery timeline | 2, 8, 10 | same-day implants, `/what-to-expect` |
 | 10 | How Long Do All-on-4 Dental Implants Last? | all-on-4 | how long do all-on-4 implants last | 78 | why choose All-on-4 |
 | 11 | Sedation for Dental Implant Surgery: What Are the Options? | anxiety-sedation | sedation for dental implant surgery | 3, 5, 11 | `/services/sedation-dentistry`, `/dental-anxiety` |
 | 12 | Can You Get Dental Implants If You Have Diabetes or Smoke? | candidacy-recovery | dental implants with diabetes or smoking | 47, 48 | quiz (do not retarget “am I a candidate”) |
 | 13 | Denturist vs Dentist: Who Makes Your Implant Teeth? | all-on-4 | denturist vs dentist for dental implants | 95, 98 | `/meet-your-dentist`, `/for-dentists` |
 | 14 | What Is Included in an All-Inclusive Implant Quote? | cost-coverage | what is included in dental implant cost | 18, 20 | `/pricing`, CDCP post |
-| 15 | Dental Implant Not Feeling Right: What to Do Next | candidacy-recovery | signs of dental implant failure | 81, 83, 84 | `/contact-us` |
+| 15 | Dental Implant Not Feeling Right: What to Do Next | risks | signs of dental implant failure | 81, 83, 84 | `/contact-us` |
 
-`order` continues from the five published posts (1–5).
+`order` continues from the five published posts (1–5). Drafts for orders 6–15 are in `content/blog/` and are not clinically reviewed. The live snap-on page is `/services/denture-alternative`.
 
 ## Pillars
 

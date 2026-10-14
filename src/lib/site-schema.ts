@@ -20,7 +20,7 @@ export function serializeJsonLd(data: unknown) {
 
 export function buildPracticeNode(): JsonLdNode {
   return {
-    "@type": "Dentist",
+    "@type": ["Dentist", "MedicalClinic"],
     "@id": schemaIds.practice,
     name: site.name,
     alternateName: site.shortName,
@@ -30,6 +30,7 @@ export function buildPracticeNode(): JsonLdNode {
     email: site.email,
     image: absoluteUrl(media.heroClinic),
     hasMap: site.mapHref,
+    medicalSpecialty: "Dentistry",
     address: {
       "@type": "PostalAddress",
       streetAddress: "2530 St Joseph Blvd #6",
@@ -38,6 +39,11 @@ export function buildPracticeNode(): JsonLdNode {
       postalCode: "K1C 1G1",
       addressCountry: "CA",
     },
+    // Clock times are not published. Repeat the hours already on the site.
+    hoursAvailable: site.hours.map((entry) => ({
+      "@type": "OpeningHoursSpecification",
+      description: `${entry.day}: ${entry.time}`,
+    })),
     areaServed: [
       "Orléans",
       "Ottawa",
@@ -91,6 +97,53 @@ export function buildSiteGraph() {
 
 export type Crumb = { name: string; path: string };
 
+const SERVICES_HUB = "/services/all-on-4-dental-implants";
+
+/** Same list the visible breadcrumb and BreadcrumbList JSON-LD render. Home is included. */
+export function routeCrumbs(page: Pick<RouteContent, "slug" | "title">): Crumb[] {
+  const self = { name: page.title, path: `/${page.slug}` };
+  const isService = page.slug.startsWith("services/");
+  if (isService && page.slug !== SERVICES_HUB.slice(1)) {
+    return [
+      { name: "Home", path: "/" },
+      { name: "Services", path: SERVICES_HUB },
+      self,
+    ];
+  }
+  return [
+    { name: "Home", path: "/" },
+    self,
+  ];
+}
+
+export const HOME_FAQ_QUESTIONS = [
+  "What are All-on-4 dental implants?",
+  "What's the difference between All-on-4 and full arch implants?",
+  "What are snap-on dentures?",
+] as const;
+
+export function buildHomeGraph(faqs: RouteFaq[]) {
+  const pageUrl = absoluteUrl("/");
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#page`,
+        url: pageUrl,
+        name: site.name,
+        description: site.description,
+        inLanguage: "en-CA",
+        isPartOf: { "@id": schemaIds.website },
+        about: { "@id": schemaIds.practice },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      },
+      buildBreadcrumbNode(pageUrl, []),
+      buildFaqNode(pageUrl, faqs),
+    ].filter((node): node is JsonLdNode => node !== null),
+  };
+}
+
 export function buildBreadcrumbNode(pageUrl: string, crumbs: Crumb[]): JsonLdNode {
   return {
     "@type": "BreadcrumbList",
@@ -135,9 +188,10 @@ export function buildRouteGraph(page: RouteContent) {
     breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
   };
 
+  const crumbs = routeCrumbs(page).slice(1);
   const graph = [
     webPage,
-    buildBreadcrumbNode(pageUrl, [{ name: page.title, path: `/${page.slug}` }]),
+    buildBreadcrumbNode(pageUrl, crumbs),
     buildFaqNode(pageUrl, page.faqs),
   ].filter((node): node is JsonLdNode => node !== null);
 

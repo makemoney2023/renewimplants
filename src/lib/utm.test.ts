@@ -27,6 +27,8 @@ describe("first-touch attribution", () => {
     expect(readAttribution(window.localStorage, 3000)).toEqual({
       utm_source: "gbp",
       landing_path: "/",
+      last_utm_source: "blog",
+      last_landing_path: "/blog/a",
     });
   });
 
@@ -45,6 +47,8 @@ describe("first-touch attribution", () => {
     expect(readAttribution(window.localStorage, 1)).toEqual({
       landing_path: "/faq",
       referrer: "chatgpt.com",
+      last_landing_path: "/faq",
+      last_referrer: "chatgpt.com",
     });
   });
 

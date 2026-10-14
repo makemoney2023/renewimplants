@@ -13,9 +13,49 @@ export const BLOG_CLUSTERS = [
   "cost-coverage",
   "candidacy-recovery",
   "anxiety-sedation",
+  "local",
+  "risks",
 ] as const;
 
+export const BLOG_PILLARS = [
+  "cost-financing",
+  "candidacy",
+  "all-on-4",
+  "procedure-recovery",
+  "comparisons",
+  "risks-faqs",
+  "local-ottawa",
+] as const;
+
+export type BlogPillar = (typeof BLOG_PILLARS)[number];
+
+/** Hub already on the site. The breadcrumb and the pillar link use this, not a new /guides URL. */
+export const PILLAR_META: Record<BlogPillar, { label: string; href: string }> = {
+  "cost-financing": { label: "Cost and financing", href: "/pricing" },
+  candidacy: { label: "Candidacy", href: "/what-to-expect" },
+  "all-on-4": { label: "All-on-4", href: "/services/all-on-4-dental-implants" },
+  "procedure-recovery": { label: "Procedure and recovery", href: "/what-to-expect" },
+  comparisons: { label: "Comparisons", href: "/blog/dentures-vs-dental-implants" },
+  "risks-faqs": { label: "Risks and FAQs", href: "/contact-us" },
+  "local-ottawa": { label: "Ottawa and Orléans", href: "/service-areas" },
+};
+
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "use YYYY-MM-DD");
+
+const citationSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  url: z.string().url(),
+  publisher: z.string().min(1),
+});
+
+const imagePromptSchema = z.object({
+  placement: z.string().min(1),
+  prompt: z.string().min(1),
+  aspectRatio: z.enum(["16:9", "4:3"]),
+  alt: z.string().min(1),
+  avoid: z.string().min(1),
+});
 
 const frontmatterSchema = z
   .object({
@@ -24,6 +64,7 @@ const frontmatterSchema = z
     datePublished: isoDate,
     dateModified: isoDate,
     cluster: z.enum(BLOG_CLUSTERS),
+    pillar: z.enum(BLOG_PILLARS),
     primaryQuery: z.string().min(1),
     author: z.enum(AUTHOR_KEYS),
     // Set only after a clinician has actually reviewed the post.
@@ -34,12 +75,20 @@ const frontmatterSchema = z
     faqs: z.array(z.object({ q: z.string().min(1), a: z.string().min(1) })).min(3),
     heroImage: z.string().startsWith("/").optional(),
     heroImageAlt: z.string().optional(),
+    takeaways: z.array(z.string().min(1)).min(3).max(5).optional(),
+    citations: z.array(citationSchema).default([]),
+    imagePrompts: z.array(imagePromptSchema).default([]),
   })
   .refine((data) => Boolean(data.reviewedBy) === Boolean(data.lastReviewed), {
     message: "reviewedBy and lastReviewed must be set together",
+  })
+  .refine((data) => !data.heroImage || Boolean(data.heroImageAlt?.trim()), {
+    message: "heroImageAlt is required when heroImage is set",
   });
 
 export type BlogFrontmatter = z.infer<typeof frontmatterSchema>;
+export type BlogCitation = BlogFrontmatter["citations"][number];
+export type BlogImagePrompt = BlogFrontmatter["imagePrompts"][number];
 export type BlogHeading = { id: string; text: string };
 
 export type BlogPost = BlogFrontmatter & {
@@ -49,6 +98,16 @@ export type BlogPost = BlogFrontmatter & {
   headings: BlogHeading[];
   readingMinutes: number;
 };
+
+/** Crumbs after Home. Schema and the visible trail both use this list. */
+export function postCrumbs(post: Pick<BlogPost, "pillar" | "title" | "url">) {
+  const pillar = PILLAR_META[post.pillar];
+  return [
+    { name: "Blog", path: "/blog" },
+    { name: pillar.label, path: pillar.href },
+    { name: post.title, path: post.url },
+  ];
+}
 
 export function slugifyHeading(text: string) {
   return text

@@ -7,12 +7,12 @@ Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-
 | Item | Value | Source in code |
 |---|---|---|
 | Canonical host | `https://www.renewimplants.ca` | `site.url` in `src/content/site.ts` |
-| Primary conversion | Implant candidate quiz → lead in Supabase `quiz_leads` | `QUIZ_PATH` in `src/lib/quiz/constants.ts` |
+| Primary conversion | Implant candidate quiz → lead in Cloudflare D1 `quiz_leads` | `QUIZ_PATH` in `src/lib/quiz/constants.ts`; `src/lib/quiz/lead-store.ts` |
 | Secondary conversion | Phone call `613-841-6111`, free consultation `/contact-us` | `site.phone`, `site.primaryCta` |
 
 ## Entity facts (identical everywhere)
 
-- **Name:** Renew Implant Centre (`Dentist` in JSON-LD, `src/lib/site-schema.ts`)
+- **Name:** Renew Implant Centre (`Dentist` and `MedicalClinic` in JSON-LD, `src/lib/site-schema.ts`)
 - **Address:** 2530 St Joseph Blvd #6, Orléans, ON K1C 1G1
 - **What it does:** Full arch implants, All-on-4, same-day implants, and implant-supported dentures. A surgeon, a denturist, and an on-site lab work under one roof.
 - **Author:** Tom Szarski, DD — denturist and founder (`src/content/authors.ts`). Never "Dr."
@@ -21,7 +21,7 @@ Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-
 
 - No prices anywhere in content; pricing is quoted after the consultation.
 - No "guarantee" language.
-- CDCP covers dentures and overdentures (with preauthorization), not most implant treatment.
+- CDCP lists many dentures. The Dental Benefits Guide excludes implants, implant-related procedures, and dentures supported by implants. Do not say the plan covers snap-on or All-on-4 treatment. The guide also lists complete overdentures with preauthorization; say both facts and do not treat an implant-supported overdenture as covered.
 - Quiz is "about two minutes, nine questions". Never promise faster.
 - Only set `reviewedBy` and `lastReviewed` on a post after a real clinical review.
 
@@ -34,14 +34,15 @@ Inputs for the [seo-geo-aeo](../.cursor/skills/seo-geo-aeo/SKILL.md) and [renew-
 
 | Lever | File |
 |---|---|
-| Sitewide `Dentist` + `WebSite` + `Person` graph | `src/app/layout.tsx` → `buildSiteGraph()` |
+| Sitewide `Dentist` + `MedicalClinic` + `WebSite` + `Person` graph | `src/app/layout.tsx` → `buildSiteGraph()` |
 | Per-route `WebPage` / `MedicalWebPage` + breadcrumb + FAQ | `src/lib/site-schema.ts` → `buildRouteGraph()` |
 | Blog `MedicalWebPage` + `BlogPosting` + FAQ | `src/lib/blog-schema.ts` |
 | Quiz page graph | `src/lib/quiz/landing.ts` |
 | Sitemap (routes, quiz, blog, posts) | `src/app/sitemap.ts` via `getIndexablePaths()` |
 | robots.txt with AI-crawler allowlist | `src/app/robots.ts` |
 | llms.txt (tested against real pages) | `public/llms.txt` |
+| llms-full.txt (generated from posts) | `public/llms-full.txt` via `scripts/embed-blog.mjs` |
 | RSS | `/blog/rss.xml` |
 | IndexNow (Bing / ChatGPT) | `npm run indexnow` after each deploy |
-| GA4 funnel events + first-touch UTM | `src/lib/analytics.ts`, `src/lib/utm.ts` |
+| GA4 funnel events + first-touch and last-touch UTM | `src/lib/analytics.ts`, `src/lib/utm.ts` |
 | Search Console / Bing verification | `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION` env vars |

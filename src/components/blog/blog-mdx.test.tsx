@@ -62,6 +62,7 @@ describe("renderPostBody", () => {
       for (const heading of post.headings) expect(html).toContain(`id="${heading.id}"`);
       expect(html).toContain("<table");
       expect(html).toContain(`href="${QUIZ_PATH}?utm_source=blog`);
+      expect(html).toContain(`utm_content=${post.slug}`);
     },
   );
 });

@@ -4,9 +4,26 @@ const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_c
 
 type UtmKey = (typeof UTM_KEYS)[number];
 export type Utm = Partial<Record<UtmKey, string>>;
-export type Attribution = Utm & { landing_path?: string; referrer?: string };
+export type Attribution = Utm & {
+  landing_path?: string;
+  referrer?: string;
+  last_landing_path?: string;
+  last_referrer?: string;
+  last_utm_source?: string;
+  last_utm_medium?: string;
+  last_utm_campaign?: string;
+  last_utm_term?: string;
+  last_utm_content?: string;
+};
 
-type StoredAttribution = { capturedAt: number; attribution: Attribution };
+type Touch = Utm & { landing_path?: string; referrer?: string };
+
+type StoredAttribution = {
+  capturedAt: number;
+  attribution: Touch;
+  lastCapturedAt: number;
+  last: Touch;
+};
 type LocationLike = { search: string; pathname: string; referrer: string };
 
 export function parseUtm(search: string): Utm {
@@ -27,34 +44,59 @@ function referrerHost(referrer: string) {
   }
 }
 
-export function readAttribution(storage: Storage, now = Date.now()): Attribution | null {
+function currentTouch(location: LocationLike): Touch {
+  const host = referrerHost(location.referrer);
+  return {
+    ...parseUtm(location.search),
+    landing_path: location.pathname,
+    ...(host ? { referrer: host } : {}),
+  };
+}
+
+function readStored(storage: Storage, now: number): StoredAttribution | null {
   try {
     const raw = storage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const stored = JSON.parse(raw) as StoredAttribution;
     if (typeof stored.capturedAt !== "number" || now - stored.capturedAt > MAX_AGE_MS) return null;
-    return stored.attribution;
+    if (!stored.attribution || !stored.last) return null;
+    return stored;
   } catch {
     return null;
   }
 }
 
-export function captureFirstTouch(storage: Storage, location: LocationLike, now = Date.now()) {
-  const existing = readAttribution(storage, now);
-  if (existing) return existing;
-
-  const host = referrerHost(location.referrer);
-  const attribution: Attribution = {
-    ...parseUtm(location.search),
-    landing_path: location.pathname,
-    ...(host ? { referrer: host } : {}),
+function mergeTouch(first: Touch, last: Touch): Attribution {
+  return {
+    ...first,
+    ...(last.landing_path ? { last_landing_path: last.landing_path } : {}),
+    ...(last.referrer ? { last_referrer: last.referrer } : {}),
+    ...(last.utm_source ? { last_utm_source: last.utm_source } : {}),
+    ...(last.utm_medium ? { last_utm_medium: last.utm_medium } : {}),
+    ...(last.utm_campaign ? { last_utm_campaign: last.utm_campaign } : {}),
+    ...(last.utm_term ? { last_utm_term: last.utm_term } : {}),
+    ...(last.utm_content ? { last_utm_content: last.utm_content } : {}),
   };
+}
+
+export function readAttribution(storage: Storage, now = Date.now()): Attribution | null {
+  const stored = readStored(storage, now);
+  if (!stored) return null;
+  return mergeTouch(stored.attribution, stored.last);
+}
+
+export function captureFirstTouch(storage: Storage, location: LocationLike, now = Date.now()) {
+  const existing = readStored(storage, now);
+  const touch = currentTouch(location);
+  const record: StoredAttribution = existing
+    ? { ...existing, lastCapturedAt: now, last: touch }
+    : { capturedAt: now, attribution: touch, lastCapturedAt: now, last: touch };
   try {
-    storage.setItem(STORAGE_KEY, JSON.stringify({ capturedAt: now, attribution }));
+    storage.setItem(STORAGE_KEY, JSON.stringify(record));
   } catch {
     // Storage can be full or blocked (Safari private mode); attribution is best-effort.
   }
-  return attribution;
+  return mergeTouch(record.attribution, record.last);
 }
 
 export function withUtm(path: string, utm: Utm) {

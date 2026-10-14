@@ -1700,6 +1700,97 @@ footer p {
   font-size: 0.85rem;
 }
 
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.15rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.chapter-crumbs {
+  position: relative;
+  z-index: 2;
+  padding: 1.25rem var(--page-rail) 0;
+}
+
+.post-tldr,
+.post-takeaways {
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--aqua-deep);
+  background: var(--canvas);
+}
+
+.post-takeaways ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.post-cite a {
+  text-decoration: none;
+}
+
+.post-references {
+  padding-left: 1.2rem;
+}
+
+.post-references li {
+  margin: 0.7rem 0;
+}
+
+.bar-chart {
+  margin: 2rem 0;
+}
+
+.bar-chart-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 12rem) 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.bar-chart-track {
+  display: block;
+  height: 0.7rem;
+  background: var(--surface-alt);
+}
+
+.bar-chart-fill {
+  display: block;
+  height: 100%;
+  background: var(--aqua-deep);
+}
+
+.bar-chart figcaption,
+.bar-chart-label,
+.bar-chart-value {
+  font-size: 0.92rem;
+}
+
+.home-faq {
+  padding: clamp(3rem, 6vw, 5rem) var(--page-rail);
+}
+
 .post-related {
   padding: clamp(4rem, 8vw, 7rem) var(--page-rail);
 }

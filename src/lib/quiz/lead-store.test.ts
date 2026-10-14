@@ -43,6 +43,13 @@ describe("toLeadRow", () => {
       utm_campaign: null,
       utm_term: null,
       utm_content: null,
+      last_landing_path: null,
+      last_referrer: null,
+      last_utm_source: null,
+      last_utm_medium: null,
+      last_utm_campaign: null,
+      last_utm_term: null,
+      last_utm_content: null,
     });
   });
 

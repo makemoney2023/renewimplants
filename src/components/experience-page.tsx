@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { LoopVideo, ResponsivePoster } from "@/components/loop-video";
 import { QuizCta } from "@/components/quiz/quiz-cta";
@@ -14,6 +15,7 @@ import { RouteActions } from "@/components/route-actions";
 import { TestimonialList } from "@/components/testimonial-list";
 import type { RouteAct, RouteContent } from "@/content/routes";
 import { site } from "@/content/site";
+import { routeCrumbs } from "@/lib/site-schema";
 import { getRailDistance } from "@/lib/scroll-motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -165,6 +167,9 @@ export function ExperiencePage({ page }: { page: RouteContent }) {
 
   return (
     <main id="main-content" tabIndex={-1} className="chapter-page" ref={root}>
+      <div className="chapter-crumbs">
+        <Breadcrumbs crumbs={routeCrumbs(page)} />
+      </div>
       {acts.map((act, index) => (
         <ChapterAct
           key={`${act.heading}-${act.device}`}
@@ -255,7 +260,7 @@ function ChapterAct({
             <article className="treatment-card" key={`${photo.src}-${index}`}>
               <Image
                 src={photo.src}
-                alt={photos?.length ? photo.alt : ""}
+                alt={photos?.length ? photo.alt : act.heading}
                 fill
                 priority={first && index === 0}
                 sizes="(max-width: 700px) 84vw, 42vw"
@@ -308,7 +313,7 @@ function ChapterAct({
     return (
       <section className="close-section chapter-act" aria-labelledby={id}>
         <div className="close-photo chapter-close-photo">
-          <Image src={act.image} alt="" fill priority={first} sizes="100vw" />
+          <Image src={act.image} alt={title} fill priority={first} sizes="100vw" />
           <div className="close-scrim" />
         </div>
         <div className="close-copy reveal-copy">
@@ -327,7 +332,7 @@ function ChapterAct({
           <ResponsivePoster
             poster={act.poster ?? act.image}
             mobilePoster={act.mobilePoster}
-            alt=""
+            alt={title}
             priority={first}
             sizes="(max-width: 800px) 100vw, 50vw"
           />
@@ -356,7 +361,7 @@ function ChapterAct({
           className="chapter-photo"
           poster={act.poster ?? act.image}
           mobilePoster={act.mobilePoster}
-          alt=""
+          alt={title}
           priority={first}
           sizes="(max-width: 800px) 100vw, 52vw"
         />

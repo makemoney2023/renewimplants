@@ -55,3 +55,11 @@ describe("public/llms.txt", () => {
     expect(links).toContain(`${site.url}${QUIZ_PATH}`);
   });
 });
+
+describe("public/llms-full.txt", () => {
+  const full = readFileSync(join(process.cwd(), "public/llms-full.txt"), "utf8");
+
+  it("includes every published post URL", () => {
+    for (const post of getAllPosts()) expect(full, post.slug).toContain(`${site.url}${post.url}`);
+  });
+});

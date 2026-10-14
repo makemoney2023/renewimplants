@@ -89,6 +89,7 @@ describe("loadPosts", () => {
         datePublished: "2026-09-01",
         dateModified: "2026-09-01",
         cluster: "all-on-4",
+        pillar: "all-on-4",
         primaryQuery: "q",
         author: "tom-szarski",
         quizCtaLabel: "Take the quiz",
@@ -158,6 +159,52 @@ describe("helpers", () => {
       for (const entry of related) inbound.set(entry.slug, (inbound.get(entry.slug) ?? 0) + 1);
     }
     for (const [slug, count] of inbound) expect(count, slug).toBeGreaterThan(0);
+  });
+});
+
+const WAVE_1_SLUGS = [
+  "does-the-canadian-dental-care-plan-cover-dental-implants",
+  "dental-implants-with-bone-loss",
+  "snap-on-dentures-vs-all-on-4",
+  "all-on-4-recovery-first-weeks",
+  "how-long-do-all-on-4-implants-last",
+  "sedation-for-dental-implant-surgery",
+  "dental-implants-with-diabetes-or-smoking",
+  "denturist-vs-dentist-for-implant-teeth",
+  "what-is-included-in-an-implant-quote",
+  "dental-implant-not-feeling-right",
+];
+
+describe("wave 1 posts", () => {
+  it("answers the query, cites sources, and briefs three photographs", () => {
+    const catalog = readFileSync(join(process.cwd(), "docs/content/image-prompts-wave-1.md"), "utf8");
+    for (const slug of WAVE_1_SLUGS) {
+      const post = getPost(slug);
+      expect(post, slug).toBeDefined();
+      if (!post) continue;
+      expect(post.description.toLowerCase(), slug).toContain(post.primaryQuery.toLowerCase());
+      expect(post.body, slug).toMatch(/<Tldr>/);
+      expect(post.body, slug).toMatch(/<KeyTakeaways\s*\/>/);
+      expect(post.body, slug).toMatch(/<References\s*\/>/);
+      expect(post.takeaways?.length, slug).toBeGreaterThanOrEqual(3);
+      expect(post.citations.length, slug).toBeGreaterThan(0);
+      expect(post.reviewedBy, slug).toBeUndefined();
+      expect(post.imagePrompts, slug).toHaveLength(3);
+      expect(post.imagePrompts[0]?.aspectRatio, slug).toBe("16:9");
+      expect(post.imagePrompts.slice(1).every((item) => item.aspectRatio === "4:3"), slug).toBe(true);
+      for (const item of post.imagePrompts) {
+        expect(item.avoid.length, slug).toBeGreaterThan(20);
+        expect(item.prompt.toLowerCase(), slug).toContain("avoid");
+        expect(item.prompt, slug).toMatch(/35mm|50mm/);
+        expect(item.prompt, slug).toMatch(/f\/2\.8/);
+      }
+      const ids = [...post.body.matchAll(/<Cite id="([^"]+)"/g)].map((match) => match[1]);
+      expect(ids.length, slug).toBeGreaterThan(0);
+      for (const id of ids) {
+        expect(post.citations.some((citation) => citation.id === id), `${slug} ${id}`).toBe(true);
+      }
+      expect(catalog, slug).toContain(slug);
+    }
   });
 });
 

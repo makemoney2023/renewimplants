@@ -27,13 +27,39 @@ describe("buildBlogPostGraph", () => {
     });
   });
 
-  it("wraps it in a medical web page with breadcrumbs Home > Blog > post", () => {
+  it("wraps it in a medical web page with breadcrumbs Home > Blog > pillar > post", () => {
     expect(byType(graph, "MedicalWebPage")).toMatchObject({ "@id": `${url}#page`, url });
     expect(byType(graph, "BreadcrumbList")).toMatchObject({
       itemListElement: [
         { position: 1, item: `${site.url}/` },
         { position: 2, name: "Blog", item: `${site.url}/blog` },
-        { position: 3, name: post.title, item: url },
+        { position: 3, name: "All-on-4", item: `${site.url}/services/all-on-4-dental-implants` },
+        { position: 4, name: post.title, item: url },
+      ],
+    });
+  });
+
+  it("lists citations on BlogPosting only when the post has them", () => {
+    expect(byType(graph, "BlogPosting")).not.toHaveProperty("citation");
+    const cited: BlogPost = {
+      ...post,
+      citations: [
+        {
+          id: "study",
+          title: "A published study",
+          url: "https://pubmed.ncbi.nlm.nih.gov/22211303/",
+          publisher: "PubMed",
+        },
+      ],
+    };
+    expect(byType(buildBlogPostGraph(cited)["@graph"] as Node[], "BlogPosting")).toMatchObject({
+      citation: [
+        {
+          "@type": "CreativeWork",
+          name: "A published study",
+          url: "https://pubmed.ncbi.nlm.nih.gov/22211303/",
+          publisher: { "@type": "Organization", name: "PubMed" },
+        },
       ],
     });
   });
