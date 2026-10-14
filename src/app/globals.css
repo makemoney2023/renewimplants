@@ -1546,7 +1546,28 @@ footer p {
 /* Blog: article chrome, extraction tables, and the quiz call to action. */
 .blog-index-hero {
   min-height: auto;
-  grid-template-columns: 1fr;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, min(45%, 32rem));
+  column-gap: clamp(1.75rem, 3vw, 3rem);
+  padding-inline: var(--page-rail);
+}
+
+.blog-index-hero .content-hero-copy {
+  padding-inline: 0;
+}
+
+.blog-index-hero .content-hero-photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  border-radius: var(--radius);
+}
+
+.blog-index-hero .content-hero-photo img {
+  position: absolute;
+  inset: 0;
+  object-position: center top;
 }
 
 .post-byline {
@@ -1858,6 +1879,24 @@ footer p {
 }
 
 @media (max-width: 800px) {
+  .blog-index-hero {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-inline: 0;
+  }
+
+  .blog-index-hero .content-hero-copy {
+    padding-inline: var(--page-rail);
+  }
+
+  .blog-index-hero .content-hero-photo {
+    aspect-ratio: auto;
+    width: auto;
+    height: 13rem;
+    min-height: 13rem;
+    margin: 0 var(--page-rail) 1.75rem;
+  }
+
   .content-body {
     grid-template-columns: minmax(0, 1fr);
   }
