@@ -11,6 +11,7 @@ describe("media sync", () => {
   it("copies heroes, interiors, staff, services, optimized clips, and the animation with Node instead of rsync", () => {
     expect(getMediaSyncJobs().map((job) => job.to)).toEqual([
       "public/media/heroes",
+      "public/media/blog",
       "public/media/interiors",
       "public/media/staff",
       "public/media/services",
