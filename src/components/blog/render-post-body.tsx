@@ -3,6 +3,7 @@ import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 import { QuizCta } from "@/components/quiz/quiz-cta";
 import type { BlogPost } from "@/lib/blog";
+import { insertPostFigures } from "@/lib/blog-figures";
 import {
   AnchoredH2,
   BarChart,
@@ -13,12 +14,21 @@ import {
   References,
   Tldr,
 } from "./mdx-components";
+import { PostFigure } from "./post-figure";
 
 const BLOG_CTA_INTRO =
   "Not sure which option fits your mouth? Nine questions, no obligation, and a personalized next step.";
 
 export async function renderPostBody(post: BlogPost) {
-  const { default: Content } = await evaluate(post.body, {
+  const figures = post.imagePrompts
+    .filter((item) => item.aspectRatio === "4:3")
+    .slice(0, 2)
+    .map((item, index) => ({
+      heading: item.placement,
+      src: `/media/blog/${post.slug}-${index + 2}.jpg`,
+      alt: item.alt,
+    }));
+  const { default: Content } = await evaluate(insertPostFigures(post.body, figures), {
     ...runtime,
     remarkPlugins: [remarkGfm],
   });
@@ -27,6 +37,7 @@ export async function renderPostBody(post: BlogPost) {
     <Content
       components={{
         h2: AnchoredH2,
+        PostFigure,
         ExtractionTable,
         KeyStat,
         BarChart,
