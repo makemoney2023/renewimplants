@@ -25,6 +25,7 @@ const heroLoop = { start: 7, duration: 8 };
 export function getMediaSyncJobs(): MediaSyncJob[] {
   return [
     { from: "assets/heroes", to: "public/media/heroes" },
+    { from: "assets/blog", to: "public/media/blog" },
     { from: "assets/interiors", to: "public/media/interiors" },
     { from: "assets/staff", to: "public/media/staff" },
     { from: "assets/other", to: "public/media/services" },

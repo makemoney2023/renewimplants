@@ -1,4 +1,4 @@
-import { mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import embeddedPosts from "./blog-sources.json";
@@ -13,6 +13,7 @@ import {
   loadPosts,
   readingMinutes,
 } from "./blog";
+import { toPostCard } from "./blog-cards";
 
 const LEGACY_SLUGS = [
   "why-people-are-choosing-all-on-4",
@@ -48,6 +49,18 @@ describe("published posts", () => {
     const orders = posts.map((post) => post.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
     expect(new Set(posts.map((post) => post.slug)).size).toBe(posts.length);
+  });
+
+  it("gives every post its own hero instead of a shared cluster photo", () => {
+    const cards = posts.map(toPostCard);
+    expect(new Set(cards.map((card) => card.image)).size).toBe(cards.length);
+    for (const post of posts) {
+      expect(post.heroImage).toBe(`/media/blog/${post.slug}.jpg`);
+      expect(post.heroImageAlt?.trim().length).toBeGreaterThan(20);
+      expect(existsSync(join(process.cwd(), "assets", "blog", `${post.slug}.jpg`))).toBe(true);
+      expect(toPostCard(post).image).toBe(post.heroImage);
+      expect(toPostCard(post).imageAlt).toBe(post.heroImageAlt);
+    }
   });
 
   it.each(getAllPosts().map((post) => [post.slug, post]))("%s meets the content rules", (_slug, post) => {
