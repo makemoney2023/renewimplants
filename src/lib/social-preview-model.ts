@@ -33,6 +33,7 @@ export type LibraryPillar = (typeof LIBRARY_PILLARS)[number];
 export type LibraryLane = "all" | "organic" | "paid";
 export type LibraryFormat = "all" | SocialPreviewPost["format"];
 export type LibraryState = "all" | "ready" | "waiting";
+export type LibraryApproval = "all" | "pending" | "approved" | "not-approved";
 export type LibraryWeek = "all" | "ads" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
 export type LibrarySort = "catalog" | "week" | "ready" | "format" | "name";
 
@@ -40,6 +41,7 @@ export type LibraryQuery = {
   lane: LibraryLane;
   format: LibraryFormat;
   state: LibraryState;
+  approval: LibraryApproval;
   pillar: "all" | LibraryPillar;
   week: LibraryWeek;
   sort: LibrarySort;
@@ -50,6 +52,7 @@ export const defaultLibraryQuery: LibraryQuery = {
   lane: "all",
   format: "all",
   state: "all",
+  approval: "all",
   pillar: "all",
   week: "all",
   sort: "catalog",
@@ -71,6 +74,7 @@ export function parseLibraryQuery(input: {
   lane?: string;
   format?: string;
   state?: string;
+  approval?: string;
   pillar?: string;
   week?: string;
   sort?: string;
@@ -80,6 +84,7 @@ export function parseLibraryQuery(input: {
     lane: oneOf(input.lane, ["all", "organic", "paid"] as const, "all"),
     format: oneOf(input.format, ["all", "video", "static", "carousel"] as const, "all"),
     state: oneOf(input.state, ["all", "ready", "waiting"] as const, "all"),
+    approval: oneOf(input.approval, ["all", "pending", "approved", "not-approved"] as const, "all"),
     pillar: oneOf(input.pillar, ["all", ...LIBRARY_PILLARS] as const, "all"),
     week: oneOf(input.week, ["all", "ads", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] as const, "all"),
     sort: oneOf(input.sort, ["catalog", "week", "ready", "format", "name"] as const, "catalog"),
@@ -87,13 +92,18 @@ export function parseLibraryQuery(input: {
   };
 }
 
-export function filterSocialPosts(posts: SocialPreviewPost[], query: LibraryQuery) {
+export function filterSocialPosts(
+  posts: SocialPreviewPost[],
+  query: LibraryQuery,
+  decisions: ReadonlyMap<string, "approved" | "not-approved"> = new Map(),
+) {
   const needle = query.q.toLowerCase();
   return posts.filter((post) => {
     if (query.lane !== "all" && post.lane !== query.lane) return false;
     if (query.format !== "all" && post.format !== query.format) return false;
     if (query.state === "ready" && !postIsReady(post)) return false;
     if (query.state === "waiting" && postIsReady(post)) return false;
+    if (query.approval !== "all" && (decisions.get(post.id) ?? "pending") !== query.approval) return false;
     if (query.pillar !== "all" && post.pillar !== query.pillar) return false;
     if (query.week === "ads" && post.week !== null) return false;
     if (query.week !== "all" && query.week !== "ads" && post.week !== Number(query.week)) return false;
@@ -127,6 +137,7 @@ function appendLibrary(params: URLSearchParams, library?: Partial<LibraryQuery>)
   if (library.lane && library.lane !== "all") params.set("lane", library.lane);
   if (library.format && library.format !== "all") params.set("format", library.format);
   if (library.state && library.state !== "all") params.set("state", library.state);
+  if (library.approval && library.approval !== "all") params.set("approval", library.approval);
   if (library.pillar && library.pillar !== "all") params.set("pillar", library.pillar);
   if (library.week && library.week !== "all") params.set("week", library.week);
   if (library.sort && library.sort !== "catalog") params.set("sort", library.sort);

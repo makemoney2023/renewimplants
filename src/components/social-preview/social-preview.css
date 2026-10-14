@@ -117,8 +117,119 @@
   min-height: 0;
   overflow: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 16px 12px 32px;
+}
+
+.social-review {
+  width: min(100%, 470px);
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.social-review p {
+  margin: 0;
+  color: #444;
+  font-size: 13px;
+}
+
+.catalog-item {
+  display: grid;
+  gap: 6px;
+  padding: 4px 4px 10px;
+  border-bottom: 1px solid #262626;
+}
+
+.approval-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 0;
+}
+
+.approval-controls button {
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.approval-controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.approval-controls button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.approval-controls-light .approval-approve,
+.approval-controls-dark .approval-approve {
+  border: 2px solid transparent;
+  background: var(--accent);
+  color: var(--ink-deep);
+}
+
+.approval-controls button[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+
+.approval-controls-light .approval-approve[aria-pressed="true"],
+.approval-controls-dark .approval-approve[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--ink-deep);
+  color: var(--accent);
+}
+
+.approval-controls-light .approval-hold {
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  color: var(--ink-deep);
+}
+
+.approval-controls-dark .approval-hold {
+  border: 1px solid #5c5c5c;
+  background: transparent;
+  color: #fff;
+}
+
+.approval-controls-light .approval-hold[aria-pressed="true"] {
+  border-color: #8a3030;
+  background: #f8e8e8;
+  color: #6d1f1f;
+}
+
+.approval-controls-dark .approval-hold[aria-pressed="true"] {
+  border-color: #e7a3a3;
+  background: #3a1d1d;
+  color: #ffd7d7;
+}
+
+.approval-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #ffb4b4;
+  font-size: 12px;
+}
+
+.approval-controls-light .approval-error {
+  color: #8a3030;
+}
+
+.approval-badge-approved {
+  background: var(--accent-light) !important;
+  color: var(--ink-deep) !important;
+}
+
+.approval-badge-not-approved {
+  background: #f8e8e8 !important;
+  color: #6d1f1f !important;
 }
 
 .ig-post,
@@ -487,6 +598,12 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.library-grid > li {
+  display: grid;
+  gap: 8px;
+  align-content: start;
 }
 
 .library-card {
