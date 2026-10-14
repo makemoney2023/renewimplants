@@ -67,7 +67,7 @@ export default function BlogIndexPage() {
             priority
             loading="eager"
             unoptimized
-            sizes="(max-width: 800px) 100vw, 25rem"
+            sizes="(max-width: 800px) 100vw, 32rem"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
           />
         </div>
