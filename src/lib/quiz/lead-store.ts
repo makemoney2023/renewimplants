@@ -34,6 +34,13 @@ export function toLeadRow(
     utm_campaign: attribution.utm_campaign ?? null,
     utm_term: attribution.utm_term ?? null,
     utm_content: attribution.utm_content ?? null,
+    last_landing_path: attribution.last_landing_path ?? null,
+    last_referrer: attribution.last_referrer ?? null,
+    last_utm_source: attribution.last_utm_source ?? null,
+    last_utm_medium: attribution.last_utm_medium ?? null,
+    last_utm_campaign: attribution.last_utm_campaign ?? null,
+    last_utm_term: attribution.last_utm_term ?? null,
+    last_utm_content: attribution.last_utm_content ?? null,
   };
 }
 
@@ -43,8 +50,9 @@ const INSERT_QUIZ_LEAD = `INSERT INTO quiz_leads (
   id, first_name, email, phone, preferred_contact, best_time,
   answers, answers_version, result_path, modifiers,
   lead_score, lead_tier, marketing_consent, consent_text, consent_at,
-  landing_path, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  landing_path, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content,
+  last_landing_path, last_referrer, last_utm_source, last_utm_medium, last_utm_campaign, last_utm_term, last_utm_content
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export function quizLeadInsert(row: LeadRow, id: string): { sql: string; params: Array<string | number | null> } {
   return {
@@ -72,6 +80,13 @@ export function quizLeadInsert(row: LeadRow, id: string): { sql: string; params:
       row.utm_campaign,
       row.utm_term,
       row.utm_content,
+      row.last_landing_path,
+      row.last_referrer,
+      row.last_utm_source,
+      row.last_utm_medium,
+      row.last_utm_campaign,
+      row.last_utm_term,
+      row.last_utm_content,
     ],
   };
 }

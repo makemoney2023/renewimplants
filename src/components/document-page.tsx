@@ -1,18 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { RouteActions } from "@/components/route-actions";
 import { TestimonialList } from "@/components/testimonial-list";
 import { getPrimaryNav } from "@/content/nav";
 import type { RouteContent } from "@/content/routes";
 import { site } from "@/content/site";
+import { routeCrumbs } from "@/lib/site-schema";
 
 export function DocumentPage({ page }: { page: RouteContent }) {
   return (
     <main id="main-content" tabIndex={-1} className="content-page">
       <section className="content-hero">
         <div className="content-hero-copy">
+          <Breadcrumbs crumbs={routeCrumbs(page)} />
           <p className="section-label">{page.eyebrow}</p>
           <h1>{page.title}</h1>
           <p>{page.intro}</p>
@@ -20,7 +23,7 @@ export function DocumentPage({ page }: { page: RouteContent }) {
         <div className="content-hero-photo">
           <Image
             src={page.image}
-            alt=""
+            alt={page.title}
             fill
             priority
             sizes="(max-width: 800px) 100vw, 48vw"

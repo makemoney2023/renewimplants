@@ -11,6 +11,8 @@ type QuizCtaProps = {
   source: string;
   medium: string;
   campaign: string;
+  /** Post slug, stored as utm_content so last-touch can name the article. */
+  content?: string;
   label?: string;
   /** Short lead-in shown above the button; omit for a compact button-only card. */
   intro?: string;
@@ -20,10 +22,16 @@ export function QuizCta({
   source,
   medium,
   campaign,
+  content,
   label = "Take the 2-minute implant candidate quiz",
   intro,
 }: QuizCtaProps) {
-  const href = withUtm(QUIZ_PATH, { utm_source: source, utm_medium: medium, utm_campaign: campaign });
+  const href = withUtm(QUIZ_PATH, {
+    utm_source: source,
+    utm_medium: medium,
+    utm_campaign: campaign,
+    utm_content: content,
+  });
 
   return (
     <div className={intro ? "quiz-cta" : "quiz-cta quiz-cta-compact"}>

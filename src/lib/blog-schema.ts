@@ -1,4 +1,4 @@
-import type { BlogPost } from "./blog";
+import { postCrumbs, type BlogPost } from "./blog";
 import {
   absoluteUrl,
   buildBreadcrumbNode,
@@ -40,6 +40,16 @@ export function buildBlogPostGraph(post: BlogPost) {
     publisher: { "@id": schemaIds.practice },
     mainEntityOfPage: { "@id": `${url}#page` },
     ...(image ? { image } : {}),
+    ...(post.citations.length
+      ? {
+          citation: post.citations.map((citation) => ({
+            "@type": "CreativeWork",
+            name: citation.title,
+            url: citation.url,
+            publisher: { "@type": "Organization", name: citation.publisher },
+          })),
+        }
+      : {}),
   };
 
   const faqs = post.faqs.map((faq) => ({ question: faq.q, answer: faq.a }));
@@ -49,10 +59,7 @@ export function buildBlogPostGraph(post: BlogPost) {
     "@graph": [
       page,
       article,
-      buildBreadcrumbNode(url, [
-        { name: "Blog", path: "/blog" },
-        { name: post.title, path: post.url },
-      ]),
+      buildBreadcrumbNode(url, postCrumbs(post)),
       buildFaqNode(url, faqs),
     ].filter(Boolean),
   };

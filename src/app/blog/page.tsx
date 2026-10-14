@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { PostCardList } from "@/components/blog/post-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { QuizCta } from "@/components/quiz/quiz-cta";
 import { site } from "@/content/site";
@@ -25,7 +26,7 @@ export default function BlogIndexPage() {
     <main id="main-content" tabIndex={-1} className="content-page blog-index">
       <section className="content-hero blog-index-hero">
         <div className="content-hero-copy">
-          <p className="section-label">Blog</p>
+          <Breadcrumbs crumbs={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
           <h1>Implant questions, answered plainly.</h1>
           <p>{description}</p>
         </div>

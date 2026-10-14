@@ -323,7 +323,7 @@ export function ScrollWorld() {
             <article className="treatment-card" key={treatment.title}>
               <Image
                 src={treatment.image}
-                alt=""
+                alt={treatment.imageAlt}
                 fill
                 sizes="(max-width: 700px) 84vw, 42vw"
               />

@@ -12,7 +12,10 @@ import {
 type Node = Record<string, unknown>;
 
 function nodeOfType(graph: Node[], type: string) {
-  return graph.find((node) => node["@type"] === type);
+  return graph.find((node) => {
+    const nodeType = node["@type"];
+    return nodeType === type || (Array.isArray(nodeType) && nodeType.includes(type));
+  });
 }
 
 describe("sitewide graph", () => {
@@ -32,6 +35,8 @@ describe("sitewide graph", () => {
         addressCountry: "CA",
       },
       founder: { "@id": schemaIds.tom },
+      medicalSpecialty: "Dentistry",
+      "@type": ["Dentist", "MedicalClinic"],
     });
   });
 
@@ -81,6 +86,18 @@ describe("route graph", () => {
     });
     const faq = nodeOfType(graph, "FAQPage") as Node;
     expect(faq.mainEntity).toHaveLength(page.faqs!.length);
+  });
+
+  it("adds a Services crumb on treatment pages other than the hub", () => {
+    const page = getRouteContent("services/sedation-dentistry")!;
+    const graph = buildRouteGraph(page)["@graph"] as Node[];
+    expect(nodeOfType(graph, "BreadcrumbList")).toMatchObject({
+      itemListElement: [
+        { position: 1, name: "Home", item: `${site.url}/` },
+        { position: 2, name: "Services", item: `${site.url}/services/all-on-4-dental-implants` },
+        { position: 3, name: page.title, item: `${site.url}/services/sedation-dentistry` },
+      ],
+    });
   });
 
   it("marks treatment pages as medical web pages", () => {

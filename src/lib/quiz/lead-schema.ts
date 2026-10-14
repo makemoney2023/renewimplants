@@ -69,6 +69,13 @@ export const leadRequestSchema = z.object({
       utm_content: shortText,
       landing_path: shortText,
       referrer: shortText,
+      last_utm_source: shortText,
+      last_utm_medium: shortText,
+      last_utm_campaign: shortText,
+      last_utm_term: shortText,
+      last_utm_content: shortText,
+      last_landing_path: shortText,
+      last_referrer: shortText,
     })
     .optional(),
   startedAt: z.number().int().positive(),

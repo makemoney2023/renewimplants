@@ -3,11 +3,13 @@ import Link from "next/link";
 import { QuizCallLink } from "@/components/quiz/quiz-call-link";
 import { RouteActions } from "@/components/route-actions";
 import { site } from "@/content/site";
+import { QUIZ_THANK_YOU_PATH } from "@/lib/quiz/constants";
 import { modifierContent, parseResultQuery, resultContent } from "@/lib/quiz/result";
 
 export const metadata: Metadata = {
   title: `Your implant quiz results | ${site.name}`,
   robots: { index: false, follow: false },
+  alternates: { canonical: QUIZ_THANK_YOU_PATH },
 };
 
 type PageProps = { searchParams: Promise<{ path?: string | string[]; m?: string | string[] }> };

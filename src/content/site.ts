@@ -158,6 +158,7 @@ export const treatments = [
     body: "Four implants anchor a full set of fixed teeth. No adhesive, no slipping, often no bone grafting.",
     href: "/services/all-on-4-dental-implants",
     image: media.allOn4,
+    imageAlt: "A clear dental model showing a full arch of teeth supported by four implants",
     animation: treatmentLoop("allon4", media.allOn4),
   },
   {
@@ -165,6 +166,7 @@ export const treatments = [
     body: "Replace every tooth — upper, lower, or both — with permanent teeth you never take out.",
     href: "/services/full-arch-dental-implants",
     image: media.fullArch,
+    imageAlt: "A full arch implant bridge beside a single implant crown",
     animation: treatmentLoop("fullarch", media.fullArch),
   },
   {
@@ -172,6 +174,7 @@ export const treatments = [
     body: "Your denture, but stable. Two or four implants lock it in place while you eat, talk, and smile.",
     href: "/services/denture-alternative",
     image: media.snapOn,
+    imageAlt: "An implant-retained snap-on denture beside the implants it clips onto",
     animation: treatmentLoop("snapon", media.snapOn),
   },
   {
@@ -179,6 +182,7 @@ export const treatments = [
     body: "Sleep through the whole thing. Oral, IV, and general anaesthesia options in a monitored setting.",
     href: "/services/sedation-dentistry",
     image: media.sedation,
+    imageAlt: "A patient resting with eyes closed in a dental chair while a clinician stands beside them",
     animation: treatmentLoop("sedation", media.sedation),
   },
 ];

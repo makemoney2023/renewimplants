@@ -1,0 +1,285 @@
+# Wave 1 image prompts
+
+Photographer briefs for an image generator. Generated from post frontmatter by scripts/embed-blog.mjs. Do not edit by hand.
+
+Each brief asks for documentary or editorial photography: natural window light, a named lens and aperture, candid posture, real skin texture, everyday clothes, ordinary clutter, and slight film grain. The avoid line is part of the brief.
+
+## Does the Canadian Dental Care Plan Cover Dental Implants?
+
+Slug: `does-the-canadian-dental-care-plan-cover-dental-implants`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: A person in their sixties reading a benefits letter at a kitchen table in window light
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light from camera left, shot on a 35mm lens at f/2.8. A Canadian adult around 65 sits at a cluttered kitchen table in a cardigan, reading a government benefits letter held at chest height so the page is out of focus and no text is readable. Imperfect real skin texture, natural wrinkles, everyday clothing, a mug ring and unread mail on the table, slight film grain. Candid, not posed. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. Which denture services are listed?
+
+- Aspect ratio: 4:3
+- Alt text: A denture case and a glass of water on a bathroom counter in morning light
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still, natural window light, shot on a 50mm lens at f/2.8. A bathroom counter in an ordinary Canadian home: an open denture case, a glass of water, a folded towel, and a toothbrush cup. No person, no teeth close-up, no labels or logos. Slight film grain, realistic clutter, imperfect surfaces. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why check the guide before you book?
+
+- Aspect ratio: 4:3
+- Alt text: Two adults talking across a small clinic desk with a laptop closed
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph in a modest dental consultation room, natural window light, shot on a 35mm lens at f/2.8. An adult around 60 and a clinician in ordinary scrubs sit across a small desk, mid-conversation, laptop closed, paper chart slightly askew. Imperfect skin texture, natural wrinkles, everyday posture, a coat on the chair, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Can You Get Dental Implants If You Have Bone Loss?
+
+Slug: `dental-implants-with-bone-loss`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An older adult looking at a jaw model on a clinic counter, seen from the side
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 50mm lens at f/2.8. An adult around 70 in a wool sweater stands beside a clinic counter, looking down at a clear jaw model that is small in the frame. Side view, mouth closed, imperfect real skin texture, natural wrinkles, everyday clothing. A coat and a canvas bag on a chair, slight film grain, candid moment. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. How much bone changes after teeth are lost?
+
+- Aspect ratio: 4:3
+- Alt text: A window-lit desk with a printed chart and a pair of reading glasses
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still life, natural window light from the left, shot on a 35mm lens at f/2.8. A wooden desk with a printed bar chart too soft to read, reading glasses, a pencil, and a coffee ring. No people, no teeth, no hands, no logos. Realistic clutter, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why a scan comes before a yes?
+
+- Aspect ratio: 4:3
+- Alt text: A clinician and a patient seated, looking toward a darkened monitor across the room
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph in a Canadian dental clinic, natural window light mixed with a dim monitor glow, shot on a 35mm lens at f/2.8. Two adults, one about 62 in a flannel shirt, sit in profile looking toward a monitor whose screen is not readable. Imperfect skin, natural wrinkles, ordinary chairs, a cable on the floor, slight film grain. Candid, not a stock smile. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Snap-On Dentures vs All-on-4: Which Stays Fixed?
+
+Slug: `snap-on-dentures-vs-all-on-4`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: Two clear dental models on a wooden table by a window, one denture and one fixed bridge
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary still, natural window light, shot on a 50mm lens at f/2.8. Two clear dental models sit on a worn wooden table, far enough from the camera that individual teeth are not a close-up. A newspaper and a water glass sit beside them. No people, no text, no logos, slight film grain, ordinary clutter. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. Which one comes out at night?
+
+- Aspect ratio: 4:3
+- Alt text: A person in their sixties setting a denture case on a nightstand
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Candid documentary photograph, lamp and window light mixed, shot on a 35mm lens at f/2.8. An adult around 68 in a faded T-shirt stands at a nightstand, a closed denture case in the middle of the frame, face turned away so the mouth is not visible. Imperfect skin at the neck, natural wrinkles, rumpled bedding, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why the fixed option is a different job?
+
+- Aspect ratio: 4:3
+- Alt text: A consultation room with two empty chairs and a coat left on one of them
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial interior, natural window light, shot on a 35mm lens at f/2.8. A small Canadian clinic room after a visit: two chairs, one with a wool coat, a closed laptop, and a model on a side table seen from across the room. No faces, no teeth close-up, no readable text, slight film grain, realistic clutter. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## All-on-4 Recovery: What the First Weeks Feel Like
+
+Slug: `all-on-4-recovery-first-weeks`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An adult in a sweater resting on a sofa with a glass of water on the coffee table
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 35mm lens at f/2.8. An adult around 64 in a knit sweater sits sideways on a lived-in sofa, eyes half closed, a glass of water and a paperback on the coffee table. Mouth not visible. Imperfect real skin, natural wrinkles, everyday clothing, a blanket askew, slight film grain. Candid rest, not a recovery-ad pose. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What did the original study actually time?
+
+- Aspect ratio: 4:3
+- Alt text: A clinic hallway with a coat rack and a wall clock, no people
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial interior photograph, natural window light at the end of a hall, shot on a 35mm lens at f/2.8. An ordinary clinic corridor, a wool coat on a hook, a wall clock slightly off centre, scuffed baseboard. No people, no surgery, no teeth, no readable signage, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why call if it does not feel ordinary?
+
+- Aspect ratio: 4:3
+- Alt text: A person on a landline phone in a kitchen, seen from behind
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Candid documentary photograph, natural window light, shot on a 50mm lens at f/2.8. An adult around 70 seen from behind at a kitchen counter, speaking on a landline, dishes in the rack, a grocery list that is not readable. Everyday clothes, slight film grain, no face, no hands in close-up, no teeth. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## How Long Do All-on-4 Dental Implants Last?
+
+Slug: `how-long-do-all-on-4-implants-last`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An older couple walking a residential Ottawa street in coats, mid-conversation
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary street photograph, overcast natural light, shot on a 35mm lens at f/2.8. Two adults around 70 in ordinary winter coats walk a Canadian residential sidewalk, mid-sentence, mouths not posed toward the camera. Imperfect skin, natural wrinkles, a plastic grocery bag, wet pavement, slight film grain. Candid, not a stock couple. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What did 10 to 18 years of follow-up show?
+
+- Aspect ratio: 4:3
+- Alt text: A kitchen calendar and reading glasses on a table, years marked but not readable
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still, natural window light, shot on a 50mm lens at f/2.8. A kitchen table with a wall calendar soft enough that no numerals are readable, reading glasses, and a chipped mug. No people, no teeth, no hands, slight film grain, realistic clutter. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why one clinic's series is not your forecast?
+
+- Aspect ratio: 4:3
+- Alt text: A patient and a clinician talking in a treatment room, faces in three-quarter view
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 50mm lens at f/2.8. An adult around 66 in a cardigan sits in a dental chair that is upright, talking with a clinician who is looking at a chart, not at the camera. Mouths closed. Imperfect skin texture, natural wrinkles, a jacket on a hook, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Sedation for Dental Implant Surgery: What Are the Options?
+
+Slug: `sedation-for-dental-implant-surgery`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An adult waiting in a clinic chair by a window, coat on their lap, eyes open
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 35mm lens at f/2.8. An adult around 60 sits in a clinic waiting chair, wool coat folded on the next seat, looking out the window rather than at the camera. Imperfect skin, natural wrinkles, everyday clothes, a magazine left open and unreadable, slight film grain. Candid, not a relaxed-patient advertisement. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. Which levels does Ontario define?
+
+- Aspect ratio: 4:3
+- Alt text: A closed paper chart on a clinic desk beside a window
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still, natural window light, shot on a 50mm lens at f/2.8. A clinic desk with a closed chart, a pen, and a glass of water. No readable text, no logos, no people, no hands, no teeth. Slight film grain, a scuff on the desktop. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why ask which authorization applies?
+
+- Aspect ratio: 4:3
+- Alt text: Two people talking in a consultation room, seen from the doorway
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph from a doorway, natural window light, shot on a 35mm lens at f/2.8. An adult around 58 in a denim shirt talks with a clinician in plain scrubs. Both are in three-quarter view, mouths not the subject. A chair slightly out of line, a plant on the sill, slight film grain, imperfect skin texture. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Can You Get Dental Implants If You Have Diabetes or Smoke?
+
+Slug: `dental-implants-with-diabetes-or-smoking`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An adult on a porch step with a coffee mug, winter coat open, looking down the street
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, flat overcast light, shot on a 35mm lens at f/2.8. An adult around 63 sits on a porch step of a Canadian house, wool coat open over a hoodie, coffee mug on the step, looking down the street. Mouth not toward the camera. Imperfect skin, natural wrinkles, a salt-stained boot mat, slight film grain. Candid, not a health-ad pose. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What do the pooled smoking numbers say?
+
+- Aspect ratio: 4:3
+- Alt text: A kitchen table with a printed chart too soft to read and a pair of glasses
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still, natural window light, shot on a 50mm lens at f/2.8. A kitchen table, a printed page of bars too soft to read, reading glasses, and a teaspoon. No people, no hands, no teeth, no logos, slight film grain, a crumb on the table. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why these figures are not a yes or a no?
+
+- Aspect ratio: 4:3
+- Alt text: A clinician and a patient seated across a desk, both looking at a closed chart
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 50mm lens at f/2.8. An adult around 67 in a plaid shirt sits across from a clinician in ordinary scrubs. Both look at a closed chart on the desk. Imperfect skin texture, natural wrinkles, a jacket on the chair back, slight film grain. Mouths not the subject. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Denturist vs Dentist: Who Makes Your Implant Teeth?
+
+Slug: `denturist-vs-dentist-for-implant-teeth`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: A treatment room with a lab bench visible through a doorway, no people
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary interior, natural window light, shot on a 35mm lens at f/2.8. A modest dental treatment room in Canada, chair upright, a doorway showing a workbench with unmarked models in the next room. No people, no readable labels, no logos, a cardigan left on a stool, slight film grain, realistic clutter. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What does the Denturism Act actually cover?
+
+- Aspect ratio: 4:3
+- Alt text: A statute printout and a notebook on a desk, text too soft to read
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial still, natural window light, shot on a 50mm lens at f/2.8. A desk with a printed statute page too soft to read, a pencil, and a ceramic mug. No hands, no faces, no teeth close-up, no logos, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why the fixed teeth are a shared job?
+
+- Aspect ratio: 4:3
+- Alt text: Two colleagues talking in a doorway between a clinic room and a lab, faces in profile
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 35mm lens at f/2.8. Two adults in their fifties, one in scrubs and one in a work apron, stand in a doorway mid-conversation, profiles only, mouths not the subject. Imperfect skin, everyday posture, a tray of unmarked models on a cart, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## What Is Included in an All-Inclusive Implant Quote?
+
+Slug: `what-is-included-in-an-implant-quote`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: Two adults at a kitchen table with a closed folder between them
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 35mm lens at f/2.8. An adult around 66 and another around 62 sit at a kitchen table with a closed folder, coffee cups, and a houseplant. Everyday clothes, imperfect skin, natural wrinkles, a bill envelope face-down so no text shows. Slight film grain, candid conversation, mouths not posed. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What does this clinic say is in the number?
+
+- Aspect ratio: 4:3
+- Alt text: A consultation desk with a closed laptop and a jaw model across the room
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial interior, natural window light, shot on a 50mm lens at f/2.8. A small clinic office, laptop closed, a jaw model small in the background, a coat on a chair, a notepad with no readable writing. No people, no teeth close-up, no logos, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why the plan does not fill in the implant line?
+
+- Aspect ratio: 4:3
+- Alt text: A person reading mail by a window, the page turned away from the camera
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 50mm lens at f/2.8. An adult around 70 in a cardigan stands at a kitchen window holding a letter away from the lens so nothing is readable. Imperfect skin, natural wrinkles, dishes drying in a rack, slight film grain. No smile to camera, no hands in close-up, no teeth. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+## Dental Implant Not Feeling Right: What to Do Next
+
+Slug: `dental-implant-not-feeling-right`
+
+### 1. Hero
+
+- Aspect ratio: 16:9
+- Alt text: An adult in a kitchen looking out a window, one hand on a mug far from the camera
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Documentary photograph, natural window light, shot on a 35mm lens at f/2.8. An adult around 65 stands at a kitchen sink looking out the window, face in three-quarter view, mouth closed, a mug small at the edge of the counter. Imperfect skin, natural wrinkles, everyday sweater, dishes in the rack, slight film grain. Worried and ordinary, not a medical stock pose. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 2. What do published disease signs include?
+
+- Aspect ratio: 4:3
+- Alt text: A clinic room with the chair upright and the overhead light off
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Editorial interior, natural window light, shot on a 50mm lens at f/2.8. A dental treatment room with the chair upright and the operating light off. A clipboard face-down, a coat on a hook. No people, no surgery, no blood, no teeth close-up, no readable text, slight film grain. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+### 3. Why call instead of taking the quiz?
+
+- Aspect ratio: 4:3
+- Alt text: A person seen from the side speaking on a phone in a hallway
+- Avoid: Glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.
+
+Candid documentary photograph, natural window light from a sidelight, shot on a 50mm lens at f/2.8. An adult around 72 in a flannel shirt stands in an apartment hallway on a phone, seen from the side so the handset hides the mouth. Imperfect skin, a pair of shoes by the door, slight film grain. No teeth, no hand close-up. Avoid: glossy or plastic skin, symmetrical over-perfect smiles, surreal bokeh, stock-photo poses, and close-ups of teeth or hands.

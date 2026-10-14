@@ -5,12 +5,13 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { AuthorByline, PostCardList, PostToc } from "@/components/blog/post-chrome";
 import { renderPostBody } from "@/components/blog/render-post-body";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "@/components/faq-list";
 import { JsonLd } from "@/components/json-ld";
 import { QuizCta } from "@/components/quiz/quiz-cta";
 import { authors } from "@/content/authors";
 import { site } from "@/content/site";
-import { getAllPosts, getPost, getRelatedPosts } from "@/lib/blog";
+import { getAllPosts, getPost, getRelatedPosts, postCrumbs } from "@/lib/blog";
 import { buildBlogPostGraph } from "@/lib/blog-schema";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -53,9 +54,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <article>
         <header className="content-hero">
           <div className="content-hero-copy">
-            <p className="section-label">
-              <Link href="/blog">Blog</Link>
-            </p>
+            <Breadcrumbs crumbs={[{ name: "Home", path: "/" }, ...postCrumbs(post)]} />
             <h1>{post.title}</h1>
             <p>{post.description}</p>
             <AuthorByline post={post} />
@@ -64,7 +63,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="content-hero-photo">
               <Image
                 src={post.heroImage}
-                alt={post.heroImageAlt ?? ""}
+                alt={post.heroImageAlt ?? post.title}
                 fill
                 priority
                 sizes="(max-width: 800px) 100vw, 48vw"
@@ -83,7 +82,13 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
           <div className="post-aside">
             <PostToc headings={post.headings} />
-            <QuizCta source="blog" medium="sticky" campaign={post.slug} label={post.quizCtaLabel} />
+            <QuizCta
+              source="blog"
+              medium="sticky"
+              campaign={post.slug}
+              content={post.slug}
+              label={post.quizCtaLabel}
+            />
           </div>
         </div>
       </article>

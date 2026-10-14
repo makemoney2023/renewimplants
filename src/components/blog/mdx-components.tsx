@@ -1,6 +1,10 @@
+"use client";
+
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { Children, isValidElement } from "react";
-import { slugifyHeading } from "@/lib/blog";
+import { Children, createContext, isValidElement, use } from "react";
+import { slugifyHeading, type BlogCitation } from "@/lib/blog";
+
+export const CitationContext = createContext<BlogCitation[]>([]);
 
 type ExtractionTableProps = {
   caption: string;
@@ -46,6 +50,97 @@ export function ExtractionTable({ caption, columns, rows }: ExtractionTableProps
         </tbody>
       </table>
     </div>
+  );
+}
+
+export function Tldr({ children }: { children: ReactNode }) {
+  return (
+    <aside className="post-tldr" aria-label="Short answer">
+      <p className="section-label">Short answer</p>
+      {children}
+    </aside>
+  );
+}
+
+export function KeyTakeaways({ items }: { items: string[] }) {
+  if (items.length === 0) return null;
+  return (
+    <section className="post-takeaways" aria-label="Key takeaways">
+      <p className="section-label">Key takeaways</p>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function BarChart({
+  caption,
+  unit,
+  source,
+  points,
+}: {
+  caption: string;
+  unit: string;
+  source: string;
+  points: { label: string; value: number }[];
+}) {
+  const max = Math.max(...points.map((point) => point.value), 0);
+  return (
+    <figure className="bar-chart">
+      <figcaption>
+        {caption}
+        <span>
+          {" "}
+          ({unit}). Source: {source}
+        </span>
+      </figcaption>
+      <div className="bar-chart-plot" role="img" aria-label={caption}>
+        {points.map((point) => (
+          <div className="bar-chart-row" key={point.label}>
+            <span className="bar-chart-label">{point.label}</span>
+            <span className="bar-chart-track">
+              <span
+                className="bar-chart-fill"
+                style={{ width: max > 0 ? `${(point.value / max) * 100}%` : "0%" }}
+              />
+            </span>
+            <span className="bar-chart-value">
+              {point.value} {unit}
+            </span>
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
+}
+
+export function Cite({ id }: { id: string }) {
+  const citations = use(CitationContext);
+  const index = citations.findIndex((citation) => citation.id === id);
+  const citation = citations[index];
+  if (!citation) return null;
+  return (
+    <sup className="post-cite">
+      <a href={`#ref-${citation.id}`}>[{index + 1}]</a>
+    </sup>
+  );
+}
+
+export function References() {
+  const citations = use(CitationContext);
+  if (citations.length === 0) return null;
+  return (
+    <ol className="post-references">
+      {citations.map((citation) => (
+        <li key={citation.id} id={`ref-${citation.id}`}>
+          <a href={citation.url}>{citation.title}</a>
+          <span> — {citation.publisher}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
