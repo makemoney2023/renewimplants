@@ -90,7 +90,7 @@ writeFileSync(join(root, "public/llms-full.txt"), full.endsWith("\n") ? full : `
 
 const prompted = parsed.filter((post) => post.imagePrompts.length > 0);
 const catalog = [
-  "# Wave 1 image prompts",
+  "# Blog image prompts",
   "",
   "Photographer briefs for an image generator. Generated from post frontmatter by scripts/embed-blog.mjs. Do not edit by hand.",
   "",

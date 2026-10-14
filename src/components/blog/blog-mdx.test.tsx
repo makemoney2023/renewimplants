@@ -63,6 +63,13 @@ describe("renderPostBody", () => {
       expect(html).toContain("<table");
       expect(html).toContain(`href="${QUIZ_PATH}?utm_source=blog`);
       expect(html).toContain(`utm_content=${post.slug}`);
+      expect(html).toContain(`%2Fmedia%2Fblog%2F${post.slug}-2.jpg`);
+      expect(html).toContain(`%2Fmedia%2Fblog%2F${post.slug}-3.jpg`);
+      expect(html).toContain('loading="lazy"');
+      expect(html.match(/class="post-figure"/g)?.length).toBe(2);
+      for (const prompt of post.imagePrompts.filter((item) => item.aspectRatio === "4:3")) {
+        expect(html, prompt.alt).toContain(`alt="${prompt.alt}"`);
+      }
     },
   );
 });

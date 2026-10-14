@@ -57,7 +57,9 @@ describe("published posts", () => {
     for (const post of posts) {
       expect(post.heroImage).toBe(`/media/blog/${post.slug}.jpg`);
       expect(post.heroImageAlt?.trim().length).toBeGreaterThan(20);
-      expect(existsSync(join(process.cwd(), "assets", "blog", `${post.slug}.jpg`))).toBe(true);
+      for (const name of [`${post.slug}.jpg`, `${post.slug}-2.jpg`, `${post.slug}-3.jpg`]) {
+        expect(existsSync(join(process.cwd(), "assets", "blog", name)), name).toBe(true);
+      }
       expect(toPostCard(post).image).toBe(post.heroImage);
       expect(toPostCard(post).imageAlt).toBe(post.heroImageAlt);
     }
