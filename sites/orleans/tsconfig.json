@@ -15,8 +15,13 @@
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": ["./src/*"],
-      "@shell/*": ["../shared/*"]
+      "@/content/site": ["./src/profile/site.ts"],
+      "@/content/nav": ["./src/profile/nav.ts"],
+      "@/content/routes": ["./src/profile/routes.ts"],
+      "@/content/testimonials": ["./src/profile/testimonials.ts"],
+      "@clinic/*": ["./src/*"],
+      "@shell/*": ["../shared/*"],
+      "@/*": ["../../src/*"]
     }
   },
   "include": [
@@ -24,8 +29,15 @@
     "src/**/*.tsx",
     "next.config.ts",
     "vitest.config.ts",
-    "../shared/**/*.ts",
-    "../shared/**/*.tsx"
+    "../shared/renew/**/*.ts",
+    "../shared/renew/**/*.tsx",
+    "../shared/lib/leads.ts",
+    "../shared/lib/phone.ts",
+    "../shared/lib/contrast.ts",
+    "../shared/quiz/**/*.ts",
+    "../shared/components/lead-form.tsx",
+    "../shared/types.ts",
+    "../shared/vite-alias.ts"
   ],
   "exclude": ["node_modules", "dist", ".next", ".vinext"]
 }

@@ -1798,6 +1798,10 @@ footer p {
   font-size: 0.92rem;
 }
 
+.home-journal {
+  padding: 4rem var(--page-rail) 1rem;
+}
+
 .home-faq {
   padding: clamp(3rem, 6vw, 5rem) var(--page-rail);
 }

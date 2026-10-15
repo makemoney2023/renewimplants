@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/pricing",
+    "reason": "No price list in the scrape. /pricing redirects to the Canadian Dental Care Plan page."
+  },
+  {
+    "path": "/before-after",
+    "reason": "The gallery is office photos, not before-and-after pairs. /before-after redirects to the gallery."
+  },
+  {
+    "path": "/patient-stories",
+    "reason": "No named patient reviews were in the scrape."
+  },
+  {
+    "path": "/dental-anxiety",
+    "reason": "No sedation or dental-anxiety copy was in the scrape. /dental-anxiety redirects to the FAQ."
+  },
+  {
+    "path": "/privacy-policy",
+    "reason": "The scrape has no privacy policy. The URL redirects to contact. No policy text was written."
+  },
+  {
+    "path": "/terms",
+    "reason": "The scrape has no terms of use. The URL redirects to contact. No terms text was written."
+  },
+  {
+    "path": "/easy-implant-en",
+    "reason": "Renew product page. Not part of this clinic's scrape."
+  },
+  {
+    "path": "/for-dentists",
+    "reason": "No dentist-referral page in the scrape. Redirects to contact."
+  }
+]

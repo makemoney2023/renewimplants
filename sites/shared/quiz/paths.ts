@@ -9,5 +9,6 @@ export function isQuizRoute(pathname: string) {
 
 /** Home and the clinic's implant page. */
 export function showsQuizCta(path: string) {
-  return path === "/" || path === "/implants/" || path.startsWith("/service/dental-implants");
+  const bare = path.replace(/\/$/, "") || "/";
+  return bare === "/" || bare === "/services/dental-implants" || bare === "/implants" || bare.startsWith("/service/dental-implants");
 }

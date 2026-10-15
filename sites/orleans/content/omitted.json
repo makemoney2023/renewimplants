@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/pricing",
+    "reason": "The scrape has no price list. Cost notes stay in the blog post tooth-implant-cost-ontario. /pricing redirects to the Canadian Dental Care Plan page."
+  },
+  {
+    "path": "/before-after",
+    "reason": "No before-and-after treatment pairs were in the scrape. /before-after redirects to patient stories."
+  },
+  {
+    "path": "/easy-implant-en",
+    "reason": "Renew product page. Not part of this clinic's scrape."
+  },
+  {
+    "path": "/for-dentists",
+    "reason": "No dentist-referral page in the scrape. Redirects to contact."
+  }
+]

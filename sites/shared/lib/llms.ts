@@ -18,7 +18,7 @@ export function buildLlmsTxt(site: ClinicSite, pages: ClinicPage[]) {
   }
 
   lines.push(
-    `- [Implant candidate quiz](${site.url}/implant-candidate-quiz/): Nine questions about implant options. The thank-you page is not listed because it is a private result URL.`,
+    `- [Implant candidate quiz](${site.url}/implant-candidate-quiz): Nine questions about implant options. The thank-you page is not listed because it is a private result URL.`,
   );
 
   lines.push("");

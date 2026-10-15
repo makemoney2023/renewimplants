@@ -27,7 +27,7 @@ export function quizLeadRow(site: ClinicSite, lead: ParsedLead, now = new Date()
   return {
     id: crypto.randomUUID(),
     formId: QUIZ_FORM_ID,
-    pagePath: "/implant-candidate-quiz/",
+    pagePath: "/implant-candidate-quiz",
     name: lead.firstName,
     email: lead.email,
     phone: lead.phone,

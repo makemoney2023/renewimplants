@@ -4,6 +4,7 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import { staticAssetsAdapter } from "@vinext/cloudflare/cache/static-assets-adapter";
 import vinext from "vinext";
 import { defineConfig, type Plugin } from "vite";
+import { clinicAliases } from "../shared/vite-alias";
 
 // vinext emits the cacheability manifest at dist/server/, while the worker
 // chunk imports it from dist/server/_next/static/. Copy it before prerender.
@@ -32,10 +33,8 @@ function placeCacheabilityManifest(): Plugin {
 
 export default defineConfig({
   resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "./src"),
-      "@shell": path.resolve(import.meta.dirname, "../shared"),
-    },
+    alias: clinicAliases(import.meta.dirname),
+    tsconfigPaths: false,
   },
   server: {
     fs: {

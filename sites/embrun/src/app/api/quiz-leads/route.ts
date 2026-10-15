@@ -1,6 +1,6 @@
-import { site } from "@/content/load";
+import { leadSite } from "@/content/site";
 import { handleQuizPost } from "@shell/quiz/store";
 
 export function POST(request: Request) {
-  return handleQuizPost(request, site);
+  return handleQuizPost(request, leadSite);
 }

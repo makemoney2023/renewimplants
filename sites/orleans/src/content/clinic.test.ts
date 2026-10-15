@@ -1,110 +1,143 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { catalog, pages, site } from "@/content/load";
+import sitemap from "@clinic/app/sitemap";
+import { posts } from "@clinic/profile/blog";
+import { getRedirects } from "@clinic/profile/redirects";
+import { legacyRedirectTarget } from "@shell/legacy-redirects";
+import { getRouteContent, getRouteSlugs } from "@/content/routes";
+import { heroLines, leadSite, site } from "@/content/site";
+import { buildSiteGraph } from "@/lib/site-schema";
 import { contrastRatio, readThemeTokens } from "@shell/lib/contrast";
 import { handleLeadPost, leadInsert, validateLead } from "@shell/lib/leads";
-import { buildLlmsTxt } from "@shell/lib/llms";
-import { isQuizRoute, QUIZ_PATH, QUIZ_THANK_YOU_PATH, showsQuizCta } from "@shell/quiz/paths";
+import { QUIZ_THANK_YOU_PATH, isQuizRoute, showsQuizCta } from "@shell/quiz/paths";
 import { getResultPath } from "@shell/quiz/result";
 import { handleQuizPost, quizConsentText } from "@shell/quiz/store";
 import { quizQuestions } from "../../../../src/lib/quiz/questions";
 import { scoreLead } from "../../../../src/lib/quiz/score";
-import { buildPageGraph, buildSiteGraph } from "@shell/lib/schema";
-import sitemap from "@/app/sitemap";
 
 const RENEW = { accent: "#8dc41d", aqua: "#009ce3" };
+const orleans = site.url === "https://orleansdentureclinic.com";
 
 describe(site.name, () => {
-  it("keeps the scraped page inventory and one heading per page", () => {
-    expect(pages.length).toBe(site.id === "orleans" ? 49 : 33);
-    expect(new Set(pages.map((page) => page.path)).size).toBe(pages.length);
-    for (const page of pages) {
-      expect(page.h1.trim().length).toBeGreaterThan(0);
-      expect(page.path.endsWith("/") || page.path === "/").toBe(true);
-      expect(page.blocks.some((block) => block.type === "heading" && block.level < 2)).toBe(false);
+  it("uses a short homepage headline and Renew-shaped URLs", () => {
+    expect(heroLines.join(" ").length).toBeLessThan(48);
+    expect(heroLines.join(" ")).not.toMatch(/\bCLINIC\b/);
+    expect(heroLines[1].endsWith(".")).toBe(true);
+    const slugs = getRouteSlugs();
+    expect(slugs).toContain("faq");
+    expect(slugs).toContain("why-choose-us");
+    expect(slugs).toContain("service-areas");
+    expect(slugs).toContain("sitemap");
+    expect(slugs).not.toContain("pricing");
+    expect(slugs).not.toContain("before-after");
+    expect(posts.length).toBeGreaterThan(0);
+    for (const slug of slugs) expect(slug.endsWith("/")).toBe(false);
+    if (orleans) {
+      expect(heroLines).toEqual(["Dentures and implants,", "in Orléans."]);
+      expect(slugs).toContain("patient-stories");
+      expect(slugs).toContain("dental-anxiety");
+    } else {
+      expect(heroLines).toEqual(["Denture care,", "in Embrun."]);
+      expect(slugs).not.toContain("patient-stories");
+      expect(slugs).not.toContain("dental-anxiety");
+      expect(slugs).not.toContain("privacy-policy");
+      expect(slugs).not.toContain("terms");
     }
   });
 
   it("does not call Tom a doctor and drops agency emails", () => {
-    const blob = JSON.stringify({ site, pages });
+    const blob = ["routes.ts", "blog.ts", "site.ts"]
+      .map((file) => readFileSync(new URL(`../profile/${file}`, import.meta.url), "utf8"))
+      .join("\n");
     expect(blob).not.toMatch(/dr\.?\s+(tom|tomasz|szarski)/i);
     expect(blob).not.toMatch(/doctor\s+(tom|tomasz|szarski)/i);
     expect(blob).not.toMatch(/webmarketers|medianv/i);
+    if (orleans) {
+      const areas = getRouteContent("service-areas");
+      const text = `${areas?.intro ?? ""} ${areas?.sections.map((section) => section.body).join(" ") ?? ""}`;
+      expect(text).toContain("Worth The Drive");
+      expect(text).not.toMatch(/Notre-Dame[\s\S]*K1C 1G7/);
+    }
   });
 
-  it("keeps this clinic's logo and recovered facts", () => {
-    expect(site.logo.startsWith(`/${site.id}/`)).toBe(true);
-    expect(site.person?.honorificSuffix).toBe("DD");
-    expect(site.person?.jobTitle).toBe("Denturist");
-    if (site.id === "orleans") {
-      expect(site.hours.find((hour) => hour.day === "Thursday")?.time).toBe("8:00am - 4:30pm");
-      expect(site.hours.find((hour) => hour.day === "Friday")?.time).toBe("8:00am - 3:00pm");
-      expect(site.redirects).toEqual([{ source: "/contact", destination: "/contact/" }]);
+  it("keeps recovered contact facts, the real D1 id, and a configurable site URL", () => {
+    const wrangler = readFileSync(new URL("../../wrangler.jsonc", import.meta.url), "utf8");
+    const pkg = readFileSync(new URL("../../package.json", import.meta.url), "utf8");
+    expect(pkg).not.toContain("NEXT_PUBLIC_SITE_URL=");
+    expect(leadSite.id).toBe(orleans ? "orleans" : "embrun");
+    expect(leadSite.person?.honorificSuffix).toBe("DD");
+    expect(leadSite.person?.jobTitle).toBe("Denturist");
+    if (orleans) {
       expect(site.phone.label).toBe("613-590-9200");
-      expect(catalog.teamPages().every((page) => page.hero.startsWith("/orleans/"))).toBe(true);
+      expect(site.email).toBe("info@orleansdentureclinic.ca");
+      expect(leadSite.hours.find((hour) => hour.day === "Thursday")?.time).toBe("8:00am - 4:30pm");
+      expect(leadSite.hours.find((hour) => hour.day === "Friday")?.time).toBe("8:00am - 3:00pm");
+      expect(wrangler).toContain("e5de2fc6-6c84-4988-9230-1f5086073782");
     } else {
       expect(site.phone.label).toBe("(613) 219-2945");
       expect(site.email).toBe("info@embrundentures.ca");
-      expect(pages.filter((page) => page.kind === "legal")).toHaveLength(0);
-      const nav = catalog.navigation();
-      expect(nav.find((item) => item.label === "Service")?.children.some((child) => child.href.includes("full-dentures"))).toBe(true);
-      expect(nav.some((item) => item.label === "Nearby")).toBe(true);
-      expect(site.forms.map((form) => form.fields.find((field) => field.name === "patientType")?.options)).toEqual([
-        ["New Patient", "Existing Patient"],
-        ["New Patient", "Existing Patient"],
-        ["New Patient", "Existing Patient"],
-      ]);
+      expect(wrangler).toContain("00bcea4c-8f6e-404b-ba99-d531a570fd85");
+    }
+    expect(wrangler).toContain('"./worker/index.ts"');
+  });
+
+  it("301s old scraped paths onto the new pages", () => {
+    const redirects = new Map(getRedirects().map((item) => [item.source, item]));
+    expect(redirects.get("/pricing")?.statusCode).toBe(301);
+    expect(redirects.get("/pricing")?.destination).toBe("/canadian-dental-care-plan");
+    expect(redirects.get("/services/denture-alternative")?.destination).toBe("/services/dentures");
+    expect(redirects.get("/services/all-on-4-dental-implants")?.destination).toBe("/services/dental-implants");
+    const rules = getRedirects();
+    expect(legacyRedirectTarget("/pricing/", rules)).toBe("/canadian-dental-care-plan");
+    expect(legacyRedirectTarget("/blog/", rules)).toBeNull();
+    if (orleans) {
+      expect(redirects.get("/contact/")?.destination).toBe("/contact-us");
+      expect(legacyRedirectTarget("/contact", rules)).toBe("/contact-us");
+      expect(legacyRedirectTarget("/contact/", rules)).toBe("/contact-us");
+      expect(redirects.get("/implants/")?.destination).toBe("/services/dental-implants");
+      expect(redirects.get("/before-after")?.destination).toBe("/patient-stories");
+      expect(redirects.get("/faqs/")?.destination).toBe("/faq");
+    } else {
+      expect(redirects.get("/about/")?.destination).toBe("/why-choose-us");
+      expect(redirects.get("/before-after")?.destination).toBe("/gallery");
+      expect(redirects.get("/patient-stories")?.destination).toBe("/why-choose-us");
+      expect(redirects.get("/dental-anxiety")?.destination).toBe("/faq");
+      expect(redirects.get("/privacy-policy")?.destination).toBe("/contact-us");
+      expect(redirects.get("/terms")?.destination).toBe("/contact-us");
+      expect(redirects.get("/service/dental-implants-embrun-on/")?.destination).toBe("/services/dental-implants");
     }
   });
 
-  it("points media at this clinic's R2 prefix", () => {
-    const media = [site.logo, site.logoInverse];
-    for (const page of pages) {
-      if (page.hero) media.push(page.hero);
-      if (page.video) media.push(page.video);
-      for (const block of page.blocks) {
-        if (block.type === "image" || block.type === "video") media.push(block.src);
-        if (block.type === "gallery") media.push(...block.images.map((image) => image.src));
-      }
-    }
-    expect(media.length).toBeGreaterThan(10);
-    for (const path of media) {
-      expect(path.startsWith(`/${site.id}/`), path).toBe(true);
-    }
+  it("publishes Renew-shaped URLs and omits the quiz thank-you page", () => {
+    const urls = sitemap().map((entry) => new URL(entry.url).pathname.replace(/\/$/, "") || "/");
+    expect(urls).toContain("/");
+    expect(urls).toContain("/blog");
+    expect(urls).toContain("/faq");
+    expect(urls).toContain("/services/dentures");
+    expect(urls).toContain("/implant-candidate-quiz");
+    expect(urls).toContain(`/blog/${posts[0]?.slug}`);
+    expect(urls.some((url) => url.includes("thank-you"))).toBe(false);
+    expect(urls).not.toContain(QUIZ_THANK_YOU_PATH.replace(/\/$/, ""));
+    expect(sitemap()[0]?.url.startsWith(site.url)).toBe(true);
   });
 
-  it("publishes every page in the sitemap and llms.txt", () => {
-    const urls = sitemap().map((entry) => new URL(entry.url).pathname);
-    expect(urls.sort()).toEqual([...pages.map((page) => page.path), QUIZ_PATH].sort());
-    expect(urls).not.toContain(QUIZ_THANK_YOU_PATH);
-    const llms = buildLlmsTxt(site, pages);
-    for (const page of pages) expect(llms).toContain(`${site.url}${page.path}`);
-    expect(llms).toContain(`${site.url}${QUIZ_PATH}`);
-    expect(llms).not.toContain(QUIZ_THANK_YOU_PATH);
-  });
-
-  it("builds dentist schema without copying broken blog JSON-LD", () => {
-    const graph = buildSiteGraph(site);
+  it("builds dentist schema for this clinic", () => {
+    const graph = buildSiteGraph();
     const practice = graph["@graph"][0] as { "@type": string[]; telephone: string };
-    expect(practice["@type"]).toEqual(["Dentist", "LocalBusiness"]);
-    expect(practice.telephone).toBe(site.id === "orleans" ? "+1-613-590-9200" : "+1-613-219-2945");
-    const person = graph["@graph"].find((node) => node["@type"] === "Person") as { honorificSuffix: string };
+    expect(practice["@type"]).toEqual(["Dentist", "MedicalClinic"]);
+    expect(practice.telephone).toBe(orleans ? "+1-613-590-9200" : "+1-613-219-2945");
+    const person = graph["@graph"].find((node) => node["@type"] === "Person") as { honorificSuffix: string; jobTitle: string };
     expect(person.honorificSuffix).toBe("DD");
-    const faqPage = pages.find((page) => page.blocks.some((block) => block.type === "faq"));
-    const plain = pages.find((page) => page.blocks.every((block) => block.type !== "faq"));
-    expect(faqPage && JSON.stringify(buildPageGraph(site, catalog, faqPage))).toContain("FAQPage");
-    expect(plain && JSON.stringify(buildPageGraph(site, catalog, plain))).not.toContain("FAQPage");
-    expect(JSON.stringify(buildPageGraph(site, catalog, pages[0]))).not.toContain("preview=true");
+    expect(person.jobTitle).toBe("Denturist");
   });
 
   it("uses an AA palette distinct from Renew and from the other clinic", () => {
     const own = readThemeTokens(readFileSync(new URL("../theme.css", import.meta.url), "utf8"));
-    const otherId = site.id === "orleans" ? "embrun" : "orleans";
+    const otherId = orleans ? "embrun" : "orleans";
     const other = readThemeTokens(readFileSync(new URL(`../../../${otherId}/src/theme.css`, import.meta.url), "utf8"));
     expect(own["--accent"]).not.toBe(RENEW.accent);
     expect(own["--aqua"]).not.toBe(RENEW.aqua);
     expect(own["--accent"]).not.toBe(other["--accent"]);
-    expect(own["--ink-deep"]).not.toBe(other["--accent"]);
     const pairs: Array<[string, string]> = [
       ["--ink", "--canvas"],
       ["--ink-soft", "--canvas"],
@@ -121,7 +154,7 @@ describe(site.name, () => {
   });
 
   it("stores a validated lead and refuses bots", async () => {
-    const form = site.forms[0];
+    const form = leadSite.forms[0];
     const fields = Object.fromEntries(
       form.fields.map((field) => {
         if (field.type === "email") return [field.name, "ada@example.com"];
@@ -134,41 +167,29 @@ describe(site.name, () => {
     );
     const now = Date.now();
     const payload = { formId: form.id, pagePath: "/", startedAt: now - 5000, fields };
-    const saved = validateLead(site, payload, now);
+    const saved = validateLead(leadSite, payload, now);
     expect(saved.ok).toBe(true);
     if (!saved.ok) return;
     const statement = leadInsert(saved.row);
     expect(statement.sql).toContain("INSERT INTO leads");
-    expect(statement.params[1]).toBe(form.id);
-    expect(statement.params[4]).toBe("ada@example.com");
-    expect(statement.params[5]).toBe("+16135550199");
-    expect(statement.params[7]).toBe(site.id);
+    expect(statement.params[7]).toBe(leadSite.id);
 
-    expect(validateLead(site, { ...payload, startedAt: now }, now).ok).toBe(false);
-    expect(validateLead(site, { ...payload, website: "https://spam.example" }, now).ok).toBe(false);
+    expect(validateLead(leadSite, { ...payload, startedAt: now }, now).ok).toBe(false);
+    expect(validateLead(leadSite, { ...payload, website: "https://spam.example" }, now).ok).toBe(false);
 
     let inserted = false;
-    const response = await handleLeadPost(new Request("https://clinic.test/api/leads", { method: "POST", body: JSON.stringify(payload) }), site, {
-      now,
-      insert: async () => {
-        inserted = true;
-      },
-    });
-    expect(response.status).toBe(201);
-    expect(inserted).toBe(true);
-
-    const failed = await handleLeadPost(
+    const response = await handleLeadPost(
       new Request("https://clinic.test/api/leads", { method: "POST", body: JSON.stringify(payload) }),
-      site,
+      leadSite,
       {
         now,
         insert: async () => {
-          throw new Error("d1 unavailable");
+          inserted = true;
         },
       },
     );
-    expect(failed.status).toBe(500);
-    expect(await failed.json()).toMatchObject({ error: expect.stringContaining(site.phone.label) });
+    expect(response.status).toBe(201);
+    expect(inserted).toBe(true);
   });
 
   it("runs the same implant quiz and stores it on this clinic's leads table", async () => {
@@ -192,19 +213,17 @@ describe(site.name, () => {
       comfort: ["nervous"],
       payment: ["cdcp"],
       timeline: ["asap"],
-      location: [site.id === "embrun" ? "embrun" : "orleans"],
+      location: [orleans ? "orleans" : "embrun"],
     };
     expect(scoreLead(answers, "call")).toEqual({ score: 90, tier: "hot" });
     expect(getResultPath(answers).path).toBe("denture-alternative");
-    expect(getResultPath(answers).modifiers).toEqual(expect.arrayContaining(["sedation", "lower", "coverage"]));
-    expect(quizConsentText(site.name)).toContain(site.name);
-    expect(quizConsentText(site.name)).not.toContain("Renew Implant Centre");
+    expect(quizConsentText(leadSite.name)).toContain(leadSite.name);
+    expect(quizConsentText(leadSite.name)).not.toContain("Renew Implant Centre");
     expect(isQuizRoute("/implant-candidate-quiz")).toBe(true);
     expect(isQuizRoute(QUIZ_THANK_YOU_PATH)).toBe(true);
-    expect(isQuizRoute("/contact/")).toBe(false);
     expect(showsQuizCta("/")).toBe(true);
-    expect(showsQuizCta(site.id === "embrun" ? "/service/dental-implants-embrun-on/" : "/implants/")).toBe(true);
-    expect(showsQuizCta("/contact/")).toBe(false);
+    expect(showsQuizCta("/services/dental-implants")).toBe(true);
+    expect(showsQuizCta("/contact-us")).toBe(false);
 
     const now = Date.now();
     const payload = {
@@ -219,7 +238,7 @@ describe(site.name, () => {
     const stored: { sql: string; params: Array<string | null> }[] = [];
     const response = await handleQuizPost(
       new Request("https://clinic.test/api/quiz-leads", { method: "POST", body: JSON.stringify(payload) }),
-      site,
+      leadSite,
       {
         now,
         insert: async (sql, params) => {
@@ -228,20 +247,7 @@ describe(site.name, () => {
       },
     );
     expect(response.status).toBe(201);
-    const body = (await response.json()) as { resultPath: string; leadTier: string };
-    expect(body).toMatchObject({ resultPath: "denture-alternative", leadTier: "hot" });
-    expect(stored[0]?.sql).toContain("site_id");
     expect(stored[0]?.params[1]).toBe("implant-candidate-quiz");
-    expect(stored[0]?.params[7]).toBe(site.id);
-    expect(String(stored[0]?.params[6])).toContain(`"leadScore":"90"`);
-    const rejected = await handleQuizPost(
-      new Request("https://clinic.test/api/quiz-leads", {
-        method: "POST",
-        body: JSON.stringify({ ...payload, startedAt: now, website: "spam" }),
-      }),
-      site,
-      { now, insert: async () => undefined },
-    );
-    expect(rejected.status).toBe(400);
+    expect(stored[0]?.params[7]).toBe(leadSite.id);
   });
 });

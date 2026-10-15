@@ -1,17 +1,17 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
-import { JsonLd } from "@shell/components/json-ld";
-import { QuizStickyBar } from "@shell/components/quiz/quiz-sticky-bar";
-import { UtmCapture } from "@shell/components/quiz/utm-capture";
-import { SiteFooter } from "@shell/components/site-footer";
-import { SiteHeader } from "@shell/components/site-header";
-import { mediaUrl } from "@shell/lib/media";
-import { siteOrigin } from "@shell/lib/origin";
-import { buildSiteGraph } from "@shell/lib/schema";
-import { site } from "@/content/load";
-import "@shell/styles.css";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { JsonLd } from "@/components/json-ld";
+import { QuizStickyBar } from "@/components/quiz/quiz-sticky-bar";
+import { SiteHeader } from "@/components/site-header";
+import { UtmCapture } from "@/components/utm-capture";
+import { media, site } from "@/content/site";
+import { siteOrigin } from "@/lib/site-origin";
+import { buildSiteGraph } from "@/lib/site-schema";
+import "@/app/globals.css";
 import "../theme.css";
+import "@shell/forms.css";
 
 const display = DM_Serif_Display({
   variable: "--font-display",
@@ -26,7 +26,7 @@ const text = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin()),
-  title: { absolute: site.name },
+  title: site.name,
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_CA",
     type: "website",
-    images: [{ url: mediaUrl(site.logo) }],
+    images: [{ url: media.heroClinic }],
   },
   twitter: { card: "summary_large_image" },
 };
@@ -48,12 +48,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
-        <UtmCapture />
         <SiteHeader />
         {children}
-        <SiteFooter />
+        <JsonLd data={buildSiteGraph()} />
         <QuizStickyBar />
-        <JsonLd data={buildSiteGraph(site)} />
+        <UtmCapture />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_ID} />
       </body>
     </html>
   );

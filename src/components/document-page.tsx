@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -8,10 +9,10 @@ import { RouteActions } from "@/components/route-actions";
 import { TestimonialList } from "@/components/testimonial-list";
 import { getPrimaryNav } from "@/content/nav";
 import type { RouteContent } from "@/content/routes";
-import { site } from "@/content/site";
+import { site, sitemapExtras } from "@/content/site";
 import { routeCrumbs } from "@/lib/site-schema";
 
-export function DocumentPage({ page }: { page: RouteContent }) {
+export function DocumentPage({ page, children }: { page: RouteContent; children?: ReactNode }) {
   return (
     <main id="main-content" tabIndex={-1} className="content-page">
       <section className="content-hero">
@@ -61,6 +62,16 @@ export function DocumentPage({ page }: { page: RouteContent }) {
               <p>{section.body}</p>
             </article>
           ))}
+          {children}
+          {page.photos?.length ? (
+            <div className="gallery-grid">
+              {page.photos.map((photo) => (
+                <figure key={photo.src}>
+                  <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 50vw, 16rem" />
+                </figure>
+              ))}
+            </div>
+          ) : null}
           {page.quotes?.length ? <TestimonialList quotes={page.quotes} /> : null}
           {page.faqs?.length ? (
             <FaqList
@@ -103,10 +114,11 @@ function SitemapIndex() {
           </div>
         ))}
         <div>
-          <Link href="/">Home</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/privacy-policy">Privacy policy</Link>
-          <Link href="/terms">Terms of use</Link>
+          {sitemapExtras.map((link) => (
+            <Link href={link.href} key={link.href}>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </article>

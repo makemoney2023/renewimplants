@@ -1,5 +1,5 @@
-import path from "node:path";
 import { defineConfig } from "vitest/config";
+import { clinicAliases } from "../shared/vite-alias";
 
 export default defineConfig({
   test: {
@@ -7,9 +7,6 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
   },
   resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "./src"),
-      "@shell": path.resolve(import.meta.dirname, "../shared"),
-    },
+    alias: clinicAliases(import.meta.dirname),
   },
 });

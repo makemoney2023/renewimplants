@@ -3,15 +3,15 @@
   "name": "embrun-dentures",
   "compatibility_date": "2026-10-13",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "vinext/server/fetch-handler",
+  "main": "./worker/index.ts",
   "assets": {
     "directory": "dist/client",
     "not_found_handling": "none",
     "binding": "ASSETS",
     "run_worker_first": ["/_vinext/static-cache/*"]
   },
-  // Prerender bakes NEXT_PUBLIC_SITE_URL and MEDIA_BASE_URL. Set the same
-  // values in the build:vinext script.
+  // Optional at build time. When NEXT_PUBLIC_SITE_URL is unset, canonical URLs
+  // fall back to site.url. These vars apply when the Worker is deployed.
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://www.embrundentures.com",
     "MEDIA_BASE_URL": "https://pub-5816dac948084d6bbbebbfef2581cc24.r2.dev"
@@ -20,11 +20,7 @@
     {
       "binding": "DB",
       "database_name": "embrun-dentures-leads",
-      // PLACEHOLDER. This is not a Cloudflare database id.
-      // Before the first deploy, create the database and replace this value:
-      //   npx wrangler d1 create embrun-dentures-leads
-      //   npx wrangler d1 migrations apply DB --remote
-      "database_id": "00000000-0000-4000-8000-0000000000a2",
+      "database_id": "00bcea4c-8f6e-404b-ba99-d531a570fd85",
       "migrations_dir": "d1/migrations"
     }
   ]
