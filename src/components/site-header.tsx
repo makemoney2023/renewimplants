@@ -3,7 +3,7 @@ import { Menu, Phone } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
 import { getPrimaryNav } from "@/content/nav";
-import { site } from "@/content/site";
+import { headerCta, site } from "@/content/site";
 
 export function SiteHeader() {
   const nav = getPrimaryNav();
@@ -33,7 +33,7 @@ export function SiteHeader() {
           {site.phone.label}
         </a>
         <Button asChild>
-          <Link href={site.primaryCta.href}>Free consultation</Link>
+          <Link href={site.primaryCta.href}>{headerCta}</Link>
         </Button>
       </div>
       <details className="site-menu">
@@ -54,7 +54,7 @@ export function SiteHeader() {
             </div>
           ))}
           <a href={site.phone.href}>Call {site.phone.label}</a>
-          <Link href={site.primaryCta.href}>Free consultation</Link>
+          <Link href={site.primaryCta.href}>{headerCta}</Link>
         </nav>
       </details>
     </header>

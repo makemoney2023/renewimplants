@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "orleans-denture-clinic",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": ["/_vinext/static-cache/*"]
+  },
+  // Optional at build time. When NEXT_PUBLIC_SITE_URL is unset, canonical URLs
+  // fall back to site.url. These vars apply when the Worker is deployed.
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://orleansdentureclinic.com",
+    "MEDIA_BASE_URL": "https://pub-5816dac948084d6bbbebbfef2581cc24.r2.dev"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "orleans-denture-clinic-leads",
+      "database_id": "e5de2fc6-6c84-4988-9230-1f5086073782",
+      "migrations_dir": "d1/migrations"
+    }
+  ]
+}

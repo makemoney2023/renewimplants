@@ -11,7 +11,14 @@ skills/community.zip
 *.tsbuildinfo
 .DS_Store
 /dist/
+sites/*/dist/
+sites/*/.next/
+sites/*/.vinext/
+sites/*/.wrangler/
 .vinext/
 .wrangler/
 .dev.vars
 worker-configuration.d.ts
+
+__pycache__/
+*.pyc

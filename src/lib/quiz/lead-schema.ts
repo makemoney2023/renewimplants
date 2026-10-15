@@ -1,8 +1,8 @@
 import { z } from "zod";
+import { site } from "@/content/site";
 import { quizQuestions, type QuizAnswers } from "./questions";
 
-export const CONSENT_TEXT =
-  "Email or text me occasional tips and updates from Renew Implant Centre. I can unsubscribe anytime.";
+export const CONSENT_TEXT = `Email or text me occasional tips and updates from ${site.name}. I can unsubscribe anytime.`;
 
 /** Submissions faster than this are treated as bots. */
 export const MIN_FILL_MS = 4000;

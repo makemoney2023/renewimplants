@@ -1,5 +1,5 @@
 import type { RouteContent, RouteFaq } from "@/content/routes";
-import { media, site } from "@/content/site";
+import { homeFaqQuestions, media, practice, site } from "@/content/site";
 import { siteOrigin } from "@/lib/site-origin";
 
 type JsonLdNode = Record<string, unknown>;
@@ -27,38 +27,27 @@ export function buildPracticeNode(): JsonLdNode {
     alternateName: site.shortName,
     description: site.description,
     url: `${site.url}/`,
-    telephone: "+1-613-841-6111",
+    telephone: practice.telephone,
     email: site.email,
     image: absoluteUrl(media.heroClinic),
     hasMap: site.mapHref,
     medicalSpecialty: "Dentistry",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "2530 St Joseph Blvd #6",
-      addressLocality: "Orléans",
-      addressRegion: "ON",
-      postalCode: "K1C 1G1",
-      addressCountry: "CA",
+      streetAddress: practice.streetAddress,
+      addressLocality: practice.addressLocality,
+      addressRegion: practice.addressRegion,
+      postalCode: practice.postalCode,
+      addressCountry: practice.addressCountry,
     },
     // Clock times are not published. Repeat the hours already on the site.
     hoursAvailable: site.hours.map((entry) => ({
       "@type": "OpeningHoursSpecification",
       description: `${entry.day}: ${entry.time}`,
     })),
-    areaServed: [
-      "Orléans",
-      "Ottawa",
-      "Rockland",
-      "Cumberland",
-      "Embrun",
-      "Casselman",
-      "Hawkesbury",
-      "Gatineau",
-      "Kanata",
-      "Barrhaven",
-    ],
-    availableLanguage: ["en", "fr"],
-    paymentAccepted: "Canadian Dental Care Plan (CDCP), private dental insurance, in-house payment plans",
+    areaServed: [...practice.areaServed],
+    availableLanguage: [...practice.availableLanguage],
+    paymentAccepted: practice.paymentAccepted,
     founder: { "@id": schemaIds.tom },
   };
 }
@@ -67,14 +56,18 @@ export function buildTomNode(): JsonLdNode {
   return {
     "@type": "Person",
     "@id": schemaIds.tom,
-    name: "Tom Szarski",
-    honorificSuffix: "DD",
-    jobTitle: "Denturist",
-    url: absoluteUrl("/meet-your-dentist"),
+    name: practice.person.name,
+    honorificSuffix: practice.person.honorificSuffix,
+    jobTitle: practice.person.jobTitle,
+    url: absoluteUrl(practice.person.path),
     image: absoluteUrl(media.tom),
     worksFor: { "@id": schemaIds.practice },
-    alumniOf: { "@type": "CollegeOrUniversity", name: "George Brown College" },
-    memberOf: { "@type": "Organization", name: "Denturist Association of Ontario" },
+    ...(practice.person.alumniOf
+      ? { alumniOf: { "@type": "CollegeOrUniversity", name: practice.person.alumniOf } }
+      : {}),
+    ...(practice.person.memberOf
+      ? { memberOf: { "@type": "Organization", name: practice.person.memberOf } }
+      : {}),
   };
 }
 
@@ -98,7 +91,7 @@ export function buildSiteGraph() {
 
 export type Crumb = { name: string; path: string };
 
-const SERVICES_HUB = "/services/all-on-4-dental-implants";
+const SERVICES_HUB = practice.servicesHub;
 
 /** Same list the visible breadcrumb and BreadcrumbList JSON-LD render. Home is included. */
 export function routeCrumbs(page: Pick<RouteContent, "slug" | "title">): Crumb[] {
@@ -117,11 +110,7 @@ export function routeCrumbs(page: Pick<RouteContent, "slug" | "title">): Crumb[]
   ];
 }
 
-export const HOME_FAQ_QUESTIONS = [
-  "What are All-on-4 dental implants?",
-  "What's the difference between All-on-4 and full arch implants?",
-  "What are snap-on dentures?",
-] as const;
+export const HOME_FAQ_QUESTIONS = homeFaqQuestions;
 
 export function buildHomeGraph(faqs: RouteFaq[]) {
   const pageUrl = absoluteUrl("/");

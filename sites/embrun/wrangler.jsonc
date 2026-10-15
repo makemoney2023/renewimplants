@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "embrun-dentures",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": ["/_vinext/static-cache/*"]
+  },
+  // Optional at build time. When NEXT_PUBLIC_SITE_URL is unset, canonical URLs
+  // fall back to site.url. These vars apply when the Worker is deployed.
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://www.embrundentures.com",
+    "MEDIA_BASE_URL": "https://pub-5816dac948084d6bbbebbfef2581cc24.r2.dev"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "embrun-dentures-leads",
+      "database_id": "00bcea4c-8f6e-404b-ba99-d531a570fd85",
+      "migrations_dir": "d1/migrations"
+    }
+  ]
+}

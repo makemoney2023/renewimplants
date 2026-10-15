@@ -9,16 +9,23 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { LoopVideo, ResponsivePoster } from "@/components/loop-video";
+import { PostCardList } from "@/components/blog/post-chrome";
 import { SiteFooter } from "@/components/site-footer";
 import {
+  doctorLink,
+  featuredReviewNames,
+  heroLines,
   implantAnimation,
-  media,
+  panorama,
+  panoramaTiles,
   processSteps,
   scrollActs,
   site,
   treatments,
+  trustNote,
 } from "@/content/site";
 import { getTestimonials } from "@/content/testimonials";
+import type { PostCardData } from "@/lib/blog-cards";
 import { FUNNEL_EVENTS, track } from "@/lib/analytics";
 import { QUIZ_PATH } from "@/lib/quiz/constants";
 import { getImageMotion, getRailDistance } from "@/lib/scroll-motion";
@@ -34,16 +41,9 @@ const choice = scrollActs[2];
 const connection = scrollActs[3];
 const proof = scrollActs[4];
 const commitment = scrollActs[5];
-const [featuredReview] = getTestimonials(["Ken Miller"]);
+const featuredReview = getTestimonials(featuredReviewNames)[0] ?? getTestimonials()[0];
 
-const panoramaTiles = [
-  { src: media.heroConsult, alt: "A consultation at Renew Implant Centre" },
-  { src: media.clinic, alt: "The renovated treatment room" },
-  { src: media.team, alt: "Tom Szarski with a patient" },
-  { src: media.heroClinic, alt: "The operatory and its blue accent wall" },
-];
-
-export function ScrollWorld() {
+export function ScrollWorld({ posts = [] }: { posts?: PostCardData[] }) {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -242,10 +242,10 @@ export function ScrollWorld() {
             <p className="section-label">{hero.label}</p>
             <h1 id="hero-title" aria-label={hero.title}>
               <span className="word-mask">
-                <span className="hero-word">Stop living around your teeth.</span>
+                <span className="hero-word">{heroLines[0]}</span>
               </span>
               <span className="word-mask">
-                <span className="hero-word hero-word-accent">Start living again.</span>
+                <span className="hero-word hero-word-accent">{heroLines[1]}</span>
               </span>
             </h1>
             <p className="hero-intro">{hero.body}</p>
@@ -286,8 +286,8 @@ export function ScrollWorld() {
           <h2 id="trust-title">{trust.title}</h2>
           <p>{trust.body}</p>
           <div className="trust-note">
-            <strong>CDCP accepted · Direct billing · Financing</strong>
-            <span>Onsite lab · Sedation available · English and French</span>
+            <strong>{trustNote.strong}</strong>
+            <span>{trustNote.span}</span>
           </div>
         </div>
       </section>
@@ -298,27 +298,29 @@ export function ScrollWorld() {
           <h2 id="treatments-title">{choice.title}</h2>
         </div>
         <div className="treatment-rail">
-          <article className="treatment-card anatomy-card">
-            <ResponsivePoster
-              poster={implantAnimation.poster}
-              mobilePoster={implantAnimation.mobilePoster}
-              alt={implantAnimation.alt}
-              sizes="(max-width: 700px) 84vw, 42vw"
-            />
-            <LoopVideo className="anatomy-video" sources={implantAnimation} />
-            <div className="card-scrim" />
-            <span className="card-index">What an implant is</span>
-            <div className="card-copy">
-              <h3>Crown. Abutment. Titanium root.</h3>
-              <p>
-                Three parts that lock together and fuse with your jaw — the same
-                engineering behind every treatment in this row.
-              </p>
-              <Link href="/faq">
-                How implants work <ArrowUpRight aria-hidden="true" />
-              </Link>
-            </div>
-          </article>
+          {implantAnimation ? (
+            <article className="treatment-card anatomy-card">
+              <ResponsivePoster
+                poster={implantAnimation.poster}
+                mobilePoster={implantAnimation.mobilePoster}
+                alt={implantAnimation.alt}
+                sizes="(max-width: 700px) 84vw, 42vw"
+              />
+              <LoopVideo className="anatomy-video" sources={implantAnimation} />
+              <div className="card-scrim" />
+              <span className="card-index">What an implant is</span>
+              <div className="card-copy">
+                <h3>Crown. Abutment. Titanium root.</h3>
+                <p>
+                  Three parts that lock together and fuse with your jaw — the same
+                  engineering behind every treatment in this row.
+                </p>
+                <Link href="/faq">
+                  How implants work <ArrowUpRight aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          ) : null}
           {treatments.map((treatment, index) => (
             <article className="treatment-card" key={treatment.title}>
               <Image
@@ -327,7 +329,9 @@ export function ScrollWorld() {
                 fill
                 sizes="(max-width: 700px) 84vw, 42vw"
               />
-              <LoopVideo className="treatment-video" sources={treatment.animation} />
+              {"animation" in treatment && treatment.animation ? (
+                <LoopVideo className="treatment-video" sources={treatment.animation} />
+              ) : null}
               <div className="card-scrim" />
               <span className="card-index">0{index + 1}</span>
               <div className="card-copy">
@@ -355,14 +359,16 @@ export function ScrollWorld() {
           <p className="section-label">{connection.label}</p>
           <h2 id="doctors-title">{connection.title}</h2>
           <p>{connection.body}</p>
-          <blockquote>
-            “{featuredReview.quote}”
-            <cite>
-              {featuredReview.name}, {featuredReview.location}
-            </cite>
-          </blockquote>
-          <Link className="text-link" href="/meet-your-dentist">
-            Meet Tom Szarski
+          {featuredReview ? (
+            <blockquote>
+              “{featuredReview.quote}”
+              <cite>
+                {featuredReview.name}, {featuredReview.location}
+              </cite>
+            </blockquote>
+          ) : null}
+          <Link className="text-link" href={doctorLink.href}>
+            {doctorLink.label}
             <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
@@ -383,7 +389,7 @@ export function ScrollWorld() {
             ))}
           </ol>
         </div>
-        <div className="panorama-grid" aria-label="Inside Renew Implant Centre">
+        <div className="panorama-grid" aria-label={panorama.label}>
           {panoramaTiles.map((tile) => (
             <figure className="panorama-tile" key={tile.src}>
               <Image
@@ -395,9 +401,7 @@ export function ScrollWorld() {
             </figure>
           ))}
         </div>
-        <p className="panorama-caption">
-          Consultation, surgery, lab, and follow-up — all at 2530 St Joseph Blvd.
-        </p>
+        <p className="panorama-caption">{panorama.caption}</p>
       </section>
 
       <section className="close-section" aria-labelledby="close-title">
@@ -430,6 +434,16 @@ export function ScrollWorld() {
           </div>
         </div>
       </section>
+
+      {posts.length > 0 ? (
+        <section className="home-journal" aria-labelledby="journal-title">
+          <div className="rail-heading">
+            <p className="section-label">The blog</p>
+            <h2 id="journal-title">From the clinic</h2>
+          </div>
+          <PostCardList posts={posts} />
+        </section>
+      ) : null}
 
       <SiteFooter />
     </main>

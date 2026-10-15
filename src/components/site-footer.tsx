@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { getPrimaryNav } from "@/content/nav";
-import { site } from "@/content/site";
+import { footerNote, legalLinks, site } from "@/content/site";
 
 export function SiteFooter() {
   const nav = getPrimaryNav();
@@ -21,10 +21,11 @@ export function SiteFooter() {
           </div>
         ))}
         <div>
-          <Link href="/sitemap">Sitemap</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/privacy-policy">Privacy policy</Link>
-          <Link href="/terms">Terms of use</Link>
+          {legalLinks.map((link) => (
+            <Link href={link.href} key={link.href}>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </nav>
       <div className="footer-nap">
@@ -41,10 +42,7 @@ export function SiteFooter() {
           {site.hours.map((entry) => `${entry.day}: ${entry.time}`).join(" · ")}
         </p>
       </div>
-      <p>
-        Same day dental implants in Orléans, ON. One office. One dentist. One
-        day. Transforming smiles and changing lives since 2010.
-      </p>
+      <p>{footerNote}</p>
       <p>
         © {new Date().getFullYear()} {site.name}
       </p>

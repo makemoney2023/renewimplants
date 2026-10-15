@@ -1,0 +1,17 @@
+/* Orleans Denture Clinic. Brand blues, tuned so text and buttons clear WCAG AA. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #edf2f5;
+  --ink: #1f2f3d;
+  --ink-soft: #3e4c5a;
+  --carbon: #1f2f3d;
+  --ink-deep: #1f2f3d;
+  --accent: #4db1f8;
+  --accent-deep: #2f6f9f;
+  --accent-light: #d7eefc;
+  --aqua: #2f6f9f;
+  --aqua-deep: #2f6f9f;
+  --aqua-light: #4db1f8;
+  --aqua-pale: #edf2f5;
+}

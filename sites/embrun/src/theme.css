@@ -1,0 +1,17 @@
+/* Embrun Denture & Implant Centre. Brand orange, with a darker text orange for AA. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #fff4ea;
+  --ink: #33373d;
+  --ink-soft: #4e545c;
+  --carbon: #1f2124;
+  --ink-deep: #1f2124;
+  --accent: #f48020;
+  --accent-deep: #9a4a08;
+  --accent-light: #ffd8b0;
+  --aqua: #9a4a08;
+  --aqua-deep: #9a4a08;
+  --aqua-light: #f48020;
+  --aqua-pale: #fff4ea;
+}

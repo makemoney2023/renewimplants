@@ -48,6 +48,106 @@ export const site = {
   ],
 } as const;
 
+/** Two lines rendered inside the homepage h1. The aria name stays scrollActs[0].title. */
+export const heroLines: readonly [string, string] = [
+  "Stop living around your teeth.",
+  "Start living again.",
+];
+
+export const headerCta = "Free consultation";
+
+export const trustNote = {
+  strong: "CDCP accepted · Direct billing · Financing",
+  span: "Onsite lab · Sedation available · English and French",
+};
+
+export const panorama = {
+  label: "Inside Renew Implant Centre",
+  caption: "Consultation, surgery, lab, and follow-up — all at 2530 St Joseph Blvd.",
+};
+
+export const doctorLink = { label: "Meet Tom Szarski", href: "/meet-your-dentist" };
+
+export const featuredReviewNames: string[] = ["Ken Miller"];
+
+export const footerNote =
+  "Same day dental implants in Orléans, ON. One office. One dentist. One day. Transforming smiles and changing lives since 2010.";
+
+export const legalLinks = [
+  { label: "Sitemap", href: "/sitemap" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms of use", href: "/terms" },
+];
+
+export const sitemapExtras = [
+  { label: "Home", href: "/" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms of use", href: "/terms" },
+];
+
+export const brandLogo: { src: string; width: number; height: number } | null = null;
+
+export const homeFaqQuestions = [
+  "What are All-on-4 dental implants?",
+  "What's the difference between All-on-4 and full arch implants?",
+  "What are snap-on dentures?",
+] as const;
+
+export type PracticeDetails = {
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  areaServed: readonly string[];
+  availableLanguage: readonly string[];
+  paymentAccepted: string;
+  servicesHub: string;
+  person: {
+    name: string;
+    honorificSuffix: string;
+    jobTitle: string;
+    path: string;
+    alumniOf?: string;
+    memberOf?: string;
+  };
+};
+
+export const practice: PracticeDetails = {
+  telephone: "+1-613-841-6111",
+  streetAddress: "2530 St Joseph Blvd #6",
+  addressLocality: "Orléans",
+  addressRegion: "ON",
+  postalCode: "K1C 1G1",
+  addressCountry: "CA",
+  areaServed: [
+    "Orléans",
+    "Ottawa",
+    "Rockland",
+    "Cumberland",
+    "Embrun",
+    "Casselman",
+    "Hawkesbury",
+    "Gatineau",
+    "Kanata",
+    "Barrhaven",
+  ],
+  availableLanguage: ["en", "fr"],
+  paymentAccepted: "Canadian Dental Care Plan (CDCP), private dental insurance, in-house payment plans",
+  servicesHub: "/services/all-on-4-dental-implants",
+  person: {
+    name: "Tom Szarski",
+    honorificSuffix: "DD",
+    jobTitle: "Denturist",
+    path: "/meet-your-dentist",
+    alumniOf: "George Brown College",
+    memberOf: "Denturist Association of Ontario",
+  },
+};
+
 export const media = {
   heroClinic: "/media/heroes/renew-hero.jpg",
   heroConsult: "/media/heroes/meet-hero.jpg",
@@ -71,6 +171,13 @@ export const implantAnimation = {
   mobileVideo: "/media/animation/implant-assemble-web-9x16.mp4",
   alt: "A dental implant assembling: crown, retaining screw, abutment, and titanium fixture",
 } as const;
+
+export const panoramaTiles = [
+  { src: media.heroConsult, alt: "A consultation at Renew Implant Centre" },
+  { src: media.clinic, alt: "The renovated treatment room" },
+  { src: media.team, alt: "Tom Szarski with a patient" },
+  { src: media.heroClinic, alt: "The operatory and its blue accent wall" },
+];
 
 export const scrollActs: ScrollAct[] = [
   {
@@ -152,7 +259,16 @@ function treatmentLoop(name: string, poster: string) {
   };
 }
 
-export const treatments = [
+export type TreatmentCard = {
+  title: string;
+  body: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+  animation?: ReturnType<typeof treatmentLoop>;
+};
+
+export const treatments: TreatmentCard[] = [
   {
     title: "All-on-4 implants",
     body: "Four implants anchor a full set of fixed teeth. No adhesive, no slipping, often no bone grafting.",
