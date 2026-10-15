@@ -1,0 +1,346 @@
+{
+  "id": "embrun",
+  "name": "Embrun Denture & Implant Centre",
+  "legalName": "Embrun Denture & Implant Centre",
+  "shortName": "Embrun Dentures",
+  "url": "https://www.embrundentures.com",
+  "description": "Denture and implant centre in Embrun, Ontario. Custom dentures, implants, and denture care from a denturist near you.",
+  "phone": {
+    "label": "(613) 219-2945",
+    "href": "tel:613-219-2945"
+  },
+  "fax": "",
+  "email": "info@embrundentures.ca",
+  "address": {
+    "street": "614 Notre-Dame St",
+    "locality": "Embrun",
+    "region": "ON",
+    "postalCode": "K4R 1E5",
+    "country": "CA",
+    "label": "614 Notre-Dame St, Embrun, ON K4R 1E5"
+  },
+  "mapHref": "https://www.google.com/maps/search/?api=1&query=614+Notre-Dame+St+Embrun+ON+K4R+1E5",
+  "geo": null,
+  "hours": [
+    {
+      "day": "Monday",
+      "time": "8:00am - 4:00pm"
+    },
+    {
+      "day": "Tuesday",
+      "time": "8:00am - 3:00pm"
+    },
+    {
+      "day": "Wednesday",
+      "time": "9:00am - 3:00pm"
+    },
+    {
+      "day": "Thursday",
+      "time": "9:00am - 3:00pm"
+    },
+    {
+      "day": "Friday",
+      "time": "9:00am - 3:00pm"
+    },
+    {
+      "day": "Saturday",
+      "time": "Closed"
+    },
+    {
+      "day": "Sunday",
+      "time": "Closed"
+    }
+  ],
+  "hoursNote": "Hours taken from the visible Hours of Operation block on the home page.",
+  "sameAs": [],
+  "logo": "/embrun/ba99cb83_embrun-denture-and-implant-centre-logo.png",
+  "logoInverse": "/embrun/2a690e92_embrun-logo.png",
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/",
+      "children": []
+    },
+    {
+      "label": "About",
+      "href": "/about/",
+      "children": [
+        {
+          "label": "Meet Our Denturist",
+          "href": "/meet-our-denturist/"
+        },
+        {
+          "label": "Canadian Dental Care Plan",
+          "href": "/canadian-dental-care-plan/"
+        },
+        {
+          "label": "Gallery",
+          "href": "/gallery/"
+        }
+      ]
+    },
+    {
+      "label": "Service",
+      "href": "/service/dentures-embrun-on/",
+      "children": [
+        {
+          "label": "Dentures",
+          "href": "/service/dentures-embrun-on/"
+        },
+        {
+          "label": "Dental Implants",
+          "href": "/service/dental-implants-embrun-on/"
+        },
+        {
+          "label": "Teeth Whitening",
+          "href": "/service/teeth-whitening-embrun-on/"
+        },
+        {
+          "label": "Dental Appliances",
+          "href": "/service/dental-appliances-embrun-on/"
+        },
+        {
+          "label": "Mouthguards",
+          "href": "/service/mouthguards-embrun-on/"
+        },
+        {
+          "label": "Denture Relines and Repairs",
+          "href": "/service/denture-relines-and-repairs-embrun-on/"
+        },
+        {
+          "label": "Digital Dental Impressions",
+          "href": "/service/digital-dental-impressions-embrun-on/"
+        }
+      ]
+    },
+    {
+      "label": "New Patients",
+      "href": "/new-patients/",
+      "children": []
+    },
+    {
+      "label": "Blog",
+      "href": "/blog/",
+      "children": []
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/",
+      "children": []
+    }
+  ],
+  "forms": [
+    {
+      "id": "gform3",
+      "submitLabel": "Submit",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Name*"
+        },
+        {
+          "name": "phone",
+          "label": "Phone",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Phone*"
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true,
+          "placeholder": "Email*"
+        },
+        {
+          "name": "patientType",
+          "label": "Patient Type",
+          "type": "radio",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "New Patient",
+            "Existing Patient"
+          ]
+        },
+        {
+          "name": "preferredDate",
+          "label": "Preferred Date",
+          "type": "text",
+          "required": true,
+          "placeholder": "Preferred Date*"
+        },
+        {
+          "name": "preferredTime",
+          "label": "Preferred Time",
+          "type": "select",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "Morning",
+            "Afternoon",
+            "Evening"
+          ]
+        },
+        {
+          "name": "message",
+          "label": "Message",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Message*"
+        }
+      ]
+    },
+    {
+      "id": "gform2",
+      "submitLabel": "Submit",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Name*"
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true,
+          "placeholder": "Email*"
+        },
+        {
+          "name": "phone",
+          "label": "Phone",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Phone*"
+        },
+        {
+          "name": "patientType",
+          "label": "Patient Type",
+          "type": "radio",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "New Patient",
+            "Existing Patient"
+          ]
+        },
+        {
+          "name": "preferredDate",
+          "label": "Preferred Date",
+          "type": "text",
+          "required": true,
+          "placeholder": "Preferred Date*"
+        },
+        {
+          "name": "preferredTime",
+          "label": "Preferred Time",
+          "type": "select",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "Morning",
+            "Afternoon",
+            "Evening"
+          ]
+        },
+        {
+          "name": "message",
+          "label": "Message",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Message*"
+        }
+      ]
+    },
+    {
+      "id": "gform1",
+      "submitLabel": "Submit",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Name*"
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true,
+          "placeholder": "Email*"
+        },
+        {
+          "name": "phone",
+          "label": "Phone",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Phone*"
+        },
+        {
+          "name": "preferredDate",
+          "label": "Preferred Date",
+          "type": "text",
+          "required": true,
+          "placeholder": "Preferred Date*"
+        },
+        {
+          "name": "preferredTime",
+          "label": "Preferred Time",
+          "type": "select",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "Morning",
+            "Afternoon",
+            "Evening"
+          ]
+        },
+        {
+          "name": "patientType",
+          "label": "Patient Type",
+          "type": "radio",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "New Patient",
+            "Existing Patient"
+          ]
+        },
+        {
+          "name": "message",
+          "label": "Message",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Message*"
+        }
+      ]
+    }
+  ],
+  "redirects": [],
+  "areaServed": [
+    "Embrun, ON",
+    "Russell, ON",
+    "Brisson, ON",
+    "Forest Park, ON",
+    "Forget, ON",
+    "Longtinville, ON"
+  ],
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "person": {
+    "name": "Tom Szarski",
+    "honorificSuffix": "DD",
+    "jobTitle": "Denturist",
+    "path": "/meet-our-denturist/"
+  },
+  "mediaBaseDefault": "https://pub-5816dac948084d6bbbebbfef2581cc24.r2.dev"
+}

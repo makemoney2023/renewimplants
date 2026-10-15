@@ -1,0 +1,5 @@
+{
+  "name": "clinic-sites",
+  "private": true,
+  "workspaces": ["orleans", "embrun"]
+}

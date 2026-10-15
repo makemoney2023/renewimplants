@@ -1,0 +1,316 @@
+{
+  "id": "orleans",
+  "name": "Orleans Denture Clinic",
+  "legalName": "Orleans Denture Clinic & Implant Centre",
+  "shortName": "Orleans Denture Clinic",
+  "url": "https://orleansdentureclinic.com",
+  "description": "Denture specialists and implant centre in Orl\u00e9ans, Ottawa. Custom dentures, repairs, and dental implants at 2882 St. Joseph Blvd.",
+  "phone": {
+    "label": "613-590-9200",
+    "href": "tel:613-590-9200"
+  },
+  "fax": "613-590-9201",
+  "email": "info@orleansdentureclinic.ca",
+  "address": {
+    "street": "2882 St. Joseph Blvd.",
+    "locality": "Orl\u00e9ans",
+    "region": "ON",
+    "postalCode": "K1C 1G7",
+    "country": "CA",
+    "label": "2882 St. Joseph Blvd., Orl\u00e9ans, ON K1C 1G7"
+  },
+  "mapHref": "https://www.google.com/maps/search/?api=1&query=2882+St+Joseph+Blvd+Orleans+ON+K1C+1G7",
+  "geo": {
+    "latitude": 45.417412,
+    "longitude": -75.51829
+  },
+  "hours": [
+    {
+      "day": "Monday",
+      "time": "8:00am - 6:00pm"
+    },
+    {
+      "day": "Tuesday",
+      "time": "8:00am - 4:30pm"
+    },
+    {
+      "day": "Wednesday",
+      "time": "8:00am - 3:00pm"
+    },
+    {
+      "day": "Thursday",
+      "time": "8:00am - 4:30pm"
+    },
+    {
+      "day": "Friday",
+      "time": "8:00am - 3:00pm"
+    },
+    {
+      "day": "Saturday",
+      "time": "Closed"
+    },
+    {
+      "day": "Sunday",
+      "time": "Closed"
+    }
+  ],
+  "hoursNote": "Thursday 8:00am\u20134:30pm and Friday 8:00am\u20133:00pm were recovered from the visible footer hours in the home page HTML. They match the LocalBusiness JSON-LD opens/closes (16:30 and 15:00).",
+  "sameAs": [
+    "https://www.facebook.com/p/Orleans-Denture-Clinic-100080942493508/",
+    "https://www.linkedin.com/company/orleans-denture-clinic/about/"
+  ],
+  "logo": "/orleans/49258636_odc-full-logo.svg",
+  "logoInverse": "/orleans/96fd809a_Orleans-Denture-Logo-White.svg",
+  "nav": [
+    {
+      "label": "Dentures",
+      "href": "/dentures/",
+      "children": [
+        {
+          "label": "Full Dentures",
+          "href": "/dentures/full-dentures/"
+        },
+        {
+          "label": "Partial Dentures",
+          "href": "/dentures/partial-dentures/"
+        },
+        {
+          "label": "Immediate Dentures",
+          "href": "/dentures/immediate-dentures/"
+        },
+        {
+          "label": "Emergency Dentures",
+          "href": "/dentures/emergency-dentures/"
+        },
+        {
+          "label": "Digital Dentures",
+          "href": "/dentures/digital-dentures/"
+        },
+        {
+          "label": "Mobile Dentures",
+          "href": "/dentures/mobile-dentures/"
+        },
+        {
+          "label": "Suction Dentures",
+          "href": "/dentures/suction-dentures/"
+        },
+        {
+          "label": "Denture Consultation",
+          "href": "/dentures/denture-consultation/"
+        }
+      ]
+    },
+    {
+      "label": "Implants",
+      "href": "/implants/",
+      "children": []
+    },
+    {
+      "label": "Additional Services",
+      "href": "/teeth-whitening/",
+      "children": [
+        {
+          "label": "Teeth Whitening",
+          "href": "/teeth-whitening/"
+        },
+        {
+          "label": "Appliances & Guards",
+          "href": "/services/appliances-guards/"
+        },
+        {
+          "label": "Relines & Repairs",
+          "href": "/services/relines-repairs/"
+        },
+        {
+          "label": "Dental Impressions",
+          "href": "/services/digital-impressions/"
+        }
+      ]
+    },
+    {
+      "label": "What to Expect",
+      "href": "/what-to-expect/",
+      "children": []
+    },
+    {
+      "label": "About",
+      "href": "/meet-the-denturists/",
+      "children": [
+        {
+          "label": "Meet the Denturists",
+          "href": "/meet-the-denturists/"
+        },
+        {
+          "label": "Our Lab",
+          "href": "/our-lab/"
+        },
+        {
+          "label": "CDCP",
+          "href": "/canadian-dental-care-plan/"
+        },
+        {
+          "label": "Blog",
+          "href": "/blogs/"
+        }
+      ]
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs/",
+      "children": []
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact/",
+      "children": []
+    }
+  ],
+  "forms": [
+    {
+      "id": "orleans",
+      "submitLabel": "Submit Your Request",
+      "fields": [
+        {
+          "name": "firstName",
+          "label": "First Name",
+          "type": "text",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "lastName",
+          "label": "Last Name",
+          "type": "text",
+          "required": false,
+          "placeholder": ""
+        },
+        {
+          "name": "email",
+          "label": "Email Address",
+          "type": "email",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "phone",
+          "label": "Phone Number",
+          "type": "tel",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "service",
+          "label": "Service Interested In...",
+          "type": "select",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "Full Dentures",
+            "Partial Dentures",
+            "Immediate Dentures",
+            "Emergency Dentures",
+            "Digital Dentures",
+            "Mobile Dentures",
+            "Implants",
+            "Teeth Whitening",
+            "Appliances & Guards",
+            "Relines & Repairs",
+            "Dental Impressions",
+            "Dental Consultation",
+            "Other Inquiries"
+          ]
+        },
+        {
+          "name": "message",
+          "label": "Enter Your Message...",
+          "type": "textarea",
+          "required": true,
+          "placeholder": ""
+        }
+      ]
+    },
+    {
+      "id": "embrun",
+      "submitLabel": "Contact Us",
+      "fields": [
+        {
+          "name": "firstName",
+          "label": "First Name",
+          "type": "text",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "lastName",
+          "label": "Last Name",
+          "type": "text",
+          "required": false,
+          "placeholder": ""
+        },
+        {
+          "name": "email",
+          "label": "Email Address",
+          "type": "email",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "phone",
+          "label": "Phone Number",
+          "type": "tel",
+          "required": true,
+          "placeholder": ""
+        },
+        {
+          "name": "service",
+          "label": "Service Interested In...",
+          "type": "select",
+          "required": true,
+          "placeholder": "",
+          "options": [
+            "Service Interested In...",
+            "Full Dentures",
+            "Partial Dentures",
+            "Immediate Dentures",
+            "Emergency Dentures",
+            "Mobile Dentures",
+            "Implants",
+            "Teeth Whitening",
+            "Appliances & Guards",
+            "Relines & Repairs",
+            "Dental Impressions"
+          ]
+        },
+        {
+          "name": "message",
+          "label": "Enter Your Message...",
+          "type": "textarea",
+          "required": false,
+          "placeholder": ""
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/contact",
+      "destination": "/contact/"
+    }
+  ],
+  "areaServed": [
+    "Ottawa, ON",
+    "Orleans, ON",
+    "Vanier, ON"
+  ],
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "person": {
+    "name": "Tom Szarski",
+    "honorificSuffix": "DD",
+    "jobTitle": "Denturist",
+    "path": "/team/tomasz-szarski/"
+  },
+  "mediaBaseDefault": "https://pub-5816dac948084d6bbbebbfef2581cc24.r2.dev"
+}
