@@ -9,6 +9,7 @@ import {
   sortSocialPosts,
 } from "./social-preview-model";
 import { loadSocialPreview } from "./social-preview";
+import { SOCIAL_QUIZ_HOST } from "./social-pipeline";
 
 describe("social preview catalog", () => {
   const posts = loadSocialPreview();
@@ -18,14 +19,14 @@ describe("social preview catalog", () => {
     expect(posts.filter((post) => post.lane === "paid")).toHaveLength(41);
   });
 
-  it("puts the rendered w01-tue reel on the Vercel quiz", () => {
+  it("puts the rendered w01-tue reel on the Cloudflare quiz", () => {
     const post = posts.find((item) => item.id === "w01-tue");
     expect(post?.video).toBe("/media/social/w01-tue.mp4?v=2");
     expect(post?.poster).toBe("/media/social/w01-tue-poster.jpg?v=2");
     expect(post?.caption).toContain("3Shape");
     expect(post?.ctaLabel).toBe("Take the two-minute quiz");
     expect(post?.instagramHref).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue`,
     );
     expect(post?.facebookHref).toContain("utm_source=facebook");
     expect(existsSync(join(process.cwd(), "assets/social/w01-tue.mp4"))).toBe(true);
@@ -89,14 +90,14 @@ describe("social preview catalog", () => {
     expect(ad?.pillar).toBeTruthy();
   });
 
-  it("puts the rendered w07-fri reel on the Vercel quiz", () => {
+  it("puts the rendered w07-fri reel on the Cloudflare quiz", () => {
     const post = posts.find((item) => item.id === "w07-fri");
     expect(post?.label).toBe("Week 7 fri");
     expect(post?.video).toBe("/media/social/w07-fri.mp4?v=2");
     expect(post?.poster).toBe("/media/social/w07-fri-poster.jpg?v=2");
     expect(post?.caption).toContain("English or French");
     expect(post?.instagramHref).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-fri",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w07-fri`,
     );
     expect(post?.facebookHref).toContain("utm_source=facebook");
     expect(post?.facebookHref).toContain("utm_campaign=w07-fri");
@@ -110,7 +111,7 @@ describe("social preview catalog", () => {
     expect(thu?.images).toEqual(["/media/social/w01-thu.jpg"]);
     expect(thu?.video).toBeNull();
     expect(thu?.instagramHref).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-thu",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-thu`,
     );
     expect(existsSync(join(process.cwd(), "assets/social/w01-thu.jpg"))).toBe(true);
     expect(existsSync(join(process.cwd(), "assets/social/w01-thu-square.jpg"))).toBe(true);
@@ -135,7 +136,7 @@ describe("social preview catalog", () => {
     const thu = posts.find((item) => item.id === "w04-thu");
     expect(thu?.images).toEqual(["/media/social/w04-thu.jpg"]);
     expect(thu?.instagramHref).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-thu",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w04-thu`,
     );
     expect(existsSync(join(process.cwd(), "assets/social/w04-thu.jpg"))).toBe(true);
     expect(existsSync(join(process.cwd(), "assets/social/w04-thu-square.jpg"))).toBe(true);
@@ -196,7 +197,7 @@ describe("social preview catalog", () => {
     expect(carousel?.images).toHaveLength(4);
     expect(carousel?.video).toBeNull();
     expect(carousel?.instagramHref).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-01",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=meta&utm_medium=paid&utm_campaign=ad-01`,
     );
     expect(carousel?.facebookHref).toContain("utm_source=meta");
     expect(carousel?.facebookHref).toContain("utm_medium=paid");
@@ -233,6 +234,15 @@ describe("social preview catalog", () => {
       for (const path of [post.video, post.poster, ...(post.images ?? [])].filter(Boolean)) {
         const file = path!.split("?")[0]!.split("/").pop()!;
         expect(existsSync(join(process.cwd(), "assets/social", file)), file).toBe(true);
+      }
+    }
+  });
+
+  it("points every preview quiz link at SOCIAL_QUIZ_HOST", () => {
+    for (const post of posts) {
+      for (const href of [post.instagramHref, post.facebookHref]) {
+        expect(href.startsWith(`${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?`), post.id).toBe(true);
+        expect(href, post.id).not.toContain("vercel.app");
       }
     }
   });

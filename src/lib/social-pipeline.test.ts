@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { testimonials } from "@/content/testimonials";
@@ -9,6 +9,7 @@ import {
   endCardSpec,
   frameSpec,
   absoluteClickHref,
+  SOCIAL_QUIZ_HOST,
   loadAds,
   loadDesignSystem,
   loadOrganicPosts,
@@ -97,16 +98,48 @@ describe("social and ad catalog", () => {
     expect(ads.find((unit) => unit.id === "concept-denture-slip")?.format).toBe("video");
   });
 
-  it("sends every quiz click to the Vercel host that serves the page", () => {
+  it("sends every quiz click through SOCIAL_QUIZ_HOST and keeps the UTM query", () => {
+    expect(SOCIAL_QUIZ_HOST).toBe("https://renewimplants.abracadabra-ai.workers.dev");
     const tuesday = posts.find((unit) => unit.id === "w01-tue");
     expect(absoluteClickHref(tuesday!.ctaHref)).toBe(
-      "https://renewimplants.vercel.app/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue",
+      `${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?utm_source=instagram&utm_medium=organic&utm_campaign=w01-tue`,
     );
-    for (const unit of units) {
-      const href = absoluteClickHref(unit.ctaHref);
-      expect(href.startsWith("https://renewimplants.vercel.app/implant-candidate-quiz?"), unit.id).toBe(true);
-      expect(href, unit.id).not.toContain("renewimplants.ca");
+
+    const organic = posts as Array<(typeof posts)[number] & { facebookCtaHref: string }>;
+    let links = 0;
+    for (const post of organic) {
+      for (const path of [post.ctaHref, post.facebookCtaHref]) {
+        const href = absoluteClickHref(path);
+        expect(href.startsWith(`${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?`), post.id).toBe(true);
+        expect(href.slice(SOCIAL_QUIZ_HOST.length), post.id).toBe(path);
+        expect(href, post.id).not.toContain("vercel.app");
+        expect(href, post.id).not.toContain("renewimplants.ca");
+        links += 1;
+      }
     }
+    for (const unit of ads) {
+      const href = absoluteClickHref(unit.ctaHref);
+      expect(href.startsWith(`${SOCIAL_QUIZ_HOST}/implant-candidate-quiz?`), unit.id).toBe(true);
+      expect(href.slice(SOCIAL_QUIZ_HOST.length), unit.id).toBe(unit.ctaHref);
+      expect(href, unit.id).not.toContain("vercel.app");
+      links += 1;
+    }
+    expect(links).toBe(101);
+
+    for (const file of readdirSync(socialDir)) {
+      if (!file.endsWith(".json")) continue;
+      const raw = readFileSync(join(socialDir, file), "utf8");
+      expect(raw, file).not.toContain("vercel.app");
+      expect(raw, file).not.toContain("abracadabra-ai.workers.dev");
+    }
+    const pipeline = JSON.parse(readFileSync(join(socialDir, "pipeline.json"), "utf8")) as {
+      primaryCta: { hostConstant: string };
+    };
+    const distribution = JSON.parse(readFileSync(join(socialDir, "distribution.json"), "utf8")) as {
+      clicks: { hostConstant: string };
+    };
+    expect(pipeline.primaryCta.hostConstant).toBe("SOCIAL_QUIZ_HOST");
+    expect(distribution.clicks.hostConstant).toBe("SOCIAL_QUIZ_HOST");
   });
 
   it("publishes only design-system layouts, media, and quiz links", () => {

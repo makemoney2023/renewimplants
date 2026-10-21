@@ -49,11 +49,11 @@ nothing to export today.
 would be an empty namespace. Media is copied into `public/media` at build time
 and uploaded as static assets.
 
-**Social catalog host.** `docs/content/social/pipeline.json` and the tests that
-lock it still use `https://renewimplants.vercel.app`, because that is the origin
-that serves the quiz today. `www.renewimplants.ca` does not. Change that host
-only after the Worker (or the custom domain) is the origin the ads should hit,
-and update the tests in the same change.
+**Social catalog host.** Quiz clicks use `SOCIAL_QUIZ_HOST` in
+`src/lib/social-pipeline.ts`. It is the Cloudflare Workers deployment until the
+clinic domain serves the quiz. Cut over to `https://www.renewimplants.ca` by
+changing that constant. Unit `ctaHref` values stay relative and keep their UTM
+parameters.
 
 **Vercel project.** Leave it deployed until the Worker is checked on its
 `workers.dev` hostname. No `vercel.json` was added. Removing the Vercel project
