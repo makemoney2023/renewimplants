@@ -240,18 +240,24 @@ export function loadOrganicPosts(): PublishUnit[] {
   return parsed.posts;
 }
 
+/**
+ * Origin for every social and paid quiz click.
+ * Cut over to https://www.renewimplants.ca by changing this line.
+ */
+export const SOCIAL_QUIZ_HOST = "https://renewimplants.abracadabra-ai.workers.dev";
+
 export function absoluteClickHref(path: string) {
   const pipeline = z
     .object({
       primaryCta: z.object({
-        host: z.literal("https://renewimplants.vercel.app"),
+        hostConstant: z.literal("SOCIAL_QUIZ_HOST"),
         path: z.literal("/implant-candidate-quiz"),
       }),
     })
     .parse(readJson("pipeline.json"));
-  const url = new URL(path, pipeline.primaryCta.host);
-  if (url.origin !== pipeline.primaryCta.host) {
-    throw new Error(`Click URL left ${pipeline.primaryCta.host}`);
+  const url = new URL(path, SOCIAL_QUIZ_HOST);
+  if (url.origin !== SOCIAL_QUIZ_HOST) {
+    throw new Error(`Click URL left ${SOCIAL_QUIZ_HOST}`);
   }
   if (url.pathname !== pipeline.primaryCta.path) {
     throw new Error(`Click URL left the quiz path: ${url.pathname}`);

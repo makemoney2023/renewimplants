@@ -3,9 +3,9 @@
   "sourceGuide": "https://share.gemini.google/tIrA2VZtpAh2",
   "decision": "Renew Implant Centre is already the master hub on https://www.renewimplants.ca. Educational posts stay on /blog/. Do not launch a second domain, a /learn/ duplicate of /blog/, or city price pages.",
   "clicks": {
-    "host": "https://renewimplants.vercel.app",
+    "hostConstant": "SOCIAL_QUIZ_HOST",
     "quizPath": "/implant-candidate-quiz",
-    "reason": "The quiz is on the Vercel deployment. https://www.renewimplants.ca/implant-candidate-quiz returns 404."
+    "reason": "Quiz clicks use SOCIAL_QUIZ_HOST in src/lib/social-pipeline.ts. That constant is the Cloudflare Workers deployment until the clinic domain serves the quiz. Change it to https://www.renewimplants.ca at cutover. Do not paste a host onto a unit."
   },
   "blogs": {
     "canonicalHost": "https://www.renewimplants.ca",
